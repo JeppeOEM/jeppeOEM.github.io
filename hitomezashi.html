@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projects.css">
+    <script type="module" src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+  <nav id="navbar">
+    <ul>
+      </a><li class="navbar1">jeppe.marquardt</li>  
+      <a href="#porto"><li class="navbar2">.portofolio</li></a>
+      <a href="#about"><li class="navbar3">.about</li></a>
+
+      <img class="git" src="images/gitwhite.png" alt="github" srcset="">
+  </nav>
+  <h3>Hogwarts Student List</h3>
+<a href="" class="dark"></a>
+
+     <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div id="myImg" class="mySlides fade">
+      <div class="numbertext">1 / 1</div>
+      <img src="images/hitzo2.png" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="images/css.png" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="images/f3.jpeg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div class="dots" style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div> 
+
+  
+
+  </div>
+
+      <sectiom class="project_flex">
+        <div class="inner_flex
+        ">
+
+      </div>
+      
+      <section  class="description_text shadow">
+        <div class="links">
+          <a href=""></a><img class="git" src="images/gitwhite.png" alt="" srcset="">
+          <a class ="butt" href="src\p5code\hitzo\index.html">Open webpage</a>
+
+        </div>
+        <h2>Description:         </h2>
+        <p>
+          A Procedural drawing of a stiching pattern.
+           After watching <a class="link_in_text" href="https://www.youtube.com/watch?v=JbfhzlMk2eY&t=204s"> this numberphile video</a> about i decided to create this pattern using p5.js.<br>
+           The concept is to create two arrays of randomly generated populated arrays, one for each axis,
+          and then draw a sequence of lines and spaces either with an offset or not depending on wether the value from the array is even or uneven. 
+           
+
+          <p class="tech">Javascript // P5.js </p>
+      </section>
+<!-- <section class="stack shadow">
+  <h2>
+    Tech Stack
+</h2>
+<ul>
+    <li>Python</li>
+    <li>Pandas</li>
+    <li>Selenium</li>
+    <li>Telegram API</li>
+    <li>Web3.py</li>
+</ul>
+</section> -->
+
+      </section>
+
+
+      <div id="myModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+      </div>
+
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+        </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "play.core",
+  "version": "1.0.0",
+  "description": "Core files, example and demos of the live-code ASCII playground:  \r [play.ertdfgcvb.xyz](https://play.ertdfgcvb.xyz)",
+  "main": "counter.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ertdfgcvb/play.core.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ertdfgcvb/play.core/issues"
+  },
+  "homepage": "https://github.com/ertdfgcvb/play.core#readme",
+  "dependencies": {
+    "motion": "^10.14.2"
+  }
+}

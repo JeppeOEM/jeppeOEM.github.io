@@ -1,0 +1,309 @@
+#sorting th.sortby[data-sort-direction="asc"]::after {
+    content: "⇓";
+  }
+  
+  #sorting th.sortby[data-sort-direction="desc"]::after {
+    content: "⇑"
+  }
+
+  body{
+    margin:0;
+    background-color:#2357a0e0;
+  }
+
+
+.header-title{
+  margin-left: 10vw;
+}
+
+.box{
+
+    font-size: 1.3em;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+}
+
+.count{
+  flex-basis: 20vw;
+}
+
+.house{
+  flex-basis: 20vw;
+}
+
+.expelled{
+margin-top:-40px;
+height:40px;
+}
+
+.enrolled{
+
+  height:10px;
+}
+
+.expelled::before{
+  font-size: 1.1em;
+  position: relative;
+  top: 45px;
+  margin-left: 3vw;
+  content: "Expelled";
+  text-align: center;
+  }
+  
+
+.enrolled-box::before{
+  font-size: 1.1em;
+  position: relative;
+  top: 45px;
+margin-left: 3vw;
+content: "Enrolled";
+text-align: center;
+}
+
+
+
+.housedata{
+
+    margin-left: 10vw;
+    margin-right: 10vw;
+
+  }
+
+/*   seperate the head and body */
+
+  table {
+    font-size: 1.1em;
+    border-collapse: collapse;        
+    width: 100%;
+  }
+  th,
+  td {
+    font-size: 1.1em;
+    padding: 8px 15px;
+    border: 2px solid #ffffff;
+  }
+  #studentList{
+
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+    font-size: 1.1em;
+    min-width: 1200px;
+    border-radius: 5px;
+
+    overflow: hidden; /*     tablerows still have square shape so need the overflow */
+    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  }
+#current_list{
+  font-size: 1.1em;
+}
+
+#data.expelled{
+  text-align: center;
+}  
+
+#data.pref{
+  text-align: center;
+}  
+
+  #data.inquisitor{
+    text-align: center;
+  }  
+
+  tr:hover {
+
+    background-color: rgb(250, 246, 246);
+  }
+  .hide {
+    display: none;
+  }
+  
+
+  td{
+    cursor: pointer;
+  }
+
+
+
+  #studentList th,
+  #studentList td{
+    padding: 25px, 50px;
+  }
+
+  #table-wrapper {
+    position:relative;
+  }
+  #table-scroll {
+    height:350px;
+    overflow:auto;  
+    margin-top:20px;
+  }
+  #table-wrapper table {
+    width:75%;
+  
+  }
+
+
+/*   absolute elements are positioned relative to the parent */
+
+
+
+
+
+  .wrapper{
+
+    display: flex;
+    padding-left: 20px;
+  }
+
+  .title{
+    font-weight: bold;
+  }
+
+/*  PREFECT POP UP */
+
+.modalPrefect{
+
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh ;
+/*   background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.dialog{
+  box-shadow: 1px,1px,10px #333;
+  padding: 1em;
+  border-radius: 12px;
+  background-color: #eee;
+  position: relative;
+}
+
+button.closebutton{
+position: absolute;
+right: 0;
+top: 0;
+border-radius: 50%;
+width:2em;
+height: 2em;
+
+}
+
+.hide{
+
+ visibility: hidden;
+}
+
+
+/* info items on top of list */
+
+.flex{
+  margin-left: 10vw;
+  display: flex;
+  align-items: center;
+  padding:5px;
+}
+.info-item{
+
+  margin: 5px;
+}
+
+p.info-item{
+  font-size: 1.3em;
+  margin: 5px;
+}
+
+.side{
+  margin-left:5vw;
+}
+
+hr{
+  color: #fff;
+  margin-left: 2vw;
+  margin-right: 2vw;
+
+}
+
+/* info header */
+.fixed{
+  margin-left:10vw;
+}
+
+.total-students {
+
+  margin-left: 42vw;
+  display: flex;
+
+}
+
+/* 
+Pop op box */
+
+#crest{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+  .modal {
+    font-size: 1.1em;
+    background-image: url("");
+    background-position:center;
+    background-repeat: no-repeat;
+    background-size: 300px;
+    width:20vw;
+    background-color: antiquewhite;
+    padding: 1em;
+    height:400px;
+    width:33%;
+    border: 0;
+    box-shadow: 0 0 1em rgb(0 0 0 / .3);
+
+
+  }
+  .modal::backdrop{
+/*     background: linear-gradient(45deg, green,blue,orange); */
+background: black;
+    opacity: 0.6;
+  }
+
+#student_img{
+ 
+  position: relative;
+  width: 33%;
+  float: right;
+  margin-top: 20px;
+  margin-right:20px;
+  
+}
+
+
+.close-button{
+  position: relative;
+  float: right;
+  right: 0;
+  top: 0;
+  
+  }
+
+.footer{
+
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+
+      text-align: center;
+}
+
+

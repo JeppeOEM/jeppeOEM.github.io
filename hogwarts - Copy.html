@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="projects.css">
+    <script type="module" src="script.js"></script>
+    <title>Document</title>
+</head>
+<body><img id="myImg" src="img_snow.jpg" alt="Snow" style="width:100%;max-width:300px">
+
+  <nav id="navbar">
+    <ul>
+      </a><li class="navbar1">jeppe_marquardt</li>  
+      <a href="#porto"><li class="navbar2">.portofolio</li></a>
+      <a href="#about"><li class="navbar3">.about</li></a>
+      <li><button class="dark">Toggle Dark/Light</button></li>
+      <img class="git" src="images/gitwhite.png" alt="github" srcset="">
+  </nav>
+  <h3>Student List</h3>
+<a href="" class="dark"></a>
+
+     <!-- Slideshow container -->
+<div class="slideshow-container">
+
+    <!-- Full-width images with number and caption text -->
+    <div class="mySlides fade">
+      <div class="numbertext">1 / 3</div>
+      <img src="images/f3.jpeg" style="width:100%">
+      <div class="text">Caption Text</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">2 / 3</div>
+      <img src="images/css.png" style="width:100%">
+      <div class="text">Caption Two</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <div class="numbertext">3 / 3</div>
+      <img src="images/f3.jpeg" style="width:100%">
+      <div class="text">Caption Three</div>
+    </div>
+  
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+  
+  <!-- The dots/circles -->
+  <div class="dots" style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div> 
+
+  
+
+  </div>
+
+      <sectiom class="project_flex">
+        <div class="inner_flex
+        ">
+
+      </div>
+      <section  class="description_text shadow">
+        <h2>Description:</h2>
+        <p>
+          
+        <img class="git" src="images/gitwhite.png" alt="" srcset="">
+        <img class ="external" src="images/external.svg" alt="external link">
+            A journey into Web scraping, Blockchain, Asynchronous programming and problem solving.
+            A cryptocurrency trading bot which utilizes Telegram API to collects updates on new cryptocurrencies from telegram channels. One main feature is a scam check that uses selenium to post the token address on a website and then web scrape the result.
+            If that test is passed the bot does a test buy and sell with Web3, if that is a succes.The tokens will be purchased and the transaction will be stored in sql database. The bot will then listen to a API for the price of the tokens in the database until a predetermined sell price is achived. The bot has been made ready for deployment on Heroku. 
+            <p class="tech">Python Pandas Selenium Telegram API Web3py</p>
+          </p>
+
+      </section>
+<section class="stack shadow">
+  <h2>
+    Tech Stack
+</h2>
+<ul>
+    <li>Python</li>
+    <li>Pandas</li>
+    <li>Selenium</li>
+    <li>Telegram API</li>
+    <li>Web3.py</li>
+</ul>
+</section>
+
+      </section>
+
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          let i;
+          let slides = document.getElementsByClassName("mySlides");
+          let dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+        </script>
+</body>
+</html>

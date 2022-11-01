@@ -1,0 +1,205 @@
+
+<!--     https://kea-fronter.itslearning.com/ContentArea/ContentArea.aspx?LocationID=5433&LocationType=1&ElementID=1036709 -->
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Hogwarts</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <header class="header-title"><h1>Hogwarts School of Wizardry and Witchraft</h1></header>
+<!--     
+    <table id="houseData">
+      <thead>
+        <tr id="">     
+          <th class="count">Gryffindor</th>
+          <th class="count">Slytherin</th>
+          <th class="count">Hufflepuff</th>
+          <th class="count">Ravenclaw</th>
+          <th class="count">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="expelled">1</td>
+          <td class="enrolled">1</td>
+
+        </tr>
+      </tbody>
+    </table>
+ -->
+
+
+
+
+<div class="fixed">
+    <div class = "box houseData">
+      <p></p>
+      <p class="house">Gryffindor</p>
+      <p class="house">Slythering</p>
+      <p class="house">Hufflepuff</p>
+      <p class="house">Ravenclaw</p>
+      <p class="house">Total</p>
+      
+    </div>
+
+    <div class ="expelled">
+    <div class="box"> 
+    <p id="expelled_gryff" class="count griff">0</p>
+    <p id="expelled_slyth" class="count slyth">0</p>
+    <p id="expelled_huffle" class="count huffle">0</p>
+    <p id="expelled_raven" class="count raven">0</p>
+    <p id="total_expelled" class="count total">0</p> 
+    </div>
+  </div> 
+
+    <div class ="enrolled-box">
+      <div class="box"> 
+      <p id="griff_total"class="enrolled count griff">0</p>
+      <p id="slyth_total"class="enrolled count slyth">0</p>
+      <p id="huffle_total" class="enrolled count huffle">0</p>
+      <p id="raven_total" class="enrolled count raven">0</p>
+      <p id="total_enrolled" class="enrolled count total">0</p>
+      </div>
+    </div>
+
+</div>
+
+
+<hr />
+<div class="flex">
+
+  <p class="info-item">Search:</p>
+  <input id="search" class="info-item" placeholder="Case sensitive"/>
+    <select class="info-item">
+      <option value="" selected="selected" disabled="disabled">Filter</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="boy">Boy</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="gryffindor">Gryffindor</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="hufflepuff">Hufflepuff</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="slytherin">Slytherin</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="ravenclaw">Ravenclaw</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="girl">Girl</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="half">Half Blood</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="pure">Pure Blood</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="muggle">Muggles</option>    
+      <option value="" class="filter btn" data-action="filter" data-filter="*">all</option>
+      <option value="" class="filter btn" data-action="filter" data-filter="expelled">expelled</option>
+  </select>
+  <select class="info-item">
+    <option value="" selected="selected" disabled="disabled">Sort</option>
+    <option class="fixed"data-action="sort" data-sort-direction="asc" data-sort="firstname">Firstname</option>
+    <option class="fixed"data-action="sort" data-sort-direction="asc" data-sort="middlename">Middlename</option>
+    <option class="fixed"data-action="sort" data-sort-direction="asc" data-sort="lastname">Lastname</option>
+    <option class="fixed"data-action="sort" data-sort-direction="asc" data-sort="nickname">Nickname</option>
+    <option class="fixed"data-action="sort" data-sort-direction="asc" data-sort="inquisitor">Inquisitor</option>
+    <option class="fixed"data-action="sort" data-sort-direction="asc" data-sort="prefect">Prefect</option>
+
+</select>
+
+
+
+
+
+  <div class=" total-students"><p class="info-item">Total:</p><div class="info-item" id="current_list"></div></div>
+  </div>
+
+    <div id="table-wrapper">
+      <div id="table-scroll">
+    
+        <table id="studentList">
+      <div class="fixTableHead">
+      <thead>
+        <tr id="sorting">      <!--   data- becomes camelcase in JS  -->
+          <th class="fixed"></th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="firstname">Firstname</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="middlename">Middlename</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="lastname">Lastname</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="nickname">Nickname</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="bloodtype">Blood Type</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="gender">Gender</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="house">House</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="inquisitor">Add Inquisitor</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="prefect">Add Prefect</th>
+          <th class="fixed"data-action="sort" data-sort-direction="asc" data-sort="expelled">Expell</th>
+        </tr>
+      </thead>
+    </div>
+      <tbody>
+        <!-- template will be copied and inserted here -->
+      </tbody>
+
+    <template id="student">
+      <tr data-all="all" class="data">
+        <td id="data" class="image" data-field="image"><img src="" alt="" /></td>
+        <td id="data" class="first" data-field="firstname"></td>
+        <td id="data" class="middle" data-field="middlename"></td>
+        <td id="data" class="last" data-field="lastname"></td>
+        <td id="data" class="nick" data-field="nickname"></td>
+        <td id="data" class="blood" data-field="blood"></td>
+        <td id="data" class="gender" data-field="gender"></td>
+        <td id="data" class="house" data-field="house"></td>
+        <td id="data" class="inquisitor" data-field="inquisitor"></td>
+        <td id="data" class="pref" data-field="prefect"></td>
+        <td id="data" class="expel" data-field="expelled">X</td>
+
+      </tr>
+    </template>
+
+
+        </table>
+        </div>
+          </div>
+
+
+          <dialog class="modal" id="modal">
+            <img id="student_img" src="" alt="" srcset="">
+              <div class="wrapper"><p class="title">Firstname: </p><p class="pop_first wrapper"></p></div>
+              <div class="wrapper"><p class="title">Middlename: </p><p class="pop_middle wrapper"></p></div>
+              <div class="wrapper"><p class="title">Lastname: </p><p class="pop_last wrapper"></p></div>
+              <div class="wrapper"><p class="title">Nickname: </p><p class="pop_nick wrapper"></p></div>
+              <div class="wrapper"><p class="title">Blood Status: </p><p class="pop_blood wrapper"></p></div>
+              <div class="wrapper"><p class="title">House: </p><p class="pop_house wrapper"></p></div>
+              <div class="wrapper"><p class="title">Inquisitor: </p><p class="pop_inqui wrapper"></p></div>
+              <div class="wrapper"><p class="title">Prefect: </p><p class="pop_pref wrapper"></p></div>
+<!--               expelled or not -->
+     
+              <button class="button close-button">close modal</button>
+            </form>
+          
+          </dialog>
+
+
+<div id="remove_a_or_b" class="modalPrefect hide">
+  <div class ="dialog">
+    <h2>
+      Stop!
+    </h2>
+<!--     <p id="pref1">1</p>
+    <p id="pref2">1</p> -->
+    <p>Only two prefects per each house, you must click on a name to remove it!<br></p>
+  <button  id="pref1" class="remove_a">
+
+  </button>
+  <button  id="pref2"class="remove_b">
+
+  </button>
+  <button class="close">
+     X
+  </button>
+  </div>
+</div>
+ <footer class="footer"><a href="https://www.flaticon.com/free-icons/shield" title="shield icons">Shield icons created by Freepik - Flaticon</a></footer>
+
+    <script src="main.js"></script>
+
+  </body>
+</html>
+ 
