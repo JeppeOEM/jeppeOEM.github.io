@@ -54,8 +54,7 @@ body{
 
 .external{
 
-  filter: invert(100%) sepia(27%) saturate(3963%) hue-rotate(82deg) brightness(101%) contrast(101%);
-
+  filter: invert(36%) sepia(65%) saturate(3536%) hue-rotate(354deg) brightness(101%) contrast(96%);
 }
 
 .shadow{
@@ -72,6 +71,10 @@ body{
 
 .white{
   color: var(--white);
+}
+
+.orange{
+  color: var(--orange);
 }
 
 .butt{
@@ -223,6 +226,10 @@ a{
 }
 
 /* Title intro */
+.firstpage{
+  z-index: -20;
+}
+
 .introduction{
   z-index: -1;
   position: fixed;
@@ -243,8 +250,8 @@ a{
 
 
 .ascii_link{
-  background-color: var(--black);
 
+  background-color: var(--black);
   z-index: -1;
   position: fixed;
   margin-top: 90vh;
@@ -254,7 +261,7 @@ a{
 }
 
 .PetMe{
-  font-size: 15px;
+  font-size: 0.75rem;
   color: var(--orange);
   font-family: var(--font2);
 }
@@ -519,7 +526,7 @@ background-color:var(--black);
     }
 
     .about_grid{
-
+    z-index: 10;
       flex-direction: column;
     }
 

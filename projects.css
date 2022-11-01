@@ -39,7 +39,7 @@ h2{
 }
 
 h3{
-  color: var(--accent);
+  color: var(--orange);
 }
 
 p{
@@ -47,7 +47,9 @@ p{
 }
 
 h1{
-  color: var(--whiteblue);
+  padding-top: var(--padding);
+
+  color: var(--accent);
   font-family: 'Simple Console', monospace; 
   padding-bottom: var(--padding);
 }

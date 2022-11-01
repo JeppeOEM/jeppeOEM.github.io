@@ -311,5 +311,14 @@ var currentScrollPos = window.pageYOffset;
 }
 
 
+const ascii_link = document.querySelector(".ascii_link");
+ascii_link.addEventListener("click", ()=>{
+
+  alert("SDSDsds")
+
+});
+
+
+
 /* SLIDES */
 
