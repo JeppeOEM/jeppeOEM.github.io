@@ -13,12 +13,17 @@
 
   <nav id="navbar">
     <ul>
-      </a><li class="navbar1">jeppe_marquardt</li>  
+    <a href="index.html"> <li class="navbar1">jeppe_marquardt</li>   </a>
       <a href="#porto"><li class="navbar2">.portofolio</li></a>
       <a href="#about"><li class="navbar3">.about</li></a>
-      <li><button class="dark">Toggle Dark/Light</button></li>
-      <img class="git" src="images/gitwhite.png" alt="github" srcset="">
-  </nav>
+  
+    </ul>
+    <div class="socials">
+      <a href=""><img class="icon" src="images/gitwhite.png" alt="github"></a>
+      <img class="icon email" src="images/email.svg" alt="">
+      <a href=""><img class="icon"src="images/link.png" alt="github"></a>
+    </div>
+    </nav>
   <h3>Student List</h3>
 
   </div>
@@ -55,49 +60,10 @@
 
           <p class="tech">Python // Pandas // Selenium // Telegram API // Web3py // SQLite3 </p>
       </section>
-<!-- <section class="stack shadow">
-  <h2>
-    Tech Stack
-</h2>
-<ul>
-    <li>Python</li>
-    <li>Pandas</li>
-    <li>Selenium</li>
-    <li>Telegram API</li>
-    <li>Web3.py</li>
-</ul>
-</section> -->
+
 
       </section>
 
 
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
-        
-        function plusSlides(n) {
-          showSlides(slideIndex += n);
-        }
-        
-        function currentSlide(n) {
-          showSlides(slideIndex = n);
-        }
-        
-        function showSlides(n) {
-          let i;
-          let slides = document.getElementsByClassName("mySlides");
-          let dots = document.getElementsByClassName("dot");
-          if (n > slides.length) {slideIndex = 1}    
-          if (n < 1) {slideIndex = slides.length}
-          for (i = 0; i < slides.length; i++) {
-            slides[i].style.display = "none";  
-          }
-          for (i = 0; i < dots.length; i++) {
-            dots[i].className = dots[i].className.replace(" active", "");
-          }
-          slides[slideIndex-1].style.display = "block";  
-          dots[slideIndex-1].className += " active";
-        }
-        </script>
 </body>
 </html>

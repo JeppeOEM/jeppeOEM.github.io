@@ -52,6 +52,12 @@ body{
   --black: rgb(239, 236, 236);
 }
 
+.external{
+
+  filter: invert(100%) sepia(27%) saturate(3963%) hue-rotate(82deg) brightness(101%) contrast(101%);
+
+}
+
 .shadow{
   box-shadow: 0 1px 1px rgba(0,0,0,0.12), 
   0 2px 2px rgba(0,0,0,0.12), 
@@ -62,6 +68,10 @@ body{
 
 .lightblue{
   color: var(--whiteblue);
+}
+
+.white{
+  color: var(--white);
 }
 
 .butt{
@@ -118,6 +128,26 @@ body {
 
 
 
+.icon{
+  margin-left:0.5rem;
+  max-height: 1.5rem;
+}
+
+
+
+.email{
+
+  max-height: 1.3rem;
+  filter: invert(99%) sepia(100%) saturate(0%) hue-rotate(136deg) brightness(108%) contrast(100%);
+}
+
+.socials{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: calc(var(--padding)*2);
+}
+
 nav {
   z-index: 100;
   position: fixed;
@@ -126,6 +156,7 @@ nav {
   background-color: var(--lightblack);
   height: 8vh;
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
@@ -352,7 +383,8 @@ PORTOFOLIO */
 
   background-color: var(--black);
   height:120vh;
-
+  padding-bottom:10rem;
+/*   margin-bottom:10rem; */
 
 }
 
@@ -371,7 +403,7 @@ PORTOFOLIO */
   gap: 1.5rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  padding-bottom:10rem;
+
 
 
 
