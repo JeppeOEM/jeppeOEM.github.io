@@ -22,20 +22,13 @@ body{
   --font1: Inter Tight, sans-serif;
   --font2: PetMe, sans-serif;
   --font3: font-family: 'Simple Console', monospace; 
-/*   --white: rgb(239, 236, 236); */
---whiteblue :  #CCD6F6;
---white :  white;
-/*   --black: #131212; */
-/*   --black: #0A192F; */
---black: #0A192F;
-
-/*   --lightblack:#252526; */
+  --whiteblue :  #CCD6F6;
+  --white :  white;
+  --black: #0A192F;
   --lightblack:#0A192F;
   --ascii:'#6D6D6C';
   --grid:#112240;
---orange: #FA4C14;
-/* --orange: #FF992F; */
-/*   --accent: #00FF00; */
+  --orange: #FA4C14;
   --accent: #64FFDA;  
   --accent2: #a8d3a8;
   --p: 1rem;
@@ -45,11 +38,6 @@ body{
   --big-h: 6.052rem;
   --radius: 1rem;
   --padding: 1rem;
-}
-
-.dark-mode {
-  --white: #131212;
-  --black: rgb(239, 236, 236);
 }
 
 .external{
@@ -180,13 +168,6 @@ nav ul li {
 }
 
 
-header {
-  overflow: hidden;
-  height: 100vh;
-  position: relative;
-}
-
-
 
 /* SNAP */
 
@@ -196,15 +177,6 @@ header {
   scroll-snap-align: center;
   height:100vh;
 }
-
-/* .snapabout {
-  padding-top:100vh;
-  padding-bottom:10vh;
-  scroll-snap-align: center;
-  height:10vh;
-} */
-
-
 
 
 .snap h3{
@@ -225,7 +197,7 @@ a{
   text-decoration: none;
 }
 
-/* Title intro */
+/* First Page */
 .firstpage{
   z-index: -20;
 }
@@ -276,7 +248,7 @@ a{
     height: 35vh;
   }
 
-/*   ABOUT ON LINE */
+
 .header_span{
 
   font-size: var(--h);
@@ -295,11 +267,7 @@ a{
   padding-bottom: 15vh;
 }
 
-
-
 .flex_container {
-
-/*   border: 1px solid var(--accent); */
   border-radius: var(--radius);
   margin-left: 15vw;
   max-width: 60vw;
@@ -339,30 +307,6 @@ background-color: var(--lightblack);
   max-height:2rem;
 }
 
-/* .logos{
-  margin-left: auto;
-  margin-right: auto;
-  width:80vw;
-  display: flex;
-}
-.logos img {
-padding-left: 4rem;
-max-width:10vw;
-min-width: 5vw;
-}
-
-
-
-*/
-
-/* figure{
-  padding:1rem;
-  margin-left: 1rem;
-  border-radius: var(--radius);
-
-
-
-} */
 
 .pad{
   padding: var(--padding);
@@ -380,7 +324,6 @@ min-width: 5vw;
   display: flex;
   flex-direction: row;
 }
-
 
 
 /* 
@@ -410,21 +353,14 @@ PORTOFOLIO */
   gap: 1.5rem;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(1, 1fr);
-
-
-
-
 }
 
 
 .portofolio_grid section{
-
   margin-top: 2vh;
-
 }
 
 .header_port{
-
 font-family: var(--font1);
 padding-top: 15vh;
 text-align: center;
@@ -467,38 +403,19 @@ text-align: center;
   
   font-family: 'Simple Console', monospace; 
 }
-
-/*   .card_hitzo{
-
-    grid-column: 1;
-    grid-row:2;
-  }
-
-  .card_hogwarts{
-    grid-column: 2;
-    grid-row:2;
-  }
-
-  .card_bot{
-    grid-column: 3;
-    grid-row:2;
-  }
+/* FOOTER */
 
 
-  .card_art{
-    grid-column: 4;
-    grid-row:2;
-  } */
-  .footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 8vh;
-    background-color: red;
-    color: white;
-    text-align: center;
- }
+.footer {
+position: relative;
+left: 0;
+bottom: 0;
+width: 100%;
+height: 8vh;
+background-color: red;
+color: white;
+text-align: center;
+}
 
 footer{
 
@@ -542,27 +459,7 @@ background-color:var(--black);
     /*   grid-template-columns: repeat(12, 8.33vw); */
       grid-template-rows: repeat(1, 1fr);
     }
-    /* .card_hitzo{
 
-      grid-column: 1;
-      grid-row:2;
-    }
-  
-    .card_hogwarts{
-      grid-column: 2;
-      grid-row:2;
-    }
-  
-    .card_bot{
-      grid-column: 3;
-      grid-row:2;
-    }
-  
-  
-    .card_art{
-      grid-column: 4;
-      grid-row:2;
-    } */
   }
 
 /* TABLETS */
@@ -604,28 +501,7 @@ background-color:var(--black);
       grid-template-rows: repeat(3, 1fr);
     }
 
-/*     .card_hitzo{
 
-      grid-column: 1;
-      grid-row:1;
-    }
-  
-    .card_hogwarts{
-      grid-column: 2;
-      grid-row:1;
-    }
-  
-    .card_bot{
-      grid-column: 1;
-      grid-row:2;
-    }
-  
-  
-    .card_art{
-      grid-column: 2;
-      grid-row:2;
-    }
-     */
       .text{
         font-size: var(--h);
         background-color:var(--lightblack);
@@ -682,27 +558,6 @@ color: var(--orange);
 
   }
 
-/*   .card_hitzo{
-
-    grid-column: 1;
-    grid-row:1;
-  }
-
-  .card_hogwarts{
-    grid-column: 1;
-    grid-row:2;
-  }
-
-  .card_bot{
-    grid-column: 1;
-    grid-row:3;
-  }
-
-
-  .card_art{
-    grid-column: 1;
-    grid-row:4;
-  } */
 
   }
 
