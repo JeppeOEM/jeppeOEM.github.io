@@ -33,7 +33,7 @@ const DEPOSIT = 1;
 // Rendering
 const TEXTURE = [
 	"  ``+%",
-	" .*„i0",
+	" .*¤10",
 ];
 const OOB = ' ';
 
