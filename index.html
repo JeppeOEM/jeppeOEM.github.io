@@ -5,7 +5,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jeppe Marquardt</title>
+    <title>Jeppe Marquardt's Portofolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,28 +16,48 @@
   </head>
   <body>
     <header>
-    <a class="ascii_link PetMe scroll hide" data-rateY="0" data-rateX="-2" data-direction="horizontal" href="https://play.ertdfgcvb.xyz/"><span class="white ascii_art">ascii art: </span><span class="the_link">https://play.ertdfgcvb.xyz/</span></a>
-      <nav id="navbar">
+    <a class="ascii_link PetMe scroll hide" data-rateY="0" data-rateX="-2" data-direction="horizontal" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish" target="_blank"><span class="white ascii_art">ascii credits: </span><span class="the_link">https://play.ertdfgcvb.xyz</span></a>
+      <nav class="" id="navbar">
         <ul>
-        <a href="index.html"> <li class="navbar1">jeppe_marquardt</li>   </a>
-          <a href="#porto"><li class="navbar2">.portofolio</li></a>
-          <a href="#about"><li class="navbar3">.about</li></a>
+        <a class="pc mobile" href="index.html"> <li class="navbar1">jeppe_marquardt</li>   </a>
+          <a class="pc mobile" href="#porto"><li class="navbar2">.portofolio</li></a>
+          <a class="pc mobile" href="#about"><li class="navbar3">.about</li></a>
+          <a class="pc mobile" href=""></a>
         </ul>
-        <div class="socials">
+        <div class="mobile" class="socials">
           <a href="https://github.com/JeppeOEM"><img class="icon" src="images/gitwhite.png" alt="github"></a>
           <img class="icon email" src="images/email.svg" alt="">
           <a href="https://www.linkedin.com/in/jeppemarquardt/"><img class="icon"src="images/link.png" alt="github"></a>
         </div>
+
+        <div class="mobile_nav">
+          <img class="mobile_menu" src="images/menu.svg" alt="">
+
+          <p></p>
+
+          <ul class="flex-column hide">
+            <li class="list_link hide">
+             <a href="#about">About</a> 
+            </li>
+            <li class="list_link hide">
+             <a href="#porto">Portofolio</a> 
+            </li>
+          </ul>
+
+
+       
+</div>
         </nav>
           <div class="ascii">
             <pre></pre>
           </div>
                 <div class="introduction">
-
+                  <div class="name">
                   <h3 class="scroll jeppe" data-rateY="-2" data-rateX="0" data-direction="horizontal">
-
-                    Jeppe Marquardt
+                    <span>Jeppe </span> <span>Marquardt</span> 
                   </h3>
+                  </div>
+
                   <p class="hide creative lightblue scroll" data-rateY="0" data-rateX="2" data-direction="horizontal">creative coding and frontend development</p>
                 </div>
     </header>
@@ -52,15 +72,22 @@
                   <section class="about_text shadow">
                     <h2 class="orange"> About</h2>
                     <p>
-                      Im a web develeoper driven by a passion for creative coding and a facination of technology as a phenomenon. <br>
-                      As much as i am an artist that loves playing with the essence of form and colors on the frontend,
-                      I am a dedicated problem solver and find great joy in building algoritmic trading bots using various blockchain API's.
+                      Im a danish web developer based in Copenhagen driven by a passion for creative coding and a facination of technology as a phenomenon. <br>
+                      I am being educated as a Frontend developer at KEA and i like to work with form and colour something i also explore in my freetime creating generative artwork with the creative coding framework p5.js.<br>
+                      I am a dedicated problem solver and cant stop exploring new territory this is why i am currently working with blockchain API's to build on a 
+                      <a class="aboutlink" href="telegrambot.html">cryptocurrency trading backend.</a>
+      
                       <br>
-                      <img class="logo" src="images/python-logo-only.png" alt="">
-                      <img class="logo" src="images/p5.png" alt="">
-                      <img class="logo" src="images/javaScript-logo.png" alt="">
+   <!--                    <img class="logo" src="images/python-logo-only.png" alt="python logo">
+                      <img class="logo" src="images/p5.png" alt="p5 logo">
+                      <img class="logo" src="images/javaScript-logo.png" alt="javascript logo">
+                      <img class="logo" src="images/React-icon.svg.png" alt="react logo">
+                      <img class="logo" src="images/white.png" alt="sass logo"> -->
                     </p>
                   </section>
+                  
+
+
                   </div>
                   <div class="pad">
                       <img class="me shadow" src="images/jeppe.jpg" alt="picture of me">
@@ -76,7 +103,7 @@
     <section id="img" class="portofolio_grid">
        
       <section class="grid_section card_hitzo">
-        <a href="telegrambot.html">
+        <a href="/telegrambot.html">
         <h2 class="card_header">
           Telegram Crypto Trading Bot
         </h2>
@@ -97,27 +124,22 @@
           </a>
           </section>
         <section class="grid_section">
-          <a href="hitomezashi.html">
+          <a href="/react.html">
           <h2 class="card_header">
-            Hitzomeschasi Sticth Pattern
+            React Webshop
          </h2>
          <img src="images/gitwhite.png" alt="" srcset="">
          <img class ="external" src="images/external.svg" alt="external link">
          <p>
-          Small procedural drawing of randoms patterns which is based based on boolean values.
+          A webshop prototype created with REACT
          </p>
-
-
-          <p>
-
-          </p>
           <p class="specs">
-            p5.js 
+            React Sass
           </p>
         </a>
       </section>
       <section class="grid_section">
-        <a href="prime_spiral.html">
+        <a href="/prime_spiral.html">
         <h2 class="card_header">
           Prime Spiral Sketch
         </h2>
@@ -137,7 +159,7 @@
       
       <section class="grid_section">
 
-      <a href="hogwarts.html">
+      <a href="/hogwarts.html">
         <h2 class="card_header">
          Hogwarts Student List
         </h2>

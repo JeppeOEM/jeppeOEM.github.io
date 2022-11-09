@@ -22,23 +22,46 @@
       <a href="https://www.linkedin.com/in/jeppemarquardt/"><img class="icon"src="images/link.png" alt="github"></a>
     </div>
     </nav>
-  <h3>Student List</h3>
 
+  <h3>Telegram Trading Bot</h3>
   </div>
+    
+    <sectiom class="project_flex">
 
-      <sectiom class="project_flex">
-
-      
       <section  class="description_text shadow">
-        <div class="links">
-          <img class="git" src="images/gitwhite.png" alt="" srcset="">
+        <h1>Description</h1>
 
-  <!--         <img class ="external" src="images/external.svg" alt="external link"> -->
-        </div>
-        <h2>Description:         </h2>
-        <p>
-        
-            A minimal viable product of a cryptocurrency trading bot which uses Web3py to send transactions and receive price data directly 
+          <p>The goal of this project was to interact with the Binance Blockchain using the Web3py framework to be able buy and sell newly created cryptocurrencies in the cloud.<br><br> 
+          The method is to collect data about newly created currencies, which is posted on Telegram channels that only contain that. <br>
+          That data is then processed and with automation posted on honeypot.is to check if it’s a scam token, the result is then webscrapped, and the bot can buy the token and follows its price until it sells it again.<br>
+         <a href="">The whole process is Illustrated here in a activity diagram.</a> </p> 
+          <h1> Challenges:</h1>
+          <ul>
+            <li>
+              To ensure that the bot is selling all the tokens I bhought I had to look inside large chuncks of metadata convert it to JSON and extract the information from the nested json objects and then convert it from hexadecimals to decimals.
+            </li>
+            <li>
+              To be able to get the token address and post it on honeypot.is to check if it is a scam,
+            </li>
+            <li>
+              To be able to run the bot on Heroku while using browserless chrome I found out that adding buildpacks with links to github repositories the drivers would be installed in the cloud.
+          
+            </li>
+
+          </ul>
+
+
+         
+         <h1>Improvements:</h1> 
+         <p>
+          The project is a minimal viable product and was just an attempt to make a starting point from where I can build on the code to make different trading bots and other application interacting with a blockchain.
+          The whlAs I do not dare to run this 
+         </p>
+
+          
+
+
+<!--             A minimal viable product of a cryptocurrency trading bot which uses Web3py to send transactions and receive price data directly 
             from the "Binance Smart Chain".   <br> This is first step in a larger an ongoing project  <br><br>
             The logic behind is to listen to a Telegram Channel that only post information on newly created Cryptocurrencies, and then buy these coins if certain criteria are met forexample size of liquidity pool.<br>
             One feature is a scam check that uses selenium to post the token address on a website and then web scrape the result.<br>
@@ -46,18 +69,31 @@
             The token will be purchased and the transaction data will be stored in a sql database. 
             The bot will then every few seconds get new price information from an endpoint until a predetermined 
             sell price is achived. 
-            The bot has been made ready for deployment on Heroku. 
+            The bot has been made ready for deployment on Heroku.  -->
           </p>
+          <h1>
+            Links
+          </h1>
+
+          <ul>
+            <li>Activity Diagram<a href=""></li>
+            <li>Github<a href=""></li>
+    
+          </ul>
+
+      </section>
+      <section  class="description_text shadow">
+
           <h1 class="tech">
-            Tech Stack:
+            Tech Stack
           </h1>
 
           <p class="tech">Python // Pandas // Selenium // Telegram API // Web3py // SQLite3 </p>
       </section>
 
-
       </section>
 
 
+  <script type="module" src="project.js"></script>
 </body>
 </html>

@@ -10,14 +10,28 @@
     color: white;
 } */
 /* https://caferati.me/portfolio/sky-go-desktop */
+.link_section{
+  display: flex;
+  flex-direction: row;
+}
+
+* {
+  box-sizing: border-box
+}
 
 
-* {box-sizing: border-box}
-body {font-family: Verdana, sans-serif; margin-bottom:15vh}
+body {font-family: Verdana, 
+  sans-serif;
+  margin-bottom:15vh;
+  opacity: 0;
+}
 .mySlides {display: none}
 img {vertical-align: middle;}
 
-
+p a{
+  text-decoration: underline;
+  color: var(--accent);
+}
 
 
 /* Slideshow container */
@@ -34,6 +48,7 @@ li{
 }
 
 h2{
+
   padding-bottom:var(--padding);
 
 }
@@ -47,7 +62,7 @@ p{
 }
 
 h1{
-  padding-top: var(--padding);
+ 
 
   color: var(--accent);
   font-family: 'Simple Console', monospace; 
@@ -161,7 +176,7 @@ nav li{
   margin-left: 25vw;
   margin-right: 25vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 1350px){
