@@ -10,29 +10,46 @@
     color: white;
 } */
 /* https://caferati.me/portfolio/sky-go-desktop */
-.link_section{
+
+.code {
+  display: block;
+}
+
+.single_img {
+  max-height: 60vh;
+}
+
+.link_section {
   display: flex;
   flex-direction: row;
 }
 
 * {
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 
-
-body {font-family: Verdana, 
-  sans-serif;
-  margin-bottom:15vh;
+body {
+  font-family: Verdana, sans-serif;
+  margin-bottom: 15vh;
   opacity: 0;
 }
-.mySlides {display: none}
-img {vertical-align: middle;}
+.mySlides {
+  display: none;
+}
+img {
+  vertical-align: middle;
+}
 
-p a{
+p a {
   text-decoration: underline;
   color: var(--accent);
 }
-
+.links_project {
+}
+.links_project span {
+  text-decoration: underline;
+  color: var(--accent);
+}
 
 /* Slideshow container */
 .slideshow-container {
@@ -41,43 +58,41 @@ p a{
   margin: auto;
 }
 
-li{
+.displaynone {
+  display: none;
+  color: black;
+}
+
+li {
   list-style: inside;
   color: var(--whiteblue);
   font-family: var(--font1);
 }
 
-h2{
-
-  padding-bottom:var(--padding);
-
-}
-
-h3{
-  color: var(--orange);
-}
-
-p{
-  padding-bottom:var(--padding);
-}
-
-h1{
- 
-
-  color: var(--accent);
-  font-family: 'Simple Console', monospace; 
+h2 {
   padding-bottom: var(--padding);
 }
 
+h3 {
+  color: var(--orange);
+}
 
-nav li{
+p {
+  padding-bottom: var(--padding);
+}
+
+h1 {
+  color: var(--white);
+  font-family: "Simple Console", monospace;
+  padding-bottom: var(--padding);
+}
+
+nav li {
   list-style: none;
 }
 
-
-
-.single_img{
-  border-radius: calc(var(--radius)/2);
+.single_img {
+  border-radius: calc(var(--radius) / 2);
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -86,7 +101,8 @@ nav li{
 }
 
 /* Next & previous buttons */
-.prev, .next {
+.prev,
+.next {
   cursor: pointer;
   position: absolute;
   top: 50%;
@@ -110,8 +126,9 @@ nav li{
 }
 
 /* On hover, add a black background color with a little bit see-through */
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Caption text */
@@ -146,11 +163,12 @@ nav li{
   transition: background-color 0.6s ease;
 }
 
-.dots{
+.dots {
   padding-bottom: var(--padding);
 }
 
-.active, .dot:hover {
+.active,
+.dot:hover {
   background-color: #717171;
 }
 
@@ -160,17 +178,12 @@ nav li{
   animation-duration: 1.5s;
 }
 
-.description_text{
+.description_text {
   margin-top: var(--padding);
-  width: 100%
+  width: 100%;
 }
 
-
-
-
-
-
-.project_flex{
+.project_flex {
   align-items: center;
   justify-content: center;
   margin-left: 25vw;
@@ -179,100 +192,96 @@ nav li{
   flex-direction: column;
 }
 
-@media screen and (max-width: 1350px){
-  .project_flex{
-    padding-left:0;
+@media screen and (max-width: 1350px) {
+  .project_flex {
+    padding-left: 0;
     margin-left: 12.5vw;
     margin-right: 12.5vw;
   }
-
 }
 
-
-@media screen and (max-width: 970px){
-
-  .project_flex{
-    padding-left:0;
+@media screen and (max-width: 970px) {
+  .project_flex {
+    padding-left: 0;
     margin-left: 5vw;
     margin-right: 5vw;
   }
-
 }
 
-
-
-h3{
+h3 {
   text-align: center;
   padding-bottom: var(--padding);
   padding-top: calc(8vh + var(--padding));
   font-size: var(--h);
 }
 
-.git{
+.git {
   max-width: 2rem;
 }
 
-.external{
+.external {
   max-width: 4rem;
   max-height: 2rem;
 }
-.links{
+.links {
   text-align: center;
 }
-.links img{
+.links img {
   margin-left: var(--padding);
   margin-right: var(--padding);
 }
 
-.inner_flex{
-
+.inner_flex {
   display: flex;
 
   flex-direction: row;
 }
 
 @keyframes fade {
-  from {opacity: .4} 
-  to {opacity: 1}
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
-  .prev, .next,.text {font-size: 11px}
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
 }
 
-.description_text{
+.description_text {
   padding: var(--padding);
   border-radius: var(--radius);
 
   background-color: var(--grid);
 }
 
-.stack{
+.stack {
   border-radius: var(--radius);
   background-color: var(--grid);
   width: 25vw;
   margin-left: 1rem;
   border-radius: var(--radius);
   border: 1px solid var(--accent);
-  padding:1rem;
-
+  padding: 1rem;
 }
 
-.tech{
-
-  font-family: 'Simple Console', monospace; 
+.tech {
+  font-family: "Simple Console", monospace;
 }
 
-.description_list{
-
-
+.description_list {
 }
 
-.description_list li{
-
+.description_list li {
 }
 
-.tech{
+.tech {
   text-align: center;
 }

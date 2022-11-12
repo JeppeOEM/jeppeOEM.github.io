@@ -6,94 +6,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="projects.css">
-    <script type="module" src="script.js"></script>
+<!--     <script type="module" src="script.js"></script> -->
+    <script type="module" src="project.js"></script>
     <title>Document</title>
 </head>
 <body>
-  <nav id="navbar">
-    <ul>
-    <a href="index.html"> <li class="navbar1">jeppe_marquardt</li>   </a>
-      <a href="index.html#porto"><li class="navbar2">.portofolio</li></a>
-      <a href="index.html#about"><li class="navbar3">.about</li></a>
-    </ul>
-    <div class="socials">
-      <a href="https://github.com/JeppeOEM"><img class="icon" src="images/gitwhite.png" alt="github"></a>
-      <img class="icon email" src="images/email.svg" alt="">
-      <a href="https://www.linkedin.com/in/jeppemarquardt/"><img class="icon"src="images/link.png" alt="github"></a>
-    </div>
-    </nav>
 
+      <nav class="" id="navbar">
+        <ul>
+        <a class="pc mobile" href="index.html"> <li class="navbar1">jeppe_marquardt</li>   </a>
+          <a class="pc mobile" href="#porto"><li class="navbar2">.portofolio</li></a>
+          <a class="pc mobile" href="#about"><li class="navbar3">.about</li></a>
+          <a class="pc mobile" href=""></a>
+        </ul>
+        <div class="mobile" class="socials">
+          <a href="https://github.com/JeppeOEM"><img class="icon" src="images/gitwhite.png" alt="github"></a>
+          <img class="icon email" src="images/email.svg" alt="">
+          <a href="https://www.linkedin.com/in/jeppemarquardt/"><img class="icon"src="images/link.png" alt="github"></a>
+        </div>
+
+        <div class="mobile_nav">
+          <img class="mobile_menu" src="images/menu.svg" alt="">
+
+          <p></p>
+
+          <ul class="flex-column hide">
+            <li class="list_link hide">
+             <a href="#about">About</a> 
+            </li>
+            <li class="list_link hide">
+             <a href="#porto">Portofolio</a> 
+            </li>
+          </ul>
+
+
+       
+</div>
+        </nav>
   <h3>Telegram Trading Bot</h3>
+<a href="" class="dark"></a>
+
+
+
+
+  
+
   </div>
-    
-    <sectiom class="project_flex">
 
+      <sectiom class="project_flex">
+        <div class="inner_flex
+        ">
+
+      </div>
+      
       <section  class="description_text shadow">
-        <h1>Description</h1>
-
-          <p>The goal of this project was to interact with the Binance Blockchain using the Web3py framework to be able buy and sell newly created cryptocurrencies in the cloud.<br><br> 
-          The method is to collect data about newly created currencies, which is posted on Telegram channels that only contain that. <br>
-          That data is then processed and with automation posted on honeypot.is to check if it’s a scam token, the result is then webscrapped, and the bot can buy the token and follows its price until it sells it again.<br>
-         <a href="">The whole process is Illustrated here in a activity diagram.</a> </p> 
-          <h1> Challenges:</h1>
+     <h1>Description</h1>
+          <p>The goal of this project is to interact with the Binance Blockchain using the Web3 python framework to be able buy and sell newly created cryptocurrencies in the cloud.<br><br> 
+          The method is to collect data about newly created currencies, which is posted automatically on Telegram with their API. <br>
+          That data is then processed, and automatically posted on honeypot.is to check if it’s a scam token, the result is then webscrapped, and the bot will buy the token, follow its price until it sells it again, when some price target is reached.<br>
+         <a href="dia.html" target="_blank">The whole process is Illustrated here in a activity diagram.</a> </p> 
+          <h1> Features:</h1>
           <ul>
             <li>
-              To ensure that the bot is selling all the tokens I bhought I had to look inside large chuncks of metadata convert it to JSON and extract the information from the nested json objects and then convert it from hexadecimals to decimals.
+              The bot knows exactly how many crypto tokens you buy per $ by looking into the metadata of the transaction, and extracting the information from the nested json objects and then converting it from hexadecimals to decimals.
             </li>
             <li>
-              To be able to get the token address and post it on honeypot.is to check if it is a scam,
+              Utilizes browerless chrome with selenium web automation to post info and webscrape results. Works locally and in the cloud by add buildpacks with links to githup reposotories.</li>
             </li>
             <li>
               To be able to run the bot on Heroku while using browserless chrome I found out that adding buildpacks with links to github repositories the drivers would be installed in the cloud.
-          
+            </li>
+            <li>
+              Using Moralis API to recieve price updates on tokens bhought
+            </li>
+            <li>
+              Chrash resistant by storing the purchase information in a SQLlite database.
+            </li>
+            <li>
+              Trailing stoploss feature so the bot will follow the price of the tokens it bhought and sell when the price has dropped a fixed percentage from the highest price recorded.
             </li>
 
-          </ul>
 
+
+          </ul>
+<br>
 
          
          <h1>Improvements:</h1> 
          <p>
           The project is a minimal viable product and was just an attempt to make a starting point from where I can build on the code to make different trading bots and other application interacting with a blockchain.
-          The whlAs I do not dare to run this 
+          I do not dare to run this bot and its more for learning the framework.<br><br>
          </p>
+         <ul>
+          <li>The use of Asynchronous functions is not done correctly, as i dont await the data i just while loop and check whether is there. </li>
+          <li>
+            
+          </li>
+         </ul>
+         
+         <h1>Links</h1> 
+        <ul>
+          <li class="links_project"><a href="https://github.com/JeppeOEM/hogwarts" target="_blank"><span>Github UPDATE</span></a></li>
+          <li class="links_project"><a href="dia.html" target="_blank"><span>Activity Diagram</span></a></li>
+        </ul>
 
-          
+    </section>
+    <section  class="description_text shadow">
 
-
-<!--             A minimal viable product of a cryptocurrency trading bot which uses Web3py to send transactions and receive price data directly 
-            from the "Binance Smart Chain".   <br> This is first step in a larger an ongoing project  <br><br>
-            The logic behind is to listen to a Telegram Channel that only post information on newly created Cryptocurrencies, and then buy these coins if certain criteria are met forexample size of liquidity pool.<br>
-            One feature is a scam check that uses selenium to post the token address on a website and then web scrape the result.<br>
-            If that test is passed the bot does a test buy and sell, if that is a succes.
-            The token will be purchased and the transaction data will be stored in a sql database. 
-            The bot will then every few seconds get new price information from an endpoint until a predetermined 
-            sell price is achived. 
-            The bot has been made ready for deployment on Heroku.  -->
-          </p>
-          <h1>
-            Links
-          </h1>
-
-          <ul>
-            <li>Activity Diagram<a href=""></li>
-            <li>Github<a href=""></li>
-    
-          </ul>
-
+        <h1 class="tech">
+          Tech Stack
+        </h1>
+        <p class="tech">Python // Pandas // Selenium // Telegram API // Moralis API // SQLlite3</p>
+    </section>
       </section>
-      <section  class="description_text shadow">
-
-          <h1 class="tech">
-            Tech Stack
-          </h1>
-
-          <p class="tech">Python // Pandas // Selenium // Telegram API // Web3py // SQLite3 </p>
-      </section>
-
-      </section>
-
-
-  <script type="module" src="project.js"></script>
 </body>
 </html>

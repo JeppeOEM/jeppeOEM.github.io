@@ -46,13 +46,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }, 3500);
 });
 
+var isGoing = false;
+var canChange = false;
+var globalCount = 0;
+var count = 0;
 function word_effect(word, speed) {
   var interv = "undefined";
-  var canChange = false;
-  var globalCount = 0;
-  var count = 0;
+
   var INITIAL_WORD = word.textContent;
-  var isGoing = false;
 
   function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -117,21 +118,23 @@ function delay() {
   setTimeout(() => {
     animate(".jeppe", { opacity: 1 }, { duration: 2 });
   }, 1500);
-  setTimeout(introText, 3000);
+  setTimeout(introText, 2000);
   setTimeout(credits, 5000);
+  setTimeout(credits2, 6000);
 
   function credits() {
-    link.classList.remove("hide");
-
     animate(".ascii_link", { opacity: 1 }, { duration: 1 });
     word_effect(word, 10);
+  }
+
+  function credits2() {
+    word2.classList.remove("display");
+    animate(".the_link", { opacity: 1 }, { duration: 2 });
     word_effect(word2, 10);
   }
 
   function introText() {
-    creative.classList.remove("hide");
     animate(".creative", { opacity: 1 }, { duration: 2 });
-
     word_effect(creative, 20);
   }
 }
@@ -155,6 +158,15 @@ window.addEventListener("scroll", () => {
   }
 });
 
-/* projects */
+/* Obfuscation */
 
-animate;
+function decode(a) {
+  return a.replace(/[a-zA-Z]/g, function (c) {
+    return String.fromCharCode((c <= "Z" ? 90 : 122) >= (c = c.charCodeAt(0) + 13) ? c : c - 26);
+  });
+}
+function openMailer(element) {
+  var y = decode("znvygb:orahgmre@qbznva.qr");
+  element.setAttribute("href", y);
+  element.setAttribute("onclick", "");
+}

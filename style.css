@@ -5,7 +5,9 @@
   border:0;
 }
 
-
+.display{
+  display: none;
+}
 
 html {
   width: 100%;
@@ -114,6 +116,7 @@ h3 {
 }
 
 p{
+
   font-size: var(--p);
   color: var(--whiteblue);
   font-family: var(--font1);
@@ -209,6 +212,7 @@ nav ul li {
 .mobile_nav{
   display: flex;
   flex-direction: column;
+
 }
 
 .flex-column{
@@ -307,7 +311,7 @@ span.letters{
 
 .PetMe{
   font-size: 0.75rem;
-  color: var(--orange);
+  color: var(--accent);
   font-family: var(--font2);
 }
 
@@ -359,11 +363,11 @@ span.letters{
   flex-direction: row;
 }
 
-.flex_container p{
+/* .flex_container p{
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-
+ */
 
 .about_text {
    max-height:40vh; 
@@ -380,7 +384,17 @@ background-color: var(--lightblack);
 
 }
 
+.logos{
+    margin-top: 0.6rem;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+
 .logo{
+
+  margin: 0.3rem;
   max-width:2rem;
   max-height:2rem;
 }
@@ -406,6 +420,13 @@ background-color: var(--lightblack);
 
 /* 
 PORTOFOLIO */
+
+
+
+.card_p{
+  padding-top: var(--padding);
+  height: 100%;
+}
 
 .center_grid{
 
@@ -675,7 +696,7 @@ display: block;
 }
 
 .ascii_link{
-  font-size: 1rem;
+  font-size: 0.6rem;
 }
 
     .logos img{
