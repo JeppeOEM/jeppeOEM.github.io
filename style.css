@@ -193,6 +193,10 @@ nav {
   max-height: 45vh;
 }
 
+nav a:hover{
+  color: var(--accent);
+}
+
 nav ul {
   color: var(--white);
   list-style: none;
@@ -205,8 +209,8 @@ nav ul li {
   margin-left: 2vw;
 }
 
-.navbar1{
-  color: var(--orange);
+.navbar1:hover{
+  color: var(--accent);
 }
 
 .mobile_nav{
@@ -264,6 +268,13 @@ a{
   text-decoration: none;
 }
 
+a:hover{
+  color: var(--orange);
+}
+
+a>.orange:hover{
+  color: var(--accent);
+}
 /* First Page */
 .firstpage{
   z-index: -20;
@@ -308,6 +319,8 @@ span.letters{
   font-family: var(--font1);
 
 }
+
+
 
 .PetMe{
   font-size: 0.75rem;

@@ -44,11 +44,14 @@ p a {
   text-decoration: underline;
   color: var(--accent);
 }
-.links_project {
-}
+
 .links_project span {
   text-decoration: underline;
   color: var(--accent);
+}
+
+.links_project span:hover {
+  color: var(--orange);
 }
 
 /* Slideshow container */

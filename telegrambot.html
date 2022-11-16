@@ -61,29 +61,29 @@
       
       <section  class="description_text shadow">
      <h1>Description</h1>
-          <p>The goal of this project is to interact with the Binance Blockchain using the Web3 python framework to be able buy and sell newly created cryptocurrencies in the cloud.<br><br> 
-          The method is to collect data about newly created currencies, which is posted automatically on Telegram with their API. <br>
+          <p>The goal of this project is to interact with the Binance Blockchain to buy and sell newly created cryptocurrencies.<br><br> 
+          The method is to collect data about newly created currencies, the data is automatically posted on Telegram and can be collected with their API, Telethon. <br>
           That data is then processed, and automatically posted on honeypot.is to check if it’s a scam token, the result is then webscrapped, and the bot will buy the token, follow its price until it sells it again, when some price target is reached.<br>
-         <a href="dia.html" target="_blank">The whole process is Illustrated here in a activity diagram.</a> </p> 
+         <a href="dia.html" target="_blank">The whole process is Illustrated here in a activity diagram.</a> </p>
+     <h1>Process</h1>
+         <p>I broke the task up in modules, then researched for the API's and frameworks with the best documentation. Then i went on to with piecing them all together in the main loop, one module at a time.<br>Lots of hidden problems existed, in working with asynchronous code, strange transaction logs and so on.<br> 
+        But the debugging tool became my good freind by the end of the project.</p>
           <h1> Features:</h1>
           <ul>
             <li>
-              The bot knows exactly how many crypto tokens you buy per $ by looking into the metadata of the transaction, and extracting the information from the nested json objects and then converting it from hexadecimals to decimals.
+              The bot knows exactly how many crypto tokens you bhought, by looking into the metadata of the transaction, and extracting the information from the nested json objects and then converting it from hexadecimals to decimals.
+            </li><br>
+            <li>
+              Utilizes browerless chrome and selenium web automation to post info and webscrape results. Works locally and in the cloud, on Heroku, by using buildpacks with links to githup repositories.</li><br>
             </li>
             <li>
-              Utilizes browerless chrome with selenium web automation to post info and webscrape results. Works locally and in the cloud by add buildpacks with links to githup reposotories.</li>
-            </li>
-            <li>
-              To be able to run the bot on Heroku while using browserless chrome I found out that adding buildpacks with links to github repositories the drivers would be installed in the cloud.
-            </li>
-            <li>
-              Using Moralis API to recieve price updates on tokens bhought
-            </li>
+              Using Moralis API to recieve price updates.
+            </li><br>
             <li>
               Chrash resistant by storing the purchase information in a SQLlite database.
-            </li>
+            </li><br>
             <li>
-              Trailing stoploss feature so the bot will follow the price of the tokens it bhought and sell when the price has dropped a fixed percentage from the highest price recorded.
+              Trailing stoploss feature so the bot will follow the price of the tokens and sell them when the price has dropped a fixed percentage from the highest price recorded since they where purchased.
             </li>
 
 
@@ -92,17 +92,19 @@
 <br>
 
          
-         <h1>Improvements:</h1> 
+         <h1>Conclusion:</h1> 
          <p>
-          The project is a minimal viable product and was just an attempt to make a starting point from where I can build on the code to make different trading bots and other application interacting with a blockchain.
-          I do not dare to run this bot and its more for learning the framework.<br><br>
-         </p>
-         <ul>
-          <li>The use of Asynchronous functions is not done correctly, as i dont await the data i just while loop and check whether is there. </li>
-          <li>
-            
-          </li>
-         </ul>
+          The project is a minimal viable product and was just an attempt to make a codebase from where I can build ontop.<br> 
+<br>I do not dare to run this bot and its just created for the sake learning and having fun trying to solve complex problems.<br>
+<br><br>
+
+<p><b>Improvements</b><br>
+ The use of Asynchronous functions is not done correctly, as i dont await the data i just while loop and check whether is there.<br> Rewrite the buy/sell functions into one single transaction function. 
+</p>
+         
+</p>
+
+  
          
          <h1>Links</h1> 
         <ul>
@@ -116,7 +118,7 @@
         <h1 class="tech">
           Tech Stack
         </h1>
-        <p class="tech">Python // Pandas // Selenium // Telegram API // Moralis API // SQLlite3</p>
+        <p class="tech">Python // Pandas // Selenium // Telethon // Moralis API // SQLlite3</p>
     </section>
       </section>
 </body>
