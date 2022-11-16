@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", start);
 function start() {
   const toggleLi = document.querySelector(".flex-column"); // Using a class instead, see note below.
   const toggleHeight = document.querySelector("#navbar");
+
   const link_list = document.querySelectorAll(".list_link");
   const menu = document.querySelector(".mobile_menu");
 
@@ -37,7 +38,7 @@ function start() {
     }
   });
 
-  let nav = document.querySelector("nav");
+  /*   let nav = document.querySelector("nav"); */
   let pos = window.pageYOffset;
   if (pos < 1) {
     delay();
@@ -45,8 +46,7 @@ function start() {
 
   setTimeout(() => {
     animate("nav", { opacity: 0.9 }, { duration: 1 });
-    animate(".jeppe span", {}, { delay: stagger(0.5) });
-  }, 3500);
+  }, 1500);
 
   var isGoing = false;
   var canChange = false;

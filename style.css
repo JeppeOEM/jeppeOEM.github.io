@@ -9,6 +9,11 @@
   display: none;
 }
 
+.index2{
+  display: sticky;
+  opacity: 1;
+}
+
 html {
   width: 100%;
   scroll-behavior: smooth;

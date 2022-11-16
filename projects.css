@@ -66,7 +66,11 @@ p a {
   color: black;
 }
 
-li {
+pre {
+  rotate: 0deg;
+}
+
+section li {
   list-style: inside;
   color: var(--whiteblue);
   font-family: var(--font1);
