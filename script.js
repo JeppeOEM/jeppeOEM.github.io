@@ -1,4 +1,4 @@
-import { animate, stagger } from "https://cdn.skypack.dev/motion";
+import { animate } from "https://cdn.skypack.dev/motion";
 
 document.addEventListener("DOMContentLoaded", start);
 
@@ -16,10 +16,6 @@ function start() {
       ele.classList.toggle("hide");
     });
   });
-
-  /* menu.addEventListener("click", () => {
- 
-}); */
 
   link_list.forEach((ele) => {
     ele.addEventListener("click", () => {
@@ -61,7 +57,7 @@ function start() {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     function getRandomLetter() {
-      var alphabet = ["a", "s", "c", "i", "i", "a", "r", "t", "h", "t", "t", "p", "s", "p", "l", "a", "y", ".", "e", "r", "t", "d", "f", "x", "y", "z"];
+      var alphabet = ["a", "s", "c", "i", "i", "a", "r", "t", "h", "t", "#", "+", "%", "&", "l", "a", "y", ".", "e", "r", "t", "d", "f", "x", "y", "z"];
       return alphabet[rand(0, alphabet.length - 1)];
     }
     function getRandomWord(word) {
@@ -114,13 +110,16 @@ function start() {
 
   function delay() {
     var creative = document.querySelector(".creative");
+
     var word = document.querySelector(".ascii_art");
     var word2 = document.querySelector(".the_link");
 
     setTimeout(() => {
       animate(".jeppe", { opacity: 1 }, { duration: 2 });
     }, 1500);
+
     setTimeout(introText, 2000);
+
     setTimeout(credits, 4500);
     setTimeout(credits2, 5500);
 
@@ -137,7 +136,9 @@ function start() {
 
     function introText() {
       animate(".creative", { opacity: 1 }, { duration: 2 });
-      word_effect(creative, 20);
+      if (document.width > 450) {
+        word_effect(creative, 20);
+      }
     }
   }
 
