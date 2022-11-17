@@ -373,11 +373,6 @@ span.letters{
   flex-direction: row;
 }
 
-/* .flex_container p{
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
- */
 
 .about_text {
    max-height:40vh; 
@@ -586,7 +581,6 @@ display: block;
 }
 
 
-
     .portofolio_grid {
 
       grid-template-columns: repeat(2, 1fr);
@@ -657,22 +651,6 @@ display: block;
     .flex_container p{
       max-width: 80vw;
     }
-
-/*     
-    .portofolio_grid {
-
-      margin-left: 5vw;
-      margin-right: 5vw;
-
-      justify-items: center;
-      justify-content: center;
-      text-align: center;
-
-      grid-template-columns: repeat(2, 50vw);
- 
-      grid-template-rows: repeat(3, 1fr);
-    }
- */
 
       .text{
         font-size: var(--h);

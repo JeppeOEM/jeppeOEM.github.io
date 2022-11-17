@@ -116,7 +116,7 @@ function start() {
     var creative = document.querySelector(".creative");
     var word = document.querySelector(".ascii_art");
     var word2 = document.querySelector(".the_link");
-    var link = document.querySelector(".ascii_link");
+
     setTimeout(() => {
       animate(".jeppe", { opacity: 1 }, { duration: 2 });
     }, 1500);
