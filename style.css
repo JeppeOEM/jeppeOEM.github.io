@@ -221,7 +221,6 @@ nav ul li {
 .mobile_nav{
   display: flex;
   flex-direction: column;
-
 }
 
 .flex-column{
@@ -231,17 +230,12 @@ nav ul li {
 }
 
 .flex-column {
-
     align-items: center;
     width: 100%;
     justify-content: center;
     list-style-type: none;
     font-size: 2rem;
 }
-
-
-
-
 
 /* SNAP */
 
@@ -261,8 +255,6 @@ h3.jeppe{
   opacity: 0;
   font-size: var(--big-h);
 }
-
-
 
 .portofolio_header{
   position: relative;
