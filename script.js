@@ -136,7 +136,7 @@ function start() {
 
     function introText() {
       animate(".creative", { opacity: 1 }, { duration: 2 });
-      if (document.width > 450) {
+      if (window.innerWidth > 450) {
         word_effect(creative, 20);
       }
     }

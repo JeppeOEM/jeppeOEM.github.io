@@ -58,11 +58,11 @@
       <section  class="description_text shadow">
      <h1>Description</h1>
           <p>The goal of this project is to interact with the Binance Blockchain to buy and sell newly created cryptocurrencies.<br><br> 
-          The method is to collect data about newly created currencies, the data is automatically posted on Telegram and can be collected with their API, Telethon. <br>
-          That data is then processed, and automatically posted on honeypot.is to check if it’s a scam token, the result is then webscrapped, and the bot will buy the token, follow its price until it sells it again, when some price target is reached.<br>
+          The method is to collect data about the newly created cryptocurrency tokens on telegram, where the data is automatically posted. The data can then be collected with their API, Telethon. <br>
+          That data is then processed, and automatically posted on honeypot.is to check if it’s a scam token, the result is then webscrapped. If its not a scam the bot will buy the token, follow its price until it sells it again, when some price target is reached.<br>
          <a href="dia.html" target="_blank">The whole process is Illustrated here in a activity diagram.</a> </p>
      <h1>Process</h1>
-         <p>I broke the task up in modules, then researched for the API's and frameworks with the best documentation. Then i went on to with piecing them all together in the main loop, one module at a time.<br>Lots of hidden problems existed, in working with asynchronous code, strange transaction logs and so on.<br> 
+         <p>I broke the task up in modules, then did research on the API's and frameworks with the best documentation. Then i went on to with piecing it all together in the main asynchronous loop, one module at a time.<br>Lots of hidden problems existed, in working with asynchronous code, strange transaction logs and so on.<br> 
         But the debugging tool became my good freind by the end of the project.</p>
           <h1> Features:</h1>
           <ul>
@@ -79,7 +79,7 @@
               Chrash resistant by storing the purchase information in a SQLlite database.
             </li><br>
             <li>
-              Trailing stoploss feature so the bot will follow the price of the tokens and sell them when the price has dropped a fixed percentage from the highest price recorded since they where purchased.
+             A Trailing stoploss. The bot will follow the price of the tokens and sell them when the price has dropped a fixed percentage from the highest price recorded, since they where purchased.
             </li>
 
 
@@ -95,7 +95,7 @@
 
 
 <p><b>Improvements</b><br>
- The use of Asynchronous part is not done correctly, as i dont await the data i just while loop and check whether is there.<br> The buy/sell functions need to be rewritten into one single transaction function.<br> The code is sparsely commented and could have better naming of variables.<br> 
+ The use of Asynchronous part is not done correctly, as i dont await the data i just while loop and check whether is there.<br> The buy/sell functions could to be rewritten into one single transaction function.<br> The code is sparsely commented and could have better naming of variables.<br> 
 </p>
          
 </p>
