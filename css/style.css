@@ -170,10 +170,6 @@ filter: invert(96%) sepia(100%) saturate(2%) hue-rotate(181deg) brightness(109%)
   max-height: 1.5rem;
 }
 
-.email{
-  max-height: 1.3rem;
-  filter: invert(99%) sepia(100%) saturate(0%) hue-rotate(136deg) brightness(108%) contrast(100%);
-}
 
 .socials{
 
@@ -320,7 +316,7 @@ span.letters{
 
 
 .PetMe{
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   color: var(--accent);
   font-family: var(--font2);
 }
