@@ -1,9 +1,7 @@
 @font-face {
-    font-family: PetMe;
-    src: url(PetMe.ttf);
+  font-family: PetMe;
+  src: url(css/PetMe.ttf);
 }
-
-
 
 /* green accent
 #00FF00; */
