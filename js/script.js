@@ -3,6 +3,8 @@ import { animate } from "https://cdn.skypack.dev/motion";
 document.addEventListener("DOMContentLoaded", start);
 
 function start() {
+  let body = document.querySelector("body");
+  animate(body, { opacity: 1 }, { duration: 1 });
   const toggleLi = document.querySelector(".flex-column"); // Using a class instead, see note below.
   const toggleHeight = document.querySelector("#navbar");
 
@@ -39,10 +41,13 @@ function start() {
   if (pos < 1) {
     delay();
   }
-
-  setTimeout(() => {
+  if (pos > 1) {
     animate("nav", { opacity: 0.9 }, { duration: 1 });
-  }, 1500);
+  } else {
+    setTimeout(() => {
+      animate("nav", { opacity: 0.9 }, { duration: 2 });
+    }, 1500);
+  }
 
   var isGoing = false;
   var canChange = false;
