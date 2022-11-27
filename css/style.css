@@ -42,7 +42,7 @@ body{
   --orange: #FA4C14;
   --accent: #64FFDA;  
   --accent2: #a8d3a8;
-  --p: 1rem;
+  --p: 0.92rem;
   --medium:1.563rem;
   --h: 2.5rem;
   --h-small: 2rem;
@@ -359,7 +359,7 @@ span.letters{
 
 .flex_container {
   border-radius: var(--radius);
-  margin-left: 15vw;
+
   max-width: 60vw;
   position: relative;
   align-items: center;
@@ -370,10 +370,17 @@ span.letters{
   display: flex;
   flex-direction: row;
 }
+.flex_container{
+  flex-direction: column-reverse;
+  margin-left:0;
+}
+.outer_container{
+  flex-direction: column-reverse;
+}
 
 
 .about_text {
-   max-height:40vh; 
+
   position: relative;
   padding:var(--padding);
   font-size: var(--p);
@@ -408,11 +415,14 @@ justify-content: center;
 }
 
 .me{
-   max-height:45vh; 
+margin-right: auto;
+margin-left: auto;
+display: block;
   border-radius: var(--radius);
   position: relative;
-  max-height:40vh;  
-  margin-right: 15vw;
+  max-height:30vh;  
+  border-radius: 80%;
+
 }
 
 .outer_container{
@@ -536,9 +546,6 @@ background-color:var(--black);
       top: -1.7rem;
     }
 
-    .flex_container{
-      margin-left:0;
-    }
     figure{
       margin-left:0;
       margin-right: 0;
@@ -556,27 +563,12 @@ background-color:var(--black);
     }
 
 /* about */
-.about_text{
+/* .about_text{
      max-height:150vh; 
-}
+} */
 
-.flex_container{
-  flex-direction: column-reverse;
-}
-.outer_container{
-  flex-direction: column-reverse;
-}
 
-.me{
-margin-right: auto;
-margin-left: auto;
-display: block;
-  border-radius: var(--radius);
-  position: relative;
-  max-height:40vh;  
-  border-radius: 80%;
 
-}
 
 
     .portofolio_grid {
