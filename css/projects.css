@@ -66,10 +66,6 @@ p a {
   color: black;
 }
 
-pre {
-  rotate: 0deg;
-}
-
 section li {
   list-style: inside;
   color: var(--whiteblue);
