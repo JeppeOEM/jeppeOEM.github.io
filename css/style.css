@@ -249,11 +249,9 @@ nav ul li {
 }
 
 
-.snap h3{
-  font-size: var(--h);
-}
 
-h3.jeppe{
+
+h1.jeppe{
   opacity: 0;
   font-size: var(--big-h);
 }
