@@ -48,6 +48,7 @@ body{
   --h: 2.5rem;
   --h-small: 2rem;
   --big-h: 3.052rem;
+  --name: 6.052rem;
   --radius: 1rem;
   --padding: 1rem;
   --padding2: 2rem;
@@ -121,7 +122,6 @@ article{
 
 
 h1 {
-
   font-size: var(--big-h);
   color: var(--orange);
 }
@@ -251,10 +251,12 @@ nav ul li {
 
 
 
-h1.jeppe{
+.jeppe{
   opacity: 0;
-  font-size: var(--big-h);
+
 }
+
+
 
 .portofolio_header{
   position: relative;
@@ -296,7 +298,7 @@ span.letters{
 }
 
 .introduction h1{
-  font-size: var(--big-h);
+  font-size: var(--name);
 }
 
 .introduction p{
@@ -630,7 +632,7 @@ background-color:var(--black);
       margin-right: 5vw;
     }
 
-    h3.jeppe{
+    .introduction h1{
       font-size: max(10vw, 3rem);
     }
     .introduction p{
@@ -690,7 +692,7 @@ background-color:var(--black);
       visibility: inherit;
     }
 
-   h3{
+   h1{
       font-size: 10vw;
 color: var(--orange);
     } 
