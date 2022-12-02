@@ -12,7 +12,7 @@
 /* https://caferati.me/portfolio/sky-go-desktop */
 
 .single_img {
-  max-height: 60vh;
+  max-height: 26rem;
 }
 
 .link_section {
@@ -28,6 +28,11 @@ body {
   margin-bottom: 15vh;
   opacity: 0;
 }
+
+section {
+  line-height: 1.4;
+}
+
 h2 {
   padding-bottom: var(--padding);
 }
@@ -42,7 +47,7 @@ p {
 
 h1 {
   padding-top: 4rem;
-
+  text-align: center;
   font-family: var(--font1);
   padding-bottom: var(--padding);
 }
@@ -66,13 +71,6 @@ p a {
 
 .links_project span:hover {
   color: var(--orange);
-}
-
-/* Slideshow container */
-.slideshow-container {
-  max-width: 1000px;
-  position: relative;
-  margin: auto;
 }
 
 .displaynone {
@@ -178,7 +176,7 @@ nav li {
 } */
 
 .description_text {
-  margin-top: var(--padding4);
+  margin-top: var(--padding);
   width: 100%;
 }
 
@@ -273,14 +271,5 @@ h3 {
 
 .tech {
   font-family: "Simple Console", monospace;
-}
-
-.description_list {
-}
-
-.description_list li {
-}
-
-.tech {
   text-align: center;
 }

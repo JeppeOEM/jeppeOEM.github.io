@@ -93,7 +93,7 @@ pre{
 }
 
 article{
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 
@@ -443,7 +443,7 @@ PORTOFOLIO */
 
 .card_p{
   padding-top: var(--padding);
-  height: 9   0%;
+  height: 90%;
 }
 
 .center_grid{
