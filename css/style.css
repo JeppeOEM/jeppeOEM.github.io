@@ -447,6 +447,9 @@ PORTOFOLIO */
   padding-top: var(--padding);
   height: 90%;
 }
+.card_header{
+  color: var(--accent);
+}
 
 .center_grid{
 
