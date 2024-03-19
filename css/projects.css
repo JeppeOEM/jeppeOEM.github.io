@@ -105,7 +105,7 @@ nav li {
 /* Position the "next button" to the right */
 .next {
   right: 0;
-  background-color: var(--black);
+  background-color: var(--lightblack);
   opacity: 0.5;
   border-radius: 3px 0 0 3px;
 }

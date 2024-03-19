@@ -13,10 +13,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/ascii.css" />
   </head>
   <body>
     <header>
-    <a class="ascii_link PetMe scroll" data-rateY="0" data-rateX="-2" data-direction="horizontal" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish" target="_blank"><span class="white ascii_art credits">ascii credits: </span><span class=" ascii_art the_link display">https://play.ertdfgcvb.xyz</span></a>
+    <a class="ascii_link petme scroll" data-rateY="0" data-rateX="-2" data-direction="horizontal" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish" target="_blank"><span class="white ascii_art credits">ascii credits: </span><span class=" ascii_art the_link display">https://play.ertdfgcvb.xyz</span></a>
 
     <nav class="nav" id="navbar">
         <ul>
@@ -31,7 +32,7 @@
             <a href="#about"><li class="list_link hide">
              About
             </li></a> 
-             <a href="#porto"><li class="list_link hide">
+             <a href="#porto" class="big-heading"><li class="list_link hide">
             Portofolio
             </li></a> 
           </ul>
@@ -57,7 +58,7 @@
                   </h1>
                   </div>
 
-                  <p class="creative lightblue scroll" data-rateY="0" data-rateX="2" data-direction="horizontal">creative coding and web development</p>
+                  <h2 class="creative lightblue scroll" data-rateY="0" data-rateX="2" data-direction="horizontal">full-stack web developer</h2>
                 </div>
     </header>
     <div class="snap firstpage">
@@ -66,34 +67,57 @@
         <section id="about" class="about_grid">
           <div   id="img"class="snap snapabout snapcenter">
 <!--               <h3  id="img" class="header_about">About:</h3> -->
-                <div  id="img" class="outer_container">
+                <div  class="outer_container">
 
-                  <div id="img" class="flex_container">
+                  <div  class="flex_container">
                     <div class="resize_box">
 
-                   
-                    <section class="about_text shadow">
-                    <h2>About</h2>
-                    <p>
-                      Im a danish aspiring web developer based in Copenhagen driven by a passion for technology as a phenomenon. </p>
-                     <p> I am currently studying Frontend development at KEA and i really like to work with form and colour, I especially like to expolore them as abstract concepts with the creative coding framework p5.js.</p>
-                     <p> What really drives me is an endless quest for knowledge, a will to create effecient code and solve problems.</p> <p>This motivation has led me to teach myself python, to be able to work with blockchain API's and build 
-                      algorithmic trading bots.</p> <p>This drive is also what will lead me to learn and grow as an intern, with whatever tech stack used at your company.
-                      </p> 
-
-<!--                       <img class="logo" src="images/white.png" alt="sass logo">  -->
-                  </section>
-                 
-                      <figure class="logos">
+        <div class="tui-window">
+            <fieldset class="tui-fieldset">
+                <legend class="legend">Window</legend>
+                <p>
+                     Im a danish web development student from KEA based in Copenhagen driven by a passion for computing.<br>
+                      
+                        I am freinds with both back and frontend, and find it very rewarding to work with the latest frontend frameworks <br>
+                        such as React/Next.js and Vue. But my strength lies in juggling around with data, reshaping, cleaning, <br> 
+                        saving and analyzing it. I am constantly creating experiments and exploring the areas of <br>
+                        linux servers, machine learning, blockchain and algorithmic trading. <br>
+                        My newest passion is .NET i simply love the stucture of OOP and the tigtther control over types. <br>
+                        Oh and one last thing, i love Ascii Art and creative coding.
+                </p>
+                <div class="tui-divider"></div>
+                                   <figure class="logos">
                       <img class="logo" src="images/python-logo-only.png" alt="python logo">
                       <img class="logo" src="images/p5.png" alt="p5 logo">
                       <img class="logo" src="images/js.png" alt="javascript logo">
                       <img class="logo" src="images/React-icon.svg.png" alt="react logo">
                       </figure>
+                
+                <!-- <button class="tui-button white-255-text">more...</button>
+                <button class="tui-button purple-168 white-255-text">share</button> -->
+            </fieldset>
+        </div>
+
+                    <!-- <section class="about_text shadow">
+                    <h2>About</h2>
+                    <p>
+                      Im a danish web development student from KEA based in Copenhagen driven by a passion for computing. </p>
+                      <p>
+
+                        I am freinds with both back and frontend, and find it very rewarding to work with the latest frontend frameworks such as React/Next.js and Vue.
+                        But my strength lies in juggling around with data, reshaping, cleaning, saving and analyzing it.
+                        I am constantly creating experiments and exploring the areas of linux servers, machine learning, blockchain and algorithmic trading.
+                        My newest passion is .NET i simply love the stucture of OOP and the tigtther control over types. 
+                        Oh and one last thing, i love Ascii Art and createtive coding.
+                        
+                      </p>
+  
+                  </section>  -->
+                 
+   
 
                   </div>
- <!--                                    
-                                                       <h2 class=""> About</h2> -->
+
                    <div class="pad">
                       <img class="me shadow" src="images/jepppe.jpg" alt="picture of me">
                   </div> 
@@ -107,100 +131,68 @@
   <div id="img" class=" snap center_grid">
     <h1 id="porto" class="header_port">Portofolio</h1>
     <section id="img" class="portofolio_grid">
-       
-
-      <article class="grid_section card_hitzo">
-        <a href="/telegrambot.html">
-        <h2 class="card_header">
-          Telegram Crypto Trading Bot
-        </h2>
-
-        <p class="card_p">
-          Experimentation with web scraping, blockchain transactions, databases
-          aswell as deployment to the cloud.
-        </p>
-
-
-            <p>
-
-            </p>
-            <p class="specs">
-              Python Selenium Web3py SQLlite3 Moralis API
-            </p>
-          </a>
-          </article>
-
-      <article class="grid_section">
-        <a href="/hogwarts.html">
-        <h2 class="card_header">
-            Hogwarts Student List
-        </h2>
-
-
-
+      
+      <div class="hover_div">
+        <article class="tui-fieldset card_hitzo">
+          <a href="/telegrambot.html">
+            <h2 class="card_header">
+              Telegram Crypto Trading Bot
+            </h2>
             <p class="card_p">
-          Manipulation of JSON objects in the frontend.<br> Includes cleaning of data, filtering and sorting.
-
+              Experimentation with web scraping, blockchain transactions, databases
+              aswell as deployment to the cloud.
             </p>
 
-            <p class="specs">
-              Vanilla Javascript 
-            </p>
           </a>
-      </article>
+        </article>
+      </div>
 
+      <div class="hover_div">
 
+        <article class="tui-fieldset">
+          <a href="/hogwarts.html">
+            <h2 class="card_header">
+              Hogwarts Student List
+            </h2>
+            <p class="card_p">
+              Manipulation of JSON objects in the frontend.<br> Includes cleaning of data, filtering and sorting.
+            </p>      
 
+          </a>
+        </article>
+      </div>
 
-        <article class="grid_section">
-          <a href="/react.html">
-          <h2 class="card_header">
-            React Webshop
-         </h2>
+            <div class="hover_div">
+              <article class="tui-fieldset">
+                <a href="/react.html">
+                  <h2 class="card_header">
+                    React Webshop
+                  </h2>
+                  
+                  <p class="card_p">
+                    Listing and displaying products from an API, adding and removing them from a cart. And posting a form to a database
+                  </p>
 
-         <p class="card_p">
-          Listing and displaying products from an API, adding and removing them from a cart. And posting a form to a database
-         </p>
-          <p class="specs">
-            React
-          </p>
-        </a>
-      </article>
-
-
-
-
-
-
-
-      <article class="grid_section">
-        <a href="/prime_spiral.html">
-        <h2 class="card_header">
-          Spiraling Grids
-        </h2>
-
-
-
+                </a>
+              </article>
+            </div>
+              
+      <div class="hover_div">
+        <article class="tui-fieldset">
+          <a href="/prime_spiral.html">
+            <h2 class="card_header">
+              Spiraling Grids
+            </h2>            
             <p class="card_p">
               Creative Code Experiment based on prime spirals.
-
             </p>
 
-            <p class="specs">
-            Javascript  p5.js 
-            </p>
           </a>
-      </article>
-      
-
-
-
-      
+        </article>
+      </div>
   </section>
-
   </div>
 
-<div class></div>
 <div>
 </div>
 
@@ -218,26 +210,16 @@
       </footer> -->
 
       <style type="text/css" media="screen">
-        html, body {
-          padding: 0;
-          margin: 0;
-
-         
-          line-height: 1.2;
- /*          font-family: var(--font1); */
-      font-family: 'Simple Console', monospace; 
-        }
         pre {
           transform: rotate(180deg);
-          line-height: 1.2;
-        z-index: -1000; 
+          z-index: 0; 
           position: fixed;
           margin:0;
           padding:0;
           width:100vw;
           height:102vh;
-      
-          font-family: inherit;
+          mix-blend-mode: lighten;
+          line-height: 1.2;
         }
       </style>
     </head>

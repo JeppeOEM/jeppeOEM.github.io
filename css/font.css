@@ -2,3 +2,15 @@
   font-family: PetMe;
   src: url(PetMe.ttf);
 }
+@font-face {
+  font-family: IBMVGA8;
+  src: url(AcPlus_IBM_VGA_8x16.ttf);
+}
+@font-face {
+  font-family: IBMBIOS2Y;
+  src: url(AcPlus_IBM_BIOS-2y.ttf);
+}
+@font-face {
+  font-family: IBMEGA9;
+  src: url(Px437_IBM_EGA_9x14.ttf);
+}
