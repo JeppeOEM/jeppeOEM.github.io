@@ -42,10 +42,10 @@ function start() {
     delay();
   }
   if (pos > 1) {
-    animate("nav", { opacity: 0.9 }, { duration: 1 });
+    animate("nav", { opacity: 1 }, { duration: 1 });
   } else {
     setTimeout(() => {
-      animate("nav", { opacity: 0.9 }, { duration: 2 });
+      animate("nav", { opacity: 1 }, { duration: 2 });
     }, 1500);
   }
 
@@ -62,7 +62,34 @@ function start() {
       return Math.floor(Math.random() * (max - min + 1)) + min;
     }
     function getRandomLetter() {
-      var alphabet = ["a", "s", "c", "i", "i", "a", "r", "t", "h", "t", "#", "+", "%", "&", "l", "a", "y", ".", "e", "r", "t", "d", "f", "x", "y", "z"];
+      var alphabet = [
+        "a",
+        "s",
+        "c",
+        "i",
+        "i",
+        "a",
+        "r",
+        "t",
+        "h",
+        "t",
+        "#",
+        "+",
+        "%",
+        "&",
+        "l",
+        "a",
+        "y",
+        ".",
+        "e",
+        "r",
+        "t",
+        "d",
+        "f",
+        "x",
+        "y",
+        "z",
+      ];
       return alphabet[rand(0, alphabet.length - 1)];
     }
     function getRandomWord(word) {
