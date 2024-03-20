@@ -535,9 +535,13 @@ display: block;
 
 /* 
 PORTOFOLIO */
+.turq{
+  color: var(--turq)
+}
 
-
-
+.square{
+  color: var(--green)
+}
 .card_p{
   padding-top: var(--padding);
   height: 90%;
@@ -549,7 +553,7 @@ PORTOFOLIO */
 
 .center_grid{
 
-  background-color: var(--lightblack);
+  background-color: var(--purple);
   height:fit-content;
   padding-bottom:10rem;
 /*   margin-bottom:10rem; */
