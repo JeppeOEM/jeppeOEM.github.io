@@ -20,14 +20,18 @@
     <a class="ascii_link petme scroll text_shadow" data-rateY="0" data-rateX="-2" data-direction="horizontal" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish" target="_blank"><span class="white ascii_art credits">ascii credits: </span><span class=" ascii_art the_link display">https://play.ertdfgcvb.xyz</span></a>
 
     <nav class="nav" id="navbar">
-        <ul>
-        <a class="pc mobile green" href="index.html"> <li class="navbar1">mrqdt.xyz</li>   </a>
-          <a class="pc mobile" href="#porto"><li class="navbar2"><p ><span class="square">♦</span> Portofolio</p></li></a>
-          <a class="pc mobile" href="#about"><li class="navbar3"><p ><span class="square">♦</span>  About</p></li></a>
-          <a class="pc mobile" href="https://github.com/JeppeOEM"><li class="navbar3"><p ><span class="square">♦</span>  Github</p></li></a>
-          <a class="pc mobile" href="https://www.linkedin.com/in/jeppemarquardt/"><li class="navbar3"><p ><span class="square">♦</span>  Linkedin</p></li></a>
-          <a class="pc mobile" href="brev.html" target="_blank"><li class="navbar3"><p ><span class="square">♦</span>  Email</p></li></a>
-          <a class="pc mobile" href=""></a>
+        <ul class="seperate">
+          <div class="flex_horizontal">
+
+            <a class="pc mobile green" href="index.html">  <li class="navbar1">mrqdt.xyz</li>  <img src="images/Glider.png" style="width: 25px"  alt="glider">  </a>
+            <a class="pc mobile" href="#porto"><li class="navbar2"><p ><span class="square">♦</span> Portofolio</p></li></a>
+            <a class="pc mobile" href="#about"><li class="navbar3"><p ><span class="square">♦</span>  About</p></li></a>
+          </div>
+          <div class="flex_horizontal">
+            <a class="pc mobile" href="https://github.com/JeppeOEM"><li class="navbar3"><p ><span class="square">♦</span>  Github</p></li></a>
+            <a class="pc mobile" href="https://www.linkedin.com/in/jeppemarquardt/"><li class="navbar3"><p ><span class="square">♦</span>  Linkedin</p></li></a>
+            <a class="pc mobile" href="brev.html" target="_blank"><li class="navbar3"><p ><span class="square">♦</span>  Email</p></li></a>
+          </div>
         </ul>
         <div class="mobile_nav">
           <img class="mobile_menu" src="images/menu.svg" alt="">
@@ -78,7 +82,7 @@
 <h1 class="text_shadow about_header">About</h1>
 
         <div class="tui-window">
-            <fieldset class="tui-fieldset">
+            <fieldset class="tui-fieldset bigger">
                 <legend class="legend">480u7</legend>
 
                 <p>
@@ -113,9 +117,11 @@
           </div>
     </section>
 
+    <div class="blue">
 
-
-  <div id="img" class="snap center_grid">
+      <div class="triangle inverse"></div>
+    </div>
+  <div class="snap center_grid porto_outer">
     <h1 id="porto" class="header_port text_shadow">Portofolio</h1>
     <section class="portofolio_grid">
       
@@ -128,17 +134,35 @@
             <p class="card_p">
               Customizeable dashboard with cryptocurrency info, written with coding best practices, tests, and OOP 
             </p>
-                  <p class="
-                  ">
-                    <span class="square">
-                      ♦ 
-                    </span>
-                    .NET, Typescript, TimescaleDB
-                  </p>
-          </a>
-        </article>
-      </div>
 
+            <div class="flex-wrap">
+
+              <p class="flex-item
+              ">
+              <span class="square">
+                ♦ 
+              </span>
+              .NET
+            </p>
+            <p class="flex-item
+            ">
+            <span class="square">
+              ♦ 
+            </span>
+            Typescript
+          </p>
+          <p class="flex-item
+          ">
+          <span class="square">
+            ♦ 
+          </span>
+          TimescaleDB
+        </p>
+      </div>
+      </a>
+    </article>
+  </div>
+  
       <div class="hover_div">
 
         <article class="tui-fieldset smaller">
@@ -149,16 +173,25 @@
             <p class="card_p">
               A flask API for simulating trading on historic data, has a genetic algorithm for finding optimal parameters in your strategy aswell as an jinja frontend
             </p>      
-                  <p class="">
+            <div class="flex-wrap">
+
+              <p class="flex-item">
+                <span class="square">
+                  ♦ 
+                </span>
+                Python
+                  </p>
+                                    <p class="flex-item">
                     <span class="square">
                       ♦ 
                     </span>
-                    Python, MYSQL
+                    MySQL
                   </p>
+                </div>
           </a>
         </article>
       </div>
-
+      
             <div class="hover_div">
               <article class="tui-fieldset smaller">
                 <a href="/react.html">
@@ -169,12 +202,20 @@
                   <p class="card_p">
                     Possible to browse restaurants and view orders. It supports account creating as a restaurant and user. 
                   </p>
-                  <p class="">
+                  <div class="flex-wrap">
+                    <p class="flex-item">
+                      <span class="square">
+                      ♦ 
+                    </span>
+                    PHP
+                  </p>
+                      <p class="flex-item">
                     <span class="square">
                       ♦ 
                     </span>
-                    PHP, MYSQL
+                    MySQL
                   </p>
+                </div>
                 </a>
               </article>
             </div>
@@ -184,23 +225,43 @@
           <a href="https://github.com/JeppeOEM/3dFurniture/tree/main">
             <h2 class="card_header">
               3d furniture
-            </h2>            
-            <p class="card_p">
-              A 3D Furniture configurator, where you can via drag and drop can build your own couch.
-            </p>
-                  <p class="">
+            </h2>    
+            <div class="flex-wrap">
+              <p class="card_p">
+                A 3D Furniture configurator, where you can via drag and drop can build your own couch.
+              </p>
+              <p class="flex-item">
+                <span class="square">
+                  ♦ 
+                </span>
+                Laravel
+                  </p>
+                                    <p class="flex-item">
                     <span class="square">
                       ♦ 
                     </span>
-                    Laravel, Vue, MySQL, Three.js
+                    Vue
                   </p>
-          </a>
-        </article>
-      </div>
-  </section>
+                  <p class="flex-item">
+                    <span class="square">
+                      ♦ 
+                    </span>
+                    MySQL
+                  </p>
+                  <p class="flex-item">
+                    <span class="square">
+                      ♦ 
+                    </span>
+                    Three.js
+                  </p>
+                </div>        
+                </a>
+              </article>
+            </div>
+          </section>
   </div>
 
-
+<!-- 
   <div class="center_grid snap">
     <h1 class="header_port text_shadow">Fun</h1>
     <p>Sometimes i have a bit of fun with P5.js and tries to explore the realm of creative coding</p>
@@ -243,7 +304,7 @@
         </article>
       </div>
   </section>
-  </div>
+  </div> -->
 
 
 <div>
