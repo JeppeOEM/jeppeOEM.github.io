@@ -114,6 +114,10 @@ html{
 .resize_box{
   padding: 0px 40px;
 }
+.hover_div{
+  z-index: 2;
+}
+
 .hover_div:hover .tui-fieldset.smaller{
     /* box-shadow: 0px 0px #000; */
   /* transform: translateY(-1rem); */
