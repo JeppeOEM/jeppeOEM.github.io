@@ -12,7 +12,7 @@
   --lightblack:#0000FF;
 
   --lightblack-opacity:rgba(10, 25, 47, 0.5)
-  --ascii:'#6D6D6C';
+  --ascii:#6D6D6C;
   --grid:#112240;
   --orange: #FA4C14;
   --accent: #55FF55;  
@@ -78,6 +78,13 @@ html{
   color: var(--accent) !important
 }
 
+.flex-between{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .tui-window {
   margin-bottom: 20px;
   text-align: left;
@@ -96,6 +103,7 @@ html{
 
 
   .tui-fieldset.smaller{
+    height: 100%;
     transition-timing-function: ease-in-out;
     position: relative;
     padding: 1rem;
