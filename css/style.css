@@ -688,7 +688,9 @@ margin-right: 20px;
 /* margin-bottom: 25px; */
 font-size: var(--big-h);
 }
-
+.about_header{
+  margin-bottom: 1vh;
+}
 
 
   /* .grid_section:hover h2{
