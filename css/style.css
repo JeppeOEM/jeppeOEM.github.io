@@ -532,7 +532,7 @@ span.letters{
     text-shadow: 3px 3px black;
 }
 .text_shadow_small {
-    text-shadow: 2px 2px black;
+    text-shadow: 2px 2px black !important;
 }
 
 .about_pre{
