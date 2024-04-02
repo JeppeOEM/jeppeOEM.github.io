@@ -92,6 +92,7 @@ html{
 }
 
 .tui-fieldset {
+  max-width: 800px;
   border: 6px #fff double;
   padding: 12px;
   background-color: inherit;
