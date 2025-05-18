@@ -120,14 +120,18 @@
 
     <pre class="slime"></pre>
 <script type="module">
-  import { saveFontSelectionAndReloadFont } from './js/index.js';
+  import { saveFontSelection } from './js/saveFontSelection.js';
+  import { loadPage } from './js/loadPage.js'
+  import { home } from './js/home.js'
 
   document.getElementById('font-selector').addEventListener('change', (e) => {
     const selectedFont = e.target.value;
-    saveFontSelectionAndReloadFont(selectedFont);
+    saveFontSelection(selectedFont);
   });
+
+  loadPage(home)
+
 </script>
-    <script type="module" src="/js/index.js"></script>
   </body>
   </html>
 

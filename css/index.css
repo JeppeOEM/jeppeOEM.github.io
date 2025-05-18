@@ -216,6 +216,14 @@ color:var(--light-green);
   color:var(--dark-turqoise)
 }
 
+
+.blue{
+  color:var(--blue)
+}
+
+.light-blue{
+  color:var(--light-blue)
+}
 .yellow{
   color:var(--yellow);
 }

@@ -18,10 +18,21 @@
 
 
     <nav class="nav">
-      <a href="/" class="nav__link"><span class="bracket">[</span><span class="white">H</span>ome<span class="bracket">]</span></a>
-      <a href="/code" class="nav__link" data-link><span class="bracket">[</span><span class="white">C</span>ode<span class="bracket">]</span></a>
+      <a href="/" class="nav__link"><span class="bracket">[</span><span class="dark-turqoise">H</span><span class="dark-turqoise">OME</span><span class="bracket">]</span></a>
+      <a href="/code" class="nav__link" data-link><span class="bracket">[</span><span class="white">C</span>ODE<span class="bracket">]</span></a>
       <a href="/blog" class="nav__link" data-link><span class="bracket">[</span><span class="white">B</span>log<span class="bracket">]</span></a>
       <a href="/links" class="nav__link" data-link><span class="bracket">[</span><span class="white">L</span>inks<span class="bracket">]</span></a>
+ 
+        <div class="font-controls">
+            <label for="font-selector">Select Font:</label>
+            <select id="font-selector">
+                <option value="monospace">Default Monospace</option>
+                <option value="PetMe">PetMe</option>
+                <option value="IBMVGA8">IBM VGA 8x16</option>
+                <option value="IBMBIOS2Y">IBM BIOS-2y</option>
+                <option value="IBMEGA9">IBM EGA 9x14</option>
+            </select>
+        </div>
     </nav>
     <div class="nav-dots">
 
@@ -172,7 +183,20 @@
 </template>
 
 
-    <script type="module" src="/js/code.js"></script>
+<script type="module">
+  import { saveFontSelection } from './js/saveFontSelection.js';
+  import { loadPage } from './js/loadPage.js'
+  import { code } from './js/code.js'
+
+
+  document.getElementById('font-selector').addEventListener('change', (e) => {
+    const selectedFont = e.target.value;
+    saveFontSelection(selectedFont);
+  });
+
+  loadPage(code)
+
+</script>
   </body>
   </html>
 
