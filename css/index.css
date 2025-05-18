@@ -129,7 +129,7 @@ a.link:hover {
 
 
 .code-logo-color-1{
-  color: var(--light-grey);
+  color: var(--white);
 
   background-color: var(--black) !important
 }
@@ -157,8 +157,8 @@ color:#48DADA;
 
 }
 
-.code-logo-color-5{
-color:#48DADA;
+.code-logo-color-6{
+color:var(--light-grey);
 
   background-color: var(--black) !important
 
