@@ -14,11 +14,29 @@
 --ascii-arena: #070766;
 --grey-ascii-arena: #A1A1A1;
 --light-grey: #FFFFFF;
+--light-blue: #5555FF; 
+--blue: #0000AA; 
 --half-height: 7ch;
 --transparent: transparent;
 }
 
 
+@font-face {
+  font-family: PetMe;
+  src: url(PetMe.ttf);
+}
+@font-face {
+  font-family: IBMVGA8;
+  src: url(AcPlus_IBM_VGA_8x16.ttf);
+}
+@font-face {
+  font-family: IBMBIOS2Y;
+  src: url(AcPlus_IBM_BIOS-2y.ttf);
+}
+@font-face {
+  font-family: IBMEGA9;
+  src: url(Px437_IBM_EGA_9x14.ttf);
+}
 
 * {
    font-size: 14px;
@@ -30,7 +48,17 @@
   line-height: 1.2;
   }
 
+.font-refresh {
+    letter-spacing: 0.0001px;
+}
 
+
+.no-animations *, 
+.no-animations *::before, 
+.no-animations *::after {
+    animation: none !important;
+    transition: none !important;
+}
 
 
 ul, ol {
@@ -54,10 +82,17 @@ a {
   z-index:0;
 }
 
-
-
 .bold {
   font-weight: 600;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.fade-in.show {
+  opacity: 1;
 }
 
 .center-text{
@@ -87,12 +122,25 @@ a.link::before {
 
 a.link {
     text-decoration: none;
-    color: #333; /* Default link color */
+    /*color: #007BFF; /* Color on hover (blue in this case) */
+    color: var(--turqoise); /* Color on hover (blue in this case) */
     transition: color 0.2s ease;
 }
 
 a.link:hover {
-    color: #007BFF; /* Color on hover (blue in this case) */
+    color: var(--turqoise); /* Color on hover (blue in this case) */
+}
+
+
+a.link-line {
+    text-decoration: underline;
+    /*color: #007BFF; /* Color on hover (blue in this case) */
+    color: var(--turqoise); /* Color on hover (blue in this case) */
+    transition: color 0.2s ease;
+}
+
+a.link:hover {
+    color: var(--dark-turqoise); /* Color on hover (blue in this case) */
 }
 
 .responsive-span,
@@ -401,6 +449,18 @@ transform: translateY(-10px);
 color: var(--grey);
 z-index: 10;
 }
+
+        .font-controls {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        select {
+            padding: 5px;
+            margin-left: 10px;
+        }
+
 
 .bracket{
   color: var(--yellow);

@@ -19,6 +19,108 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  const fontSelector = document.getElementById('font-selector');
+
+  // Function to load font and apply it
+  function applyFont(fontFamily) {
+    // Update status message
+    const statusElement = document.getElementById('font-status');
+    if (statusElement) {
+      statusElement.textContent = `Loading font: ${fontFamily}...`;
+    }
+
+    // Apply the font to the document body
+    document.body.style.fontFamily = fontFamily;
+
+    // Force a redraw of all content by temporarily modifying the body
+    const originalBodyHTML = document.body.innerHTML;
+
+    // Create a style tag to force the font on all elements
+    const styleElement = document.createElement('style');
+    styleElement.textContent = `
+            * {
+                font-family: ${fontFamily} !important;
+            }
+        `;
+    document.head.appendChild(styleElement);
+
+    // Force a redraw by briefly hiding everything
+    document.body.style.visibility = 'hidden';
+
+    // Use setTimeout to ensure the browser processes the visibility change
+    setTimeout(() => {
+      // Restore visibility to make content visible again with new font
+      document.body.style.visibility = 'visible';
+
+      // Remove the temporary style element after a short delay
+      setTimeout(() => {
+        document.head.removeChild(styleElement);
+        // The font-family set on body will remain in effect
+      }, 500);
+    }, 50);
+
+    // Use Font Loading API if available
+    if (document.fonts && document.fonts.load) {
+      document.fonts.load(`14px ${fontFamily}`).then(() => {
+        if (statusElement) {
+          statusElement.textContent = `Font loaded: ${fontFamily}`;
+          // Clear the message after a short time
+          setTimeout(() => {
+            statusElement.textContent = '';
+          }, 2000);
+        }
+
+        // Apply to all text elements again after confirmed loading
+        forceRedrawWithFont(fontFamily);
+      }).catch(err => {
+        console.log('Font loading error:', err);
+        if (statusElement) {
+          statusElement.textContent = `Note: Using fallback font if ${fontFamily} is unavailable`;
+        }
+      });
+    } else {
+      // Fallback for browsers that don't support Font Loading API
+      setTimeout(() => {
+        if (statusElement) {
+          statusElement.textContent = '';
+        }
+        forceRedrawWithFont(fontFamily);
+      }, 1000);
+    }
+  }
+
+  // Helper function to force redraw with the new font
+  function forceRedrawWithFont(fontFamily) {
+    // Apply to specific elements that might need explicit setting
+    const allTextElements = document.querySelectorAll('body *');
+    allTextElements.forEach(el => {
+      // Skip form elements that might need their own fonts
+      if (el.tagName !== 'SELECT' && el.tagName !== 'OPTION' &&
+        el.tagName !== 'BUTTON' && el.tagName !== 'INPUT') {
+        el.style.fontFamily = fontFamily;
+      }
+    });
+
+    // One more trick to force the browser to redraw everything
+    const docElement = document.documentElement;
+    const originalDisplay = docElement.style.display || '';
+    docElement.style.display = 'none';
+    void docElement.offsetHeight; // Trigger reflow
+    docElement.style.display = originalDisplay;
+  }
+
+  // Add event listener for font changes
+  if (fontSelector) {
+    fontSelector.addEventListener('change', function() {
+      const selectedFont = fontSelector.value;
+      applyFont(selectedFont);
+    });
+
+    // Apply the default selected font on page load
+    const initialFont = fontSelector.value;
+    applyFont(initialFont);
+  }
+
 
   const templateClosestChild = document.querySelector('.outer')
   const template = document.getElementById('outer-template')
@@ -27,18 +129,20 @@ document.addEventListener('DOMContentLoaded', () => {
     template: template,
     mobileBreakpoint: {
       horizontalChars: 30,
-      verticalLines: 3,
+      verticalLines: 6,
       breakpoint: 480
     },
     tabletBreakpoint: {
       horizontalChars: 50,
-      verticalLines: 5,
+      verticalLines: 3,
       breakpoint: 768
     },
     desktopBreakpoint: {
-      horizontalChars: 60,
+      horizontalChars: 70,
       verticalLines: 0
-    }
+    },
+    delay: 0,
+    duration: 0
   })
 
   asciiBox.init()
@@ -57,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let htmlContent = '';
 
   }
+
+
   //for (let i = 0; i < textLines.length; i++) {
   //    for (let j = 0; j < maxLineLength; j++) {
   //        const char = textLines[i][j] || ' ';

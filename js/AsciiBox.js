@@ -5,7 +5,10 @@ export default class AsciiBox {
         this.tabletBreakpoint = config.tabletBreakpoint;
         this.mobileBreakpoint = config.mobileBreakpoint;
         this.desktopBreakpoint = config.desktopBreakpoint;
-        this.currentTemplate = null; // Track the current template element
+        this.delay = config.delay || 0 // milliseconds
+        this.duration = config.duration || 1000; // milliseconds
+        this.currentTemplate = null;
+        this.hasFadedIn = false;
     }
 
     getBreakpoint(width) {
@@ -14,28 +17,44 @@ export default class AsciiBox {
         return 'desktop';
     }
 
+    injectFadeStyle() {
+        if (document.getElementById('ascii-fade-style')) return;
+
+        const style = document.createElement('style');
+        style.id = 'ascii-fade-style';
+        style.textContent = `
+            .fade-in {
+                opacity: 0;
+                transition: opacity ${this.duration}ms ease;
+            }
+            .fade-in.show {
+                opacity: 1;
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
     createResponsiveTemplate() {
         // Remove existing template if any
         if (this.currentTemplate) {
-            this.currentTemplate.parentNode.removeChild(this.currentTemplate);
+            this.currentTemplate.remove();
             this.currentTemplate = null;
         }
 
-        // Get the template
+        this.injectFadeStyle();
+
         const templateElement = this.template;
         if (!templateElement) {
             console.error("Template element not found");
             return;
         }
 
-        // Clone the template content
         const templateContent = templateElement.content.cloneNode(true);
 
-        // Calculate responsive values based on screen width
+        // Determine breakpoint settings
         const screenWidth = window.innerWidth;
         let baseCharCount, verticalLines;
 
-        // Determine character count and number of vertical lines based on screen width
         if (screenWidth < this.mobileBreakpoint.breakpoint) {
             baseCharCount = this.mobileBreakpoint.horizontalChars;
             verticalLines = this.mobileBreakpoint.verticalLines;
@@ -47,13 +66,12 @@ export default class AsciiBox {
             verticalLines = this.desktopBreakpoint.verticalLines;
         }
 
-        // Update all responsive spans in the new template
+        // Handle responsive spans
         const spans = templateContent.querySelectorAll('.responsive-span');
         spans.forEach(span => {
             let charCount = baseCharCount;
             let useEmpty = false;
 
-            // Check class list for modifiers
             span.classList.forEach(cls => {
                 const minusMatch = cls.match(/^minus(\d+)$/);
                 if (minusMatch) {
@@ -68,35 +86,41 @@ export default class AsciiBox {
             span.textContent = (useEmpty ? ' ' : '─').repeat(charCount);
         });
 
-        // Remove existing vertical lines first
-        const existingLines = templateContent.querySelectorAll('.vertical-line');
-        existingLines.forEach(line => line.remove());
-
         // Add vertical lines if needed
-        if (verticalLines > 0) {
-            const pre = templateContent.querySelector('.ascii-box');
-            const columnMarker = pre.querySelector('.column');
-            if (columnMarker) {
-                const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(baseCharCount)}</span>│ │ │</span>`;
-                for (let i = 0; i < verticalLines; i++) {
-                    // Create a new line element
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = lineHTML;
-                    const newLine = tempDiv.firstChild;
-
-                    // Insert the new line before the column marker
-                    pre.insertBefore(newLine, columnMarker);
-                    pre.insertBefore(document.createTextNode('\n'), columnMarker);
-                }
+        const pre = templateContent.querySelector('.ascii-box');
+        const columnMarker = pre?.querySelector('.column');
+        if (columnMarker && verticalLines > 0) {
+            const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(baseCharCount)}</span>│ │ │</span>`;
+            for (let i = 0; i < verticalLines; i++) {
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = lineHTML;
+                const newLine = tempDiv.firstChild;
+                pre.insertBefore(newLine, columnMarker);
+                pre.insertBefore(document.createTextNode('\n'), columnMarker);
             }
         }
 
-        // Append to body and store reference to the newly added content
-        document.body.appendChild(templateContent);
+        // Wrap the template content
+        const wrapper = document.createElement('div');
+        wrapper.appendChild(templateContent);
 
-        // Store reference to the newly added root element
-        // This assumes the template has a single root element
-        this.currentTemplate = document.body.lastElementChild;
+        // Apply fade-in only on first load
+        if (!this.hasFadedIn) {
+            wrapper.classList.add('fade-in');
+            document.body.appendChild(wrapper);
+
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    wrapper.classList.add('show');
+                });
+            }, this.delay);
+
+            this.hasFadedIn = true;
+        } else {
+            document.body.appendChild(wrapper);
+        }
+
+        this.currentTemplate = wrapper;
     }
 
     init() {
