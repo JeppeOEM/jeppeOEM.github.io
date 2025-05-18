@@ -1,3 +1,4 @@
+
 export default class AsciiBackground {
     /**
      * Create a new ASCII art background
