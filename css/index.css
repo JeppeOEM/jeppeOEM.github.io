@@ -43,7 +43,7 @@
     margin: 0;
   padding: 0;
     box-sizing: border-box;
-  font-family: monospace;
+  font-family: inherit;
   font-weight: 200;
   line-height: 1.2;
   }
@@ -238,7 +238,7 @@ color:var(--light-green);
 }
 
 .outer {
-  font: 1em/1.18 monospace;
+  font: 1em/1.18 inherit;
   font-size: 2em;
   position: relative;
   width: min-content;
@@ -354,7 +354,7 @@ color:var(--light-green);
       width: 100%;
       height: 100%;
       white-space: pre;
-      font-family: monospace;
+      /*font-family: monospace;*/
       font-size: 12px;
       line-height: 1;
       z-index: -1;
