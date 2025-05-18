@@ -1,18 +1,19 @@
 :root {
-  --black: black;
-    --yellow: #FFD700;
---dark-grey: #555555;
+--black: #000000;
+--light-black:#555555;
+--yellow: #FFFF55;
+--dark-grey: #AAAAAA;
 --grey: #bebdbd;
---light-green: #48ff59;
---dark-green: #0A0;
---orange: #fd5b5a;
---dark-turqoise: #0AA;
---turqoise: #48DADA;
+--light-green: #55FF55;
+--dark-green: #00AA00;
+--orange: #FF5555;
+--dark-turqoise: #00AAAA;
+--turqoise: #55FFFF;
 --white: white;
 --pink: #FD65FD;
 --ascii-arena: #070766;
 --grey-ascii-arena: #A1A1A1;
---light-grey: #D3D3D3;
+--light-grey: #FFFFFF;
 --half-height: 7ch;
 --transparent: transparent;
 }
@@ -129,18 +130,18 @@ a.link:hover {
 
 
 .code-logo-color-1{
-  color: var(--white);
+  color: var(--yellow);
 
   background-color: var(--black) !important
 }
 
 .code-logo-color-2{
-  color: var(--white);
+  color: var(--dark-green);
   background-color: var(--black) !important
 }
 
 .code-logo-color-3{
-  color: var(--dark-green);
+  color: var(--light-black);
 
   background-color: var(--black) !important
 }
@@ -151,14 +152,14 @@ a.link:hover {
 }
 
 .code-logo-color-5{
-color:#48DADA;
+color:var(--light-green);
 
   background-color: var(--black) !important
 
 }
 
 .code-logo-color-6{
-color:var(--light-grey);
+color:var(--light-green);
 
   background-color: var(--black) !important
 
