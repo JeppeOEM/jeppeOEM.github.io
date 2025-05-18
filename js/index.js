@@ -1,5 +1,8 @@
 import { run } from '/src/run.js'
 import * as program from '/src/programs/contributed/slime_dish2.js'
+import AsciiBox from "./AsciiBox.js"
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -13,6 +16,32 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(e.error);
       });
   }, 2000); // 2000 milliseconds = 2 seconds
+
+
+
+
+  const templateClosestChild = document.querySelector('.outer')
+  const template = document.getElementById('outer-template')
+  const asciiBox = new AsciiBox({
+    templateClosestChild: templateClosestChild,
+    template: template,
+    mobileBreakpoint: {
+      horizontalChars: 30,
+      verticalLines: 3,
+      breakpoint: 480
+    },
+    tabletBreakpoint: {
+      horizontalChars: 50,
+      verticalLines: 5,
+      breakpoint: 768
+    },
+    desktopBreakpoint: {
+      horizontalChars: 60,
+      verticalLines: 0
+    }
+  })
+
+  asciiBox.init()
 
 
   const preElement = document.querySelector('.ascii-art');

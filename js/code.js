@@ -56,4 +56,4 @@ const asciiBox = new AsciiBox({
   }
 })
 
-asciiBox.initn()
+asciiBox.init()
