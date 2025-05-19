@@ -43,17 +43,17 @@ export function code() {
     template: template,
     mobileBreakpoint: {
       horizontalChars: 30,
-      verticalLines: 3,
+      verticalLines: 5,
       breakpoint: 480
     },
     tabletBreakpoint: {
       horizontalChars: 50,
-      verticalLines: 5,
+      verticalLines: 20,
       breakpoint: 768
     },
     desktopBreakpoint: {
-      horizontalChars: 60,
-      verticalLines: 0
+      horizontalChars: 70,
+      verticalLines: 10
     }
   })
 
