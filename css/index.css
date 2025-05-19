@@ -7,7 +7,7 @@
 --light-green: #55FF55;
 --dark-green: #00AA00;
 --orange: #FF5555;
---dark-turqoise: #00AAAA;
+--dark-turqoise: #0/0AAAA;
 --turqoise: #55FFFF;
 --white: white;
 --pink: #FD65FD;
@@ -271,6 +271,9 @@ color:var(--light-green);
   color:var(--dark-green);
 }
 
+.black{
+color: var(--black) !important
+}
 .orange{
  color: var(--orange);
 }

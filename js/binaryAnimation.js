@@ -36,39 +36,33 @@ export function horizontalBinaryAnimation(containerElement, delay = 50, delaySta
 
 export function startBinaryAnimation(leftElement, delay = 50, delayStart = 1000) {
     const calculateCapacity = (element) => {
-        console.log(element, "element")
         const elementWidth = element.offsetWidth;
-        console.log(elementWidth)
         return Math.floor(elementWidth / 14); // Approx. width per char for monospace
     };
 
     const generateRandomBit = () => Math.floor(Math.random() * 2).toString();
 
     let leftContent = '';
-    let rightContent = '';
 
     setTimeout(() => {
         const leftCapacity = calculateCapacity(leftElement);
-        //const rightCapacity = calculateCapacity(rightElement);
 
         const updateLeft = () => {
             if (leftContent.length < leftCapacity * 4) {
-                leftContent = generateRandomBit() + leftContent;
-                leftElement.textContent = leftContent;
+                const newBit = generateRandomBit();
+                leftContent = newBit + leftContent;
+
+                // Color each bit
+                const coloredContent = [...leftContent]
+                    .map(bit => `<span style="color: ${bit === '1' ? 'var(--light-green)' : 'var(--dark-green)'};">${bit}</span>`)
+                    .join('');
+
+                leftElement.innerHTML = coloredContent;
+
                 setTimeout(updateLeft, delay);
             }
         };
 
-        //const updateRight = () => {
-        //    if (rightContent.length < rightCapacity * 3) {
-        //
-        //        rightContent = rightContent + generateRandomBit();
-        //        rightElement.textContent = rightContent;
-        //        setTimeout(updateRight, delay);
-        //    }
-        //};
-
         updateLeft();
-        //updateRight();
     }, delayStart);
 }

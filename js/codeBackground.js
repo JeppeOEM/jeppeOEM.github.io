@@ -3,7 +3,7 @@ export const leftPre = `
 
 
 
-                                                   <span class="code-logo-color-3">,<span class="code-logo-color-1">
+                                                   <span class="black">,<span class="code-logo-color-1">
 <span class="code-logo-color-3">yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy$<span class="code-logo-color-1">
 <span class="code-logo-color-3">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$<span class="code-logo-color-1">
 <span class="black">00<span class="black">1</b></span></span></span></span></span></span></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">0<span class="code-logo-color-1">
@@ -19,7 +19,7 @@ export const rightPre = `
 
 
 
-                                                   <span class="code-logo-color-3">,<span class="code-logo-color-1">
+                                                   <span class="black">,<span class="code-logo-color-1">
 <span class="code-logo-color-3">yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy$<span class="code-logo-color-1">
 <span class="code-logo-color-3">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$<span class="code-logo-color-1">
 <span class="black">00<span class="black">1</b></span></span></span></span></span></span></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">00<span class="black">1</b></span><span class="black">0<span class="code-logo-color-1">
