@@ -47,12 +47,12 @@ export function code() {
       breakpoint: 480
     },
     tabletBreakpoint: {
-      horizontalChars: 50,
+      horizontalChars: 60,
       verticalLines: 20,
       breakpoint: 768
     },
     desktopBreakpoint: {
-      horizontalChars: 70,
+      horizontalChars: 80,
       verticalLines: 10
     }
   })

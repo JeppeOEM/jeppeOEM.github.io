@@ -17,13 +17,37 @@
 <body>
 
 
-    <nav class="nav">
-      <a href="/" class="nav__link"><span class="bracket">[</span><span class="white">H</span>ome<span class="bracket">]</span></a>
-      <a href="code.html" class="nav__link" data-link><span class="bracket">[</span><span class="white">C</span>ode<span class="bracket">]</span></a>
-      <a href="/blog" class="nav__link" data-link><span class="bracket">[</span><span class="white">B</span>log<span class="bracket">]</span></a>
-      <a href="/links" class="nav__link" data-link><span class="bracket">[</span><span class="white">L</span>inks<span class="bracket">]</span></a>
+<nav class="nav">
+<div class="navbar-side">
+  <span></span>
+</div>
+<div class="navbar">
+<div>
 
+      <a href="/" class="nav__link"><span class="bracket">[</span><span class="white">H</span>OME<span class="bracket">]</span></a>
+      <a href="code.html" class="nav__link" data-link><span class="bracket">[</span><span class="white">C</span>ODE<span class="bracket">]</span></a>
+      <a href="/links" class="nav__link" data-link><span class="bracket">[</span><span class="white">L</span>INKS<span class="bracket">]</span></a>
 
+</div>
+          <div>
+
+        <span class="font-controls">
+            <label for="font-selector">FONT:</label>
+            <select id="font-selector">
+                <option value="monospace">Default Monospace</option>
+                <option value="PetMe">PetMe</option>
+                <option value="IBMVGA8">IBM VGA 8x16</option>
+                <option value="IBMBIOS2Y">IBM BIOS-2y</option>
+                <option value="IBMEGA9">IBM EGA 9x14</option>
+            </select>
+        </span>
+
+</div>
+</div>
+
+<div class="navbar-side">
+  <span>test</span>
+</div>
     </nav>
     <div class="nav-dots">
 
@@ -50,7 +74,7 @@
 <b><span style="color:#555555">$$$$$$$$$$$$$$$$$$$$$$$$$$$$SssS$$$$$$$$$$$S </span></b><span style="color:#0A0">$ⁿ""ⁿ<b><span style="color:#555555"> S$$$$$$$$$$$$$$SssssssS$$$$$</span></b></span>
 <b><span style="color:#555555">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$SsS$$Ss$$$$$$$$$$$$$$$$$$$$$$$$$$$$</span></b>
 </pre>
- 
+
 <section class="center">
   <p class="target-text">Here’s the text you want to reveal.</p>
 </section>
@@ -78,7 +102,7 @@
 
       <div class="bg z-1" style="--bg:var(--grey);--x: 5;--y: 3;--w: 11;--h: 8;">
             <p>
-              Welcome to the digital home of Jeppe Marquardt a web developer, ansi artist and creative coder from Copenhagen. 
+              Welcome to the digital home of Jeppe Marquardt a web developer, ansi artist and creative coder from Copenhagen.
             </p>
             <p>
                Browse through my latest <a class="link-line" href="code.html">code</a> or take a dive down the textmode rabbithole in my links section.
@@ -109,12 +133,16 @@
 </div>
 </template>
 
+
     <pre class="slime"></pre>
 <script type="module">
   import { saveFontSelection } from './js/saveFontSelection.js';
   import { loadPage } from './js/loadPage.js'
   import { home } from './js/home.js'
 
+  window.addEventListener('load', function () {
+    document.body.classList.add('loaded');
+  });
   document.getElementById('font-selector').addEventListener('change', (e) => {
     const selectedFont = e.target.value;
     saveFontSelection(selectedFont);

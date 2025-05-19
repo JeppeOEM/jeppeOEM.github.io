@@ -38,6 +38,15 @@
   src: url(Px437_IBM_EGA_9x14.ttf);
 }
 
+  body {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  body.loaded {
+    opacity: 1;
+  }
+
+
 * {
    font-size: 14px;
     margin: 0;
@@ -45,7 +54,7 @@
     box-sizing: border-box;
   font-family: inherit;
   font-weight: 200;
-  line-height: 1.2;
+  line-height: 1;
   }
 
 .font-refresh {
@@ -128,7 +137,7 @@ a {
 
 .link-list li a{
   z-index: 1;
-  postion: relative;
+  position: relative;
 }
 
 .dot-seperation{
@@ -326,8 +335,8 @@ color:var(--light-green);
   border: 1px solid;
   margin:10px;
   padding: 10px;
-  height: 200px;
-  width: 200px;
+  height: 30ch;
+  width: 30ch;
   background-color: var(--dark-turqoise)
 }
 
@@ -495,12 +504,36 @@ color:var(--light-green);
 
 
 .nav {
+  display: flex;
+  justify-content: space-between;
   background-color: var(--black); /* background-color: var(--dark-green); */
   color: white;
   padding: 5px;
   padding-bottom: 8px;
   position: relative;
   z-index: 2;
+  width: 100%;
+
+  /*background: transparent url("../outline.png") no-repeat scroll 10ch 7px;*/
+}
+
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1 1 500px; /* grow: 1, shrink: 1, base size: 450px */
+  max-width: 500px;
+
+  border: var(--light-black) solid;
+}
+
+.navbar-side{
+  flex: 1;
+  border: var(--light-black) solid;
+  background-color: var(--light-black);
+  /*width: 100%;*/
+  /*flex-grow: grow;*/
 }
 
 .nav-dots {
@@ -510,17 +543,30 @@ color: var(--grey);
 z-index: 10;
 }
 
-        .font-controls {
-            margin-bottom: 20px;
-            padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-        }
-        select {
-            padding: 5px;
-            margin-left: 10px;
+
+
+.nowrap{
+  white-space: nowrap;
+}
+
+.font-controls {
         }
 
+
+select {
+    all: unset; /* remove default styles */
+    -webkit-appearance: auto; /* for Safari/Chrome */
+    -moz-appearance: auto;    /* for Firefox */
+    appearance: auto ;         /* standard */
+    color: var(--turqoise);            /* font (text) color */
+    /*padding: 5px;*/
+    /*margin-left: 5px;*/
+}
+
+
+option{
+      background-color: green; /* box background */
+}
 
 .bracket{
   color: var(--yellow);
@@ -569,6 +615,18 @@ color:var(--white) !important;
 
 .ascii-art span {
   background-color: black;
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInBackground 4s ease-in forwards;
+}
+
+@keyframes fadeInBackground {
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeInLogo {

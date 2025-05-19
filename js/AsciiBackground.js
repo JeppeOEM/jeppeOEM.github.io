@@ -52,6 +52,7 @@ export default class AsciiBackground {
         this.backgroundElement = document.createElement('div');
         this.backgroundElement.style.position = 'absolute';
         this.backgroundElement.style.top = '0';
+        this.backgroundElement.style.opacity = '0';
         this.backgroundElement.style.left = '0';
         this.backgroundElement.style.width = '100%';
         this.backgroundElement.style.height = '100%';
