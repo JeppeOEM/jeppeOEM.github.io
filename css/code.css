@@ -29,6 +29,11 @@
       /*right: 10px;*/
     }
 
+
+.color2-trans{
+  background-color: transparent !important;
+}
+
 .fade-in {
   opacity: 0;
   animation: fadeInBackground 1.5s ease-in forwards;
