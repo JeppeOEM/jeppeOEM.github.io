@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/code.css" />
   <link rel="modulepreload" href="./js/saveFontSelection.js">
   <link rel="modulepreload" href="./js/loadPage.js">
   <link rel="modulepreload" href="./js/code.js">
@@ -70,6 +71,7 @@
 <div class="center-section">
 <div class="center-pre-wrapper fade-in">
 <div class="background-layer"></div>
+
   <pre class="center-pre">
                                      <span class="code-logo-color-1">$$$</span> <span class="code-logo-color-3">.gP"""""""""²²6:</span>
                             <span class="code-logo-color-3">,gG²²²""""</span><span class="code-logo-color-5"><span class="code-logo-color-1">$$$</span></span>  <span class="code-logo-color-1">,@SP²""$$@.</span> <span class="code-logo-color-3">L</span>
@@ -102,6 +104,31 @@
 
 </div>
 
+
+<!--<div class="binaryContainer">-->
+<!--  <div id="scrollingBinary" class="binary"></div>-->
+<!--</div>-->
+
+<div class="binaryPosition">
+      
+  <div class="binaryContainer">
+
+    <div class="binary leftBinary topLeftDiv"></div>
+    <!--<div class="binary rightBinary topRightDiv"></div>-->
+</div>
+  <div class="binaryContainer">  
+    <div class="binary leftBinary leftDiv"></div>
+    <!--<div class="binary rightBinary rightDiv"></div>-->
+  </div>
+
+  <div class="binaryContainer">  
+    <div class="binary leftBinary bottomLeftDiv"></div>
+    <!--<div class="binary rightBinary bottomRightDiv"></div>-->
+
+  </div>
+<div>
+  
+</div>
   <template id="outer-template">
 
  <div class="center">
@@ -236,6 +263,7 @@ To make the .project element's width and height adjust to the content only on sm
   import { loadPage } from './js/loadPage.js'
   import { code } from './js/code.js'
 
+   
   window.addEventListener('load', function () {
     document.body.classList.add('loaded');
   });

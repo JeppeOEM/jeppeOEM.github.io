@@ -4,6 +4,8 @@ import AsciiLogoBackground from "./AsciiLogoBackground.js"
 
 import { patterns } from "./asciiPatterns.js"
 import { leftPre, rightPre } from "./codeBackground.js";
+import { horizontalBinaryAnimation, startBinaryAnimation } from "./binaryAnimation.js";
+
 
 export function code() {
 
@@ -58,5 +60,16 @@ export function code() {
   })
 
   asciiBox.init()
+
+
+
+  const leftDiv = document.querySelector('.leftDiv');
+  startBinaryAnimation(leftDiv, 3, 600);
+
+  const topLeftDiv = document.querySelector('.topLeftDiv');
+  startBinaryAnimation(topLeftDiv, 3, 800);
+
+  const bottomLeftDiv = document.querySelector('.bottomLeftDiv');
+  startBinaryAnimation(bottomLeftDiv, 3, 900);
 
 }

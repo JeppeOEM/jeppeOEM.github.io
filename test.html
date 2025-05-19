@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Binary Animation</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: monospace;
+      display: flex;
+      height: 100vh;
+      background-color: #000;
+    }
+
+     .flex-vertical{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .binaryContainer {
+      display: flex;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .binary {
+      width: 100vw;
+      height: 3ch;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 24px;
+      line-height: 3ch;
+      color: #0f0;
+      text-shadow: 0 0 5px #0f0;
+      box-sizing: border-box;
+    }
+
+    .leftBinary {
+      text-align: right;
+      padding-right: 2px;
+    }
+
+    .rightBinary {
+      text-align: left;
+      padding-left: 2px;
+    }
+  </style>
+</head>
+<body>
+
+    <div class="flex-vertical">
+      
+  <div class="binaryContainer">
+
+    <div class="binary leftBinary topLeftDiv"></div>
+    <div class="binary rightBinary topRightDiv"></div>
+</div>
+  <div class="container">  
+    <div class="binary leftBinary leftDiv"></div>
+    <div class="binary rightBinary rightDiv"></div>
+  </div>
+
+  <div class="container">  
+    <div class="binary leftBinary bottomLeftDiv"></div>
+    <div class="binary rightBinary bottomRightDiv"></div>
+
+  </div>
+
+    </div>
+  <script>
+    function startBinaryAnimation(leftElement, rightElement, delay = 50, delayStart = 1000 ) {
+      const calculateCapacity = (element) => {
+        console.log(element,"element") 
+        const elementWidth = element.offsetWidth;
+        return Math.floor(elementWidth / 14); // Approx. width per char for monospace
+      };
+
+      const generateRandomBit = () => Math.floor(Math.random() * 2).toString();
+
+      let leftContent = '';
+      let rightContent = '';
+
+      setTimeout(() => {
+        const leftCapacity = calculateCapacity(leftElement);
+        const rightCapacity = calculateCapacity(rightElement);
+
+        const updateLeft = () => {
+          if (leftContent.length < leftCapacity) {
+            leftContent = generateRandomBit() + leftContent;
+            leftElement.textContent = leftContent;
+            setTimeout(updateLeft, delay);
+          }
+        };
+
+        const updateRight = () => {
+          if (rightContent.length < rightCapacity) {
+            rightContent = rightContent + generateRandomBit();
+            rightElement.textContent = rightContent;
+            setTimeout(updateRight, delay);
+          }
+        };
+
+        updateLeft();
+        updateRight();
+      }, delayStart);
+    }
+
+    // Usage
+    const leftDiv = document.querySelector('.leftDiv');
+    const rightDiv = document.querySelector('.rightDiv');
+    startBinaryAnimation(leftDiv, rightDiv, 10, 0);
+
+    const topLeftDiv = document.querySelector('.topLeftDiv');
+    const topRightDiv = document.querySelector('.topRightDiv');
+    startBinaryAnimation(topLeftDiv, topRightDiv, 15, 100);
+
+    const bottomLeftDiv = document.querySelector('.bottomLeftDiv');
+    const bottomRightDiv = document.querySelector('.bottomRightDiv');
+    startBinaryAnimation(bottomLeftDiv, bottomRightDiv, 15, 100);
+  </script>
+</body>
+</html>
+

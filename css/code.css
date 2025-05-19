@@ -1,0 +1,44 @@
+
+    .binaryContainer {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .binary {
+      z-index: 100;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      color: #0f0;
+      text-shadow: 0 0 5px #0f0;
+      box-sizing: border-box;
+    }
+
+    .leftBinary {
+      text-align: right;
+    }
+
+    .rightBinary {
+      text-align: left;
+    }
+
+    .binaryPosition {
+      transform: translateY(-19.5ch)
+      /*position: fixed;*/
+      /*top: 10px;*/
+      /*right: 10px;*/
+    }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInBackground 1s ease-in forwards;
+  animation-delay: 2.5s;
+}
+
+@keyframes fadeInBackground {
+  to {
+    opacity: 1;
+  }
+}
