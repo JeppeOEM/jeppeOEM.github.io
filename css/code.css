@@ -41,12 +41,15 @@
 
   animation: fadeInBackground 1.5s ease-in forwards;
   opacity: 0;
+/*z-index: -1;*/
+  animation-delay: 2s;
     }
 
 .fade-in {
+      /*z-index:1;*/
   opacity: 0;
   animation: fadeInBackground 1.5s ease-in forwards;
-  animation-delay: 1.5s;
+  animation-delay: 2s;
 }
 
 @keyframes fadeInBackground {

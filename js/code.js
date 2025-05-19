@@ -62,7 +62,7 @@ export function code() {
       horizontalChars: 80,
       verticalLines: 10
     },
-    delay: 7000
+    delay: 4000
   })
 
   asciiBox.init()
@@ -70,12 +70,12 @@ export function code() {
 
 
   const leftDiv = document.querySelector('.leftDiv');
-  startBinaryAnimation(leftDiv, 3, 2600);
+  startBinaryAnimation(leftDiv, 3, 600);
 
   const topLeftDiv = document.querySelector('.topLeftDiv');
-  startBinaryAnimation(topLeftDiv, 3, 2800);
+  startBinaryAnimation(topLeftDiv, 3, 800);
 
   const bottomLeftDiv = document.querySelector('.bottomLeftDiv');
-  startBinaryAnimation(bottomLeftDiv, 3, 2900);
+  startBinaryAnimation(bottomLeftDiv, 3, 900);
 
 }
