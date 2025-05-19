@@ -9,7 +9,6 @@ import { horizontalBinaryAnimation, startBinaryAnimation } from "./binaryAnimati
 
 export function code() {
 
-
   const bodyBackground = new AsciiBackground({
     asciiArt: patterns.pattern1,
     container: document.body,
@@ -19,6 +18,12 @@ export function code() {
       zIndex: -1
     }
   });
+
+  if (bodyBackground) {
+    const background = document.querySelector(".ascii-background")
+    background.classList.add("fade-in-bg")
+  }
+
 
   // NOTE: AsciiLogoBackground
   const leftSection = document.getElementById('leftSection');
@@ -56,7 +61,8 @@ export function code() {
     desktopBreakpoint: {
       horizontalChars: 80,
       verticalLines: 10
-    }
+    },
+    delay: 7000
   })
 
   asciiBox.init()
@@ -64,12 +70,12 @@ export function code() {
 
 
   const leftDiv = document.querySelector('.leftDiv');
-  startBinaryAnimation(leftDiv, 3, 600);
+  startBinaryAnimation(leftDiv, 3, 2600);
 
   const topLeftDiv = document.querySelector('.topLeftDiv');
-  startBinaryAnimation(topLeftDiv, 3, 800);
+  startBinaryAnimation(topLeftDiv, 3, 2800);
 
   const bottomLeftDiv = document.querySelector('.bottomLeftDiv');
-  startBinaryAnimation(bottomLeftDiv, 3, 900);
+  startBinaryAnimation(bottomLeftDiv, 3, 2900);
 
 }

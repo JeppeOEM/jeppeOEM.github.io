@@ -36,8 +36,21 @@ export default class AsciiBackground {
 
         // Setup
         this.initialize(this.style.zIndex);
+        this.fadeIn()
     }
 
+    fadeIn() {
+        // Apply to the center art
+        if (this.centerArt) {
+            this.centerArt.classList.add('ascii-fade-in');
+        }
+
+        // Apply to all grid items
+        const items = this.gridContainer.querySelectorAll('.ascii-repeat-item');
+        items.forEach(item => {
+            item.classList.add('ascii-fade-in');
+        });
+    }
     /**
      * Initialize the background
      * @private
@@ -50,6 +63,7 @@ export default class AsciiBackground {
 
         // Create background container
         this.backgroundElement = document.createElement('div');
+        this.backgroundElement.classList.add("ascii-background")
         this.backgroundElement.style.position = 'absolute';
         this.backgroundElement.style.top = '0';
         this.backgroundElement.style.opacity = '0';

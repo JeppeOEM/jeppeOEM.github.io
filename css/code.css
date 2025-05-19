@@ -23,6 +23,7 @@
     }
 
     .binaryPosition {
+      z-index: 399;
       transform: translateY(calc(-19.3ch))
       /*position: fixed;*/
       /*top: 10px;*/
@@ -32,7 +33,15 @@
 
 .color2-trans{
   background-color: transparent !important;
+  opacity: 0;
 }
+
+
+.fade-in-bg{
+
+  animation: fadeInBackground 1.5s ease-in forwards;
+  opacity: 0;
+    }
 
 .fade-in {
   opacity: 0;

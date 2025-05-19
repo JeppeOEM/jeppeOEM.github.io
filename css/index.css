@@ -272,7 +272,8 @@ color:var(--light-green);
 }
 
 .black{
-color: var(--black) !important
+color: var(--black) !important;
+  background-color: var(--black);
 }
 .orange{
  color: var(--orange);
