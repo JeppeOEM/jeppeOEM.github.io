@@ -5,8 +5,8 @@ export default class AsciiBox {
         this.tabletBreakpoint = config.tabletBreakpoint;
         this.mobileBreakpoint = config.mobileBreakpoint;
         this.desktopBreakpoint = config.desktopBreakpoint;
-        this.delay = config.delay || 0 // milliseconds
-        this.duration = config.duration || 1000; // milliseconds
+        this.delay = config.delay || 4000 // milliseconds
+        this.duration = config.duration || 1500; // milliseconds
         this.currentTemplate = null;
         this.hasFadedIn = false;
     }
@@ -23,11 +23,11 @@ export default class AsciiBox {
         const style = document.createElement('style');
         style.id = 'ascii-fade-style';
         style.textContent = `
-            .fade-in {
+            .fade-in-box {
                 opacity: 0;
                 transition: opacity ${this.duration}ms ease;
             }
-            .fade-in.show {
+            .fade-in-box.show {
                 opacity: 1;
             }
         `;
@@ -106,7 +106,7 @@ export default class AsciiBox {
 
         // Apply fade-in only on first load
         if (!this.hasFadedIn) {
-            wrapper.classList.add('fade-in');
+            wrapper.classList.add('fade-in-box');
             document.body.appendChild(wrapper);
 
             setTimeout(() => {

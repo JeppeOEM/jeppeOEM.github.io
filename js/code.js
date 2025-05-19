@@ -62,7 +62,9 @@ export function code() {
       horizontalChars: 80,
       verticalLines: 10
     },
-    delay: 4000
+    delay: 2800,
+    duration: 3000
+
   })
 
   asciiBox.init()

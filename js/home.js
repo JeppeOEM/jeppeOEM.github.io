@@ -24,9 +24,10 @@ export function home() {
             horizontalChars: 70,
             verticalLines: 0
         },
-        delay: 0,
-        duration: 0
+        delay: 7500,
+        duration: 1500
     });
+
 
     asciiBox.init();
 
