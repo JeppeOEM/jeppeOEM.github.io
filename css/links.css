@@ -24,7 +24,7 @@
 @import url('./root.css');
 
 .link-logo-color-1{
-   color: var(--purple);
+   color: var(--dark-turqoise);
 }
 .link-logo-color-2{
 
@@ -37,7 +37,7 @@
 }
 .link-logo-color-4{
 
-   color: var(--pink);
+   color: var(--turqoise);
 }
 .link-logo-color-5{
 
@@ -50,9 +50,14 @@
    color: var(--white);
 }
 
+.link-logo-color-8{
+   color: var(--blue);
+}
+
+
 .bg-logo-1{
     /*background-color: var(--purple);*/
-    color: var(--purple);
+    color: var(--dark-turqoise);
 }
 
 .bg-logo-2{

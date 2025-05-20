@@ -48,7 +48,7 @@
 
 
 * {
-   /* font-size: 14px; */
+    font-size: 16px; 
     margin: 0;
   padding: 0;
     box-sizing: border-box;
@@ -63,6 +63,7 @@
 
 /* Firefox */
 body {
+  font-size: 16px;
   scrollbar-width: thin;
   scrollbar-color:  var(--dark-turqoise) var(--dark-grey);
 }
@@ -115,6 +116,11 @@ a {
 .bold {
   font-weight: 600;
 }
+
+.bg-black{
+  background-color: var(--black);
+}
+
 
 .fade-in {
   opacity: 0;
@@ -207,41 +213,6 @@ a.link:hover {
     }
 
 
-.code-logo-color-1{
-  color: var(--light-green);
-
-  background-color: var(--black) !important
-}
-
-.code-logo-color-2{
-  color: var(--dark-green);
-  background-color: var(--black) !important
-}
-
-.code-logo-color-3{
-  color: var(--light-black);
-
-  background-color: var(--black) !important
-}
-.code-logo-color-4{
-  color:#00A;
-
-  background-color: var(--black) !important
-}
-
-.code-logo-color-5{
-color:var(--light-green);
-
-  background-color: var(--black) !important
-
-}
-
-.code-logo-color-6{
-color:var(--light-green);
-
-  background-color: var(--black) !important
-
-}
 .dark-turqoise{
   color:var(--dark-turqoise)
 }
@@ -632,6 +603,15 @@ color:var(--white) !important;
   opacity: 0;
   animation: fadeInBackground 4s ease-in forwards;
 }
+
+.fade-in-bg{
+
+  animation: fadeInBackground 1.5s ease-in forwards;
+  opacity: 0;
+/*z-index: -1;*/
+  animation-delay: 2s;
+    }
+
 
 @keyframes fadeInBackground {
   to {

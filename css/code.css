@@ -38,27 +38,13 @@
 }
 
 
-.fade-in-bg{
-
-  animation: fadeInBackground 1.5s ease-in forwards;
-  opacity: 0;
-/*z-index: -1;*/
-  animation-delay: 2s;
-    }
-
+/*OVERWRITES fade-in in the index.css*/
 .fade-in {
       /*z-index:1;*/
   opacity: 0;
   animation: fadeInBackground 1.5s ease-in forwards;
   animation-delay: 2s;
 }
-
-@keyframes fadeInBackground {
-  to {
-    opacity: 1;
-  }
-}
-
 
 
 
@@ -73,3 +59,41 @@ background-color: var(--black) !important;
 background-color: var(--black) !important;
 
 }
+
+
+.code-logo-color-1{
+  color: var(--light-green);
+
+  background-color: var(--black) !important
+}
+
+.code-logo-color-2{
+  color: var(--dark-green);
+  background-color: var(--black) !important
+}
+
+.code-logo-color-3{
+  color: var(--light-black);
+
+  background-color: var(--black) !important
+}
+.code-logo-color-4{
+  color:#00A;
+
+  background-color: var(--black) !important
+}
+
+.code-logo-color-5{
+color:var(--light-green);
+
+  background-color: var(--black) !important
+
+}
+
+.code-logo-color-6{
+color:var(--light-green);
+
+  background-color: var(--black) !important
+
+}
+

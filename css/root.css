@@ -10,7 +10,7 @@
 --light-green: #55FF55;
 --dark-green: #00AA00;
 --orange: #FF5555;
---dark-turqoise: #0/0AAAA;
+--dark-turqoise: #00AAAA;
 --turqoise: #55FFFF;
 --white: white;
 --pink: #FD65FD;
@@ -19,6 +19,7 @@
 --light-grey: #FFFFFF;
 --light-blue: #5555FF;
 --blue: #0000AA;
---half-height: 7ch;
+    /*half height for the mrqdt logo*/
+--half-height: 0ch;
 --transparent: transparent;
 }
