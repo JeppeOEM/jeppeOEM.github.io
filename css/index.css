@@ -604,6 +604,12 @@ color:var(--white) !important;
   animation: fadeInBackground 4s ease-in forwards;
 }
 
+.fade-in-fast{
+
+  opacity: 0;
+  animation: fadeInBackground 1s ease-in forwards;
+}
+
 .fade-in-bg{
 
   animation: fadeInBackground 1.5s ease-in forwards;

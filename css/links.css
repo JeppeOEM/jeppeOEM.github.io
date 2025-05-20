@@ -57,6 +57,18 @@
      /*left: 0px;*/
     }
 
+
+
+
+
+
+.fade-in-fast{
+
+}
+
+
+
+
 /*reverses the insert char animation */
 .mirrored {
   transform: scaleX(-1);
