@@ -3,9 +3,8 @@ import AsciiBox from "./AsciiBox.js"
 import AsciiLogoBackground from "./AsciiLogoBackground.js"
 
 import { patterns } from "./asciiPatterns.js"
+import { startBinaryAnimation } from "./binaryAnimation.js";
 import { leftPre, rightPre } from "./codeBackground.js";
-import { horizontalBinaryAnimation, charAnimation } from "./charAnimation.js";
-
 
 export function codePage() {
 

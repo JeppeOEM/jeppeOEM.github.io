@@ -3,7 +3,7 @@ import AsciiLogoBackground from "./AsciiLogoBackground.js";
 import AsciiBackground from "./AsciiBackground.js";
 import { leftPre, rightPre } from "./linkBackground.js";
 import { dotPattern } from "./dotPattern.js"
-import { horizontalBinaryAnimation, charAnimation } from "./charAnimation.js";
+import { charAnimation } from "./charAnimation.js";
 
 
 
@@ -70,15 +70,16 @@ export function linksPage() {
 
 
 
-    const leftDiv = document.querySelector('.leftDiv');
-    console.log()
-    charAnimation(leftDiv, 3, 600, true);
-
-    const topLeftDiv = document.querySelector('.topLeftDiv');
-    charAnimation(topLeftDiv, 3, 800);
-
-    const bottomLeftDiv = document.querySelector('.bottomLeftDiv');
-    charAnimation(bottomLeftDiv, 3, 900, "abcdefwg");
+    const charTop = document.querySelector('.charTop');
+    charAnimation(charTop, 0.1, 600, ":::::");
+    const charSecondTop = document.querySelector('.charSecondTop');
+    charAnimation(charSecondTop, 0.1, 600, ":::::");
+    const centerDiv = document.querySelector('.centerDiv');
+    charAnimation(centerDiv, 0.1, 600, ":░:░:░");
+    const charSecondBottom = document.querySelector('.charSecondBottom');
+    charAnimation(charSecondBottom, 1, 600, ":::::");
+    const charBottom = document.querySelector('.charBottom');
+    charAnimation(charBottom, 0.1, 600, ":::::");
 
 
 

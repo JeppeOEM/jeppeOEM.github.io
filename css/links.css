@@ -49,11 +49,12 @@
     }
 
     .binaryPosition {
-      z-index: 399;
-      /*transform: translateY(calc(-19.3ch))*/
-      /*position: fixed;*/
-      /*top: 10px;*/
-      /*right: 10px;*/
+   width: 100vw;
+      z-index: 9;
+      transform: translateY(calc(22.3ch));
+      position: absolute;
+      top: 0px;
+     /*left: 0px;*/
     }
 
 /*reverses the insert char animation */

@@ -1,5 +1,7 @@
 @import url('./root.css');
 
+
+
 .target-text {
   color: white;
   opacity: 0;
@@ -21,6 +23,20 @@
   animation: fadeIn 2s ease-in forwards;
 }
 
+
+
+.mrqdt-color-1{
+  color: var(--light-black);
+  opacity: 0;
+}
+.mrqdt-color-2{
+  color: var(--dark-green);
+  /* opacity: 0; */
+}
+.mrqdt-color-3{
+  color: var(--light-green);
+  /* opacity: 0; */
+}
 
 
 .ascii-art {
