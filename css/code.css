@@ -58,3 +58,18 @@
     opacity: 1;
   }
 }
+
+
+
+
+/*logo*/
+.center-pre span {
+background-color: var(--black) !important;
+
+}
+
+
+.center-pre span * {
+background-color: var(--black) !important;
+
+}

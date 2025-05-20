@@ -48,7 +48,7 @@
 
 
 * {
-   font-size: 14px;
+   /* font-size: 14px; */
     margin: 0;
   padding: 0;
     box-sizing: border-box;
@@ -722,7 +722,7 @@ nav a {
 
 body {
   background-color: black;
-  font-size: 14px;
+  /* font-size: 14px; */
   min-height: 100vh;
   overflow-x: hidden;
 }
@@ -781,23 +781,11 @@ flex-direction: row;
 
 
 
+
 .center-pre {
   position: relative;
   z-index: 10;
 }
-
-/*logo*/
-.center-pre span {
-background-color: var(--black) !important;
-
-}
-
-
-.center-pre span * {
-background-color: var(--black) !important;
-
-}
-
 
 /*  #ascii-logo {*/
 /*	position: relative;*/

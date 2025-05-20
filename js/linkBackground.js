@@ -1,0 +1,46 @@
+export const leftPre = `
+<pre class="links-logo-left">
+    ...<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:.....<span style="color:#0A0"> <span style="color:#AAA">....<span style="color:#0A0"> <span style="color:#AAA">. .           ..:
+:            .. . :.  . ::         :: :    :            .. . :.  . ::         :
+:.. ..:      ∙                 .....:.:.. .:.. ..:      ∙                 .....
+             :      ...::. . ..:                        :      ...::. . ..:
+             ::... .:..        .                        ::... .:..        .
+
+<span class="link-logo-color-3">═══════════════════════════════════════════════════════════════════════════════</span></span></span></span></span></span></span>
+<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:
+<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+<span class="link-logo-color-3">═══════════════════════════════════════════════════════════════════════════════</span>
+.<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:\`∙.<span style="color:#0A0"> <span style="color:#AAA">.<span style="color:#0A0"> <span style="color:#AAA">. ..<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:\`∙
+           .. . :.  . ::         :..                  .. . :.  . ::         :..
+. ..:      ∙                 ......:. . ..:. ..:      ∙                 ......:
+           :      ...::. . ..:                        :      ...::. . ..:
+           ::... .:..        .                        ::... .:..        .</span></span></span></span></span></span></span></span>
+</pre>`
+
+
+export const rightPre = leftPre
+
+//export const rightPre = `
+//<pre class="links-logo-right">
+//    ...<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:.....<span style="color:#0A0"> <span style="color:#AAA">....<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:
+//:            .. . :.  . ::         :: :    :            .. . :.  . ::         :
+//:.. ..:      ∙                 .....:.:.. .:.. ..:      ∙                 .....
+//             :      ...::. . ..:                        :      ...::. . ..:
+//             ::... .:..        .                        ::... .:..        .
+//
+//<span>═══════════════════════════════════════════════════════════════════════════════</span></span></span></span></span></span></span>
+//<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+//<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+//<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:<span><span class="link-logo-color-3">░</span></span>:
+//<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+//<span><span class="link-logo-color-5">:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::</span></span>
+//<span>═══════════════════════════════════════════════════════════════════════════════</span>
+//.<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:\`∙.<span style="color:#0A0"> <span style="color:#AAA">.<span style="color:#0A0"> <span style="color:#AAA">. ..<span style="color:#0A0"> <span style="color:#AAA">. .           ..:            ∙\`:\`∙
+//           .. . :.  . ::         :..                  .. . :.  . ::         :..
+//. ..:      ∙                 ......:. . ..:. ..:      ∙                 ......:
+//           :      ...::. . ..:                        :      ...::. . ..:
+//           ::... .:..        .                        ::... .:..        .</span></span></span></span></span></span></span></span>
+//</pre>`

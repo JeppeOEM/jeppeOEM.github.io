@@ -1,0 +1,68 @@
+/*:root {*/
+/*--black: #000000;*/
+/*--light-black:#555555;*/
+/*--yellow: #FFFF55;*/
+/*--dark-grey: #AAAAAA;*/
+/*--grey: #bebdbd;*/
+/*--light-green: #55FF55;*/
+/*--dark-green: #00AA00;*/
+/*--orange: #FF5555;*/
+/*--dark-turqoise: #0/0AAAA;*/
+/*--turqoise: #55FFFF;*/
+/*--white: white;*/
+/*--pink: #FD65FD;*/
+/*--ascii-arena: #070766;*/
+/*--grey-ascii-arena: #A1A1A1;*/
+/*--light-grey: #FFFFFF;*/
+/*--light-blue: #5555FF;*/
+/*--blue: #0000AA;*/
+/*--half-height: 7ch;*/
+/*--transparent: transparent;*/
+/*}*/
+
+
+@import url('./root.css');
+
+.link-logo-color-1{
+   color: var(--purple);
+}
+.link-logo-color-2{
+
+   color: var(--light-blue);
+
+}
+.link-logo-color-3{
+
+   color: var(--white);
+}
+.link-logo-color-4{
+
+   color: var(--pink);
+}
+.link-logo-color-5{
+
+   color: var(--light-blue);
+}
+.link-logo-color-6{
+   color: var(--yellow);
+}
+.link-logo-color-7{
+   color: var(--white);
+}
+
+.bg-logo-1{
+    /*background-color: var(--purple);*/
+    color: var(--purple);
+}
+
+.bg-logo-2{
+    background-color: var(--pink);
+    color: var(--grey);
+}
+
+.bg-logo-3{
+    background-color: var(--grey);
+    color: var(--yellow);
+}
+
+
