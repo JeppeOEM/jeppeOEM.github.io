@@ -7,7 +7,7 @@ import { leftPre, rightPre } from "./codeBackground.js";
 import { horizontalBinaryAnimation, startBinaryAnimation } from "./binaryAnimation.js";
 
 
-export function code() {
+export function codePage() {
 
   const bodyBackground = new AsciiBackground({
     asciiArt: patterns.pattern1,

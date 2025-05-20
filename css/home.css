@@ -1,0 +1,105 @@
+@import url('./root.css');
+
+.target-text {
+  color: white;
+  opacity: 0;
+  transition: opacity 2s ease-in;
+}
+
+.target-text.visible {
+  opacity: 1;
+}
+.slime span{
+  animation: fadeIn 3s ease-in forwards;
+  color: var(--dark-green);
+}
+
+.slime {
+  /* start invisible */
+  opacity: 0;
+  /* fade to fully opaque over 3s as soon as it's rendered */
+  animation: fadeIn 2s ease-in forwards;
+}
+
+
+
+.ascii-art {
+  margin-top: 35px;
+  position: relative;
+  color: #39ff14;
+  font-size: inherit;
+  white-space: pre;
+  text-align: center;
+  transform-origin: center;
+  opacity: 0;
+  z-index: 100;
+  animation:
+    fadeInLogo 3s cubic-bezier(0.4, 0, 0.4, 1) forwards,
+    grow 1s ease-out 3s forwards,
+    moveBack 1s ease-in-out 6.8s forwards;
+}
+
+.ascii-art span {
+  background-color: black;
+}
+
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInBackground 4s ease-in forwards;
+}
+
+@keyframes fadeInBackground {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInLogo {
+  from {
+    opacity: 0;
+    transform:
+      translate(calc(50vw - 50%), calc(50vh - 50% - var(--half-height)))
+      scale(0.6);
+  }
+
+  to {
+    opacity: 1;
+    transform:
+      translate(calc(50vw - 50%), calc(50vh - 50% - var(--half-height)))
+      scale(0.6);
+  }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+
+
+@keyframes grow {
+  from {
+    transform:
+      translate(calc(50vw - 50%), calc(50vh - 50% - var(--half-height)))
+      scale(0.6);
+  }
+  to {
+    transform:
+      translate(calc(50vw - 50%), calc(50vh - 50% - var(--half-height)))
+      scale(1);
+  }
+}
+
+@keyframes moveBack {
+  from {
+    transform:
+      translate(calc(50vw - 50%), calc(50vh - 50% - var(--half-height)))
+      scale(1);
+  }
+  to {
+    transform:
+      translate(0, 0)
+      scale(1);
+  }
+}
+
