@@ -4,7 +4,7 @@ import AsciiLogoBackground from "./AsciiLogoBackground.js"
 
 import { patterns } from "./asciiPatterns.js"
 import { leftPre, rightPre } from "./codeBackground.js";
-import { horizontalBinaryAnimation, startBinaryAnimation } from "./binaryAnimation.js";
+import { horizontalBinaryAnimation, charAnimation } from "./charAnimation.js";
 
 
 export function codePage() {
@@ -25,7 +25,6 @@ export function codePage() {
   }
 
 
-  // NOTE: AsciiLogoBackground
   const leftSection = document.getElementById('leftSection');
   const rightSection = document.getElementById('rightSection');
   const logoPre = document.querySelector('.center-pre')
@@ -42,7 +41,6 @@ export function codePage() {
   logoBackground.init()
 
 
-  // NOTE: AsciiBox
   const templateClosestChild = document.querySelector('.outer')
   const template = document.getElementById('outer-template')
   const asciiBox = new AsciiBox({

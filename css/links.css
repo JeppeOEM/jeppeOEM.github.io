@@ -23,6 +23,52 @@
 
 @import url('./root.css');
 
+
+
+    .binaryContainer {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .binary {
+      z-index: 100;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      color: #0f0;
+    }
+
+    .leftBinary {
+      text-align: right;
+    }
+
+    .rightBinary {
+      text-align: left;
+    }
+
+    .binaryPosition {
+      z-index: 399;
+      /*transform: translateY(calc(-19.3ch))*/
+      /*position: fixed;*/
+      /*top: 10px;*/
+      /*right: 10px;*/
+    }
+
+/*reverses the insert char animation */
+.mirrored {
+  transform: scaleX(-1);
+  direction: rtl; /* optional, can help with layout direction if needed */
+}
+
+/*flip each letter back so they are not mirrored but ony the direction */
+.mirrored span {
+  transform: scaleX(-1);
+  display: inline-block;
+}
+
+
 .link-logo-color-1{
    color: var(--dark-turqoise);
 }
