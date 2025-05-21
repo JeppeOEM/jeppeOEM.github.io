@@ -54,7 +54,7 @@
     box-sizing: border-box;
   font-family: inherit;
   font-weight: 200;
-  /*line-height: 1;*/
+  line-height: 1;
   }
 
 .font-refresh {
@@ -154,7 +154,7 @@ text-decoration: none;
 .nav__link:hover{
   color: var(--turqoise);
   text-decoration: none !important;
-  
+
 }
 
 .first-letter-link{
@@ -267,7 +267,7 @@ color: var(--black) !important;
 }
 .pink{
   color: var(--pink);
-  
+
 }
 
 .outer {
