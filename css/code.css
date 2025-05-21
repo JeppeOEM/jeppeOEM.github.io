@@ -1,6 +1,10 @@
 @import url('./root.css');
 
     .binaryContainer {
+    transform: translate3d(0, 0, 0) scale(1);
+    contain: layout paint;
+    will-change: transform;
+
       display: flex;
       width: 100%;
       justify-content: center;
@@ -29,7 +33,7 @@
       /*position: fixed;*/
       /*top: 10px;*/
       /*right: 10px;*/
-    }
+    } 
 
 
 .color2-trans{

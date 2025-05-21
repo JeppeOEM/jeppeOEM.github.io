@@ -602,20 +602,6 @@ color:var(--white) !important;
 .target-text.visible {
   opacity: 1;
 }
-.slime span{
-  animation: fadeIn 3s ease-in forwards;
-  color: var(--dark-green);
-}
-
-.slime {
-  /* start invisible */
-  opacity: 0;
-  /* fade to fully opaque over 3s as soon as it's rendered */
-  animation: fadeIn 2s ease-in forwards;
-}
-
-
-
 
 
 .fade-in {

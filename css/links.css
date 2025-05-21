@@ -49,7 +49,9 @@
     }
 
     .rightChars {
-   width: 100vw;
+
+      transform: translate3d(0, 0, 0);
+      width: 100vw;
       z-index: -9;
       transform: translateY(20ch);
       position: absolute;
@@ -59,6 +61,8 @@
 
 
     .leftChars {
+
+      transform: translate3d(0, 0, 0);
       width: 50vw;
       z-index: -9;
       transform: translateY(20ch);

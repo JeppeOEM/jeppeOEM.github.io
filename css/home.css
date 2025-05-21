@@ -18,9 +18,12 @@
 
 .slime {
   /* start invisible */
-  opacity: 0;
+  /*opacity: 0;*/
+  /**/
+  /*will isolate and  increase performancn*/
+  contain: strict;
   /* fade to fully opaque over 3s as soon as it's rendered */
-  animation: fadeIn 2s ease-in forwards;
+  /*animation: fadeIn 2s ease-in forwards;*/
 }
 
 
@@ -62,6 +65,9 @@
 
 
 .ascii-art {
+  /*moves the animation to the gpu and prepares for scaling */
+  transform: translate3d(0, 0, 0) scale(1);
+  will-change: transform;
   margin-top: 35px;
   position: relative;
   color: #39ff14;
