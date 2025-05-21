@@ -54,7 +54,7 @@
     box-sizing: border-box;
   font-family: inherit;
   font-weight: 200;
-  line-height: 1;
+  /*line-height: 1;*/
   }
 
 .font-refresh {

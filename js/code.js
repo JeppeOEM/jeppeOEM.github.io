@@ -12,7 +12,7 @@ export function codePage() {
     asciiArt: patterns.pattern1,
     container: document.body,
     style: {
-      color: 'green',
+      color: 'var(--dark-green)',
       opacity: 1,
       zIndex: -1
     }
@@ -46,13 +46,13 @@ export function codePage() {
     templateClosestChild: templateClosestChild,
     template: template,
     mobileBreakpoint: {
-      horizontalChars: 30,
-      verticalLines: 5,
+      horizontalChars: 35,
+      verticalLines: 6,
       breakpoint: 480
     },
     tabletBreakpoint: {
-      horizontalChars: 60,
-      verticalLines: 20,
+      horizontalChars: 10,
+      verticalLines: 220,
       breakpoint: 768
     },
     desktopBreakpoint: {

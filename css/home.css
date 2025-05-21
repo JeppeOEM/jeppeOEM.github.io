@@ -154,15 +154,16 @@
             opacity: 1;
             transform: translateY(0%) scale(1); 
         }
-
+}
 
   @media (max-width: 600px) {
-     
+    
+  .ascii-art{
+
+    line-height: 9px !important;
+  }
     .ascii-art * {
       font-size: 10px;
     }
   }
 
-  .ascii-art span {
-    color: white !important;
-  }
