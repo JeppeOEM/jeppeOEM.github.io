@@ -3,7 +3,7 @@ export function charAnimation(
     delay = 50,
     delayStart = 1000,
     chars = "x",
-    color = "var(--blue)"
+    color = "var(--light-blue)"
 ) {
     const calculateCapacity = (element) => {
         const elementWidth = element.offsetWidth;
@@ -26,6 +26,7 @@ export function charAnimation(
                 if (charIndex < maxChars) {
                     leftContent = chars + leftContent;
 
+                    console.log([...leftContent]);
                     const coloredContent = [...leftContent]
                         .map(bit => `<span style="color: ${bit === '░' ? 'var(--light-blue)' : color};">${bit}</span>`)
                         .join('');

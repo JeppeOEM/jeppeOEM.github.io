@@ -11,7 +11,7 @@ export function home() {
         templateClosestChild: templateClosestChild,
         template: template,
         mobileBreakpoint: {
-            horizontalChars: 30,
+            horizontalChars: 35,
             verticalLines: 6,
             breakpoint: 480
         },
@@ -32,6 +32,7 @@ export function home() {
     animation: fadeSlideScale 1500ms ease forwards;
     animation-delay: 8000ms; /* 4 second delay */
 }
+
 `
     });
 

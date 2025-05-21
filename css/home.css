@@ -11,21 +11,24 @@
 .target-text.visible {
   opacity: 1;
 }
+
 .slime span{
   animation: fadeIn 3s ease-in forwards;
   color: var(--dark-green);
 }
 
 .slime {
-  /* start invisible */
-  /*opacity: 0;*/
-  /**/
   /*will isolate and  increase performancn*/
   contain: strict;
-  /* fade to fully opaque over 3s as soon as it's rendered */
-  /*animation: fadeIn 2s ease-in forwards;*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: -1; /* Send behind other content */
 }
-
 
 
 .mrqdt-color-1 {
@@ -51,17 +54,6 @@
 }
 
 
-.slime {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  z-index: -1; /* Send behind other content */
-  color: var(--dark-grey) !important  /* Text color, if needed */
-}
 
 
 .ascii-art {
@@ -162,3 +154,15 @@
             opacity: 1;
             transform: translateY(0%) scale(1); 
         }
+
+
+  @media (max-width: 600px) {
+     
+    .ascii-art * {
+      font-size: 10px;
+    }
+  }
+
+  .ascii-art span {
+    color: white !important;
+  }

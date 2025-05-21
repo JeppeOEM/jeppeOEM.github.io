@@ -37,7 +37,6 @@
       width: 100%;
       overflow: hidden;
       white-space: nowrap;
-      color: #0f0;
     }
 
     .leftBinary {
@@ -49,11 +48,9 @@
     }
 
     .rightChars {
-
-      transform: translate3d(0, 0, 0);
       width: 100vw;
       z-index: -9;
-      transform: translateY(20ch);
+      transform: translateY(20.1ch);
       position: absolute;
       top: 0px;
      right: 50vw;
@@ -62,10 +59,9 @@
 
     .leftChars {
 
-      transform: translate3d(0, 0, 0);
       width: 50vw;
       z-index: -9;
-      transform: translateY(20ch);
+      transform: translateY(20.1ch);
       position: absolute;
       top: 0px;
        left: 50vw;
