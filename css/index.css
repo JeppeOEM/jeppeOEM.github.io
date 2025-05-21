@@ -48,7 +48,7 @@
 
 
 * {
-    font-size: 16px; 
+    font-size: 16px;
     margin: 0;
   padding: 0;
     box-sizing: border-box;
@@ -144,11 +144,38 @@ a {
 .link-list li a{
   z-index: 1;
   position: relative;
+  padding-right: 8px;
 }
 
 .dot-seperation{
   z-index: 1;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  overflow: hidden;
+}
+
+.dot-seperation span {
+  position: relative;
+  background: var(--grey);
+  padding-left: 8px;
+  z-index: 2;
+  text-align: right;
+}
+
+/* The dot leader line */
+.dot-seperation::before {
+  content: "................................................................................................";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.1ch;
+  z-index: -1;
+  color: var(--light-black);
+  letter-spacing: 2px;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 a.link::before {
@@ -157,6 +184,8 @@ a.link::before {
 }
 
 a.link {
+
+    background-color: var(--grey);
     text-decoration: none;
     /*color: #007BFF; /* Color on hover (blue in this case) */
     color: var(--turqoise); /* Color on hover (blue in this case) */
@@ -251,10 +280,18 @@ color: var(--black) !important;
 }
 
 .outer {
-  font: 1em/1.18 inherit;
-  font-size: 2em;
+  /*font: 1em/1.18 inherit;*/
+  /*font-size: 2em;*/
   position: relative;
   width: min-content;
+}
+
+.trans-y-1ch{
+  transform:translateY(-1ch)
+}
+
+.padding-1ch{
+  padding: 1ch
 }
 
 .dark-green{
@@ -579,24 +616,6 @@ color:var(--white) !important;
 
 
 
-.ascii-art {
-  position: relative;
-  color: #39ff14;
-  font-size: 10px;
-  white-space: pre;
-  text-align: center;
-  transform-origin: center;
-  opacity: 0;
-  z-index: 100;
-  animation:
-    fadeInLogo 3s cubic-bezier(0.4, 0, 0.4, 1) forwards,
-    grow 1s ease-out 3s forwards,
-    moveBack 1s ease-in-out 6.8s forwards;
-}
-
-.ascii-art span {
-  background-color: black;
-}
 
 
 .fade-in {
@@ -691,19 +710,6 @@ nav a {
 .light-green {
     color: var(--light-green);
 }
-.slime {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-  z-index: -1; /* Send behind other content */
-  color: var(--dark-grey) !important  /* Text color, if needed */
-}
-
-
 
 
 body {

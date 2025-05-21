@@ -6,36 +6,9 @@ export default class AsciiBox {
         this.mobileBreakpoint = config.mobileBreakpoint;
         this.desktopBreakpoint = config.desktopBreakpoint;
         this.delay = config.delay || 4000 // milliseconds
-        this.duration = config.duration || 1500; // milliseconds
         this.currentTemplate = null;
         this.hasFadedIn = false;
-        this.styleTextContent = config.styleTextContent || `
-    .fade-in-box {
-        opacity: 0;
-        transform: translateY(200%) scale(0.5);
-        animation: fadeSlideScale ${this.duration * 2}ms ease forwards;
-    }
-
-    .fade-in-box.show {
-        /* Triggers the animation */
-    }
-
-    @keyframes fadeSlideScale {
-        0% {
-            opacity: 0;
-            transform: translateY(200%) scale(0.5);
-        }
-        50% {
-            opacity: 1;
-            transform: translateY(0%) scale(0.5); /* Finished sliding, no scale yet */
-        }
-        100% {
-            opacity: 1;
-            transform: translateY(0%) scale(1); /* Scale up in place */
-        }
-    }
-`;
-
+        this.styleTextContent = config.styleTextContent
     }
 
     getBreakpoint(width) {

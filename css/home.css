@@ -25,10 +25,19 @@
 
 
 
-.mrqdt-color-1{
-  color: var(--light-black);
+.mrqdt-color-1 {
   opacity: 0;
+
+  color: var(--light-black);
+  animation: fadeIn 1s ease-in-out 7s forwards;
 }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
 .mrqdt-color-2{
   color: var(--dark-green);
   /* opacity: 0; */
@@ -36,6 +45,19 @@
 .mrqdt-color-3{
   color: var(--light-green);
   /* opacity: 0; */
+}
+
+
+.slime {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  z-index: -1; /* Send behind other content */
+  color: var(--dark-grey) !important  /* Text color, if needed */
 }
 
 
@@ -54,6 +76,8 @@
     grow 1s ease-out 3s forwards,
     moveBack 1s ease-in-out 6.8s forwards;
 }
+
+
 
 .ascii-art span {
   background-color: black;
@@ -119,3 +143,16 @@
   }
 }
 
+    @keyframes fadeSlideScale {
+        0% {
+            opacity: 0;
+            transform: translateY(200%) scale(0.5);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(0%) scale(0.5); 
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0%) scale(1); 
+        }

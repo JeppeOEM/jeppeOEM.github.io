@@ -26,37 +26,35 @@ export function home() {
         },
         delay: 7500,
         duration: 1500,
-        styleTextContent: `
-            .fade-in-box {
-                opacity: 0;
-                transition: opacity 1500ms ease;
-            }
-            .fade-in-box.show {
-                opacity: 1;
-            }
-        `
+        styleTextContent: `.fade-in-box {
+    opacity: 0;
+    transform: translateY(200%) scale(0.5);
+    animation: fadeSlideScale 1500ms ease forwards;
+    animation-delay: 8000ms; /* 4 second delay */
+}
+`
     });
 
 
     asciiBox.init();
 
-    const preElement = document.querySelector('.ascii-art');
-    if (preElement) {
-        const textContent = preElement.textContent;
-        const textLines = textContent.split('\n');
-        const maxLineLength = Math.max(...textLines.map(line => line.length));
-        let htmlContent = ''; // You might want to use this for future character formatting
-    }
-
-    const art = document.querySelector('.ascii-art');
-    const target = document.querySelector('.target-text');
-    if (art && target) {
-        art.addEventListener('animationstart', (e) => {
-            if (e.animationName === 'moveBack') {
-                target.classList.add('visible');
-            }
-        });
-    }
+    //const preElement = document.querySelector('.ascii-art');
+    //if (preElement) {
+    //    const textContent = preElement.textContent;
+    //    const textLines = textContent.split('\n');
+    //    const maxLineLength = Math.max(...textLines.map(line => line.length));
+    //    let htmlContent = ''; // You might want to use this for future character formatting
+    //}
+    //
+    //const art = document.querySelector('.ascii-art');
+    //const target = document.querySelector('.target-text');
+    //if (art && target) {
+    //    art.addEventListener('animationstart', (e) => {
+    //        if (e.animationName === 'moveBack') {
+    //            target.classList.add('visible');
+    //        }
+    //    });
+    //}
 
     setTimeout(function() {
         run(program, { element: document.querySelector('.slime') })

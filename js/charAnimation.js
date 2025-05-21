@@ -1,38 +1,45 @@
-export function charAnimation(leftElement, delay = 50, delayStart = 1000, chars = "x", color = "var(--blue)") {
+export function charAnimation(
+    leftElement,
+    delay = 50,
+    delayStart = 1000,
+    chars = "x",
+    color = "var(--blue)"
+) {
     const calculateCapacity = (element) => {
         const elementWidth = element.offsetWidth;
-        return Math.floor(elementWidth / 14); // Approx. width per char for monospace
+        return Math.floor(elementWidth / 14); // Approx. width per char
     };
-    // Reset any existing transition
+
     leftElement.style.transition = '';
     leftElement.style.opacity = 1;
 
     let leftContent = '';
+    let lastUpdate = performance.now();
+    let charIndex = 0;
 
     setTimeout(() => {
         const leftCapacity = calculateCapacity(leftElement);
-        const maxChars = leftCapacity * 3; // Fill to 4x capacity then fade out
+        const maxChars = leftCapacity * 3;
 
-        const updateLeft = () => {
-            if (leftContent.length < maxChars) {
-                // Add new character (using the chars parameter directly as specified)
-                const newBit = chars;
-                leftContent = newBit + leftContent;
+        const animate = (now) => {
+            if (now - lastUpdate >= delay) {
+                if (charIndex < maxChars) {
+                    leftContent = chars + leftContent;
 
-                // Color each bit
-                const coloredContent = [...leftContent]
-                    .map(bit => `<span style="color: ${bit === '░' ? 'var(--light-blue)' : color};">${bit}</span>`)
-                    .join('');
+                    const coloredContent = [...leftContent]
+                        .map(bit => `<span style="color: ${bit === '░' ? 'var(--light-blue)' : color};">${bit}</span>`)
+                        .join('');
+                    leftElement.innerHTML = coloredContent;
 
-                leftElement.innerHTML = coloredContent;
-                setTimeout(updateLeft, delay);
-            } else {
-                // Animation complete - fade out with 1s transition
-                // leftElement.style.transition = 'opacity 2s ease-out';
-                // leftElement.style.opacity = 0;
+                    charIndex++;
+                    lastUpdate = now;
+                } else {
+                    return; // done
+                }
             }
+            requestAnimationFrame(animate);
         };
 
-        updateLeft();
+        requestAnimationFrame(animate);
     }, delayStart);
 }

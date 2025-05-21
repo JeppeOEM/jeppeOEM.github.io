@@ -5,21 +5,7 @@ import AsciiBox from "./AsciiBox.js"
 
 export function loadPage(fontDependentCode) {
 
-  function charLine(target, char) {
-    const div = document.querySelector(target);
-    const span = document.createElement('span');
-    span.style.fontFamily = 'monospace';
-    span.style.visibility = 'hidden';
-    span.textContent = char;
-    document.body.appendChild(span);
 
-    const charWidth = span.offsetWidth;
-    const screenWidth = window.innerWidth;
-    const repeatCount = Math.floor(screenWidth / charWidth);
-
-    div.textContent = char.repeat(repeatCount);
-    document.body.removeChild(span);
-  }
 
   document.addEventListener('DOMContentLoaded', () => {
     const selectedFont = localStorage.getItem('selectedFont') || 'PetMe';
@@ -44,7 +30,6 @@ export function loadPage(fontDependentCode) {
   function fallbackToDefault() {
     document.body.style.setProperty('font-family', 'monospace', 'important');
     fontDependentCode();
-    charLine(".nav-dots", "*");
   }
 }
 
