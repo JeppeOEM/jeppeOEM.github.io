@@ -54,6 +54,7 @@
     box-sizing: border-box;
   font-family: inherit;
   font-weight: 200;
+  /* line-height: must not be deleted for the slime animation to work; */
   line-height: 1;
   }
 
