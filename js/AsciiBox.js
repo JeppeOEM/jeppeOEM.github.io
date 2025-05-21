@@ -1,21 +1,37 @@
 export default class AsciiBox {
     constructor(config) {
+        // Store configuration parameters
         this.templateClosestChild = config.templateClosestChild;
         this.template = config.template;
         this.tabletBreakpoint = config.tabletBreakpoint;
         this.mobileBreakpoint = config.mobileBreakpoint;
         this.desktopBreakpoint = config.desktopBreakpoint;
-        this.delay = config.delay || 4000 // milliseconds
+        this.delay = config.delay || 4000; // milliseconds
         this.currentTemplate = null;
         this.hasFadedIn = false;
-        this.styleTextContent = config.styleTextContent
+        this.styleTextContent = config.styleTextContent;
+
+        // Bind methods to maintain proper 'this' context
+        this.handleResize = this.handleResize.bind(this);
     }
 
     getBreakpoint(width = document.documentElement.clientWidth) {
-        console.log(width)
+        // Use window.innerWidth for more reliable width detection
         if (width < this.mobileBreakpoint.breakpoint) return 'mobile';
         if (width < this.tabletBreakpoint.breakpoint) return 'tablet';
         return 'desktop';
+    }
+
+    getBreakpointSettings(breakpoint) {
+        switch (breakpoint) {
+            case 'mobile':
+                return this.mobileBreakpoint;
+            case 'tablet':
+                return this.tabletBreakpoint;
+            case 'desktop':
+            default:
+                return this.desktopBreakpoint;
+        }
     }
 
     injectFadeStyle() {
@@ -23,7 +39,7 @@ export default class AsciiBox {
 
         const style = document.createElement('style');
         style.id = 'ascii-fade-style';
-        style.textContent = this.styleTextContent
+        style.textContent = this.styleTextContent;
         document.head.appendChild(style);
     }
 
@@ -36,43 +52,31 @@ export default class AsciiBox {
 
         this.injectFadeStyle();
 
-        const templateElement = this.template;
-        if (!templateElement) {
+        // Check if template exists
+        if (!this.template) {
             console.error("Template element not found");
             return;
         }
 
-        const templateContent = templateElement.content.cloneNode(true);
-        console.log(templateContent, this.mobileBreakpoint.horizontalChars, "Iooooiiiiiiiiiiiiiiiiiiiiiiiii")
-        // Determine breakpoint settings
-        const screenWidth = window.innerWidth;
-        let baseCharCount, verticalLines;
+        const templateContent = this.template.content.cloneNode(true);
 
-        if (screenWidth < this.mobileBreakpoint.breakpoint) {
-            baseCharCount = this.mobileBreakpoint.horizontalChars;
-            verticalLines = this.mobileBreakpoint.verticalLines;
-        } else if (screenWidth < this.tabletBreakpoint.breakpoint) {
-            baseCharCount = this.tabletBreakpoint.horizontalChars;
-            verticalLines = this.tabletBreakpoint.verticalLines;
-        } else {
-            baseCharCount = this.desktopBreakpoint.horizontalChars;
-            verticalLines = this.desktopBreakpoint.verticalLines;
-        }
+        // Determine current breakpoint and get settings
+        const currentBreakpoint = this.getBreakpoint();
+        const { horizontalChars, verticalLines } = this.getBreakpointSettings(currentBreakpoint);
+
+        console.log(`Current breakpoint: ${currentBreakpoint}, Chars: ${horizontalChars}, Lines: ${verticalLines}`);
 
         // Handle responsive spans
         const spans = templateContent.querySelectorAll('.responsive-span');
         spans.forEach(span => {
-            let charCount = baseCharCount;
+            let charCount = horizontalChars;
             let useEmpty = false;
-
-            console.log(charCount);
 
             span.classList.forEach(cls => {
                 const minusMatch = cls.match(/^minus(\d+)$/);
                 if (minusMatch) {
                     const minus = parseInt(minusMatch[1], 10);
                     charCount = Math.max(0, charCount - minus);
-                    console.log(charCount)
                 }
                 if (cls === 'empty') {
                     useEmpty = true;
@@ -85,12 +89,16 @@ export default class AsciiBox {
         // Add vertical lines if needed
         const pre = templateContent.querySelector('.ascii-box');
         const columnMarker = pre?.querySelector('.column');
-        if (columnMarker && verticalLines > 0) {
-            const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(baseCharCount)}</span>│ │ │</span>`;
+
+        if (pre && columnMarker && verticalLines > 0) {
+            // Create a template for vertical lines
+            const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(horizontalChars)}</span>│ │ │</span>`;
+
             for (let i = 0; i < verticalLines; i++) {
                 const tempDiv = document.createElement('div');
                 tempDiv.innerHTML = lineHTML;
                 const newLine = tempDiv.firstChild;
+
                 pre.insertBefore(newLine, columnMarker);
                 pre.insertBefore(document.createTextNode('\n'), columnMarker);
             }
@@ -98,6 +106,7 @@ export default class AsciiBox {
 
         // Wrap the template content
         const wrapper = document.createElement('div');
+        wrapper.classList.add('ascii-box-wrapper');
         wrapper.appendChild(templateContent);
 
         // Apply fade-in only on first load
@@ -119,17 +128,36 @@ export default class AsciiBox {
         this.currentTemplate = wrapper;
     }
 
+    handleResize() {
+        const newBreakpoint = this.getBreakpoint();
+
+        // Only recreate template if breakpoint changes
+        if (newBreakpoint !== this._currentBreakpoint) {
+            this._currentBreakpoint = newBreakpoint;
+            this.createResponsiveTemplate();
+        }
+    }
+
     init() {
-        let currentBreakpoint = this.getBreakpoint();
-        console.log(currentBreakpoint, "CUURTENT FF BREAK")
+        // Store initial breakpoint
+        this._currentBreakpoint = this.getBreakpoint();
+        console.log(`Initializing with breakpoint: ${this._currentBreakpoint}`);
+
+        // Create initial template
         this.createResponsiveTemplate();
 
-        window.addEventListener('resize', () => {
-            const newBreakpoint = this.getBreakpoint();
-            if (newBreakpoint !== currentBreakpoint) {
-                currentBreakpoint = newBreakpoint;
-                this.createResponsiveTemplate();
-            }
-        });
+        // Add resize event listener
+        window.addEventListener('resize', this.handleResize);
+    }
+
+    destroy() {
+        // Clean up event listeners
+        window.removeEventListener('resize', this.handleResize);
+
+        // Remove template from DOM
+        if (this.currentTemplate) {
+            this.currentTemplate.remove();
+            this.currentTemplate = null;
+        }
     }
 }
