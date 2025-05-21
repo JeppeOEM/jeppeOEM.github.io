@@ -48,7 +48,7 @@ export function linksPage() {
         templateClosestChild: templateClosestChild,
         template: template,
         mobileBreakpoint: {
-            horizontalChars: 30,
+            horizontalChars: 42,
             verticalLines: 5,
             breakpoint: 480
         },

@@ -49,7 +49,6 @@
 </div>
 
 <div class="navbar-side">
-  <span>test</span>
 </div>
     </nav>
     <div class="nav-dots">
@@ -199,8 +198,8 @@
 
       <div class="bg padding-1ch" style="--bg:var(--grey); --x:4; --y:2; --w:9; --h:43;">
             <p>
-              Here is my collection of the most interesting or usefull links digital art and creative programming, 
-            </p>
+              Here is a collection of the most interesting or usefull links in digital art, and creative coding, and especially graphics created in the oldschool style of textmode, which purely uses charecters as a medium.
+            </p> 
       </div>
       <div class="bg scroll z-1 padding-1ch" style="--bg:var(--grey); --x:4; --y:8; --w:9; --h:19;">
        
@@ -330,7 +329,7 @@
       </div>
       <pre class="ascii-box">
 ┌────<span class="responsive-span">────────────────────────────────────────────────────────────────────────────────</span>────┐
-│ : .<span class="responsive-span empty">█████████████████████████████████████████████████████████████████████████████████</span>. : │
+│ : .<span class="responsive-span empty"></span>. : │
 │ └-│<span class="responsive-span">─────────────────────────────────────────────────────────────────────────────────</span>│-┘ │
 │   │<span class="responsive-span empty"></span>│   │
 │   │<span class="responsive-span empty"></span>│   │
@@ -377,9 +376,9 @@
   import { linksPage } from './js/linksPage.js'
 
 
-  window.addEventListener('load', function () {
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM fully loaded");
     document.body.classList.add('loaded');
-  });
 
 
   document.getElementById('font-selector').addEventListener('change', (e) => {
@@ -389,6 +388,7 @@
 
   loadPage(linksPage)
 
+  });
 </script>
   </body>
   </html>

@@ -11,7 +11,8 @@ export default class AsciiBox {
         this.styleTextContent = config.styleTextContent
     }
 
-    getBreakpoint(width) {
+    getBreakpoint(width = document.documentElement.clientWidth) {
+        console.log(width)
         if (width < this.mobileBreakpoint.breakpoint) return 'mobile';
         if (width < this.tabletBreakpoint.breakpoint) return 'tablet';
         return 'desktop';
@@ -42,7 +43,7 @@ export default class AsciiBox {
         }
 
         const templateContent = templateElement.content.cloneNode(true);
-
+        console.log(templateContent, this.mobileBreakpoint.horizontalChars, "Iooooiiiiiiiiiiiiiiiiiiiiiiiii")
         // Determine breakpoint settings
         const screenWidth = window.innerWidth;
         let baseCharCount, verticalLines;
@@ -64,11 +65,14 @@ export default class AsciiBox {
             let charCount = baseCharCount;
             let useEmpty = false;
 
+            console.log(charCount);
+
             span.classList.forEach(cls => {
                 const minusMatch = cls.match(/^minus(\d+)$/);
                 if (minusMatch) {
                     const minus = parseInt(minusMatch[1], 10);
                     charCount = Math.max(0, charCount - minus);
+                    console.log(charCount)
                 }
                 if (cls === 'empty') {
                     useEmpty = true;
@@ -116,11 +120,12 @@ export default class AsciiBox {
     }
 
     init() {
-        let currentBreakpoint = this.getBreakpoint(window.innerWidth);
+        let currentBreakpoint = this.getBreakpoint();
+        console.log(currentBreakpoint, "CUURTENT FF BREAK")
         this.createResponsiveTemplate();
 
         window.addEventListener('resize', () => {
-            const newBreakpoint = this.getBreakpoint(window.innerWidth);
+            const newBreakpoint = this.getBreakpoint();
             if (newBreakpoint !== currentBreakpoint) {
                 currentBreakpoint = newBreakpoint;
                 this.createResponsiveTemplate();

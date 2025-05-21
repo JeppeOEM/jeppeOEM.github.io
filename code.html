@@ -258,23 +258,27 @@ To make the .project element's width and height adjust to the content only on sm
 
 
 <script type="module">
-  import { saveFontSelection } from './js/saveFontSelection.js';
-  import { loadPage } from './js/loadPage.js'
-  import { codePage } from './js/code.js'
+import { saveFontSelection } from './js/saveFontSelection.js';
+import { loadPage } from './js/loadPage.js';
+import { codePage } from './js/code.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("DOM fully loaded");
 
-  window.addEventListener('load', function () {
-    document.body.classList.add('loaded');
-  });
+  document.body.classList.add('loaded');
 
+  const fontSelector = document.getElementById('font-selector');
+  if (fontSelector) {
+    fontSelector.addEventListener('change', (e) => {
+      const selectedFont = e.target.value;
+      saveFontSelection(selectedFont);
+    });
+  } else {
+    console.warn("#font-selector not found!");
+  }
 
-  document.getElementById('font-selector').addEventListener('change', (e) => {
-    const selectedFont = e.target.value;
-    saveFontSelection(selectedFont);
-  });
-
-  loadPage(codePage)
-
+  loadPage(codePage);
+});
 </script>
   </body>
   </html>
