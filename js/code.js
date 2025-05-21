@@ -46,8 +46,8 @@ export function codePage() {
     templateClosestChild: templateClosestChild,
     template: template,
     mobileBreakpoint: {
-      horizontalChars: 15,
-      verticalLines: 6,
+      horizontalChars: 42,
+      verticalLines: 10,
       breakpoint: 480
     },
     tabletBreakpoint: {

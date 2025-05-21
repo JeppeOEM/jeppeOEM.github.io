@@ -62,7 +62,7 @@ export default class AsciiBox {
 
         // Determine current breakpoint and get settings
         const currentBreakpoint = this.getBreakpoint();
-        const { horizontalChars, verticalLines } = this.getBreakpointSettings(currentBreakpoint);
+        const { horizontalChars, verticalLines, verticalHeaderLines } = this.getBreakpointSettings(currentBreakpoint);
 
         console.log(`Current breakpoint: ${currentBreakpoint}, Chars: ${horizontalChars}, Lines: ${verticalLines}`);
 
@@ -90,20 +90,19 @@ export default class AsciiBox {
         const pre = templateContent.querySelector('.ascii-box');
         const columnMarker = pre?.querySelector('.column');
 
+        const headerColumnMarker = pre?.querySelector('.header-column');
+
+        const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(horizontalChars)}</span>│ │ │</span>`;
+
         if (pre && columnMarker && verticalLines > 0) {
             // Create a template for vertical lines
-            const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(horizontalChars)}</span>│ │ │</span>`;
-
-            for (let i = 0; i < verticalLines; i++) {
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = lineHTML;
-                const newLine = tempDiv.firstChild;
-
-                pre.insertBefore(newLine, columnMarker);
-                pre.insertBefore(document.createTextNode('\n'), columnMarker);
-            }
+            this.insertVertical(columnMarker, verticalLines, lineHTML, pre)
         }
 
+        if (pre && headerColumnMarker && verticalHeaderLines > 0) {
+            // Create a template for vertical lines
+            this.insertVertical(headerColumnMarker, verticalHeaderLines, lineHTML, pre)
+        }
         // Wrap the template content
         const wrapper = document.createElement('div');
         wrapper.classList.add('ascii-box-wrapper');
@@ -126,6 +125,19 @@ export default class AsciiBox {
         }
 
         this.currentTemplate = wrapper;
+    }
+
+
+    insertVertical(element, lines, html, pre) {
+
+        for (let i = 0; i < lines; i++) {
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = html;
+            const newLine = tempDiv.firstChild;
+
+            pre.insertBefore(newLine, element);
+            pre.insertBefore(document.createTextNode('\n'), element);
+        }
     }
 
     handleResize() {

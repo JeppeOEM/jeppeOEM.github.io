@@ -857,15 +857,22 @@ background-color: transparent !important;
 
 /* Mobile: flex column below 480px */
 @media (max-width: 480px) {
-  .dot-separation {
+  .dot-seperation {
     flex-direction: column;
+     margin-bottom: 5px;
   }
+
+
+.dot-seperation span {
+  text-align: left;
+}
+
 }
 
 /* Tablet: flex column below 768px */
-@media (max-width: 768px) {
-  .flex-container {
-    flex-direction: column;
-  }
-}
+/*@media (min-width: 768px) {*/
+/*  .dot-separation {*/
+/*    flex-direction: column;*/
+/*  }*/
+/*}*/
 

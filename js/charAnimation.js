@@ -26,7 +26,7 @@ export function charAnimation(
                 if (charIndex < maxChars) {
                     leftContent = chars + leftContent;
 
-                    console.log([...leftContent]);
+                    ;
                     const coloredContent = [...leftContent]
                         .map(bit => `<span style="color: ${bit === '░' ? 'var(--light-blue)' : color};">${bit}</span>`)
                         .join('');
