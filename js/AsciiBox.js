@@ -9,6 +9,33 @@ export default class AsciiBox {
         this.duration = config.duration || 1500; // milliseconds
         this.currentTemplate = null;
         this.hasFadedIn = false;
+        this.styleTextContent = config.styleTextContent || `
+    .fade-in-box {
+        opacity: 0;
+        transform: translateY(200%) scale(0.5);
+        animation: fadeSlideScale ${this.duration * 2}ms ease forwards;
+    }
+
+    .fade-in-box.show {
+        /* Triggers the animation */
+    }
+
+    @keyframes fadeSlideScale {
+        0% {
+            opacity: 0;
+            transform: translateY(200%) scale(0.5);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(0%) scale(0.5); /* Finished sliding, no scale yet */
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0%) scale(1); /* Scale up in place */
+        }
+    }
+`;
+
     }
 
     getBreakpoint(width) {
@@ -22,15 +49,7 @@ export default class AsciiBox {
 
         const style = document.createElement('style');
         style.id = 'ascii-fade-style';
-        style.textContent = `
-            .fade-in-box {
-                opacity: 0;
-                transition: opacity ${this.duration}ms ease;
-            }
-            .fade-in-box.show {
-                opacity: 1;
-            }
-        `;
+        style.textContent = this.styleTextContent
         document.head.appendChild(style);
     }
 

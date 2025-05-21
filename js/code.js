@@ -60,7 +60,7 @@ export function codePage() {
       verticalLines: 10
     },
     delay: 2800,
-    duration: 3000
+    duration: 1000
 
   })
 

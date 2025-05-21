@@ -25,7 +25,16 @@ export function home() {
             verticalLines: 0
         },
         delay: 7500,
-        duration: 1500
+        duration: 1500,
+        styleTextContent: `
+            .fade-in-box {
+                opacity: 0;
+                transition: opacity 1500ms ease;
+            }
+            .fade-in-box.show {
+                opacity: 1;
+            }
+        `
     });
 
 

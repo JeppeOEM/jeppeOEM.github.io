@@ -48,16 +48,24 @@
       text-align: left;
     }
 
-    .binaryPosition {
+    .rightChars {
    width: 100vw;
-      z-index: 9;
-      transform: translateY(calc(22.3ch));
+      z-index: -9;
+      transform: translateY(20ch);
       position: absolute;
       top: 0px;
-     /*left: 0px;*/
+     right: 50vw;
     }
 
 
+    .leftChars {
+      width: 50vw;
+      z-index: -9;
+      transform: translateY(20ch);
+      position: absolute;
+      top: 0px;
+       left: 50vw;
+    }
 
 
 

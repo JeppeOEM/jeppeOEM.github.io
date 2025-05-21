@@ -24,7 +24,7 @@
     }
 
     .binaryPosition {
-      z-index: 399;
+      z-index: -100;
       transform: translateY(calc(-19.3ch))
       /*position: fixed;*/
       /*top: 10px;*/
