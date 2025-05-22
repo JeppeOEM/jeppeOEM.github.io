@@ -39,6 +39,12 @@
 }
 
   body {
+
+  background-color: black;
+  /* font-size: 14px; */
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-: auto;
     opacity: 0;
     transition: opacity 1s ease;
   }
@@ -285,6 +291,11 @@ color: var(--black) !important;
 .padding-1ch{
   padding: 1ch
 }
+
+.padding-2ch{
+  padding: 2ch
+}
+
 
 .dark-green{
   color:var(--dark-green);
@@ -650,12 +661,6 @@ nav a {
 }
 
 
-body {
-  background-color: black;
-  /* font-size: 14px; */
-  min-height: 100vh;
-  overflow-x: hidden;
-}
 
 
 .content {
