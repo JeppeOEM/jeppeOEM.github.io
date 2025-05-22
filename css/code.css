@@ -101,3 +101,43 @@ color:var(--light-green);
 
 }
 
+.projects{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 10px 20px;
+  justify-content: center;
+}
+
+.project {
+  z-index:1;
+  border: 1px solid;
+  margin:10px;
+  padding: 10px;
+      width: auto;
+      height: auto;
+  background-color: var(--dark-turqoise)
+}
+
+.project:hover{
+  background-color: var(--turqoise)
+}
+
+
+.vertical-line{
+  font: inherit;
+}
+
+@media (max-width: 768px) {
+.scroll{
+    overflow-y:scroll;
+}
+    .projects{
+      padding: 5px 5px;
+    }
+
+.project{
+    }
+
+}
+

@@ -326,47 +326,6 @@ color: var(--black) !important;
   z-index: 1;
 }
 
-.projects{
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding: 10px 20px;
-  justify-content: center;
-}
-
-.project {
-  z-index:1;
-  border: 1px solid;
-  margin:10px;
-  padding: 10px;
-  height: 30ch;
-  width: 30ch;
-  background-color: var(--dark-turqoise)
-}
-
-.project:hover{
-  background-color: var(--turqoise)
-}
-
-
-.vertical-line{
-  font: inherit;
-}
-
-@media (max-width: 768px) {
-.scroll{
-    overflow-y:scroll;
-}
-    .projects{
-      padding: 5px 5px;
-    }
-
-.project{
-      width: auto;
-      height: auto;
-    }
-
-}
 
 
 .flex-horizontal{
