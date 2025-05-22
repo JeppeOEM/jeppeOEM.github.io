@@ -38,13 +38,23 @@
   src: url(Px437_IBM_EGA_9x14.ttf);
 }
 
+html, body {
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
   body {
+  font-size: 16px;
+  scrollbar-hidth: thin;
+  scrollbar-color:  var(--dark-turqoise) var(--dark-grey);
   margin-top: 30px;
   background-color: black;
   /* font-size: 14px; */
   min-height: 100vh;
   overflow-x: hidden;
-  overflow-: auto;
+  /*prevents the animatons positioned outside the html to make the screen too big*/
+  overflow-y: auto;
     opacity: 0;
     transition: opacity 1s ease;
   }
@@ -69,11 +79,6 @@
 }
 
 /* Firefox */
-body {
-  font-size: 16px;
-  scrollbar-hidth: thin;
-  scrollbar-color:  var(--dark-turqoise) var(--dark-grey);
-}
 
 /* WebKit */
 ::-webkit-scrollbar {
