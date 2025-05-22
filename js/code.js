@@ -47,13 +47,13 @@ export function codePage() {
     template: template,
     mobileBreakpoint: {
       horizontalChars: 42,
-      verticalLines: 10,
+      verticalLines: 20,
       breakpoint: 480
     },
     tabletBreakpoint: {
-      horizontalChars: 10,
-      verticalLines: 220,
-      breakpoint: 768
+      horizontalChars: 42,
+      verticalLines: 20,
+      breakpoint: 481
     },
     desktopBreakpoint: {
       horizontalChars: 80,

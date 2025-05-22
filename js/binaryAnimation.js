@@ -18,7 +18,7 @@ export function startBinaryAnimation(leftElement, delay = 50, delayStart = 1000)
 
                 // Color each bit
                 const coloredContent = [...leftContent]
-                    .map(bit => `<span style="color: ${bit === '1' ? 'var(--light-green)' : 'var(--dark-green)'};">${bit}</span>`)
+                    .map(bit => `<span class="${bit === '1' ? 'bit-one' : 'bit-zero'}">${bit}</span>`)
                     .join('');
 
                 leftElement.innerHTML = coloredContent;

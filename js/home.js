@@ -13,12 +13,12 @@ export function home() {
         mobileBreakpoint: {
             horizontalChars: 35,
             verticalLines: 6,
-            breakpoint: 480
+            breakpoint: 514
         },
         tabletBreakpoint: {
-            horizontalChars: 50,
-            verticalLines: 3,
-            breakpoint: 768
+            horizontalChars: 35,
+            verticalLines: 6,
+            breakpoint: 515
         },
         desktopBreakpoint: {
             horizontalChars: 70,
