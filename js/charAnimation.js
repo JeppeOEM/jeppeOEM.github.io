@@ -1,6 +1,6 @@
 export function charAnimation(
     leftElement,
-    delay = 50,
+    delay,
     delayStart = 1000,
     chars = "x", // Can be a sequence like '░▒▓'
     color = "var(--light-blue)"

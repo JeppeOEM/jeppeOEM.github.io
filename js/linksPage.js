@@ -64,7 +64,7 @@ export function linksPage() {
             verticalHeaderLines: 0,
             verticalLines: 10
         },
-    styleTextContent: `.fade-in-box {
+        styleTextContent: `.fade-in-box {
     opacity: 0;
     transform: translateY(200%) scale(0.5);
     animation: fadeSlideScale 1500ms ease forwards;
@@ -89,39 +89,39 @@ export function linksPage() {
         }
     }
 `
-  })
+    })
 
-  asciiBox.init()
+    asciiBox.init()
 
     const topBorderLeft = document.querySelector('.borderTopLeft');
-    charAnimation(topBorderLeft, 2, 700, "═══", 'var(--white)');
+    charAnimation(topBorderLeft, 2, 700, "══════", 'var(--white)');
     const charTopLeft = document.querySelector('.charTopLeft');
-    charAnimation(charTopLeft, 2, 650, ":::");
+    charAnimation(charTopLeft, 2, 650, "::::::");
     const charSecondTopLeft = document.querySelector('.charSecondTopLeft');
-    charAnimation(charSecondTopLeft, 2, 600, ":::");
+    charAnimation(charSecondTopLeft, 2, 600, "::::::");
     const centerDivLeft = document.querySelector('.centerDivLeft');
-    charAnimation(centerDivLeft, 4, 600, ":░", "var(--white)");
+    charAnimation(centerDivLeft, 4, 600, ":░:░", "var(--white)");
     const charSecondBottomLeft = document.querySelector('.charSecondBottomLeft');
-    charAnimation(charSecondBottomLeft, 2, 600, ":::");
+    charAnimation(charSecondBottomLeft, 2, 600, "::::::");
     const charBottomLeft = document.querySelector('.charBottomLeft');
-    charAnimation(charBottomLeft, 2, 650, ":::");
+    charAnimation(charBottomLeft, 2, 650, "::::::");
     const bottomBorderLeft = document.querySelector('.bottomBorderLeft');
-    charAnimation(bottomBorderLeft, 2, 700, "═══", "var(--white)");
+    charAnimation(bottomBorderLeft, 2, 700, "══════", "var(--white)");
 
     const topBorder = document.querySelector('.borderTop');
-    charAnimation(topBorder, 2, 700, "═══", "var(--white)");
+    charAnimation(topBorder, 2, 700, "══════", "var(--white)");
     const charTop = document.querySelector('.charTop');
-    charAnimation(charTop, 2, 650, ":::");
+    charAnimation(charTop, 2, 650, "::::::");
     const charSecondTop = document.querySelector('.charSecondTop');
-    charAnimation(charSecondTop, 2, 600, ":::");
+    charAnimation(charSecondTop, 2, 600, "::::::");
     const centerDiv = document.querySelector('.centerDiv');
-    charAnimation(centerDiv, 4, 600, ":░", "var(--white)");
+    charAnimation(centerDiv, 4, 600, ":░:░", "var(--white)");
     const charSecondBottom = document.querySelector('.charSecondBottom');
-    charAnimation(charSecondBottom, 2, 600, ":::");
+    charAnimation(charSecondBottom, 2, 600, "::::::");
     const charBottom = document.querySelector('.charBottom');
-    charAnimation(charBottom, 2, 650, ":::");
+    charAnimation(charBottom, 2, 650, "::::::");
     const bottomBorder = document.querySelector('.bottomBorder');
-    charAnimation(bottomBorder, 2, 700, "═══", "var(--white)");
+    charAnimation(bottomBorder, 2, 700, "══════", "var(--white)");
 
 
 
