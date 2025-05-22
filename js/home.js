@@ -12,17 +12,17 @@ export function home() {
         template: template,
         mobileBreakpoint: {
             horizontalChars: 35,
-            verticalLines: 6,
+            verticalLines: 8,
             breakpoint: 514
         },
         tabletBreakpoint: {
             horizontalChars: 35,
-            verticalLines: 6,
+            verticalLines: 8,
             breakpoint: 515
         },
         desktopBreakpoint: {
             horizontalChars: 70,
-            verticalLines: 0
+            verticalLines: 2
         },
         delay: 7500,
         duration: 1500,

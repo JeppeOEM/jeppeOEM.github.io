@@ -90,6 +90,15 @@ body {
   background-color: var(--dark-turqoise);
 }
 
+
+.flex-between-y {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+
 .scroll-box {
   position: absolute;
   top: 0;
@@ -326,9 +335,18 @@ color: var(--black) !important;
   padding: 2ch
 }
 
+.small-margin-top{
+  margin-top: var(--small-pad);
+}
+
 
 .dark-green{
   color:var(--dark-green);
+}
+
+
+.left-section, .right-section{
+  margin-top: var(--small-pad);
 }
 
 
@@ -730,14 +748,15 @@ flex-direction: row;
 
 
 .center-pre-wrapper {
-  position: relative; /* Needed for absolute positioning inside */
+  margin-top: var(--small-pad);
+  position: relative; 
   display: inline-block;
 }
 
 .background-layer {
   position: absolute;
   top: 6ch;
-  bottom: 6ch;
+  bottom: 8ch;
   left: 0;
   right: 0;
   background-color: var(--black); /* Your desired background */

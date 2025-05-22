@@ -118,7 +118,7 @@ color:var(--light-green);
   border: 1px solid;
   margin: var(--small-pad);
   padding: var(--small-pad);
-  width: auto;
+  width: auto
   height: auto;
   background-color: var(--dark-turqoise);
 }

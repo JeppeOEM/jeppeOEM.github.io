@@ -92,7 +92,7 @@ export default class AsciiBox {
 
         const headerColumnMarker = pre?.querySelector('.header-column');
 
-        const lineHTML = `<span class="vertical-line">│ │ │<span class="responsive-span empty">${' '.repeat(horizontalChars)}</span>│ │ │</span>`;
+        const lineHTML = `<span class="vertical-line">│   │<span class="responsive-span empty">${' '.repeat(horizontalChars)}</span>│   │</span>`;
 
         if (pre && columnMarker && verticalLines > 0) {
             // Create a template for vertical lines
