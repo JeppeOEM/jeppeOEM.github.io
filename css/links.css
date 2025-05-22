@@ -137,4 +137,8 @@
     color: var(--yellow);
 }
 
+@media (max-width: 768px) {
+    .binaryPosition, .center-pre{
+      font-size: 12px;
+    }
 
