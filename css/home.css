@@ -1,15 +1,33 @@
 @import url('./root.css');
 
 .background-layer {
-position: absolute;
-top: 0;
-left: 50%;
-transform: translate(-50%, 0%);
-background-color: var(--black);
-z-index: 0;
-width: 80ch;
-height: 14lh;
-  animation: showAfterDelay 2s ease-in-out 11s forwards;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  background-color: var(--black);
+  z-index: 0;
+  width: 80ch;
+  height: 14lh;
+
+  opacity: 0;
+  visibility: hidden;
+
+  animation: fadeInBg 1.5s ease-in-out 9s forwards;
+}
+
+@keyframes fadeInBg {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  1% {
+    visibility: visible;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 @keyframes showAfterDelay {
@@ -23,7 +41,7 @@ height: 14lh;
 
 .bg-hidden {
   display: inline-block;
-  background-color:var(--black); 
+  background-color:var(--black);
 }
 
 /*.top-section {*/
@@ -177,16 +195,16 @@ height: 14lh;
         }
         50% {
             opacity: 1;
-            transform: translateY(0%) scale(0.5); 
+            transform: translateY(0%) scale(0.5);
         }
         100% {
             opacity: 1;
-            transform: translateY(0%) scale(1); 
+            transform: translateY(0%) scale(1);
         }
 }
 
   @media (max-width: 500px) {
-    
+
   .ascii-art{
 
     line-height: 9px !important;

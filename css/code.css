@@ -33,7 +33,7 @@
       /*position: fixed;*/
       /*top: 10px;*/
       /*right: 10px;*/
-    } 
+    }
 
 
 
@@ -118,7 +118,7 @@ color:var(--light-green);
   border: 1px solid;
   margin: var(--small-pad);
   padding: var(--small-pad);
-  width: auto
+  width: auto;
   height: auto;
   background-color: var(--dark-turqoise);
 }
@@ -143,8 +143,6 @@ color:var(--light-green);
       padding: 5px 5px;
     }
 
-.project{
-    }
 
 }
 

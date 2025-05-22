@@ -39,7 +39,7 @@
 }
 
   body {
-
+  margin-top: 30px;
   background-color: black;
   /* font-size: 14px; */
   min-height: 100vh;
@@ -181,15 +181,15 @@ a {
   padding-right: 8px;
 }
 
-.nav__link{
-text-decoration: none;
-}
-
-.nav__link:hover{
-  color: var(--turqoise);
-  text-decoration: none !important;
-
-}
+/*.nav__link{*/
+/*text-decoration: none;*/
+/*}*/
+/**/
+/*.nav__link:hover{*/
+/*  color: var(--turqoise);*/
+/*  text-decoration: none !important;*/
+/**/
+/*}*/
 
 .first-letter-link{
   color: white;
@@ -533,6 +533,7 @@ color: var(--black) !important;
 }
 
 .nav {
+  position: fixed;
   display: flex;
   justify-content: space-between;
   background-color: var(--black); /* background-color: var(--dark-green); */

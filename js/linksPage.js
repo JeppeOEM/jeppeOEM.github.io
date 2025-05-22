@@ -64,15 +64,34 @@ export function linksPage() {
             verticalHeaderLines: 0,
             verticalLines: 10
         },
-        delay: 2800,
-        duration: 3000
+    styleTextContent: `.fade-in-box {
+    opacity: 0;
+    transform: translateY(200%) scale(0.5);
+    animation: fadeSlideScale 1500ms ease forwards;
+    animation-delay: 2000ms;
+}
+    .fade-in-box.show {
+        /* Triggers the animation */
+    }
 
-    })
+    @keyframes fadeSlideScale {
+        0% {
+            opacity: 0;
+            transform: translateY(200%) scale(0.5);
+        }
+        50% {
+            opacity: 1;
+            transform: translateY(0%) scale(0.5); /* Finished sliding, no scale yet */
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0%) scale(1); /* Scale up in place */
+        }
+    }
+`
+  })
 
-    asciiBox.init()
-
-
-
+  asciiBox.init()
 
     const topBorderLeft = document.querySelector('.borderTopLeft');
     charAnimation(topBorderLeft, 2, 700, "═══", 'var(--white)');
