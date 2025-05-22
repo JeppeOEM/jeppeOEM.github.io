@@ -71,7 +71,7 @@
 /* Firefox */
 body {
   font-size: 16px;
-  scrollbar-width: thin;
+  scrollbar-hidth: thin;
   scrollbar-color:  var(--dark-turqoise) var(--dark-grey);
 }
 
@@ -90,12 +90,16 @@ body {
   background-color: var(--dark-turqoise);
 }
 
+.scroll-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
-.no-animations *,
-.no-animations *::before,
-.no-animations *::after {
-    animation: none !important;
-    transition: none !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 3em; /* push content down to avoid overlap with the fixed text */
 }
 
 
@@ -118,6 +122,20 @@ a {
 
 .z-0{
   z-index:0;
+}
+
+.relative{
+  position: relative;
+}
+
+.scroll{
+    overflow-y:scroll;
+}
+
+
+
+.minus-3lh{
+  margin-top: -3lh;
 }
 
 .bold {
@@ -263,8 +281,13 @@ a.link-line:hover {
 
 .black{
 color: var(--black) !important;
+}
+
+.black-bg{
+color: var(--black) !important;
   background-color: var(--black);
 }
+
 .orange{
  color: var(--orange);
 }
@@ -275,6 +298,13 @@ color: var(--black) !important;
 .pink{
   color: var(--pink);
 
+}
+
+.bit-zero{
+  color: var(--dark-green);
+}
+.bit-one{
+  color: var(--light-green);
 }
 
 .outer {

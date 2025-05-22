@@ -126,23 +126,29 @@
   <template id="outer-template">
 
  <div class="center">
+
+        <!--add -3 to y to make up for the ascii lines which are above binaryPosition-->
       <section class="outer">
-      <div class="bg" style="--bg:var(--grey); --x:0; --y:0; --w:1; --h:3;"></div>
+      <div class="bg" style="--bg:var(--grey); --x:0; --y:-3; --w:1; --h:0;"></div>
       <!--<div class="bg z-1" style="--bg:var(--grey); --x:4; --y:3; --w:9; --h:35;">-->
       <!---->
       <!--    <h2 class="dark-green bold p-2">-->
       <!--  Favorites-->
       <!--    </h2>-->
       <!--  </div>-->
-      <div class="bg" style="--bg:var(--grey); --x:2; --y:0; --w:5; --h:2;">
+      <div class="bg" style="--bg:var(--grey); --x:2; --y:-3; --w:5; --h:-1;">
       </div>
 
-      <div class="bg scroll" style="--bg:var(--grey);--x:4;--y: 2;--w:9;--h: 7;">
-<h1 class="white">
-  Top picks            
-</h1>
+      <div class="bg" style="--bg:var(--grey);--x:4;--y: -1;--w:9;--h: 4;">
 
-        <div class="projects">
+<p class="padding-2ch z-2 relative">
+Hand picked selection of projects from my <a class="link-line" href="https://github.com">github.com profile</a>
+</p>
+            <!--<div class="scroll-box">-->
+  
+
+
+        <div class="projects scroll-box">
 
 
 
@@ -191,11 +197,12 @@ To make the .project element's width and height adjust to the content only on sm
 </a>
         </article>
         </div>
+        <!--</div>-->
       </div>
 
-    <pre class="ascii-box">
+    <pre class="ascii-box minus-3lh">
 ┌────<span class="responsive-span">────────────────────────────────────────────────────────────────────────────────</span>────┐
-│ : .<span class="responsive-span empty">█████████████████████████████████████████████████████████████████████████████████</span>. : │
+│ : .<span class="black">    Latest Projects</span><span class="responsive-span empty minus19"></span>. : │
 │ └-│<span class="responsive-span">─────────────────────────────────────────────────────────────────────────────────</span>│-┘ │
 │ | │<span class="responsive-span empty"></span>│ : │
 │ : │<span class="responsive-span empty"></span>│   │

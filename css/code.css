@@ -110,6 +110,7 @@ color:var(--light-green);
   flex-direction: row;
   padding: 10px 20px;
   justify-content: center;
+  margin-top: 2.5lh;
 }
 
 .project {
@@ -135,10 +136,9 @@ color:var(--light-green);
   font: inherit;
 }
 
+
+
 @media (max-width: 768px) {
-.scroll{
-    overflow-y:scroll;
-}
     .projects{
       padding: 5px 5px;
     }

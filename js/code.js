@@ -57,7 +57,7 @@ export function codePage() {
     },
     desktopBreakpoint: {
       horizontalChars: 80,
-      verticalLines: 100
+      verticalLines: 5
     },
     delay: 8800,
     styleTextContent: `.fade-in-box {
