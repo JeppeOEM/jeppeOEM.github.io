@@ -1,7 +1,36 @@
 @import url('./root.css');
 
+.background-layer {
+position: absolute;
+top: 0;
+left: 50%;
+transform: translate(-50%, 0%);
+background-color: var(--black);
+z-index: 0;
+width: 80ch;
+height: 14lh;
+  animation: showAfterDelay 2s ease-in-out 11s forwards;
+}
 
+@keyframes showAfterDelay {
+  0%, 99.99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
+.bg-hidden {
+  display: inline-block;
+  background-color:var(--black); 
+}
+
+/*.top-section {*/
+/**/
+/*display: flex;*/
+/*  justify-content: center;*/
+/*}*/
 .target-text {
   color: white;
   opacity: 0;
@@ -35,7 +64,7 @@
   opacity: 0;
 
   color: var(--light-black);
-  animation: fadeIn 1s ease-in-out 7s forwards;
+  animation: fadeIn 1.5s ease-in-out 9s forwards;
 }
 
 @keyframes fadeIn {
@@ -58,7 +87,7 @@
   /*moves the animation to the gpu and prepares for scaling */
   transform: translate3d(0, 0, 0) scale(1);
   will-change: transform;
-  margin-top: 35px;
+  margin-top: 8px;
   position: relative;
   color: #39ff14;
   font-size: inherit;
