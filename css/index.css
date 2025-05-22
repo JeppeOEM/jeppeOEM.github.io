@@ -637,7 +637,7 @@ color:var(--white) !important;
 .fade-in-fast{
 
   opacity: 0;
-  animation: fadeInBackground 1s ease-in forwards;
+  animation: fadeInBackground 2s ease-in forwards;
 }
 
 .fade-in-bg{
