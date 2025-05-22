@@ -75,35 +75,34 @@ export function linksPage() {
 
 
     const topBorderLeft = document.querySelector('.borderTopLeft');
-    charAnimation(topBorderLeft, 2, 1500, "══", 'var(--white)');
+    charAnimation(topBorderLeft, 2, 700, "═══", 'var(--white)');
     const charTopLeft = document.querySelector('.charTopLeft');
-    charAnimation(charTopLeft, 2, 1450, "::");
+    charAnimation(charTopLeft, 2, 650, ":::");
     const charSecondTopLeft = document.querySelector('.charSecondTopLeft');
-    charAnimation(charSecondTopLeft, 2, 1400, "::");
+    charAnimation(charSecondTopLeft, 2, 600, ":::");
     const centerDivLeft = document.querySelector('.centerDivLeft');
-    charAnimation(centerDivLeft, 4, 1400, ":░", "var(--white)");
+    charAnimation(centerDivLeft, 4, 600, ":░", "var(--white)");
     const charSecondBottomLeft = document.querySelector('.charSecondBottomLeft');
-    charAnimation(charSecondBottomLeft, 2, 1400, "::");
+    charAnimation(charSecondBottomLeft, 2, 600, ":::");
     const charBottomLeft = document.querySelector('.charBottomLeft');
-    charAnimation(charBottomLeft, 2, 1450, "::");
-
+    charAnimation(charBottomLeft, 2, 650, ":::");
     const bottomBorderLeft = document.querySelector('.bottomBorderLeft');
-    charAnimation(bottomBorderLeft, 2, 1500, "══", "var(--white)");
+    charAnimation(bottomBorderLeft, 2, 700, "═══", "var(--white)");
 
     const topBorder = document.querySelector('.borderTop');
-    charAnimation(topBorder, 4, 700, "══", "var(--white)");
+    charAnimation(topBorder, 2, 700, "═══", "var(--white)");
     const charTop = document.querySelector('.charTop');
-    charAnimation(charTop, 4, 650, "::");
+    charAnimation(charTop, 2, 650, ":::");
     const charSecondTop = document.querySelector('.charSecondTop');
-    charAnimation(charSecondTop, 4, 600, "::");
+    charAnimation(charSecondTop, 2, 600, ":::");
     const centerDiv = document.querySelector('.centerDiv');
-    charAnimation(centerDiv, 8, 600, ":░", "var(--white)");
+    charAnimation(centerDiv, 4, 600, ":░", "var(--white)");
     const charSecondBottom = document.querySelector('.charSecondBottom');
-    charAnimation(charSecondBottom, 4, 600, "::");
+    charAnimation(charSecondBottom, 2, 600, ":::");
     const charBottom = document.querySelector('.charBottom');
-    charAnimation(charBottom, 4, 650, "::");
+    charAnimation(charBottom, 2, 650, ":::");
     const bottomBorder = document.querySelector('.bottomBorder');
-    charAnimation(bottomBorder, 4, 700, "══", "var(--white)");
+    charAnimation(bottomBorder, 2, 700, "═══", "var(--white)");
 
 
 

@@ -50,7 +50,7 @@
     .rightChars {
       width: 100vw;
       z-index: -9;
-      transform: translateY(22.2ch);
+     transform:translateX(3px) translateY(22.2ch);
       position: absolute;
       top: 0px;
      right: 50vw;
@@ -61,7 +61,7 @@
 
       width: 50vw;
       z-index: -9;
-      transform: translateY(22.2ch);
+      transform: translateX(3px) translateY(22.2ch);
       position: absolute;
       top: 0px;
        left: 50vw;
