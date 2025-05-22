@@ -196,8 +196,9 @@ text-decoration: none;
 }
 
 a.link::before {
-    content: "> ";
-    color: inherit; /* Keep consistent with text color */
+    content: "» ";
+    color: var(--dark-turqoise); 
+  white-space: nowrap;
 }
 
 a.link {
