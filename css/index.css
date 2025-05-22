@@ -160,6 +160,13 @@ a {
   background-color: var(--black);
 }
 
+.bg-grey{
+  background-color: var(--grey);
+}
+
+.border-bottom-grey{
+  border-bottom: var(--light-black) solid 1px
+}
 
 .fade-in {
   opacity: 0;
