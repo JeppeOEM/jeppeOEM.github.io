@@ -137,8 +137,8 @@
     color: var(--yellow);
 }
 
-@media (max-width: 768px) {
-    .binaryPosition, .center-pre{
-      font-size: 12px;
-    }
+/*@media (max-width: 768px) {*/
+/*    .center-pre span{*/
+/*      font-size: 12px !important;*/
+/*    }*/
 

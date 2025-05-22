@@ -20,40 +20,7 @@
 <body>
 
 
-    <nav class="nav">
-<div class="navbar-side">
-  <span></span>
-</div>
-<div class="navbar">
-<div>
-
-      <a href="/" class="nav__link"><span class="bracket">[</span><span class="white">H</span>OME<span class="bracket">]</span></a>
-      <a href="code.html" class="nav__link" data-link><span class="bracket">[</span><span class="white">C</span>ODE<span class="bracket">]</span></a>
-      <a href="/links" class="nav__link" data-link><span class="bracket">[</span><span class="white">L</span>INKS<span class="bracket">]</span></a>
-
-</div>
-          <div>
-
-        <span class="font-controls">
-            <label for="font-selector">FONT:</label>
-            <select id="font-selector">
-                <option value="monospace">Default Monospace</option>
-                <option value="PetMe">PetMe</option>
-                <option value="IBMVGA8">IBM VGA 8x16</option>
-                <option value="IBMBIOS2Y">IBM BIOS-2y</option>
-                <option value="IBMEGA9">IBM EGA 9x14</option>
-            </select>
-        </span>
-
-</div>
-</div>
-
-<div class="navbar-side">
-</div>
-    </nav>
-    <div class="nav-dots">
-
-    </div>
+    <nav-bar></nav-bar>
 
   <div class="column-align-center ">
 
@@ -303,6 +270,19 @@
 <h3># Digital Artists</h3>
 
 <ul>
+
+          <li>
+              <div class="dot-seperation">
+
+            <a class="link" href="https://timrodenbroeker.de/">
+                Tim Rodenbroeker
+              </a>
+              <span>Minimalistic artist and great educator in creative coding</span>
+              </div>
+            </li>
+          <li>
+
+
           <li>
               <div class="dot-seperation">
 
@@ -361,7 +341,7 @@
 </div>
 </template>
 
-
+<script src="./js/components/nav-bar.js"></script>
 <script type="module">
   import { saveFontSelection } from './js/saveFontSelection.js';
   import { loadPage } from './js/loadPage.js'
