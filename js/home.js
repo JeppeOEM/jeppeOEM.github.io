@@ -5,6 +5,9 @@ import AsciiBox from "./AsciiBox.js"
 
 
 export function home() {
+
+
+
     const templateClosestChild = document.querySelector('.outer');
     const template = document.getElementById('outer-template');
     const asciiBox = new AsciiBox({

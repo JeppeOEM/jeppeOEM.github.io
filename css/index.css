@@ -55,8 +55,8 @@ html, body {
   overflow-x: hidden;
   /*prevents the animatons positioned outside the html to make the screen too big*/
   overflow-y: auto;
-    opacity: 0;
-    transition: opacity 1s ease;
+    /*opacity: 0;*/
+    /*transition: opacity 1s ease;*/
   }
   body.loaded {
     opacity: 1;
