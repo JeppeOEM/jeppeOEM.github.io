@@ -1,4 +1,3 @@
-
 export default class AsciiBackground {
     /**
      * Create a new ASCII art background
@@ -51,6 +50,7 @@ export default class AsciiBackground {
             item.classList.add('ascii-fade-in');
         });
     }
+
     /**
      * Initialize the background
      * @private
@@ -92,10 +92,11 @@ export default class AsciiBackground {
         this.centerArt.className = 'ascii-center-art';
         this.centerArt.style.margin = '0';
         this.centerArt.style.padding = '0';
+        this.centerArt.style.lineHeight = '1'; // Fix vertical spacing
         this.centerArt.style.color = this.style.color;
         this.centerArt.style.opacity = this.style.opacity;
         this.centerArt.style.pointerEvents = 'none';
-        this.centerArt.textContent = this.asciiArt;
+        this.centerArt.textContent = this.asciiArt.trim(); // Remove leading/trailing whitespace
 
         // Create grid for repetitions
         this.gridContainer = document.createElement('div');
@@ -104,6 +105,8 @@ export default class AsciiBackground {
         this.gridContainer.style.left = '50%';
         this.gridContainer.style.transform = 'translate(-50%, -50%)';
         this.gridContainer.style.display = 'grid';
+        this.gridContainer.style.columnGap = '1ch'; // Add horizontal spacing between columns
+        this.gridContainer.style.rowGap = '0'; // No vertical spacing between rows
         this.gridContainer.style.pointerEvents = 'none';
 
         // Append elements
@@ -134,17 +137,17 @@ export default class AsciiBackground {
         /** @type {string} */
         const artText = this.centerArt.textContent;
         /** @type {string[]} */
-        const lines = artText.split('\n');
+        const lines = artText.split('\n').filter(line => line.trim() !== ''); // Remove empty lines
         /** @type {number} */
         const lineCount = lines.length;
         /** @type {number} */
         const maxLineLength = Math.max(...lines.map(line => line.length));
 
-        // Approximate dimensions of the art
+        // Approximate dimensions of the art with tighter spacing
         /** @type {number} */
         const artWidth = maxLineLength * (fontSize * 0.6);
         /** @type {number} */
-        const artHeight = lineCount * fontSize * 1.2;
+        const artHeight = lineCount * fontSize; // Use fontSize directly instead of 1.2 multiplier
 
         // Get container dimensions
         /** @type {DOMRect} */
@@ -190,12 +193,13 @@ export default class AsciiBackground {
                 pre.className = 'ascii-repeat-item';
                 pre.style.margin = '0';
                 pre.style.padding = '0';
+                pre.style.lineHeight = '1'; // Fix vertical spacing
                 pre.style.zIndex = '1'
                 pre.style.gridColumn = col + 1;
                 pre.style.gridRow = row + 1;
                 pre.style.color = this.style.color;
                 pre.style.opacity = this.style.opacity;
-                pre.textContent = this.asciiArt;
+                pre.textContent = this.asciiArt.trim(); // Remove leading/trailing whitespace
                 this.gridContainer.appendChild(pre);
             }
         }
@@ -207,7 +211,7 @@ export default class AsciiBackground {
      */
     setAsciiArt(newArt) {
         this.asciiArt = newArt;
-        this.centerArt.textContent = newArt;
+        this.centerArt.textContent = newArt.trim(); // Remove leading/trailing whitespace
         this.updateGrid();
     }
 
@@ -261,6 +265,3 @@ export default class AsciiBackground {
         }
     }
 }
-
-
-// Set up controls
