@@ -4,15 +4,14 @@
   position: absolute;
   top: 0;
   left: 50%;
-  transform: translate(-50%, 0%);
+  transform: translate3d(-50%, 0, 0);
   background-color: var(--black);
   z-index: 0;
   width: 80ch;
   height: 15lh;
-
   opacity: 0;
   visibility: hidden;
-
+  will-change: opacity, visibility;
   animation: fadeInBg 1.5s ease-in-out 9s forwards;
 }
 
@@ -67,6 +66,7 @@
 .slime {
   /*will isolate and  increase performancn*/
   contain: strict;
+  will-change: content;
   position: fixed;
   top: 0;
   left: 0;
@@ -80,9 +80,9 @@
 
 .mrqdt-color-1 {
   opacity: 0;
-
   color: var(--light-black);
   animation: fadeIn 1.5s ease-in-out 9s forwards;
+  will-change: opacity;
 }
 
 @keyframes fadeIn {
