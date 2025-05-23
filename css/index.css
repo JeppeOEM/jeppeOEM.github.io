@@ -165,7 +165,8 @@ a {
 }
 
 .border-bottom-grey{
-  border-bottom: var(--light-black) solid 1px
+  border-bottom: var(--light-black) solid 1px;
+  margin-top: 5px
 }
 
 .fade-in {
