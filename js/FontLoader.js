@@ -1,7 +1,7 @@
 export default class FontLoader {
     constructor(callback, options = {}) {
         this.callback = callback;
-        this.defaultFont = options.defaultFont || 'PetMe';
+        this.defaultFont = options.defaultFont || 'IBMVGA8';
         this.fallbackFont = options.fallbackFont || 'monospace';
         this.fontSize = localStorage.getItem('fontSize') || options.defaultFontSize || '16px';
     }
