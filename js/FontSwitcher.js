@@ -1,75 +1,77 @@
 // font-switcher.js
 export default class FontSwitcher {
-    /**
-     * Creates a new FontSwitcher instance
-     * @param {string} selectorId - The ID of the select element
-     */
-    constructor(selectorId) {
-        this.selectorId = selectorId;
+  /**
+   * Creates a new FontSwitcher instance
+   * @param {string} selectorId - The ID of the select element
+   */
+  constructor(selectorId) {
+    this.selectorId = selectorId;
 
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => this.init());
-        } else {
-            this.init();
-        }
+    // Initialize when DOM is ready
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", () => this.init());
+    } else {
+      this.init();
+    }
+  }
+
+  /**
+   * Initialize the font switcher
+   */
+  init() {
+    // Get the selector element
+    this.selector = document.getElementById(this.selectorId);
+
+    if (!this.selector) {
+      console.error(
+        `FontSwitcher: Element with ID "${this.selectorId}" not found`
+      );
+      return;
     }
 
-    /**
-     * Initialize the font switcher
-     */
-    init() {
-        // Get the selector element
-        this.selector = document.getElementById(this.selectorId);
+    // Apply initial font
+    this.applyFont(this.selector.value);
 
-        if (!this.selector) {
-            console.error(`FontSwitcher: Element with ID "${this.selectorId}" not found`);
-            return;
-        }
+    // Add change listener
+    this.selector.addEventListener("change", () => {
+      this.applyFont(this.selector.value);
+    });
+  }
 
-        // Apply initial font
-        this.applyFont(this.selector.value);
+  applyFont(fontName) {
+    // 1. Disable animations
+    document.documentElement.classList.add("no-animations");
 
-        // Add change listener
-        this.selector.addEventListener('change', () => {
-            this.applyFont(this.selector.value);
-        });
-    }
+    // 2. Set the font
+    document.body.style.fontFamily = `"${fontName}", sans-serif`;
 
-    applyFont(fontName) {
-        // 1. Disable animations
-        document.documentElement.classList.add('no-animations');
+    // 3. Aggressively detach and reattach body content
+    const body = document.body;
+    const parent = body.parentNode;
+    const next = body.nextSibling;
 
-        // 2. Set the font
-        document.body.style.fontFamily = `"${fontName}", sans-serif`;
+    // Detach
+    parent.removeChild(body);
 
-        // 3. Aggressively detach and reattach body content
-        const body = document.body;
-        const parent = body.parentNode;
-        const next = body.nextSibling;
+    // Force reflow (read property)
+    void document.documentElement.offsetHeight;
 
-        // Detach
-        parent.removeChild(body);
+    // Reattach in next frame
+    requestAnimationFrame(() => {
+      if (next) {
+        parent.insertBefore(body, next);
+      } else {
+        parent.appendChild(body);
+      }
 
-        // Force reflow (read property)
-        void document.documentElement.offsetHeight;
+      // Force another reflow
+      void document.body.offsetHeight;
 
-        // Reattach in next frame
-        requestAnimationFrame(() => {
-            if (next) {
-                parent.insertBefore(body, next);
-            } else {
-                parent.appendChild(body);
-            }
+      // 4. Remove no-animations class
+      document.documentElement.classList.remove("no-animations");
 
-            // Force another reflow
-            void document.body.offsetHeight;
-
-            // 4. Remove no-animations class
-            document.documentElement.classList.remove('no-animations');
-
-            // 5. Hint for GC/rendering cleanup (mostly for Chrome)
-            if (window.gc) window.gc();
-        });
-    }
+      // 5. Hint for GC/rendering cleanup (mostly for Chrome)
+      if (window.gc) window.gc();
+    });
+  }
 }

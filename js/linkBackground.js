@@ -18,10 +18,9 @@ export const leftPre = `
 . ..:      ∙                 ......:. . ..:. ..:      ∙              .....:
            :      ...::. . ..:                       :      ...::. . ..:
            ::... .:..        .                       ::... .:..        .</span></span></span></span></span></span></span></span>
-</pre>`
+</pre>`;
 
-
-export const rightPre = leftPre
+export const rightPre = leftPre;
 
 //export const rightPre = `
 //<pre class="links-logo-right">

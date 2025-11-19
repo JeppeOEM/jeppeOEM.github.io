@@ -1,63 +1,60 @@
-import AsciiBackground from "./AsciiBackground.js"
-import AsciiBox from "./AsciiBox.js"
-import AsciiLogoBackground from "./AsciiLogoBackground.js"
+import AsciiBackground from "./AsciiBackground.js";
+import AsciiBox from "./AsciiBox.js";
+import AsciiLogoBackground from "./AsciiLogoBackground.js";
 
-import { patterns } from "./asciiPatterns.js"
+import { patterns } from "./asciiPatterns.js";
 import { startBinaryAnimation } from "./binaryAnimation.js";
 import { leftPre, rightPre } from "./codeBackground.js";
 
 export function codePage() {
-
   const bodyBackground = new AsciiBackground({
     asciiArt: patterns.pattern1,
     container: document.body,
     style: {
-      color: 'var(--dark-green)',
+      color: "var(--dark-green)",
       opacity: 1,
-      zIndex: -1
-    }
+      zIndex: -1,
+    },
   });
 
   if (bodyBackground) {
-    const background = document.querySelector(".ascii-background")
-    background.classList.add("fade-in-bg")
+    const background = document.querySelector(".ascii-background");
+    background.classList.add("fade-in-bg");
   }
 
-
-  const leftSection = document.getElementById('leftSection');
-  const rightSection = document.getElementById('rightSection');
-  const logoPre = document.querySelector('.center-pre')
-  console.log(leftSection, rightSection)
+  const leftSection = document.getElementById("leftSection");
+  const rightSection = document.getElementById("rightSection");
+  const logoPre = document.querySelector(".center-pre");
+  console.log(leftSection, rightSection);
   const logoBackground = new AsciiLogoBackground({
     leftSection: leftSection,
     rightSection: rightSection,
     leftPre: leftPre,
     rightPre: rightPre,
-    logoPre: logoPre
-  })
+    logoPre: logoPre,
+  });
 
-  logoBackground.fillSections()
-  logoBackground.init()
+  logoBackground.fillSections();
+  logoBackground.init();
 
-
-  const templateClosestChild = document.querySelector('.outer')
-  const template = document.getElementById('outer-template')
+  const templateClosestChild = document.querySelector(".outer");
+  const template = document.getElementById("outer-template");
   const asciiBox = new AsciiBox({
     templateClosestChild: templateClosestChild,
     template: template,
     mobileBreakpoint: {
       horizontalChars: 42,
       verticalLines: 20,
-      breakpoint: 480
+      breakpoint: 480,
     },
     tabletBreakpoint: {
       horizontalChars: 42,
       verticalLines: 20,
-      breakpoint: 481
+      breakpoint: 481,
     },
     desktopBreakpoint: {
       horizontalChars: 80,
-      verticalLines: 5
+      verticalLines: 5,
     },
     delay: 8800,
     styleTextContent: `.fade-in-box {
@@ -84,20 +81,17 @@ export function codePage() {
             transform: translateY(0%) scale(1); /* Scale up in place */
         }
     }
-`
-  })
+`,
+  });
 
-  asciiBox.init()
+  asciiBox.init();
 
-
-
-  const leftDiv = document.querySelector('.leftDiv');
+  const leftDiv = document.querySelector(".leftDiv");
   startBinaryAnimation(leftDiv, 3, 600);
 
-  const topLeftDiv = document.querySelector('.topLeftDiv');
+  const topLeftDiv = document.querySelector(".topLeftDiv");
   startBinaryAnimation(topLeftDiv, 3, 800);
 
-  const bottomLeftDiv = document.querySelector('.bottomLeftDiv');
+  const bottomLeftDiv = document.querySelector(".bottomLeftDiv");
   startBinaryAnimation(bottomLeftDiv, 3, 900);
-
 }

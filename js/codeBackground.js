@@ -29,6 +29,3 @@ export const rightPre = `
 </span></span></span></span>
   </pre>
 `;
-
-
-
