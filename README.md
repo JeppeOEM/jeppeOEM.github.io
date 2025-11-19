@@ -1,3 +1,8 @@
+### Site url
+https://jeppeoem.github.io/
+
+### Description 
+
 In an era where node_modules folders resemble digital black holes, I decided to take a step back for my personal portfolio site. Instead of relying on big frameworks and their dependencies, I built it as an old-school static website using nothing but vanilla JavaScript.
 
 I embedded Andreas Gysin's JavaScript animation engine (https://ertdfgcvb.xyz/) to create the animation on the front page.
