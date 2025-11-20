@@ -4,7 +4,7 @@ https://jeppeoem.github.io/
 
 ### Disclaimer
  
-It’s very much a WORK IN PROGRESS and where i experiment, and there is still a backlog of bugs and ideas that I’m still working through, but i as i am proud of my ANSI art 😀 i decided to pin this project anyways.
+It’s very much a WORK IN PROGRESS and where i experiment, and there is still a backlog of bugs and ideas that I’m still working through, but as i am proud of my ANSI art 😀 i decided to pin this project anyways.
 
 ### Description
 
