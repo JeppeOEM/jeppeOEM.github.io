@@ -3,7 +3,7 @@ import * as program from "/src/programs/contributed/slime_dish2.js";
 import AsciiBox from "./AsciiBox.js";
 
 export function loadPage(fontDependentCode) {
-  const selectedFont = localStorage.getItem("selectedFont") || "PetMe";
+  const selectedFont = localStorage.getItem("selectedFont") || "IBMVGA8";
   const fontData = localStorage.getItem(`fontBase64_${selectedFont}`);
 
   if (fontData) {
