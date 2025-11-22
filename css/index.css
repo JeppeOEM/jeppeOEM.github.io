@@ -218,25 +218,23 @@ a.link {
 
     background-color: var(--grey);
     text-decoration: none;
-    /*color: #007BFF; /* Color on hover (blue in this case) */
-    color: var(--blue); /* Color on hover (blue in this case) */
+    color: var(--blue);
     transition: color 0.2s ease;
 }
 
 a.link:hover {
-    color: var(--turqoise); /* Color on hover (blue in this case) */
+    color: var(--turqoise);
 }
 
 
 a.link-line {
     text-decoration: underline;
-    /*color: #007BFF; /* Color on hover (blue in this case) */
-    color: var(--blue); /* Color on hover (blue in this case) */
+    color: var(--blue);
     transition: color 0.2s ease;
 }
 
 a.link-line:hover {
-    color: var(--turqoise); /* Color on hover (blue in this case) */
+    color: var(--turqoise);
 }
 
 .responsive-span,
@@ -607,10 +605,14 @@ select {
     /*margin-left: 5px;*/
 }
 
-
 option{
       background-color: green; /* box background */
+      color: var(--white);
 }
+
+
+/* You cannot reliably style option hover because of browers styling */
+
 
 .bracket{
   color: var(--yellow);
