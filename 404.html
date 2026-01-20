@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting... | Jeppe Marquardt</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #000;
+      color: #0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .loading {
+      text-align: center;
+    }
+    .loading p {
+      margin: 1rem 0;
+    }
+    .spinner {
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      0% { content: '|'; }
+      25% { content: '/'; }
+      50% { content: '-'; }
+      75% { content: '\\'; }
+    }
+  </style>
+  <script>
+    // GitHub Pages SPA redirect workaround
+    // When GitHub Pages can't find a route (e.g., /code), it serves 404.html
+    // This script saves the path and redirects to index.html, which will
+    // then read the path and navigate to the correct route
+    
+    (function() {
+      // Get the current path
+      var path = window.location.pathname;
+      var search = window.location.search;
+      var hash = window.location.hash;
+      
+      // Store the full path in sessionStorage
+      var redirect = path + search + hash;
+      sessionStorage.setItem('spa-redirect', redirect);
+      
+      // Redirect to the root
+      window.location.replace('/');
+    })();
+  </script>
+</head>
+<body>
+  <div class="loading">
+    <p>Redirecting<span class="spinner">...</span></p>
+    <noscript>
+      <p>JavaScript is required for this site.</p>
+      <p><a href="/" style="color: #0ff;">Go to homepage</a></p>
+    </noscript>
+  </div>
+</body>
+</html>

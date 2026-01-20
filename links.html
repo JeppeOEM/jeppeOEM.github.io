@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <!-- divinectorweb.com -->
+<!-- This is a fallback page for users without JavaScript -->
+<!-- The main SPA is in index.html -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jeppe Marquardt's Portfolio</title>
+    <title>Links - Jeppe Marquardt's Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,14 +15,38 @@
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/links.css" />
-  <link rel="modulepreload" href="./js/saveFontSelection.js">
-  <link rel="modulepreload" href="./js/loadPage.js">
-  <link rel="modulepreload" href="./js/linksPage.js">
+    <link rel="modulepreload" href="./js/saveFontSelection.js">
+    <link rel="modulepreload" href="./js/loadPage.js">
+    <link rel="modulepreload" href="./js/linksPage.js">
+    <!-- Redirect to SPA if JavaScript is enabled -->
+    <script>
+      // If JS is enabled, redirect to the SPA version
+      if (window.location.pathname === '/links.html') {
+        window.location.replace('/links');
+      }
+    </script>
   </head>
 <body>
 
-
-    <nav-bar></nav-bar>
+    <!-- Fallback navigation for no-JS users -->
+    <div class="nav-wrapper">
+      <nav class="nav">
+        <div class="navbar-side"></div>
+        <div class="navbar">
+          <div>
+            <a href="/" class="nav__link"><span class="bracket">[</span>HOME<span class="bracket">]</span></a>
+            <a href="/code.html" class="nav__link"><span class="bracket">[</span>CODE<span class="bracket">]</span></a>
+            <a href="/links.html" class="nav__link active"><span class="bracket">[</span>LINKS<span class="bracket">]</span></a>
+          </div>
+          <div>
+            <span class="font-controls"><span class="bracket">[</span><label for="font-selector">FONT:</label><select id="font-selector">
+                <option value="IBMVGA8">IBM VGA 8x16</option>
+                <option value="IBMBIOS2Y">IBM BIOS-2y</option></select><span class="bracket">]</span></span>
+          </div>
+        </div>
+        <div class="navbar-side"></div>
+      </nav>
+    </div>
 
   <div class="column-align-center ">
 
@@ -361,27 +387,27 @@
 </div>
 </template>
 
-<script src="./js/components/nav-bar.js"></script>
+<!-- No nav-bar.js needed - using inline fallback navigation -->
 <script type="module">
   import { saveFontSelection } from './js/saveFontSelection.js';
   import { loadPage } from './js/loadPage.js'
   import { linksPage } from './js/linksPage.js'
 
-
-document.addEventListener('DOMContentLoaded', () => {
-  console.log("DOM fully loaded");
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log("DOM fully loaded (fallback page)");
     document.body.classList.add('loaded');
 
+    const fontSelector = document.getElementById('font-selector');
+    if (fontSelector) {
+      fontSelector.addEventListener('change', (e) => {
+        const selectedFont = e.target.value;
+        saveFontSelection(selectedFont);
+      });
+    }
 
-  document.getElementById('font-selector').addEventListener('change', (e) => {
-    const selectedFont = e.target.value;
-    saveFontSelection(selectedFont);
-  });
-
-  loadPage(linksPage)
-
+    loadPage(linksPage)
   });
 </script>
   </body>
-  </html>
+</html>
 

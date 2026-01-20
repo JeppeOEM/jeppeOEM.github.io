@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jeppe Marquardt's Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
       rel="stylesheet"
@@ -13,22 +17,39 @@
       href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap"
       rel="stylesheet"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight&display=swap"
       rel="stylesheet"
     />
+    
+    <!-- All CSS files loaded upfront -->
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/code.css" />
+    <link rel="stylesheet" href="css/links.css" />
+    
+    <!-- Module preloads for performance -->
+    <link rel="modulepreload" href="./js/main.js" />
+    <link rel="modulepreload" href="./js/router.js" />
+    <link rel="modulepreload" href="./js/loadPage.js" />
+    <link rel="modulepreload" href="./js/saveFontSelection.js" />
   </head>
   <body>
+    <!-- Navigation -->
     <nav-bar></nav-bar>
-    <div class="column-flex">
-      <div class="relative">
-        <div class="background-layer"></div>
-        <pre class="ascii-art" id="ascii-logo">
+    
+    <!-- Main SPA Container -->
+    <main id="app"></main>
+
+    <!-- ================================================================== -->
+    <!-- HOME PAGE TEMPLATE -->
+    <!-- ================================================================== -->
+    <template id="home-template">
+      <div class="column-flex">
+        <div class="relative">
+          <div class="background-layer"></div>
+          <pre class="ascii-art" id="ascii-logo">
 <b><span class="mrqdt-color-1">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$</span></b>
 <b><span class="mrqdt-color-1">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$</span></b>
 <b><span class="mrqdt-color-1">ⁿPⁿ""""""""ⁿPⁿ""ⁿT""""""""""ⁿS$$$$$$$Pⁿ"""""ⁿTⁿ""""""""""""ⁿT</span></b> <b><span class="mrqdt-color-1">"""""""""""""""#</span></b>
@@ -44,56 +65,50 @@
 <b><span class="mrqdt-color-1">$$$$$$$$$$$$$$$$$$$$$$$$$$$$SssS$$$$$$$$$$$S </span></b><span class="mrqdt-color-2">$ⁿ""ⁿ<b><span class="mrqdt-color-1"> S$$$$$$$$$$$$$$SssssssS$$$$$</span></b></span>
 <b><span class="mrqdt-color-1">$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$SsS$$Ss$$$$$$$$$$$$$$$$$$$$$$$$$$$$</span></b>
 </pre>
+        </div>
       </div>
-    </div>
 
-    <template id="outer-template">
-      <div class="center">
-        <section class="outer trans-y-1ch">
-          <div
-            class="bg"
-            style="--bg: var(--grey); --x: 0; --y: 0; --w: 1; --h: 3"
-          ></div>
-          <!--<div class="bg z-1" style="--bg:var(--grey); --x:4; --y:3; --w:9; --h:35;">-->
-          <!---->
-          <!--    <h2 class="dark-green bold p-2">-->
-          <!--  Favorites-->
-          <!--    </h2>-->
-          <!--  </div>-->
-          <div
-            class="bg"
-            style="--bg: var(--grey); --x: 2; --y: 0; --w: 5; --h: 2"
-          ></div>
+      <template id="outer-template">
+        <div class="center">
+          <section class="outer trans-y-1ch">
+            <div
+              class="bg"
+              style="--bg: var(--grey); --x: 0; --y: 0; --w: 1; --h: 3"
+            ></div>
+            <div
+              class="bg"
+              style="--bg: var(--grey); --x: 2; --y: 0; --w: 5; --h: 2"
+            ></div>
 
-          <div
-            class="bg z-1"
-            style="--bg: var(--grey); --x: 5; --y: 3; --w: 11; --h: 7"
-          >
-            <div class="flex-between-y">
-              <div>
+            <div
+              class="bg z-1"
+              style="--bg: var(--grey); --x: 5; --y: 3; --w: 11; --h: 7"
+            >
+              <div class="flex-between-y">
+                <div>
+                  <p>
+                    Welcome to the digital home of Jeppe Marquardt a web developer
+                    and creative coder from Copenhagen.
+                  </p>
+                  <p></p>
+                  <p>
+                    Browse through my latest
+                    <a class="link-line" href="/code" data-link>projects</a> or take a
+                    dive down the textmode rabbithole in my
+                    <a class="link-line" href="/links" data-link>links</a> section.
+                  </p>
+                </div>
                 <p>
-                  Welcome to the digital home of Jeppe Marquardt a web developer
-                  and creative coder from Copenhagen.
-                </p>
-                <p></p>
-                <p>
-                  Browse through my latest
-                  <a class="link-line" href="code.html">projects</a> or take a
-                  dive down the textmode rabbithole in my
-                  <a class="link-line" href="links.html">links</a> section.
+                  textmode animation powered by
+                  <a class="link-line" href="https://ertdfgcvb.xyz/"
+                    >ertdfgcvb's</a
+                  >
+                  engine
                 </p>
               </div>
-              <p>
-                textmode animation powered by
-                <a class="link-line" href="https://ertdfgcvb.xyz/"
-                  >ertdfgcvb's</a
-                >
-                engine
-              </p>
             </div>
-          </div>
 
-          <pre class="ascii-box">
+            <pre class="ascii-box">
 ┌────<span class="responsive-span">────────────────────────────────────────────────────────────────────────────────</span>────┐
 │ $ .<span class="responsive-span empty">█████████████████████████████████████████████████████████████████████████████████</span>. $ │
 │ └─│<span class="responsive-span">─────────────────────────────────────────────────────────────────────────────────</span>│─┘ │
@@ -107,27 +122,403 @@
 └───│<span class="responsive-span">────────────────────────────────────────────────────────────────────────────────</span>│───┘
   └─<span class="responsive-span">──────────────────────────────────────────────────────────────────────────────────────</span>───┘
       </pre>
-        </section>
-      </div>
+          </section>
+        </div>
+      </template>
+
+      <pre class="slime"></pre>
     </template>
 
-    <pre class="slime"></pre>
+    <!-- ================================================================== -->
+    <!-- CODE PAGE TEMPLATE -->
+    <!-- ================================================================== -->
+    <template id="code-template">
+      <div class="column-align-center">
+        <div class="flex-horizontal">
+          <div class="container">
+            <div class="right-section fade-in" id="rightSection">
+              <!-- Right pre tags will be added here via JavaScript -->
+            </div>
+            <div class="center-section">
+              <div class="center-pre-wrapper fade-in">
+                <div class="background-layer"></div>
+
+                <pre class="center-pre">
+                                     <span class="code-logo-color-1">$$$</span> <span class="code-logo-color-3">.gP"""""""""²²6:</span>
+                            <span class="code-logo-color-3">,gG²²²""""</span><span class="code-logo-color-5"><span class="code-logo-color-1">$$$</span></span>  <span class="code-logo-color-1">,@SP²""$$@.</span> <span class="code-logo-color-3">L</span>
+           <span class="code-logo-color-3">,gP²²²"""""""""S</span>  <span class="code-logo-color-5"><span class="code-logo-color-1">,g@SP²"~`$$$$ $$$$</span></span> <span class="code-logo-color-3">yy<span style="color:#0A0"> <span class="code-logo-color-5"><span class="code-logo-color-1">$$$$ </span></span></span></span><span class="code-logo-color-3">$<span class="code-logo-color-1">
+<span class="code-logo-color-3">,g$P²²"""""'"S<span style="color:#0A0"> <span class="code-logo-color-5"><span class="code-logo-color-1">,g@SP²"²TS@p.</span></span></span></span></span></span> <span class="code-logo-color-1">$$$$</span> <span class="code-logo-color-3">S$$<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$</span></span></span> <span class="code-logo-color-1">$$$$ </span><span class="code-logo-color-3">²²<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$</span></span></span>
+<span class="code-logo-color-3">$$'<span class="code-logo-color-5"><span class="code-logo-color-1">,g@SP""""Sn</span></span></span> <span class="code-logo-color-1">$$$$<span class="code-logo-color-3"> </span></span><span class="code-logo-color-3">S$S<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$</span></span></span> <span class="code-logo-color-1">$$$$</span> <span class="code-logo-color-3">$$$<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$</span></span></span> <span class="code-logo-color-1">$$$$css*²²²'</span> <span class="code-logo-color-3">$<span class="code-logo-color-1">
+<span class="code-logo-color-3">$$<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$ </span></span></span></span></span><span class="code-logo-color-3">S$$S<span class="code-logo-color-1"> <span class="code-logo-color-5">'</span></span></span> <span class="code-logo-color-1">$$$$</span> <span class="code-logo-color-3">$$$<span class="code-logo-color-5"><span class="code-logo-color-1"> $$$$</span></span></span> <span class="code-logo-color-1">$$$$</span> <span class="code-logo-color-3">$$$<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$</span></span></span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-3">÷÷<span class="code-logo-color-1"> .mm.</span></span> <span class="code-logo-color-3">$<span class="code-logo-color-1">
+<span class="code-logo-color-2">00<span class="code-logo-color-1"> <span class="code-logo-color-1">$$$$ </span></span></span></span></span><span class="code-logo-color-2">00<span class="code-logo-color-5">1</span></span><span class="code-logo-color-2">00<span class="code-logo-color-5">1</span></span> <span class="code-logo-color-1">$$$$</span> <span class="code-logo-color-2">00<span class="code-logo-color-5">1<span class="code-logo-color-1"> $$$$</span></span></span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-5"><span class="code-logo-color-2">0</span></span><span class="code-logo-color-2">00<span class="code-logo-color-1"> <span class="code-logo-color-1">$</span></span></span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6"></span><span class="code-logo-color-6">$$</span><span class="code-logo-color-1">$</span> <span class="code-logo-color-2">0<span class="code-logo-color-5">1</span></span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-2">0<span class="code-logo-color-1">
+<span class="code-logo-color-5"><span class="code-logo-color-2">00</span></span></span></span><span class="code-logo-color-4"> <span class="code-logo-color-5"><span class="code-logo-color-1">$$$$ <span class="code-logo-color-2">00</span></span></span></span><span class="code-logo-color-2">0<span class="code-logo-color-5">11</span></span><span class="code-logo-color-2">0<span class="code-logo-color-1"> <span class="code-logo-color-1">$</span></span></span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-5"><span class="code-logo-color-2">00</span></span><span class="code-logo-color-2">0<span class="code-logo-color-1"> <span class="code-logo-color-1">$</span></span></span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6">$$</span><span class="code-logo-color-1">$</span> <span class="code-logo-color-2">0<span class="code-logo-color-5">11</span></span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6">$$</span><span class="code-logo-color-1">$</span> <span class="code-logo-color-6">$$$$ </span><span class="code-logo-color-5"><span class="code-logo-color-2">0</span></span><span class="code-logo-color-2">0<span class="code-logo-color-1"> $$$$ <span class="code-logo-color-5"><span class="code-logo-color-2">0</span></span></span></span>
+<span class="code-logo-color-2">00<span class="code-logo-color-4"> <span class="code-logo-color-5"><span class="code-logo-color-1">$</span></span></span></span><span class="code-logo-color-6">$</span><span class="code-logo-color-1">$$</span> <span class="code-logo-color-2">00<span class="code-logo-color-5">1</span></span><span class="code-logo-color-2">00<span class="code-logo-color-5">1<span class="code-logo-color-1"> $</span></span></span><span class="code-logo-color-6">$$</span><span class="code-logo-color-1">$</span> <span class="code-logo-color-2">00<span class="code-logo-color-5">1</span></span> <span class="code-logo-color-1">$</span><span class="code-logo-color-6">$$</span><span class="code-logo-color-1">$</span><span class="code-logo-color-6"> $$$$ </span><span class="code-logo-color-5"><span class="code-logo-color-2">0</span></span><span class="code-logo-color-2">00<span class="code-logo-color-6"> $$$$ `²T$bssd$$P' <span class="code-logo-color-2">0<span class="code-logo-color-1">
+<span class="code-logo-color-3">$$<span class="code-logo-color-1"> <span class="code-logo-color-1">$</span></span></span></span></span></span></span><span class="code-logo-color-6">$$</span><span class="code-logo-color-1">$ </span><span class="code-logo-color-3">yyyyy<span class="code-logo-color-6">  $$$$ <span class="code-logo-color-3">S$S <span class="code-logo-color-6">$$$$ `²T$bsssd$$$ <span class="code-logo-color-3">.$yyyyyyyyyy$$$<span class="code-logo-color-1">
+<span class="code-logo-color-3">$$<span class="code-logo-color-6"> $$$$ <span class="code-logo-color-3">dddd<span class="code-logo-color-5"> </span></span></span></span></span></span></span></span></span></span><span class="code-logo-color-6">, `²T$bsssd$T²</span><span class="code-logo-color-3">.y2yyyyyyyyyyy$P""""""""""""""<span class="code-logo-color-1">
+<span class="code-logo-color-3">$$,<span class="code-logo-color-6">`²T$bsssdS² <span class="code-logo-color-3">yyyyyyyyyyyP""""""""""""""'<span class="code-logo-color-1">
+ <span class="code-logo-color-3">`$S@mmmmmmmm@P""""""""""'<span class="code-logo-color-1"></span></span></span></span></span></span></span></span>
+  </pre>
+              </div>
+            </div>
+
+            <div class="left-section fade-in" id="leftSection">
+              <!-- Left pre tags will be added here via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="binaryPosition">
+        <div class="binaryContainer">
+          <div class="binary leftBinary topLeftDiv"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary leftDiv"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary bottomLeftDiv"></div>
+        </div>
+      </div>
+
+      <template id="outer-template">
+        <div class="center">
+          <section class="outer">
+            <div
+              class="bg"
+              style="--bg: var(--grey); --x: 0; --y: -3; --w: 1; --h: 0"
+            ></div>
+            <div
+              class="bg"
+              style="--bg: var(--grey); --x: 2; --y: -3; --w: 5; --h: -1"
+            ></div>
+
+            <div
+              class="bg"
+              style="--bg: var(--grey); --x: 4; --y: -1; --w: 9; --h: 3"
+            >
+              <p class="padding-2ch z-2 relative bg-grey border-bottom-grey">
+                Hand picked selection of projects from my
+                <a class="link-line" href="https://github.com"
+                  >github.com profile</a
+                >
+              </p>
+
+              <div class="projects scroll-box">
+                <article class="project">
+                  <a href="github">
+                    <h1>Title</h1>
+                    <div class="seperator"></div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non eleifend ligula. Morbi ipsum lorem, tempor ut tincidunt quis, suscipit sit amet justo. Ut faucibus ipsum a ante auctor ultricies
+                    </p>
+                  </a>
+                </article>
+                <article class="project">
+                  <a href="">
+                    <h1>Title</h1>
+                    <div class="seperator"></div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non eleifend ligula. Morbi ipsum lorem, tempor ut tincidunt quis, suscipit sit amet justo. Ut faucibus ipsum a ante auctor ultricies
+                    </p>
+                  </a>
+                </article>
+                <article class="project">
+                  <a href="">
+                    <h1>Title</h1>
+                    <div class="seperator"></div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non eleifend ligula. Morbi ipsum lorem, tempor ut tincidunt quis, suscipit sit amet justo. Ut faucibus ipsum a ante auctor ultricies
+                    </p>
+                  </a>
+                </article>
+                <article class="project">
+                  <a href="">
+                    <h1>Title</h1>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla non eleifend ligula. Morbi ipsum lorem, tempor ut tincidunt quis, suscipit sit amet justo. Ut faucibus ipsum a ante auctor ultricies
+                    </p>
+                  </a>
+                </article>
+              </div>
+            </div>
+
+            <pre class="ascii-box minus-3lh">
+┌────<span class="responsive-span"></span>────┐
+│ $ .<span class="black">    Latest Projects</span><span class="responsive-span empty minus19"></span>. $ │
+│ └─│<span class="responsive-span"></span>│─┘ │
+│ | │<span class="responsive-span empty"></span>│ : │
+│ : │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│ . │<span class="responsive-span empty"></span>│ . │
+│   │<span class="responsive-span empty"></span>│   │
+│ : │<span class="responsive-span empty"></span>│ : │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+<span class="column">│   │<span class="responsive-span empty"></span>│   │</span>
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│ o │<span class="responsive-span empty"></span>│ o │
+└───│<span class="responsive-span"></span>│───┘
+  └─<span class="responsive-span"></span>───┘
+      </pre>
+          </section>
+        </div>
+      </template>
+    </template>
+
+    <!-- ================================================================== -->
+    <!-- LINKS PAGE TEMPLATE -->
+    <!-- ================================================================== -->
+    <template id="links-template">
+      <div class="column-align-center">
+        <div class="flex-horizontal">
+          <div class="container bg-black z-2">
+            <div class="left-section fade-in" id="leftSection">
+              <!-- Right pre tags will be added here via JavaScript -->
+            </div>
+
+            <div class="center-section">
+              <div class="center-pre-wrapper fade-in-fast">
+                <div class="background-layer"></div>
+
+                <pre class="center-pre">
+     <span class="link-logo-color-2">.<span class="link-logo-color-3">                        <span class="link-logo-color-2">-<span class="link-logo-color-3"> <b><span class="link-logo-color-2">-</span></b></span></span></span></span> <span class="link-logo-color-2">──<span class="link-logo-color-3"> <b><span class="link-logo-color-2">┐</span></b></span></span><span class="link-logo-color-2">│<b>┌</b></span> <span class="link-logo-color-2">──<span class="link-logo-color-3"> <b><span class="link-logo-color-2">-</span></b></span></span> <span class="link-logo-color-2">-<span class="link-logo-color-3">                         <span class="link-logo-color-2">.<span class="link-logo-color-3">
+     <span class="link-logo-color-2">┌ ── ─ ─<span class="link-logo-color-3">                   <b><span class="link-logo-color-2">:</span></b></span></span></span></span></span></span><span class="link-logo-color-2">   ┌─<b>─</b></span><span class="link-logo-color-2">─┐   <b>:</b></span>                    <span class="link-logo-color-2">─ ─ ── ┐<span class="link-logo-color-3">
+     <b><span class="link-logo-color-2">|</span></b></span></span>          <b><span class="link-logo-color-4">.</span></b>      <b><span class="link-logo-color-2">^<span class="link-logo-color-5">.</span></span></b>.<span class="link-logo-color-2">...┌<span class="link-logo-color-3"> <span class="link-logo-color-2">─ ─<b>─</b></span></span></span> <span class="link-logo-color-2">|<span class="link-logo-color-3"> <span class="link-logo-color-2">.<span class="link-logo-color-3"> <span class="link-logo-color-2">|<span class="link-logo-color-3"> <b><span class="link-logo-color-2">─</span></b></span></span></span></span></span></span><span class="link-logo-color-2">─ ─<span class="link-logo-color-3">    <span class="link-logo-color-2">...<b>^</b></span></span></span>                  <b><span class="link-logo-color-2">|</span></b>
+ <span class="link-logo-color-2">. ┌ ─<span style="color:#0AA"> <b>`</b></span></span><span class="link-logo-color-2"><span class="bg-color-3">$<b><span class="bg-color-2">²</span></b></span></span> <b><span class="link-logo-color-4">,╖g7$'</span></b>     .<span class="link-logo-color-2">...<b><span class="link-logo-color-5"> <span class="link-logo-color-3">:</span></span></b></span><span class="link-logo-color-2"> <b>|</b></span>  <span class="link-logo-color-2">|<span class="link-logo-color-3">   <b><span class="link-logo-color-2">:</span></b></span></span> <span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<span class="link-logo-color-3">  <b><span class="link-logo-color-4">,╖g7$'<span class="link-logo-color-3">:</span></span></b></span></span></span></span> <span class="link-logo-color-2">....<span class="link-logo-color-3">        <span class="link-logo-color-2">─ $<b>S<span class="bg-color-3">a</span></b></span></span></span><span class="link-logo-color-2">    ─ ┐ .<span class="link-logo-color-3">
+ <b><span class="link-logo-color-2">:</span></b></span></span><span style="color:#0AA"> <b><span class="link-logo-color-2">1</span></b></span> <b><span class="link-logo-color-2">│<span style="color:#0AA">·<span class="link-logo-color-4">.,s</span></span></span></b><span class="link-logo-color-1">$<b><span class="link-logo-color-4">$<span class="link-logo-color-1"><span class="bg-logo-1">¼<span class="link-logo-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">$'</span></span></span></span></span></span></b></span> <b><span class="link-logo-color-6">d$$b</span></b>  <span class="link-logo-color-2">:   <b><span class="link-logo-color-3">:</span></b></span> <span class="link-logo-color-2">.<span class="link-logo-color-3">  <b><span class="link-logo-color-2">1</span></b></span></span>   <b>.<span class="link-logo-color-2"> |</span></b> <b><span class="link-logo-color-4">,s</span></b><span class="link-logo-color-1">$<b><span class="link-logo-color-4">$<span class="link-logo-color-1"><span class="bg-logo-1">¼<span class="link-logo-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">$'</span></span></span></span></span></span></b></span> <b>:</b>   <span class="link-logo-color-2">: ..   `    .   ` <b><span class="link-logo-color-6">·<span class="link-logo-color-2">│</span></span></b></span> <b><span class="link-logo-color-2">1</span></b><span class="link-logo-color-7"> <b><span class="link-logo-color-2">:</span></b></span>
+ <b><span class="link-logo-color-2">│<span class="link-logo-color-3">  <span class="link-logo-color-2">²:<span class="link-logo-color-3"> <span class="link-logo-color-4">`$</span></span></span></span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">$</span></b></span><span class="bg-logo-1">¼<b><span class="link-logo-color-4"><span class="bg-color-2">l</span></span></b></span> <b><span class="link-logo-color-6">$$$$$$</span></b> <b>∙</b>   <span class="link-logo-color-2">∙ :  :     <b>│<span class="link-logo-color-3"> <span class="link-logo-color-4">$</span></span></b></span><span class="link-logo-color-1">$$$$<b><span class="bg-logo-1">¼<span class="link-logo-color-4"><span class="bg-color-2">l<span class="link-logo-color-5">:</span></span></span></span></b></span> <span class="link-logo-color-2">.<span class="link-logo-color-3">   <b>.</b></span></span>  <b>:</b>        <b><span class="link-logo-color-5">:      <span class="link-logo-color-2">:²<span class="link-logo-color-3">  <span class="link-logo-color-2">│</span></span></span></span></b>
+<span class="link-logo-color-7">═══════</span> <span class="link-logo-color-1">$$$$$<b><span class="bg-logo-1">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></b></span>  <b><span class="link-logo-color-6">4$$P</span></b> <span class="link-logo-color-7">═════════════════</span> <span class="link-logo-color-1">$$$$$<span class="link-logo-color-3"><span class="bg-logo-1">¼<span class="bg-color-2"> <span class="link-logo-color-7">══<span class="link-logo-color-4">_,╖a÷</span></b></span></span></span></span>   <span class="link-logo-color-7">═══<span class="link-logo-color-4">_,╖a÷,._<span class="link-logo-color-3">════════════</span></span></b>
+<b><span class="link-logo-color-5">::::::::<span class="link-logo-color-4">`$</span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">$</span></b></span> <b><span class="link-logo-color-5">·</span></b>  <b><span class="link-logo-color-4">...</span></b>  <b><span class="link-logo-color-5">:<span class="link-logo-color-4">`,╖╖g7$'<span class="link-logo-color-5">:<span class="link-logo-color-4"> ╖g7$'<span class="link-logo-color-5">:<span class="link-logo-color-4">`$</span></span></span></span></span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">$,g7</span></b></span><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">$'<span class="link-logo-color-5">.:</span></span></b></span> <b><span class="link-logo-color-4">,g7</span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">$'.<span class="link-logo-color-5">:<span class="link-logo-color-4">`</span></span></span></b></span><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">b,<span class="link-logo-color-5">·::::::</span></span></b></span>
+<b><span class="link-logo-color-5">::::::::</span></b> <b><span class="link-logo-color-4">1</span></b><span class="link-logo-color-1">$$$$<span class="link-logo-color-3">   <b><span class="link-logo-color-4">1</span></b></span></span><span class="link-logo-color-1">$$$$<span class="link-logo-color-3"> <b><span class="link-logo-color-5">::<span class="link-logo-color-4">1</span></span></b></span></span><span class="link-logo-color-1">$$$<span class="link-logo-color-3"><span class="bg-logo-1">¼<b><span class="link-logo-color-4"><span class="bg-color-2">÷anI</span></span></b></span></span></span><span class="link-logo-color-1">$$$<span class="link-logo-color-3"><span class="bg-logo-1">¼<span class="bg-color-2"> <b><span class="link-logo-color-5">:<span class="link-logo-color-4"> 1</span></span></b></span></span></span></span><span class="link-logo-color-1">$$$$<b><span class="link-logo-color-4">$<span class="link-logo-color-3"><span class="bg-logo-1">½</span></span></span></b></span><span class="bg-logo-1">½<span class="link-logo-color-1"><span class="bg-color-2">$<span class="link-logo-color-3">    <b><span class="link-logo-color-5">::</span></b></span></span></span></span> <b><span class="link-logo-color-4">$<span class="link-logo-color-3"><span class="bg-logo-1">½</span></span></span></b><span class="bg-logo-1">½<span class="link-logo-color-1"><span class="bg-color-2">$$$<b><span class="link-logo-color-4">:<span class="link-logo-color-5"> ::<span class="link-logo-color-4"> l</span></span></span></b></span></span></span><span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">$</span></span></span></span></b></span> <b><span class="link-logo-color-5">:::::</span></b>
+:<b><span class="link-logo-color-5">░</span></b>:<b><span class="link-logo-color-5">░</span></b>:<b><span class="link-logo-color-5">░</span></b>:<b><span class="link-logo-color-5">░░<span class="link-logo-color-4">:</span></span></b><span class="link-logo-color-1">$$$$<b><span class="link-logo-color-4">;<span class="link-logo-color-5">░░<span class="link-logo-color-4">:</span></span></span></b></span><span class="link-logo-color-1">$$$$<b><span class="link-logo-color-4">;<span class="link-logo-color-5">░░<span class="link-logo-color-4">:</span></span></span></b></span><span class="link-logo-color-1">$$$$<b><span class="link-logo-color-4">'<span class="link-logo-color-5">░░<span class="link-logo-color-4">`</span></span></span></b></span><span class="link-logo-color-1">$$$$<b><span class="link-logo-color-4">;<span class="link-logo-color-5">░<span class="link-logo-color-4">░:</span></span></span></b></span><span class="link-logo-color-1">$$$$<b><span class="link-logo-color-4">╙</span></b></span><span class="link-logo-color-1">$<b><span class="link-logo-color-6"><span class="bg-logo-1">½</span></span></b></span><span class="link-logo-color-1">$$$<span class="link-logo-color-3"> <b><span class="link-logo-color-5">░░░</span></b></span></span> <b><span class="link-logo-color-4">╙</span></b><span class="link-logo-color-1">$<b><span class="link-logo-color-6"><span class="bg-logo-1">½</span></span></b></span><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">l</span></b></span>  <b><span class="link-logo-color-5">░░</span></b> <b><span class="link-logo-color-4">$÷╜²',<span class="link-logo-color-5">░░</span></span></b>:<b><span class="link-logo-color-5">░</span></b>:
+<b><span class="link-logo-color-5">:::::::::</span></b> <b><span class="link-logo-color-4">l</span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">l</span></b></span> <b><span class="link-logo-color-5">: <span class="link-logo-color-4">l</span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">l</span></b></span> <b><span class="link-logo-color-5">: <span class="link-logo-color-4">l</span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">l</span></b></span> <b><span class="link-logo-color-5">: <span class="link-logo-color-4">l</span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">l</span></b></span> <b><span class="link-logo-color-5">:<span class="link-logo-color-4"> l</span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">l</span></b></span> <b><span class="link-logo-color-5">:<span class="link-logo-color-4">`</span></span></b><span class="link-logo-color-1">$$$$$<b><span class="link-logo-color-4">;<span class="link-logo-color-5"> ::</span></span></b></span> <span class="link-logo-color-1">"$$$$$s..,.n<b><span class="link-logo-color-4">m,</span></b></span>  <b><span class="link-logo-color-5">::::</span></b>
+<b><span class="link-logo-color-5">:::::::::</span></b> <b><span class="link-logo-color-4">;</span></b><span class="link-logo-color-1">$$<b><span class="link-logo-color-4">$<span class="link-logo-color-1"><span class="bg-logo-1">¼<span class="link-logo-color-4"><span class="bg-color-2">:<span class="link-logo-color-5">: <span class="link-logo-color-4">;</span></span></span></span></span></span></span></b></span><span class="link-logo-color-1">$$<b><span class="link-logo-color-4">$</span></b></span><span class="bg-logo-1">¼<span class="bg-color-2"> <b><span class="link-logo-color-5">: <span class="link-logo-color-4">;</span></span></b></span></span><span class="link-logo-color-1">$$<b><span class="link-logo-color-4">$</span></b></span><span class="bg-logo-1">¼<span class="bg-color-2"> <b><span class="link-logo-color-5">: <span class="link-logo-color-4">;</span></span></b></span></span><span class="link-logo-color-1">$$<b>$</b></span><span class="bg-logo-1">¼<span class="bg-color-2"> <b><span class="link-logo-color-5">:</span></b></span></span> <b><span class="link-logo-color-4">;</span></b><span class="link-logo-color-1">$$<span class="link-logo-color-3">$<b><span class="link-logo-color-1"><span class="bg-logo-1">¼<span class="link-logo-color-4"><span class="bg-color-2">:</span></span></span></span></b></span></span> <b><span class="link-logo-color-5">:.<span class="link-logo-color-4">`</span></span></b><span class="link-logo-color-1">$$$<b><span class="link-logo-color-4">1</span></b></span>  <b><span class="link-logo-color-4">m</span></b><span class="link-logo-color-1">$$<span class="link-logo-color-3">   <span class="link-logo-color-1">"""""$$$$$<b><span class="link-logo-color-4">$</span></b></span></span></span> <b><span class="link-logo-color-5">::::</span></b>
+<span class="link-logo-color-7">══════════</span> <span class="link-logo-color-1">$$<b><span class="link-logo-color-6"><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;<span class="link-logo-color-3">══</span></span></span></span></span></span></span></b></span> <span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;<span class="link-logo-color-3">══</span></span></span></span></span></span></b></span> <span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></span></span></b></span> <span class="link-logo-color-7">═</span> <span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></span></span></b></span> <span class="link-logo-color-7">═</span> <span class="link-logo-color-1">$$<b><span class="link-logo-color-6"><span class="bg-logo-1">¼<span class="link-logo-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></span></span></b></span> <span class="link-logo-color-7">════<span class="link-logo-color-4">`╙</span></b><span class="link-logo-color-1">$<b><span class="link-logo-color-4">,</span></b></span> <b><span class="link-logo-color-4">S<span class="link-logo-color-6"><span class="bg-logo-1">¼<span class="link-logo-color-3">¼</span></span></span></span></b><span class="link-logo-color-1">SS2...$$$$<span class="link-logo-color-3"><span class="bg-logo-1">¼<b>¼<span class="link-logo-color-4"><span class="bg-color-2">$<span class="link-logo-color-1"> <span class="link-logo-color-3">-════</span></span></span></span></b></span></span></span>
+ <b><span class="link-logo-color-2">│   :</span></b><span class="link-logo-color-2">°·<span class="link-logo-color-3">   <b><span class="link-logo-color-4">$$²^<span class="link-logo-color-3">  <span class="link-logo-color-5">..</span></span></span></b></span></span><span class="link-logo-color-1">s<b><span class="link-logo-color-4">$$²^<span class="link-logo-color-3"> <span class="link-logo-color-5">..</span></span></span></b></span><span class="link-logo-color-1">s<b><span class="link-logo-color-4">$$²^<span class="link-logo-color-3"> <span class="link-logo-color-5">..</span></span></span></b></span><span class="link-logo-color-1">s<b><span class="link-logo-color-4">$$²^</span></b></span>   <b><span class="link-logo-color-4">$$²^       </span></b>:<b>    <span class="link-logo-color-4">`╙I</span></b><span class="link-logo-color-1">£$$$$<b><span class="link-logo-color-4">S"     </span></b></span><span class="link-logo-color-7">`<b> <span class="link-logo-color-2">│</span></b></span>
+ <b><span class="link-logo-color-2">: 1</span></b><span class="link-logo-color-4"> <span class="link-logo-color-2">│<span class="link-logo-color-3">  <b><span class="link-logo-color-2"><span class="bg-color-3">$<span class="bg-color-2">S</span></span></span></b></span></span></span><span class="link-logo-color-2">g<b>  </b></span>:.....  :..<b><span class="link-logo-color-5">.</span></b>.<b><span class="link-logo-color-5">  <span class="link-logo-color-3">.</span></span></b><span class="link-logo-color-2">..<b><span class="link-logo-color-3">...</span></b></span><span class="link-logo-color-2">: :<b><span class="link-logo-color-3">;<span class="link-logo-color-2">|<span class="link-logo-color-3">;</span></span></span></b></span><span class="link-logo-color-2">: :<b><span class="link-logo-color-3">...</span></b></span><span class="link-logo-color-2">..<b><span class="link-logo-color-3">.</span></b></span>  ...: .....:  <b><span class="link-logo-color-4">""'</span></b>   <span class="link-logo-color-2">·°│<span class="link-logo-color-7"> <b><span class="link-logo-color-2">1 </span></b></span></span><span class="link-logo-color-2">:<span class="link-logo-color-3">
+ <span class="link-logo-color-2">. └ ─<span class="link-logo-color-3">   <b><span class="link-logo-color-2">` </span></b></span></span></span></span><span class="link-logo-color-2">'<span class="link-logo-color-3">   :...<b><span class="link-logo-color-5">..</span></b></span></span>.  :     <span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<b><span class="link-logo-color-3">:</span></b></span></span></span><span class="link-logo-color-2">  <b><span class="pink">links</span></b></span>  <b>:</b><span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<span class="link-logo-color-3">     :  ......:     <span class="link-logo-color-2">y<b>S<span class="bg-color-3">$<span class="bg-color-2">  </span></span></b></span></span></span></span></span><span class="link-logo-color-2">─ ┘<span class="link-logo-color-7"> <span class="link-logo-color-2">.<span class="link-logo-color-3">
+     <b><span class="link-logo-color-2">|</span></b></span></span></span></span>                       <span class="link-logo-color-2">.:..:.<span class="link-logo-color-3"> <span class="link-logo-color-2">;:::; .:..:.<span class="link-logo-color-3">                  <span class="link-logo-color-2">`<span class="link-logo-color-7"> <b><span class="link-logo-color-2">'</span></b></span></span></span></span></span></span><span class="link-logo-color-7">   <b><span class="link-logo-color-2">|</span></b></span>
+     <span class="link-logo-color-2">└ ── ─ ─                 .<span class="link-logo-color-3">  <b>:</b></span></span>         <b>:</b>  <span class="link-logo-color-2">.<span class="link-logo-color-3">                  <span class="link-logo-color-2">─ ─ ── ┘<span class="link-logo-color-3"></span></span></span></span>
+  </pre>
+              </div>
+            </div>
+
+            <div class="right-section fade-in" id="rightSection">
+              <!-- Left pre tags will be added here via JavaScript -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Character animation containers -->
+      <div class="leftChars">
+        <div class="binaryContainer">
+          <div class="binary leftBinary borderTop mirrored"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charTop mirrored"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charSecondTop mirrored"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary centerDiv mirrored"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charSecondBottom mirrored"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charBottom mirrored"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary bottomBorder mirrored"></div>
+        </div>
+      </div>
+
+      <div class="rightChars">
+        <div class="binaryContainer">
+          <div class="binary leftBinary borderTopLeft"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charTopLeft"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charSecondTopLeft"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary centerDivLeft"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charSecondBottomLeft"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary charBottomLeft"></div>
+        </div>
+        <div class="binaryContainer">
+          <div class="binary leftBinary bottomBorderLeft"></div>
+        </div>
+      </div>
+
+      <template id="outer-template">
+        <div class="center">
+          <section class="outer">
+            <div class="bg" style="--bg:var(--grey); --x:0; --y:0; --w:1; --h:3;"></div>
+            <div class="bg" style="--bg:var(--grey); --x:2; --y:0; --w:5; --h:2;"></div>
+
+            <div class="bg scroll padding-1ch" style="--bg:var(--grey);--x: 4;--y: 2;--w:9;--h: 7;">
+              <p>
+                Here is a collection of the most interesting or usefull links i found in digital art, creative coding with a focus on textmode.
+              </p>
+              <br>
+              <h3># Resources</h3>
+              <ul class="link-list">
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://16colo.rs/">16colo.rs</a>
+                    <span>The number one ANSI/ASCII art library</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://textfiles.com/">textfiles.com</a>
+                    <span>Huge collection of ANSI/ASCII art of the oldest varieity</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://int10h.org/">int10h.org</a>
+                    <span>Worlds largest collection of oldschool computer fonts</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://demozoo.org/">demozoo.org</a>
+                    <span>Demoscene library and general resource</span>
+                  </div>
+                </li>
+              </ul>
+
+              <br>
+              <h3># Creative Coding</h3>
+              <ul>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://play.ertdfgcvb.xyz/">play.ertdfgcv.xyz</a>
+                    <span>Create textmode GLSL animations in the browser</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://p5js.org/">p5js.org</a>
+                    <span>Wonderfull crative coding framework in javascript</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://blocktronics.github.io/moebius/">blocktronics.github.io/moebius</a>
+                    <span>Software for creating ANSI art</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://blog.glyphdrawing.club/">blog.glyphdrawing.club</a>
+                    <span>Textmode editor that uses "glyphs"</span>
+                  </div>
+                </li>
+              </ul>
+
+              <br>
+              <h3># Videos</h3>
+              <ul>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://www.youtube.com/watch?v=Yd-s9htpHgQ&t=22s&ab_channel=ArakNetTV">The art of warez</a>
+                    <span>Documentary of the ANSI, BBS and Warez scene of early computing</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://www.youtube.com/watch?v=nO5vjmDFZaI&t=26s">BBS the documentary</a>
+                    <span>8 Part documentary series from 2005 about the Bulletin Board Systems before the internet</span>
+                  </div>
+                </li>
+              </ul>
+
+              <br>
+              <h3># Digital Artists</h3>
+              <ul>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://timrodenbroeker.de/">Tim Rodenbroeker</a>
+                    <span>Minimalistic artist and great educator in creative coding</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://toimin.to/">Toiminto</a>
+                    <span>dense generative artworks</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="dot-seperation">
+                    <a class="link" href="https://ertdfgcvb.xyz/">Andreas Gysin/ertdfgcvb</a>
+                    <span>specializes in animated textmode art, creator of the engine i used on the landing page</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <pre class="ascii-box">
+┌────<span class="responsive-span">────────────────────────────────────────────────────────────────────────────────</span>────┐
+│ $ .<span class="responsive-span empty"></span>. $ │
+│ └─│<span class="responsive-span">─────────────────────────────────────────────────────────────────────────────────</span>│─┘ │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+│   │<span class="responsive-span empty"></span>│   │
+<span class="column">│   │<span class="responsive-span empty"></span>│   │</span>
+│ . │<span class="responsive-span empty"></span>│ . │
+│   │<span class="responsive-span empty"></span>│   │
+│ . │<span class="responsive-span empty"></span>│ . │
+│   │<span class="responsive-span empty"></span>│   │
+│ . │<span class="responsive-span empty"></span>│ . │
+│ : │<span class="responsive-span empty"></span>│ : │
+│ # │<span class="responsive-span empty"></span>│ # │
+└───│<span class="responsive-span">────────────────────────────────────────────────────────────────────────────────</span>│───┘
+  └─<span class="responsive-span">──────────────────────────────────────────────────────────────────────────────────────</span>───┘
+      </pre>
+          </section>
+        </div>
+      </template>
+    </template>
+
+    <!-- Nav-bar component -->
     <script src="./js/components/nav-bar.js"></script>
-    <script type="module">
-      import { loadPage } from "./js/loadPage.js";
-      import { home } from "./js/home.js";
-      import { saveFontSelection } from "./js/saveFontSelection.js";
-
-      window.addEventListener("load", function () {
-        loadPage(home);
-      });
-
-      document
-        .getElementById("font-selector")
-        .addEventListener("change", (e) => {
-          const selectedFont = e.target.value;
-          saveFontSelection(selectedFont);
-        });
-    </script>
+    
+    <!-- Main SPA entry point -->
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>

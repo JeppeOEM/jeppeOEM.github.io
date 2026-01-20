@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <!-- divinectorweb.com -->
+<!-- This is a fallback page for users without JavaScript -->
+<!-- The main SPA is in index.html -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jeppe Marquardt's Portfolio</title>
+    <title>Code - Jeppe Marquardt's Portfolio</title>
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/code.css" />
     <link rel="modulepreload" href="./js/saveFontSelection.js" />
     <link rel="modulepreload" href="./js/loadPage.js" />
     <link rel="modulepreload" href="./js/code.js" />
+    <!-- Redirect to SPA if JavaScript is enabled -->
+    <script>
+      // If JS is enabled, redirect to the SPA version
+      if (window.location.pathname === '/code.html') {
+        window.location.replace('/code');
+      }
+    </script>
   </head>
   <body>
-    <nav-bar></nav-bar>
+    <!-- Fallback navigation for no-JS users -->
+    <div class="nav-wrapper">
+      <nav class="nav">
+        <div class="navbar-side"></div>
+        <div class="navbar">
+          <div>
+            <a href="/" class="nav__link"><span class="bracket">[</span>HOME<span class="bracket">]</span></a>
+            <a href="/code.html" class="nav__link active"><span class="bracket">[</span>CODE<span class="bracket">]</span></a>
+            <a href="/links.html" class="nav__link"><span class="bracket">[</span>LINKS<span class="bracket">]</span></a>
+          </div>
+          <div>
+            <span class="font-controls"><span class="bracket">[</span><label for="font-selector">FONT:</label><select id="font-selector">
+                <option value="IBMVGA8">IBM VGA 8x16</option>
+                <option value="IBMBIOS2Y">IBM BIOS-2y</option></select><span class="bracket">]</span></span>
+          </div>
+        </div>
+        <div class="navbar-side"></div>
+      </nav>
+    </div>
 
     <div class="column-align-center">
       <div class="flex-horizontal">
@@ -176,14 +203,14 @@
       </div>
     </template>
 
-    <script src="./js/components/nav-bar.js"></script>
+    <!-- No nav-bar.js needed - using inline fallback navigation -->
     <script type="module">
       import { saveFontSelection } from "./js/saveFontSelection.js";
       import { loadPage } from "./js/loadPage.js";
       import { codePage } from "./js/code.js";
 
       document.addEventListener("DOMContentLoaded", () => {
-        console.log("DOM fully loaded");
+        console.log("DOM fully loaded (fallback page)");
 
         document.body.classList.add("loaded");
 
@@ -193,8 +220,6 @@
             const selectedFont = e.target.value;
             saveFontSelection(selectedFont);
           });
-        } else {
-          console.warn("#font-selector not found!");
         }
 
         loadPage(codePage);

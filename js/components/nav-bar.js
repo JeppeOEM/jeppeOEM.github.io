@@ -1,3 +1,8 @@
+/**
+ * Navigation Bar Web Component
+ * Provides SPA navigation with data-link attributes
+ */
+
 class NavBar extends HTMLElement {
     constructor() {
         super();
@@ -10,9 +15,9 @@ class NavBar extends HTMLElement {
         <div class="navbar-side"></div>
         <div class="navbar">
           <div>
-            <a href="/" class="nav__link"><span class="bracket">[</span>HOME<span class="bracket">]</span></a>
-            <a href="code.html" class="nav__link" data-link><span class="bracket">[</span>CODE<span class="bracket">]</span></a>
-            <a href="/links.html" class="nav__link" data-link><span class="bracket">[</span>LINKS<span class="bracket">]</span></a>
+            <a href="/" class="nav__link" data-link><span class="bracket">[</span>HOME<span class="bracket">]</span></a>
+            <a href="/code" class="nav__link" data-link><span class="bracket">[</span>CODE<span class="bracket">]</span></a>
+            <a href="/links" class="nav__link" data-link><span class="bracket">[</span>LINKS<span class="bracket">]</span></a>
           </div>
           <div>
             <span class="font-controls"><span class="bracket">[</span><label for="font-selector">FONT:</label><select id="font-selector">
@@ -33,7 +38,47 @@ class NavBar extends HTMLElement {
             // Optionally apply it globally
             document.body.style.fontFamily = savedFont;
         }
-        // Listen for changes and update localStorage
+
+        // Update active link based on current path
+        this.updateActiveLink();
+    }
+
+    /**
+     * Update the active state of navigation links based on current path
+     */
+    updateActiveLink() {
+        const currentPath = this.normalizePath(window.location.pathname);
+        
+        this.querySelectorAll('a[data-link]').forEach(link => {
+            const linkPath = this.normalizePath(link.getAttribute('href'));
+            link.classList.toggle('active', linkPath === currentPath);
+        });
+    }
+
+    /**
+     * Normalize a path for comparison
+     */
+    normalizePath(path) {
+        // Handle .html extensions
+        path = path.replace(/\.html$/, '');
+        
+        // Ensure leading slash
+        if (!path.startsWith('/')) {
+            path = '/' + path;
+        }
+        
+        // Remove trailing slash (except for root)
+        if (path !== '/' && path.endsWith('/')) {
+            path = path.slice(0, -1);
+        }
+
+        // Map /index to /
+        if (path === '/index') {
+            path = '/';
+        }
+
+        return path;
     }
 }
+
 customElements.define('nav-bar', NavBar);
