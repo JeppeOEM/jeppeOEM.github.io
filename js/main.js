@@ -1,11 +1,13 @@
 /**
  * Main SPA Entry Point
  * Initializes the router and handles font loading
+ * Includes preloading of heavy animation assets
  */
 
 import { Router, checkSpaRedirect } from './router.js';
 import { loadPage } from './loadPage.js';
 import { saveFontSelection } from './saveFontSelection.js';
+import { preloadAssets, hideLoadingScreen } from './preloader.js';
 import { init as initHomePage } from './pages/homePage.js';
 import { init as initCodePage } from './pages/codePage.js';
 import { init as initLinksPage } from './pages/linksPage.js';
@@ -100,17 +102,33 @@ function initFontSelector() {
 
 /**
  * Main initialization
- * Loads fonts first, then initializes the app
+ * 1. Preloads heavy animation assets while loading screen is visible
+ * 2. Loads fonts
+ * 3. Initializes the app
+ * 4. Hides loading screen (after minimum 2s display time)
  */
-function main() {
-  // Use loadPage to handle font loading, then initialize the app
-  loadPage(() => {
-    initApp();
-    initFontSelector();
+async function main() {
+  try {
+    // Start preloading heavy assets while loading screen is visible
+    await preloadAssets();
     
-    // Mark body as loaded for CSS transitions
-    document.body.classList.add('loaded');
-  });
+    // Load fonts, then initialize app
+    loadPage(async () => {
+      // Initialize the SPA router and app
+      initApp();
+      initFontSelector();
+      
+      // Mark body as loaded for CSS transitions
+      document.body.classList.add('loaded');
+      
+      // Hide loading screen (waits for minimum 2s total)
+      await hideLoadingScreen();
+    });
+  } catch (error) {
+    console.error('Failed to initialize app:', error);
+    // Still try to hide loading screen on error
+    await hideLoadingScreen();
+  }
 }
 
 // Wait for DOM to be ready

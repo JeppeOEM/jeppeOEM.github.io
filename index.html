@@ -34,8 +34,72 @@
     <link rel="modulepreload" href="./js/router.js" />
     <link rel="modulepreload" href="./js/loadPage.js" />
     <link rel="modulepreload" href="./js/saveFontSelection.js" />
+    <link rel="modulepreload" href="./js/preloader.js" />
+    
+    <!-- Preload critical animation modules -->
+    <link rel="modulepreload" href="/src/run.js" />
+    <link rel="modulepreload" href="/src/core/textrenderer.js" />
+    <link rel="modulepreload" href="/src/core/canvasrenderer.js" />
+    <link rel="modulepreload" href="/src/programs/contributed/slime_dish2.js" />
+    <link rel="modulepreload" href="/src/modules/vec2.js" />
+    <link rel="modulepreload" href="./js/AsciiBox.js" />
+    <link rel="modulepreload" href="./js/pages/homePage.js" />
   </head>
   <body>
+    <!-- ================================================================== -->
+    <!-- LOADING SCREEN - Renders immediately before JS loads -->
+    <!-- ================================================================== -->
+    <div id="loading-screen">
+      <pre class="loader-content"><span id="loader-spinner">|</span> Loading...</pre>
+    </div>
+
+    <style id="loader-styles">
+      #loading-screen {
+        position: fixed;
+        inset: 0;
+        background: var(--black, #000000);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        opacity: 1;
+        transition: opacity 0.5s ease-out;
+      }
+      
+      #loading-screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .loader-content {
+        font-family: monospace;
+        font-size: 1.5rem;
+        color: var(--light-green, #55FF55);
+        margin: 0;
+        letter-spacing: 0.1em;
+      }
+      
+      #loader-spinner {
+        display: inline-block;
+        width: 1ch;
+        text-align: center;
+        color: var(--turqoise, #55FFFF);
+      }
+    </style>
+
+    <!-- Inline script for immediate spinner start (no module loading needed) -->
+    <script>
+      (function() {
+        var spinner = document.getElementById('loader-spinner');
+        var frames = ['|', '/', '\u2500', '\\'];
+        var i = 0;
+        setInterval(function() {
+          i = (i + 1) % 4;
+          if (spinner) spinner.textContent = frames[i];
+        }, 150);
+      })();
+    </script>
+
     <!-- Navigation -->
     <nav-bar></nav-bar>
     

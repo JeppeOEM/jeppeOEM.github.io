@@ -1,6 +1,10 @@
-import { run } from "/src/run.js";
-import * as program from "/src/programs/contributed/slime_dish2.js";
-import AsciiBox from "./AsciiBox.js";
+/**
+ * Font Loading Module
+ * Handles loading custom fonts from localStorage cache
+ * 
+ * Note: Heavy animation imports were removed from this file as they were unused.
+ * Those modules are now preloaded via js/preloader.js for better performance.
+ */
 
 export function loadPage(fontDependentCode) {
   const selectedFont = localStorage.getItem("selectedFont") || "IBMVGA8";
