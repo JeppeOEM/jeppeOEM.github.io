@@ -55,53 +55,38 @@
 
 
 
-/*logo*/
+/*logo - removed black background to allow content behind to show through*/
 .center-pre span {
-background-color: var(--black) !important;
-
+  /* background-color removed to fix black box issue */
 }
 
-
 .center-pre span * {
-background-color: var(--black) !important;
-
+  /* background-color removed to fix black box issue */
 }
 
 
 .code-logo-color-1{
   color: var(--light-green);
-
-  background-color: var(--black) !important
 }
 
 .code-logo-color-2{
   color: var(--dark-green);
-  background-color: var(--black) !important
 }
 
 .code-logo-color-3{
   color: var(--light-black);
-
-  background-color: var(--black) !important
 }
+
 .code-logo-color-4{
   color:#00A;
-
-  background-color: var(--black) !important
 }
 
 .code-logo-color-5{
-color:var(--light-green);
-
-  background-color: var(--black) !important
-
+  color: var(--light-green);
 }
 
 .code-logo-color-6{
-color:var(--light-green);
-
-  background-color: var(--black) !important
-
+  color: var(--light-green);
 }
 
 .projects {

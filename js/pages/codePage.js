@@ -130,20 +130,20 @@ function initializePage() {
     asciiBox.init();
   }
 
-  // Start binary animations
+  // Start binary animations (delay halved for 2x speed)
   const leftDiv = document.querySelector(".leftDiv");
   if (leftDiv) {
-    binaryTimeouts.push(startBinaryAnimationWithCleanup(leftDiv, 3, 600));
+    binaryTimeouts.push(startBinaryAnimationWithCleanup(leftDiv, 1.5, 600));
   }
 
   const topLeftDiv = document.querySelector(".topLeftDiv");
   if (topLeftDiv) {
-    binaryTimeouts.push(startBinaryAnimationWithCleanup(topLeftDiv, 3, 800));
+    binaryTimeouts.push(startBinaryAnimationWithCleanup(topLeftDiv, 1.5, 800));
   }
 
   const bottomLeftDiv = document.querySelector(".bottomLeftDiv");
   if (bottomLeftDiv) {
-    binaryTimeouts.push(startBinaryAnimationWithCleanup(bottomLeftDiv, 3, 900));
+    binaryTimeouts.push(startBinaryAnimationWithCleanup(bottomLeftDiv, 1.5, 900));
   }
 }
 

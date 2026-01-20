@@ -92,21 +92,25 @@ function initializePage() {
   }
 
   // Start character animations with cleanup tracking
+  // Characters match the ASCII art in the links logo:
+  // ═══════ (double horizontal lines) for borders
+  // :::::::: for colon rows
+  // :░:░:░:░ for the middle pattern row
   const animations = [
-    { selector: ".borderTopLeft", delay: 2, delayStart: 700, chars: "======", color: "var(--white)" },
-    { selector: ".charTopLeft", delay: 2, delayStart: 650, chars: "::::::" },
-    { selector: ".charSecondTopLeft", delay: 2, delayStart: 600, chars: "::::::" },
-    { selector: ".centerDivLeft", delay: 4, delayStart: 600, chars: ":*:*", color: "var(--white)" },
-    { selector: ".charSecondBottomLeft", delay: 2, delayStart: 600, chars: "::::::" },
-    { selector: ".charBottomLeft", delay: 2, delayStart: 650, chars: "::::::" },
-    { selector: ".bottomBorderLeft", delay: 2, delayStart: 700, chars: "======", color: "var(--white)" },
-    { selector: ".borderTop", delay: 2, delayStart: 700, chars: "======", color: "var(--white)" },
-    { selector: ".charTop", delay: 2, delayStart: 650, chars: "::::::" },
-    { selector: ".charSecondTop", delay: 2, delayStart: 600, chars: "::::::" },
-    { selector: ".centerDiv", delay: 4, delayStart: 600, chars: ":*:*", color: "var(--white)" },
-    { selector: ".charSecondBottom", delay: 2, delayStart: 600, chars: "::::::" },
-    { selector: ".charBottom", delay: 2, delayStart: 650, chars: "::::::" },
-    { selector: ".bottomBorder", delay: 2, delayStart: 700, chars: "======", color: "var(--white)" },
+    { selector: ".borderTopLeft", delay: 2, delayStart: 700, chars: "═══════", color: "var(--white)" },
+    { selector: ".charTopLeft", delay: 2, delayStart: 650, chars: "::::::::" },
+    { selector: ".charSecondTopLeft", delay: 2, delayStart: 600, chars: "::::::::" },
+    { selector: ".centerDivLeft", delay: 4, delayStart: 600, chars: ":░:░:░:░", color: "var(--white)" },
+    { selector: ".charSecondBottomLeft", delay: 2, delayStart: 600, chars: "::::::::" },
+    { selector: ".charBottomLeft", delay: 2, delayStart: 650, chars: "::::::::" },
+    { selector: ".bottomBorderLeft", delay: 2, delayStart: 700, chars: "═══════", color: "var(--white)" },
+    { selector: ".borderTop", delay: 2, delayStart: 700, chars: "═══════", color: "var(--white)" },
+    { selector: ".charTop", delay: 2, delayStart: 650, chars: "::::::::" },
+    { selector: ".charSecondTop", delay: 2, delayStart: 600, chars: "::::::::" },
+    { selector: ".centerDiv", delay: 4, delayStart: 600, chars: ":░:░:░:░", color: "var(--white)" },
+    { selector: ".charSecondBottom", delay: 2, delayStart: 600, chars: "::::::::" },
+    { selector: ".charBottom", delay: 2, delayStart: 650, chars: "::::::::" },
+    { selector: ".bottomBorder", delay: 2, delayStart: 700, chars: "═══════", color: "var(--white)" },
   ];
 
   animations.forEach(({ selector, delay, delayStart, chars, color }) => {
