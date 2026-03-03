@@ -51,6 +51,12 @@
 
 }
 
+.fade-in {
+  opacity: 0;
+  animation: fadeInBackground 1.5s ease-in forwards;
+  animation-delay: 2s;
+}
+
 
 
 
