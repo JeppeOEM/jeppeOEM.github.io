@@ -305,8 +305,8 @@ color: var(--black) !important;
 }
 
 .black-bg{
-color: var(--black) !important;
-  background-color: var(--black);
+color: var(--dark-green);
+background-color: var(--black);
 }
 
 .orange{

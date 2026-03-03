@@ -1,3 +1,4 @@
+//width 52 chars
 export const leftPre = `
   <pre class="code-logo-left">
 
