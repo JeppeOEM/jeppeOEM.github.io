@@ -1,14 +1,29 @@
 import AsciiBox from "./AsciiBox.js";
 import AsciiLogoBackground from "./AsciiLogoBackground.js";
-import AsciiBackground from "./AsciiBackground.js";
 import { leftPre, rightPre } from "./linkBackground.js";
-import { dotPattern } from "./dotPattern.js";
-
+import { patterns } from "./asciiPatterns.js";
+import AsciiBackground from "./AsciiBackground.js";
 export function linksPage() {
   const leftSection = document.getElementById('leftSection');
   const rightSection = document.getElementById('rightSection');
   const logoPre = document.querySelector('.center-pre');
   console.log(leftSection, rightSection);
+
+  const bodyBackground = new AsciiBackground({
+    asciiArt: patterns.pattern1,
+    container: document.body,
+    style: {
+      color: "var(--dark-grey)",
+      opacity: 1,
+      zIndex: -1,
+    },
+  });
+
+  if (bodyBackground) {
+    const background = document.querySelector(".ascii-background");
+    background.classList.add("fade-in-bg");
+  }
+
   const logoBackground = new AsciiLogoBackground({
     leftSection: leftSection,
     rightSection: rightSection,
@@ -46,7 +61,7 @@ export function linksPage() {
     opacity: 0;
     transform: translateY(200%) scale(0.5);
     animation: fadeSlideScale 1500ms ease forwards;
-    animation-delay: 2000ms;
+    animation-delay: 1500ms;
 }
     .fade-in-box.show {
         /* Triggers the animation */

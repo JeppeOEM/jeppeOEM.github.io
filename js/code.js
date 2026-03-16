@@ -61,7 +61,7 @@ export function codePage() {
       opacity: 0;
       transform: translateY(200%) scale(0.5);
       animation: fadeSlideScale 1500ms ease forwards;
-      animation-delay: 3500ms; /* 4 second delay */
+      animation-delay: 1500ms;
   }
       .fade-in-box.show {
           /* Triggers the animation */

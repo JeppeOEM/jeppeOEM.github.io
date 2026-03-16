@@ -645,10 +645,10 @@ color:var(--white) !important;
 
 .fade-in-bg{
 
-  animation: fadeInBackground 1.5s ease-in forwards;
+  animation: fadeInBackground 2s ease-in forwards;
   opacity: 0;
 /*z-index: -1;*/
-  animation-delay: 2s;
+  animation-delay: 0s;
     }
 
 

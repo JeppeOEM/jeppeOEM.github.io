@@ -20,9 +20,9 @@ export function home() {
     },
     desktopBreakpoint: {
       horizontalChars: 70,
-      verticalLines: 2,
+      verticalLines: 3,
     },
-    delay: 7500,
+    delay: 5500,
     duration: 1500,
     styleTextContent: `.fade-in-box {
     opacity: 0;
@@ -54,14 +54,14 @@ export function home() {
   //    });
   //}
 
-  setTimeout(function () {
+  setTimeout(function() {
     run(program, { element: document.querySelector(".slime") })
-      .then(function (e) {
+      .then(function(e) {
         console.log(e);
       })
-      .catch(function (e) {
+      .catch(function(e) {
         console.warn(e.message);
         console.log(e.error);
       });
-  }, 2000);
+  }, 500);
 }
