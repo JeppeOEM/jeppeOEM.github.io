@@ -96,7 +96,18 @@ html, body {
 }
 
 .h3 {
-  color: var(--yellow)
+  color: var(--dark-turqoise)
+}
+
+.color-accent {
+color: var(--light-green) !important
+}
+.color-p {
+  color: var(--blue)
+}
+
+.color-span {
+  color:var(--blue)
 }
 
 .flex-between-y {
@@ -213,7 +224,7 @@ a {
 
 a.link::before {
     content: "» ";
-    color: var(--dark-turqoise);
+    color: var(--yellow);
   white-space: nowrap;
 }
 
@@ -221,23 +232,23 @@ a.link {
 
     background-color: var(--grey);
     text-decoration: none;
-    color: var(--blue);
+    color: var(--purple);
     transition: color 0.2s ease;
 }
 
 a.link:hover {
-    color: var(--turqoise);
+    color: var(--pink);
 }
 
 
 a.link-line {
     text-decoration: underline;
-    color: var(--blue);
+    color: var(--purple);
     transition: color 0.2s ease;
 }
 
 a.link-line:hover {
-    color: var(--turqoise);
+    color: var(--pink);
 }
 
 .responsive-span,

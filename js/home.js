@@ -10,17 +10,17 @@ export function home() {
     template: template,
     mobileBreakpoint: {
       horizontalChars: 35,
-      verticalLines: 8,
+      verticalLines: 9,
       breakpoint: 514,
     },
     tabletBreakpoint: {
       horizontalChars: 35,
-      verticalLines: 8,
+      verticalLines: 9,
       breakpoint: 515,
     },
     desktopBreakpoint: {
       horizontalChars: 70,
-      verticalLines: 3,
+      verticalLines: 5,
     },
     delay: 5500,
     duration: 1500,

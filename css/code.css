@@ -1,5 +1,9 @@
 @import url('./root.css');
 
+.outer{
+  margin-top: 6ch
+}
+
     .binaryContainer {
     transform: translate3d(0, 0, 0) scale(1);
     contain: layout paint;
@@ -139,8 +143,9 @@ color: var(--turqoise);
   font: inherit;
 }
 
-
-
+.margin-code-ascii-box{
+  margin-top: 5ch
+}
 @media (max-width: 768px) {
     .projects{
       padding: 5px 5px;
