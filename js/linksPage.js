@@ -9,20 +9,20 @@ export function linksPage() {
   const logoPre = document.querySelector('.center-pre');
   console.log(leftSection, rightSection);
 
-  const bodyBackground = new AsciiBackground({
-    asciiArt: patterns.pattern1,
-    container: document.body,
-    style: {
-      color: "var(--dark-grey)",
-      opacity: 1,
-      zIndex: -1,
-    },
-  });
-
-  if (bodyBackground) {
-    const background = document.querySelector(".ascii-background");
-    background.classList.add("fade-in-bg");
-  }
+  //const bodyBackground = new AsciiBackground({
+  //  asciiArt: patterns.pattern1,
+  //  container: document.body,
+  //  style: {
+  //    color: "var(--dark-grey)",
+  //    opacity: 1,
+  //    zIndex: -1,
+  //  },
+  //});
+  //
+  //if (bodyBackground) {
+  //  const background = document.querySelector(".ascii-background");
+  //  background.classList.add("fade-in-bg");
+  //}
 
   const logoBackground = new AsciiLogoBackground({
     leftSection: leftSection,

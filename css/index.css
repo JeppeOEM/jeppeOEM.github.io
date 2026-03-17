@@ -96,11 +96,11 @@ html, body {
 }
 
 .h3 {
-  color: var(--dark-turqoise)
+  color: var(--black)
 }
 
 .color-accent {
-color: var(--light-green) !important
+color: var(--light-black) !important
 }
 .color-p {
   color: var(--blue)
@@ -110,6 +110,17 @@ color: var(--light-green) !important
   color:var(--blue)
 }
 
+/* .color-first-letter{
+color: var(--white);
+}
+
+.color-second-letter{
+color: var(--turqoise)
+}
+
+.color-third-letter{
+color: var(--dark-turqoise)
+} */
 .flex-between-y {
   display: flex;
   height: 100%;
