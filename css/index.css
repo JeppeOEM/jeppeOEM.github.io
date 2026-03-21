@@ -307,6 +307,25 @@ a.link-line:hover {
     }
 
 
+.ascii-box {
+  position: relative;
+  color: var(--light-black);
+}
+
+.ascii-title-placeholder::before {
+  content: attr(data-title);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--light-black);
+  padding: 0.2ch 0.8ch;
+  font-weight: bold;
+  z-index: 10;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .dark-turqoise{
   color:var(--dark-turqoise)
 }
