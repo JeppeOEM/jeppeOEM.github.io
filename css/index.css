@@ -96,18 +96,29 @@ html, body {
 }
 
 .h3 {
-  color: var(--black)
+  color: var(--white);
+  /* background-color: var(--black); */
+}
+
+.h3-bg-text {
+  background-color: var(--light-black);
+  padding: 0.5ch 1ch;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
 .color-accent {
-color: var(--yellow) !important
+color: var(--yellow)
 }
 .color-p {
-  color: var(--blue)
+  color: var(--black)
 }
 
 .color-span {
-  color:var(--blue)
+  color:var(--purple)
 }
 
 /* .color-first-letter{
@@ -243,23 +254,23 @@ a.link {
 
     background-color: var(--grey);
     text-decoration: none;
-    color: var(--purple);
+    color: var(--blue);
     transition: color 0.2s ease;
 }
 
 a.link:hover {
-    color: var(--pink);
+    color: var(--turqoise);
 }
 
 
 a.link-line {
     text-decoration: underline;
-    color: var(--purple);
+    color: var(--blue);
     transition: color 0.2s ease;
 }
 
 a.link-line:hover {
-    color: var(--pink);
+    color: var(--turqoise);
 }
 
 .responsive-span,
