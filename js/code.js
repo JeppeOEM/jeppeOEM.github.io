@@ -3,7 +3,6 @@ import AsciiBox from "./AsciiBox.js";
 import AsciiLogoBackground from "./AsciiLogoBackground.js";
 
 import { patterns } from "./asciiPatterns.js";
-import { startBinaryAnimation } from "./binaryAnimation.js";
 import { leftPre, rightPre } from "./codeBackground.js";
 
 export function codePage() {
@@ -85,13 +84,4 @@ export function codePage() {
   });
 
   asciiBox.init();
-  //
-  //  const leftDiv = document.querySelector(".leftDiv");
-  //  startBinaryAnimation(leftDiv, 3, 600);
-  //
-  //  const topLeftDiv = document.querySelector(".topLeftDiv");
-  //  startBinaryAnimation(topLeftDiv, 3, 800);
-  //
-  //  const bottomLeftDiv = document.querySelector(".bottomLeftDiv");
-  //  startBinaryAnimation(bottomLeftDiv, 3, 900);
 }
