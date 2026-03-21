@@ -749,7 +749,8 @@ nav a {
 }
 
 .nav a:hover {
-  text-decoration: underline; /* Optional: add hover effect */
+  text-decoration: underline;
+  color: var(--turqoise);
 }
 
 
@@ -922,8 +923,8 @@ background-color: transparent !important;
   overflow: hidden;
 }
 
-/* Mobile: flex column below 480px */
-@media (max-width: 480px) {
+/* Mobile: flex column below 500px - matches ASCII box resize breakpoint */
+@media (max-width: 500px) {
   .dot-seperation {
     flex-direction: column;
      margin-bottom: 5px;
@@ -932,6 +933,10 @@ background-color: transparent !important;
 
 .dot-seperation span {
   text-align: left;
+}
+
+.dot-seperation::before {
+  display: none;
 }
 
 }
