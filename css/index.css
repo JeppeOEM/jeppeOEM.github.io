@@ -239,6 +239,10 @@ a {
 /*  text-decoration: none !important;*/
 /**/
 /*}*/
+.flex-vertical{
+  display: flex;
+  flex-direction: column;
+}
 
 .first-letter-link{
   color: white;
