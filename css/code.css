@@ -146,6 +146,24 @@ color: var(--turqoise);
 .margin-code-ascii-box{
   margin-top: 5ch
 }
+
+.ascii-box {
+  position: relative;
+}
+
+.ascii-title-placeholder::before {
+  content: "...:::[CODE]:::...";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--white);
+  background-color: var(--black);
+  padding: 0.2ch 0.8ch;
+  font-weight: bold;
+  z-index: 10;
+  white-space: nowrap;
+}
+
 @media (max-width: 768px) {
     .projects{
       padding: 5px 5px;
