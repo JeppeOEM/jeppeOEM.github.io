@@ -66,12 +66,12 @@ html, body {
 * {
     font-size: 16px;
     margin: 0;
-  padding: 0;
+    padding: 0;
     box-sizing: border-box;
-  font-family: inherit;
-  font-weight: 200;
+    font-family: inherit;
+    font-weight: 200;
   /* line-height: must not be deleted for the slime animation to work; */
-  line-height: 1;
+    line-height: 1;
   }
 
 .font-refresh {
@@ -109,6 +109,14 @@ html, body {
   align-items: center;
   box-sizing: border-box;
 }
+.h3-text{
+  /*background-color: var(--black)!important;*/
+}
+
+.span-second-accent {
+color: var(--light-black);
+/*background-color: var(--light-black) !important;*/
+}
 
 .color-accent {
 color: var(--yellow)
@@ -118,7 +126,8 @@ color: var(--yellow)
 }
 
 .color-span {
-  color:var(--purple)
+  color:var(--black);
+  /*background-color: var(--light-black) !important;*/
 }
 
 /* .color-first-letter{
@@ -250,7 +259,7 @@ a {
 
 a.link::before {
     content: "» ";
-    color: var(--light-blue);
+    color: var(--dark-turqoise);
   white-space: nowrap;
 }
 
@@ -323,7 +332,6 @@ a.link-line:hover {
   transform: translateX(-50%);
   color: var(--light-black);
   padding: 0.2ch 0.8ch;
-  font-weight: bold;
   z-index: 10;
   white-space: nowrap;
   -webkit-font-smoothing: antialiased;
@@ -406,6 +414,9 @@ background-color: var(--black);
   padding: 2ch
 }
 
+.padding-2ch-top{
+  padding-top: 2ch
+}
 .small-margin-top{
   margin-top: var(--small-pad);
 }
@@ -927,7 +938,7 @@ background-color: transparent !important;
 .dot-seperation span {
   position: relative;
   background: var(--grey);
-  padding-left: 8px;
+  /*padding-left: 8px;*/
   z-index: 2;
   text-align: right;
 }
@@ -940,7 +951,7 @@ background-color: transparent !important;
   right: 0;
   bottom: 0.1ch;
   z-index: -1;
-  color: var(--light-blue);
+  color: var(--light-black);
   letter-spacing: 2px;
   white-space: nowrap;
   overflow: hidden;
