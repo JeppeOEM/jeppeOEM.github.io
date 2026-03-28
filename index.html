@@ -20,28 +20,11 @@
       rel="stylesheet"
     />
 
-    <!-- ================================================================== -->
-    <!-- PERFORMANCE OPTIMIZATION: Resource Hints for Animation Loading    -->
-    <!-- ================================================================== -->
-    <!-- These hints tell the browser to start loading critical JS modules -->
-    <!-- in parallel while the page renders, improving animation startup.   -->
-    <!-- Benefits:                                                         -->
-    <!--   • Modules are parsed/compiled before they're needed (500ms later)-->
-    <!--   • 15-25% faster animation initialization on tablets             -->
-    <!--   • No visual change - animation still starts at 500ms delay      -->
-    <!-- ================================================================== -->
-
-    <!-- PREFETCH: Low-priority download for modules (caching benefit) -->
-    <!-- Useful for repeat visits and future navigation -->
     <link rel="prefetch" href="/src/run.js" />
     <link rel="prefetch" href="/src/programs/contributed/slime_dish2.js" />
     <link rel="prefetch" href="/src/core/textrenderer.js" />
     <link rel="prefetch" href="/src/modules/vec2.js" />
-
-    <!-- DNS PREFETCH: Pre-resolve DNS for external resources -->
-    <!-- Speeds up connections if external services are used -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/home.css" />
