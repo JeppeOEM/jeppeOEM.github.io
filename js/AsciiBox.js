@@ -10,6 +10,8 @@ export default class AsciiBox {
     this.currentTemplate = null;
     this.hasFadedIn = false;
     this.styleTextContent = config.styleTextContent;
+    this.backgroundColor = config.backgroundColor || "";
+    this.outlineColor = config.outlineColor || "";
 
     // Bind methods to maintain proper 'this' context
     this.handleResize = this.handleResize.bind(this);
@@ -116,6 +118,14 @@ export default class AsciiBox {
     // Wrap the template content
     const wrapper = document.createElement("div");
     wrapper.classList.add("ascii-box-wrapper");
+
+    if (this.backgroundColor) {
+      wrapper.style.setProperty("--ascii-box-bg-color", this.backgroundColor);
+    }
+    if (this.outlineColor) {
+      wrapper.style.setProperty("--ascii-box-outline-color", this.outlineColor);
+    }
+
     wrapper.appendChild(templateContent);
 
     // Apply fade-in only on first load

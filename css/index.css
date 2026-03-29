@@ -326,7 +326,7 @@ a.link-line:hover {
 
 .ascii-box {
   position: relative;
-  color: var(--light-black);
+  color: var(--ascii-box-outline-color, var(--light-black));
 }
 
 .ascii-title-placeholder::before {
@@ -334,7 +334,7 @@ a.link-line:hover {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--light-black);
+  color: var(--ascii-box-outline-color, var(--light-black));
   padding: 0.2ch 0.8ch;
   z-index: 10;
   white-space: nowrap;
@@ -438,7 +438,7 @@ background-color: var(--black);
 
 .ascii-box {
   position: relative;
-  color: var(--light-black);
+  color: var(--ascii-box-outline-color, var(--light-black));
 }
 
 .bg {
@@ -448,7 +448,7 @@ background-color: var(--black);
   top: calc(var(--y) * 1lh);
   width: calc(100% - var(--w) * 1ch);
   height: calc(100% - var(--h) * 1lh);
-  background-color: var(--bg);
+  background-color: var(--ascii-box-bg-color, var(--bg));
   /*box-shadow: 5px 5px 15px rgba(0, 0, 0, 1.3);*/
 }
 

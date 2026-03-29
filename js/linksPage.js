@@ -57,6 +57,8 @@ export function linksPage() {
       verticalHeaderLines: 0,
       verticalLines: 30,
     },
+    backgroundColor: "var(--blue)",
+    outlineColor: "var(--light-black)",
     styleTextContent: `.fade-in-box {
     opacity: 0;
     transform: translateY(200%) scale(0.5);
