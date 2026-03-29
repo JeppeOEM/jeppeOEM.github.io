@@ -42,20 +42,20 @@ export function linksPage() {
     template: template,
     mobileBreakpoint: {
       horizontalChars: 42,
-      verticalLines: 10,
+      verticalLines: 50,
       verticalHeaderLines: 8,
       breakpoint: 480,
     },
     tabletBreakpoint: {
       horizontalChars: 60,
-      verticalLines: 20,
+      verticalLines: 50,
       verticalHeaderLines: 0,
       breakpoint: 768,
     },
     desktopBreakpoint: {
       horizontalChars: 80,
       verticalHeaderLines: 0,
-      verticalLines: 10,
+      verticalLines: 30,
     },
     styleTextContent: `.fade-in-box {
     opacity: 0;

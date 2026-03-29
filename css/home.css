@@ -39,15 +39,16 @@
   opacity: 1;
 }
 
-.slime span{
+.slime span {
   animation: fadeIn 3s ease-in forwards;
   color: var(--dark-green);
 }
 
-.slime {
-  /*will isolate and  increase performancn*/
+.slime,
+.slime-canvas {
+  /* Keep background animation in an isolated fixed layer. */
   contain: strict;
-  will-change: content;
+  will-change: transform, opacity;
   position: fixed;
   top: 0;
   left: 0;
@@ -56,6 +57,10 @@
   margin: 0;
   padding: 0;
   z-index: -1; /* Send behind other content */
+}
+
+.slime-canvas {
+  display: block;
 }
 
 

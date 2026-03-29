@@ -137,6 +137,7 @@
     </template>
 
     <pre class="slime"></pre>
+    <canvas class="slime-canvas"></canvas>
     <script src="./js/components/nav-bar.js"></script>
     <script type="module">
       import { loadPage } from "./js/loadPage.js";
@@ -152,6 +153,12 @@
         .addEventListener("change", (e) => {
           const selectedFont = e.target.value;
           saveFontSelection(selectedFont);
+
+          const slimeCanvas = document.querySelector(".slime-canvas");
+          const isCanvasActive = Boolean(slimeCanvas && !slimeCanvas.hidden);
+          if (isCanvasActive) {
+            globalThis.location.reload();
+          }
         });
     </script>
   </body>
