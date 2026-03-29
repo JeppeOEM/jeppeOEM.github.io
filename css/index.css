@@ -114,7 +114,7 @@ html, body {
 }
 
 .span-second-accent {
-color: var(--light-black);
+color: var(--light-blue);
 /*background-color: var(--light-black) !important;*/
 }
 
@@ -239,6 +239,10 @@ a {
   padding-right: 8px;
 }
 
+.span-purple {
+  color: var(--purple);
+  /*background-color: var(--light-black) !important;*/
+}
 /*.nav__link{*/
 /*text-decoration: none;*/
 /*}*/
@@ -934,6 +938,9 @@ background-color: transparent !important;
   align-items: baseline;
   overflow: hidden;
 }
+.dot-seperation:hover{
+  color: var(--turqoise);
+}
 
 .dot-seperation span {
   position: relative;
@@ -951,7 +958,7 @@ background-color: transparent !important;
   right: 0;
   bottom: 0.1ch;
   z-index: -1;
-  color: var(--light-black);
+  color: var(--light-blue);
   letter-spacing: 2px;
   white-space: nowrap;
   overflow: hidden;

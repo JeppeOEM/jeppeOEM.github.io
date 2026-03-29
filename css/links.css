@@ -98,6 +98,9 @@
    color: var(--blue);
 }
 
+.word-letter-1 { color: var(--pink); }
+.word-letter-2 { color: var(--purple); }
+
 
 .bg-logo-1{
     /*background-color: var(--purple);*/
