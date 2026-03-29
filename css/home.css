@@ -103,6 +103,47 @@
   animation: fadeInLogo 1.5s ease-in-out 9s forwards;
 }
 
+#ascii-logo,
+.ascii-box-wrapper,
+.background-layer {
+  transition: opacity 1500ms ease, visibility 1500ms ease;
+}
+
+body.home-ui-hidden #ascii-logo,
+body.home-ui-hidden .ascii-box-wrapper,
+body.home-ui-hidden .background-layer {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.home-bottom-nav-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.home-bottom-nav {
+  padding-top: 8px;
+  padding-bottom: 5px;
+}
+
+.home-bottom-navbar {
+  justify-content: center;
+}
+
+.nav-toggle-btn {
+  all: unset;
+  cursor: pointer;
+  color: var(--white);
+}
+
+.nav-toggle-btn:hover {
+  color: var(--turqoise);
+  text-decoration: underline;
+}
+
 
 
 .ascii-art span {

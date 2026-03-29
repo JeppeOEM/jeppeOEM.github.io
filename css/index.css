@@ -290,6 +290,9 @@ a.link-line:hover {
     color: var(--turqoise);
 }
 
+a.link-line.turqoise{
+    color: var(--turqoise);
+}
 .responsive-span,
 .responsive-span-vertical {
   pointer-events: none;
@@ -642,6 +645,9 @@ background-color: var(--black);
   max-width: 500px;
 
   border: var(--light-black) solid;
+}
+.navbar.home-bottom-navbar{
+  max-width: none;
 }
 
 .navbar-side{

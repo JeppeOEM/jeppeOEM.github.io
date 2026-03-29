@@ -109,12 +109,7 @@
 
               </div>
               <br>
-              <p class="color-p">
-                textmode animation created with ertdfgcvb's:
-                <a class="link-line" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish"
-                  >ASCII playground</a
-                >
-              </p>
+>
             </div>
           </div>
 
@@ -138,6 +133,26 @@
 
     <pre class="slime"></pre>
     <canvas class="slime-canvas"></canvas>
+
+    <div class="home-bottom-nav-wrapper" aria-label="Home controls">
+      <nav class="nav home-bottom-nav">
+        <div class="navbar-side"></div>
+        <div class="navbar home-bottom-navbar">
+          <div>
+            <button id="toggle-home-ui" class="nav-toggle-btn" type="button">
+              <span class="bracket">[</span>BG ONLY: OFF<span class="bracket">]</span>
+            </button>
+          </div>
+          <div>
+            <span class="font-controls"><span class="bracket">[</span><label for="anim-fg-selector">FG:</label><select id="anim-fg-selector"></select><span class="bracket">]</span></span>
+            <span class="font-controls"><span class="bracket">[</span><label for="anim-bg-selector">BG:</label><select id="anim-bg-selector"></select><span class="bracket">]</span></span>
+            <span class="font-controls"><span class="bracket">[</span>Created with:<a class="link-line turqoise" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish">ASCII playground</a><span class="bracket">]</span></span>
+          </div>
+        </div>
+        <div class="navbar-side"></div>
+      </nav>
+    </div>
+
     <script src="./js/components/nav-bar.js"></script>
     <script type="module">
       import { loadPage } from "./js/loadPage.js";
@@ -160,6 +175,50 @@
             globalThis.location.reload();
           }
         });
+
+      const toggleBtn = document.getElementById("toggle-home-ui");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const isHidden = document.body.classList.toggle("home-ui-hidden");
+          toggleBtn.innerHTML = isHidden
+            ? '<span class="bracket">[</span>BG ONLY: ON<span class="bracket">]</span>'
+            : '<span class="bracket">[</span>BG ONLY: OFF<span class="bracket">]</span>';
+        });
+      }
+
+      const palette16 = [
+        ["00", "#000000"], ["01", "#0000AA"], ["02", "#00AA00"], ["03", "#00AAAA"],
+        ["04", "#AA0000"], ["05", "#AA00AA"], ["06", "#AA5500"], ["07", "#AAAAAA"],
+        ["08", "#555555"], ["09", "#5555FF"], ["10", "#55FF55"], ["11", "#55FFFF"],
+        ["12", "#FF5555"], ["13", "#FF55FF"], ["14", "#FFFF55"], ["15", "#FFFFFF"],
+      ];
+
+      const fgSelect = document.getElementById("anim-fg-selector");
+      const bgSelect = document.getElementById("anim-bg-selector");
+
+      function populatePalette(select) {
+        if (!select) return;
+        select.innerHTML = "";
+        palette16.forEach(([code, hex]) => {
+          const option = document.createElement("option");
+          option.value = hex;
+          option.textContent = `${code}: ${hex}`;
+          select.appendChild(option);
+        });
+      }
+
+      populatePalette(fgSelect);
+      populatePalette(bgSelect);
+
+      if (fgSelect) fgSelect.value = "#00AA00";
+      if (bgSelect) bgSelect.value = "#000000";
+
+      if (fgSelect) {
+        fgSelect.addEventListener("change", () => {});
+      }
+      if (bgSelect) {
+        bgSelect.addEventListener("change", () => {});
+      }
     </script>
   </body>
 </html>
