@@ -6,12 +6,12 @@ export function home() {
   const mobileBreakpoint = {
     horizontalChars: 35,
     verticalLines: 9,
-    breakpoint: 514,
+    breakpoint: 545,
   };
   const tabletBreakpoint = {
     horizontalChars: 35,
     verticalLines: 9,
-    breakpoint: 515,
+    breakpoint: 546,
   };
   const desktopBreakpoint = {
     horizontalChars: 70,
@@ -85,6 +85,10 @@ export function home() {
     const preElement = document.querySelector(".slime");
     const canvasElement = document.querySelector(".slime-canvas");
     const pageBackgroundColor = getComputedStyle(document.body).backgroundColor;
+    const slimeLetterColor =
+      getComputedStyle(document.documentElement)
+        .getPropertyValue("--dark-green")
+        .trim() || "#39ff14";
     const textSettings = { element: preElement };
     const canvasSettings = {
       renderer: "canvas",
@@ -98,8 +102,17 @@ export function home() {
     if (canvasElement) canvasElement.hidden = !shouldUseCanvas;
 
     const selectedSettings = shouldUseCanvas ? canvasSettings : textSettings;
+    const selectedProgram = shouldUseCanvas
+      ? {
+          ...program,
+          settings: {
+            ...program.settings,
+            color: slimeLetterColor,
+          },
+        }
+      : program;
 
-    run(program, selectedSettings)
+    run(selectedProgram, selectedSettings)
       .then(function(e) {
         console.log("✓ Animation loaded successfully");
       })

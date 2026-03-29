@@ -53,7 +53,7 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh + 1lh);
   margin: 0;
   padding: 0;
   z-index: -1; /* Send behind other content */
@@ -165,17 +165,27 @@
   }
 }
 
-  @media (max-width: 500px) {
+  @media (max-width: 546px) {
 
   .background-layer{
-  width: 49ch;
+  width: 45ch;
   height: 10lh;
   }
   .ascii-art{
-    line-height: 9px !important;
+    font-size: 9px !important;
+    line-height: 1 !important;
+    letter-spacing: 0;
+    width: max-content;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
   }
     .ascii-art * {
-      font-size: 10px;
+      font-size: inherit;
+      line-height: inherit;
     }
+     
   }
 

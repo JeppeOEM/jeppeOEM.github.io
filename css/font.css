@@ -14,3 +14,78 @@
   font-family: IBMEGA9;
   src: url(../fonts/Px437_IBM_EGA_9x14.ttf);
 }
+
+/* AcPlus — VGA 8×16 */
+@font-face { font-family: AcPlus_IBM_VGA_8x16; src: url(../fonts/AcPlus_IBM_VGA_8x16.ttf); }
+@font-face { font-family: AcPlus_ToshibaSat_8x16; src: url(../fonts/AcPlus_ToshibaSat_8x16.ttf); }
+@font-face { font-family: AcPlus_ToshibaTxL1_8x16; src: url(../fonts/AcPlus_ToshibaTxL1_8x16.ttf); }
+@font-face { font-family: AcPlus_ToshibaTxL2_8x16; src: url(../fonts/AcPlus_ToshibaTxL2_8x16.ttf); }
+
+/* AcPlus — CGA 2y */
+@font-face { font-family: AcPlus_IBM_BIOS-2y; src: url(../fonts/AcPlus_IBM_BIOS-2y.ttf); }
+@font-face { font-family: AcPlus_IBM_CGA-2y; src: url(../fonts/AcPlus_IBM_CGA-2y.ttf); }
+@font-face { font-family: AcPlus_Amstrad_PC-2y; src: url(../fonts/AcPlus_Amstrad_PC-2y.ttf); }
+@font-face { font-family: "AcPlus_Tandy1K-II_200L-2y"; src: url(../fonts/AcPlus_Tandy1K-II_200L-2y.ttf); }
+
+/* Ac437 — VGA 8×16 */
+@font-face { font-family: Ac437_ACM_VGA_8x16; src: url(../fonts/Ac437_ACM_VGA_8x16.ttf); }
+@font-face { font-family: Ac437_ATI_8x16; src: url(../fonts/Ac437_ATI_8x16.ttf); }
+@font-face { font-family: Ac437_CL_EagleII_8x16; src: url(../fonts/Ac437_CL_EagleII_8x16.ttf); }
+@font-face { font-family: Ac437_CL_EagleIII_8x16; src: url(../fonts/Ac437_CL_EagleIII_8x16.ttf); }
+@font-face { font-family: Ac437_IBM_VGA_8x16; src: url(../fonts/Ac437_IBM_VGA_8x16.ttf); }
+@font-face { font-family: Ac437_IGS_VGA_8x16; src: url(../fonts/Ac437_IGS_VGA_8x16.ttf); }
+@font-face { font-family: Ac437_MBytePC230_8x16; src: url(../fonts/Ac437_MBytePC230_8x16.ttf); }
+@font-face { font-family: Ac437_NEC_APC3_8x16; src: url(../fonts/Ac437_NEC_APC3_8x16.ttf); }
+@font-face { font-family: Ac437_PhoenixEGA_8x16; src: url(../fonts/Ac437_PhoenixEGA_8x16.ttf); }
+@font-face { font-family: Ac437_PhoenixVGA_8x16; src: url(../fonts/Ac437_PhoenixVGA_8x16.ttf); }
+@font-face { font-family: Ac437_Sigma_RM_8x16; src: url(../fonts/Ac437_Sigma_RM_8x16.ttf); }
+@font-face { font-family: Ac437_SperryPC_8x16; src: url(../fonts/Ac437_SperryPC_8x16.ttf); }
+@font-face { font-family: Ac437_ToshibaSat_8x16; src: url(../fonts/Ac437_ToshibaSat_8x16.ttf); }
+@font-face { font-family: Ac437_ToshibaT300_8x16; src: url(../fonts/Ac437_ToshibaT300_8x16.ttf); }
+@font-face { font-family: Ac437_ToshibaTxL1_8x16; src: url(../fonts/Ac437_ToshibaTxL1_8x16.ttf); }
+@font-face { font-family: Ac437_ToshibaTxL2_8x16; src: url(../fonts/Ac437_ToshibaTxL2_8x16.ttf); }
+@font-face { font-family: Ac437_TridentEarly_8x16; src: url(../fonts/Ac437_TridentEarly_8x16.ttf); }
+@font-face { font-family: Ac437_Trident_8x16; src: url(../fonts/Ac437_Trident_8x16.ttf); }
+@font-face { font-family: Ac437_Verite_8x16; src: url(../fonts/Ac437_Verite_8x16.ttf); }
+
+/* Ac437 — CGA 2y */
+@font-face { font-family: Ac437_AMI_EGA_8x8-2y; src: url(../fonts/Ac437_AMI_EGA_8x8-2y.ttf); }
+@font-face { font-family: Ac437_ATI_8x8-2y; src: url(../fonts/Ac437_ATI_8x8-2y.ttf); }
+@font-face { font-family: Ac437_Acer710_CGA-2y; src: url(../fonts/Ac437_Acer710_CGA-2y.ttf); }
+@font-face { font-family: Ac437_Acer_VGA_8x8-2y; src: url(../fonts/Ac437_Acer_VGA_8x8-2y.ttf); }
+@font-face { font-family: Ac437_Amstrad_PC-2y; src: url(../fonts/Ac437_Amstrad_PC-2y.ttf); }
+@font-face { font-family: Ac437_Apricot_200L-2y; src: url(../fonts/Ac437_Apricot_200L-2y.ttf); }
+@font-face { font-family: Ac437_Copam_BIOS-2y; src: url(../fonts/Ac437_Copam_BIOS-2y.ttf); }
+@font-face { font-family: "Ac437_DG_One-2y"; src: url(../fonts/Ac437_DG_One-2y.ttf); }
+@font-face { font-family: Ac437_DTK_BIOS-2y; src: url(../fonts/Ac437_DTK_BIOS-2y.ttf); }
+@font-face { font-family: "Ac437_EagleSpCGA_Alt1-2y"; src: url(../fonts/Ac437_EagleSpCGA_Alt1-2y.ttf); }
+@font-face { font-family: "Ac437_EagleSpCGA_Alt2-2y"; src: url(../fonts/Ac437_EagleSpCGA_Alt2-2y.ttf); }
+@font-face { font-family: "Ac437_EagleSpCGA_Alt3-2y"; src: url(../fonts/Ac437_EagleSpCGA_Alt3-2y.ttf); }
+@font-face { font-family: Ac437_EpsonMGA-2y; src: url(../fonts/Ac437_EpsonMGA-2y.ttf); }
+@font-face { font-family: Ac437_EpsonMGA_Alt-2y; src: url(../fonts/Ac437_EpsonMGA_Alt-2y.ttf); }
+@font-face { font-family: Ac437_EuroPC_CGA-2y; src: url(../fonts/Ac437_EuroPC_CGA-2y.ttf); }
+@font-face { font-family: Ac437_IBM_BIOS-2y; src: url(../fonts/Ac437_IBM_BIOS-2y.ttf); }
+@font-face { font-family: Ac437_IBM_CGA-2y; src: url(../fonts/Ac437_IBM_CGA-2y.ttf); }
+@font-face { font-family: Ac437_IBM_Conv-2y; src: url(../fonts/Ac437_IBM_Conv-2y.ttf); }
+@font-face { font-family: Ac437_ITT_Xtra-2y; src: url(../fonts/Ac437_ITT_Xtra-2y.ttf); }
+@font-face { font-family: Ac437_Kaypro2K_G-2y; src: url(../fonts/Ac437_Kaypro2K_G-2y.ttf); }
+@font-face { font-family: "Ac437_LE_Model_D_CGA-2y"; src: url(../fonts/Ac437_LE_Model_D_CGA-2y.ttf); }
+@font-face { font-family: Ac437_MBytePC230_CGA-2y; src: url(../fonts/Ac437_MBytePC230_CGA-2y.ttf); }
+@font-face { font-family: Ac437_Mindset-2y; src: url(../fonts/Ac437_Mindset-2y.ttf); }
+@font-face { font-family: Ac437_NEC_APC3_8x8-2y; src: url(../fonts/Ac437_NEC_APC3_8x8-2y.ttf); }
+@font-face { font-family: Ac437_Nix8810_M35-2y; src: url(../fonts/Ac437_Nix8810_M35-2y.ttf); }
+@font-face { font-family: Ac437_Olivetti_M15-2y; src: url(../fonts/Ac437_Olivetti_M15-2y.ttf); }
+@font-face { font-family: Ac437_PhoenixEGA_8x8-2y; src: url(../fonts/Ac437_PhoenixEGA_8x8-2y.ttf); }
+@font-face { font-family: Ac437_Phoenix_BIOS-2y; src: url(../fonts/Ac437_Phoenix_BIOS-2y.ttf); }
+@font-face { font-family: Ac437_SanyoMBC16-2y; src: url(../fonts/Ac437_SanyoMBC16-2y.ttf); }
+@font-face { font-family: Ac437_SanyoMBC55x-2y; src: url(../fonts/Ac437_SanyoMBC55x-2y.ttf); }
+@font-face { font-family: Ac437_SanyoMBC775-2y; src: url(../fonts/Ac437_SanyoMBC775-2y.ttf); }
+@font-face { font-family: Ac437_SeequaCm-2y; src: url(../fonts/Ac437_SeequaCm-2y.ttf); }
+@font-face { font-family: Ac437_SperryPC_CGA-2y; src: url(../fonts/Ac437_SperryPC_CGA-2y.ttf); }
+@font-face { font-family: "Ac437_Tandy1K-II_200L-2y"; src: url(../fonts/Ac437_Tandy1K-II_200L-2y.ttf); }
+@font-face { font-family: "Ac437_Tandy1K-I_200L-2y"; src: url(../fonts/Ac437_Tandy1K-I_200L-2y.ttf); }
+@font-face { font-family: Ac437_ToshibaT300_8x8-2y; src: url(../fonts/Ac437_ToshibaT300_8x8-2y.ttf); }
+@font-face { font-family: Ac437_VTech_BIOS-2y; src: url(../fonts/Ac437_VTech_BIOS-2y.ttf); }
+@font-face { font-family: Ac437_Verite_8x8-2y; src: url(../fonts/Ac437_Verite_8x8-2y.ttf); }
+@font-face { font-family: Ac437_Wyse700a-2y; src: url(../fonts/Ac437_Wyse700a-2y.ttf); }
+@font-face { font-family: Ac437_Wyse700b-2y; src: url(../fonts/Ac437_Wyse700b-2y.ttf); }
