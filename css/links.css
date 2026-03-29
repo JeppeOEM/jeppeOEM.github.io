@@ -101,6 +101,11 @@
 .word-letter-1 { color: var(--pink); }
 .word-letter-2 { color: var(--purple); }
 
+.edge-letter-c1 { color: var(--light-blue); }
+.edge-letter-c2 { color: var(--light-blue); }
+.edge-letter-c3 { color: var(--blue); }
+.edge-letter-c4 { color: var(--blue); }
+
 
 .bg-logo-1{
     /*background-color: var(--purple);*/

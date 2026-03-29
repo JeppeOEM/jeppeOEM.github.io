@@ -944,7 +944,7 @@ background-color: transparent !important;
 
 .dot-seperation span {
   position: relative;
-  background: var(--grey);
+  background: var(--blue);
   /*padding-left: 8px;*/
   z-index: 2;
   text-align: right;

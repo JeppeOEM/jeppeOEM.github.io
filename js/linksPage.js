@@ -86,59 +86,98 @@ export function linksPage() {
 
   asciiBox.init();
 
-  colorWordStartsInDotSeperationBrackets();
+  // colorWordStartsInDotSeperationBrackets();
 }
 
 function colorWordStartsInDotSeperationBrackets() {
-  const spans = document.querySelectorAll('.dot-seperation .span-purple');
-  const textNodes = [];
+  const spans = document.querySelectorAll('.dot-seperation .color-span, .dot-seperation .span-purple');
+  const colorClasses = ['edge-letter-c1', 'edge-letter-c2', 'edge-letter-c3', 'edge-letter-c4'];
 
   spans.forEach((span) => {
+    // Make recoloring idempotent by unwrapping previous color wrappers.
+    span
+      .querySelectorAll('.word-letter-1, .word-letter-2, .edge-letter-c1, .edge-letter-c2, .edge-letter-c3, .edge-letter-c4')
+      .forEach((el) => {
+        el.replaceWith(document.createTextNode(el.textContent || ''));
+      });
+
+    const textNodes = [];
     const walker = document.createTreeWalker(span, NodeFilter.SHOW_TEXT, null);
     let node;
     while ((node = walker.nextNode())) {
       const p = node.parentElement;
       if (!p) continue;
       if (p.closest('.span-second-accent')) continue;
-      if (!node.textContent.trim()) continue;
+      if (!node.textContent) continue;
       textNodes.push(node);
     }
-  });
 
-  textNodes.forEach((textNode) => {
-    const text = textNode.textContent;
-    const frag = document.createDocumentFragment();
-    let i = 0;
-    while (i < text.length) {
-      const char = text[i];
-      const isLetter = /[a-zA-Z]/.test(char);
-      const prevIsLetter = i > 0 && /[a-zA-Z]/.test(text[i - 1]);
-      if (isLetter && !prevIsLetter) {
-        const s1 = document.createElement('span');
-        s1.className = 'word-letter-1';
-        s1.textContent = char;
-        frag.appendChild(s1);
-        i++;
-        if (i < text.length && /[a-zA-Z]/.test(text[i])) {
-          const s2 = document.createElement('span');
-          s2.className = 'word-letter-2';
-          s2.textContent = text[i];
-          frag.appendChild(s2);
-          i++;
+    const letterRefs = [];
+    textNodes.forEach((textNode) => {
+      const text = textNode.textContent;
+      for (let i = 0; i < text.length; i++) {
+        if (/[a-zA-Z]/.test(text[i])) {
+          letterRefs.push({ textNode, charIndex: i });
         }
-      } else {
-        let plain = '';
-        while (i < text.length) {
-          const c = text[i];
-          const isL = /[a-zA-Z]/.test(c);
-          const prevIsL = i > 0 && /[a-zA-Z]/.test(text[i - 1]);
-          if (isL && !prevIsL) break;
-          plain += c;
-          i++;
+      }
+    });
+
+    if (!letterRefs.length) return;
+
+    const stylesByNode = new Map();
+    const firstCount = Math.min(4, letterRefs.length);
+    const lastCount = Math.min(4, letterRefs.length);
+
+    const setStyle = (ref, className) => {
+      if (!stylesByNode.has(ref.textNode)) {
+        stylesByNode.set(ref.textNode, new Map());
+      }
+      const nodeStyleMap = stylesByNode.get(ref.textNode);
+      if (!nodeStyleMap.has(ref.charIndex)) {
+        nodeStyleMap.set(ref.charIndex, className);
+      }
+    };
+
+    for (let i = 0; i < firstCount; i++) {
+      setStyle(letterRefs[i], colorClasses[i]);
+    }
+
+    for (let i = 0; i < lastCount; i++) {
+      const ref = letterRefs[letterRefs.length - lastCount + i];
+      setStyle(ref, colorClasses[lastCount - 1 - i]);
+    }
+
+    textNodes.forEach((textNode) => {
+      const nodeStyleMap = stylesByNode.get(textNode);
+      if (!nodeStyleMap || nodeStyleMap.size === 0) return;
+
+      const text = textNode.textContent;
+      const frag = document.createDocumentFragment();
+      let plain = '';
+
+      for (let i = 0; i < text.length; i++) {
+        const className = nodeStyleMap.get(i);
+        if (!className) {
+          plain += text[i];
+          continue;
         }
+
+        if (plain) {
+          frag.appendChild(document.createTextNode(plain));
+          plain = '';
+        }
+
+        const s = document.createElement('span');
+        s.className = className;
+        s.textContent = text[i];
+        frag.appendChild(s);
+      }
+
+      if (plain) {
         frag.appendChild(document.createTextNode(plain));
       }
-    }
-    textNode.parentNode.replaceChild(frag, textNode);
+
+      textNode.parentNode.replaceChild(frag, textNode);
+    });
   });
 }
