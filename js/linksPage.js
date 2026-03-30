@@ -87,8 +87,67 @@ export function linksPage() {
   });
 
   asciiBox.init();
+  initPinkSpanOverflowBehavior();
 
   // colorWordStartsInDotSeperationBrackets();
+}
+
+function initPinkSpanOverflowBehavior() {
+  const spans = document.querySelectorAll('.dot-seperation .span-pink');
+  const desktopQuery = window.matchMedia('(min-width: 501px)');
+
+  spans.forEach((span) => {
+    if (!span.querySelector('.span-pink-text')) {
+      const textWrapper = document.createElement('span');
+      textWrapper.className = 'span-pink-text';
+
+      const nodesToMove = [];
+      span.childNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE || node.nodeType === Node.ELEMENT_NODE) {
+          nodesToMove.push(node);
+        }
+      });
+
+      nodesToMove.forEach((node) => textWrapper.appendChild(node));
+      span.appendChild(textWrapper);
+    }
+
+    if (!span.querySelector('.span-pink-ellipsis')) {
+      const ellipsis = document.createElement('span');
+      ellipsis.className = 'span-pink-ellipsis';
+      ellipsis.textContent = '...';
+      ellipsis.setAttribute('aria-hidden', 'true');
+      span.appendChild(ellipsis);
+    }
+  });
+
+  const updateTruncation = () => {
+    spans.forEach((span) => {
+      span.classList.remove('is-truncated');
+      const textWrapper = span.querySelector('.span-pink-text');
+      if (!textWrapper) return;
+
+      if (!desktopQuery.matches) {
+        return;
+      }
+
+      const isTruncated = textWrapper.scrollWidth > textWrapper.clientWidth + 1;
+      if (isTruncated) {
+        span.classList.add('is-truncated');
+      }
+    });
+  };
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(updateTruncation);
+  });
+
+  window.addEventListener('resize', updateTruncation);
+  if (desktopQuery.addEventListener) {
+    desktopQuery.addEventListener('change', updateTruncation);
+  } else if (desktopQuery.addListener) {
+    desktopQuery.addListener(updateTruncation);
+  }
 }
 
 function colorWordStartsInDotSeperationBrackets() {

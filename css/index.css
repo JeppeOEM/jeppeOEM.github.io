@@ -247,17 +247,60 @@ a {
   position: relative;
   box-sizing: border-box;
   padding-left: 1ch;
-  padding-right: 1ch;
+  padding-right: 2ch;
   overflow: hidden;
   white-space: nowrap;
-  text-overflow: clip;
   /*background-color: var(--light-black) !important;*/
 }
 
 @media (min-width: 501px) {
-  .span-pink {
-    text-overflow: ellipsis;
+  .span-pink.is-truncated {
+    position: absolute;
+    right: 0;
+    width: max-content;
+    z-index: 2;
+    overflow: hidden;
+    background: var(--blue);
+    max-width: 50%;
+    transition: max-width 1.5s ease;
   }
+
+  .dot-seperation:hover {
+    overflow: visible;
+  }
+
+  .dot-seperation:hover .span-pink.is-truncated {
+    z-index: 4;
+    max-width: min(120ch, calc(100vw - 4ch));
+    overflow: visible;
+  }
+}
+
+.span-pink-text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.span-pink-ellipsis {
+  display: none;
+}
+
+.span-pink.is-truncated {
+  padding-right: 5ch;
+}
+
+.span-pink.is-truncated .span-pink-ellipsis {
+  display: inline;
+  position: absolute;
+  right: 1.4ch;
+  top: 0;
+  color: var(--dark-green);
+  background: var(--blue);
+}
+
+.dot-seperation:hover .span-pink.is-truncated .span-pink-ellipsis {
+  display: none;
 }
 
 .span-pink::before,
@@ -986,6 +1029,17 @@ background-color: transparent !important;
 }
 .dot-seperation:hover{
   color: var(--turqoise);
+  cursor: pointer;
+}
+
+.dot-seperation:hover .span-pink,
+.dot-seperation:hover .span-pink-text {
+  color: var(--turqoise);
+}
+
+.dot-seperation:hover .span-pink::before,
+.dot-seperation:hover .span-pink::after {
+  color: var(--turqoise);
 }
 
 .dot-seperation span {
@@ -997,7 +1051,7 @@ background-color: transparent !important;
 
 /* The dot leader line */
 .dot-seperation::before {
-  content: "................................................................................................";
+  content: ".                    .          .       .       .       .       ...:::::::::::::::::::::::::::::::::::::::::::::::::::::";
   position: absolute;
   left: 0;
   right: 0;
@@ -1007,6 +1061,11 @@ background-color: transparent !important;
   letter-spacing: 2px;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.dot-seperation:hover::before {
+  content: "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::";
+  color: var(--turqoise);
 }
 
 /* Mobile: flex column below 500px - matches ASCII box resize breakpoint */
