@@ -244,7 +244,31 @@ a {
   display: inline-block;
   width: 50%;
   flex: 0 0 50%;
+  position: relative;
+  box-sizing: border-box;
+  padding-left: 1ch;
+  padding-right: 1ch;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: clip;
   /*background-color: var(--light-black) !important;*/
+}
+
+.span-pink::before,
+.span-pink::after {
+  color: var(--light-blue);
+  position: absolute;
+  top: 0;
+}
+
+.span-pink::before {
+  content: "[";
+  left: 0;
+}
+
+.span-pink::after {
+  content: "]";
+  right: 0;
 }
 /*.nav__link{*/
 /*text-decoration: none;*/
@@ -963,7 +987,6 @@ background-color: transparent !important;
   background: var(--blue);
   /*padding-left: 8px;*/
   z-index: 2;
-  text-align: right;
 }
 
 /* The dot leader line */
