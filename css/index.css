@@ -125,6 +125,9 @@ color: var(--yellow)
   color: var(--black)
 }
 
+.color-p-secondary {
+  color: var(--purple)
+}
 .color-span {
   color:var(--black);
   /*background-color: var(--light-black) !important;*/
@@ -287,7 +290,7 @@ a {
 }
 
 .span-pink.is-truncated {
-  padding-right: 5ch;
+  padding-right: 2ch;
 }
 
 .span-pink.is-truncated .span-pink-ellipsis {
@@ -1051,7 +1054,7 @@ background-color: transparent !important;
 
 /* The dot leader line */
 .dot-seperation::before {
-  content: "::::::::::::.:..  < >   ~         ";
+  content: "::::::::::::.:..  <@>   +         ";
   position: absolute;
   left: 0;
   right: 0;
@@ -1063,12 +1066,7 @@ background-color: transparent !important;
   overflow: hidden;
 }
 
-.dot-seperation:hover::before {
-  content: "::::::::::::.:..  <@>   ~     ";
-  color: var(--turqoise);
-}
-
-.dot-seperation:hover::after {
+.dot-seperation::after {
   content: "                   @          ";
   position: absolute;
   left: 0;
@@ -1076,6 +1074,25 @@ background-color: transparent !important;
   bottom: 0.1ch;
   z-index: 0;
   color: var(--yellow);
+  letter-spacing: 2px;
+  white-space: pre;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.dot-seperation:hover::before {
+  content: "::::::::::::.:..  <@>   -     ";
+  color: var(--turqoise);
+}
+
+.dot-seperation:hover::after {
+  content: "                  <@>         ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.1ch;
+  z-index: 0;
+  color: var(--orange);
   letter-spacing: 2px;
   white-space: pre;
   overflow: hidden;

@@ -12,8 +12,6 @@ export function linksPage() {
   // const bodyBackground = new AsciiBackground({
   //  asciiArt: patterns.dotPattern,
   //  container: document.body,
-  //  style: {
-  //    color: "var(--dark-grey)",
   //    opacity: 1,
   //    zIndex: -1,
   //  },
