@@ -254,6 +254,12 @@ a {
   /*background-color: var(--light-black) !important;*/
 }
 
+@media (min-width: 501px) {
+  .span-pink {
+    text-overflow: ellipsis;
+  }
+}
+
 .span-pink::before,
 .span-pink::after {
   color: var(--light-blue);
