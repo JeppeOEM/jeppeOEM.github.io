@@ -1051,7 +1051,7 @@ background-color: transparent !important;
 
 /* The dot leader line */
 .dot-seperation::before {
-  content: ".                    .          .       .       .       .       ...:::::::::::::::::::::::::::::::::::::::::::::::::::::";
+  content: "::::::::::::.:..  < >   ~         ";
   position: absolute;
   left: 0;
   right: 0;
@@ -1059,13 +1059,27 @@ background-color: transparent !important;
   z-index: -1;
   color: var(--light-blue);
   letter-spacing: 2px;
-  white-space: nowrap;
+  white-space: pre;
   overflow: hidden;
 }
 
 .dot-seperation:hover::before {
-  content: "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::";
+  content: "::::::::::::.:..  <@>   ~     ";
   color: var(--turqoise);
+}
+
+.dot-seperation:hover::after {
+  content: "                   @          ";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.1ch;
+  z-index: 0;
+  color: var(--yellow);
+  letter-spacing: 2px;
+  white-space: pre;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 /* Mobile: flex column below 500px - matches ASCII box resize breakpoint */
