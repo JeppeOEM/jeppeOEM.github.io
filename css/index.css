@@ -239,8 +239,11 @@ a {
   padding-right: 8px;
 }
 
-.span-purple {
-  color: var(--purple);
+.span-pink {
+  color: var(--pink);
+  display: inline-block;
+  width: 50%;
+  flex: 0 0 50%;
   /*background-color: var(--light-black) !important;*/
 }
 /*.nav__link{*/
@@ -272,6 +275,13 @@ a.link {
     background-color: var(--grey);
     text-decoration: none;
     color: var(--blue);
+    transition: color 0.2s ease;
+}
+
+a.link-secondary  {
+    background-color: var(--blue);
+    text-decoration: none;
+    color: var(--turqoise);
     transition: color 0.2s ease;
 }
 
@@ -976,7 +986,6 @@ background-color: transparent !important;
     flex-direction: column;
      margin-bottom: 5px;
   }
-
 
 .dot-seperation span {
   text-align: left;

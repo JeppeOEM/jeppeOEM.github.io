@@ -92,7 +92,7 @@ export function linksPage() {
 }
 
 function colorWordStartsInDotSeperationBrackets() {
-  const spans = document.querySelectorAll('.dot-seperation .color-span, .dot-seperation .span-purple');
+  const spans = document.querySelectorAll('.dot-seperation .color-span, .dot-seperation .span-pink');
   const colorClasses = ['edge-letter-c1', 'edge-letter-c2', 'edge-letter-c3', 'edge-letter-c4'];
 
   spans.forEach((span) => {
