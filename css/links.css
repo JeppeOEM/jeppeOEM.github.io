@@ -1,6 +1,15 @@
 @import url('./root.css');
 
 
+.h3-bg-text {
+   background-color: var(--light-blue);
+}
+
+.h3-bg-text .color-accent-secondary {
+   color: var(--orange);
+}
+
+
 
     .binaryContainer {
       display: flex;

@@ -1,6 +1,6 @@
 // Archived on 2026-03-29 before first/last-4 rewrite.
 export function colorWordStartsInDotSeperationBrackets(container = document) {
-  const spans = container.querySelectorAll('.dot-seperation .span-pink');
+  const spans = container.querySelectorAll('.dot-seperation .span-green');
   const textNodes = [];
 
   spans.forEach((span) => {

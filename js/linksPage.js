@@ -91,13 +91,13 @@ export function linksPage() {
 }
 
 function initPinkSpanOverflowBehavior() {
-  const spans = document.querySelectorAll('.dot-seperation .span-pink');
+  const spans = document.querySelectorAll('.dot-seperation .span-green');
   const desktopQuery = window.matchMedia('(min-width: 501px)');
 
   spans.forEach((span) => {
-    if (!span.querySelector('.span-pink-text')) {
+    if (!span.querySelector('.span-green-text')) {
       const textWrapper = document.createElement('span');
-      textWrapper.className = 'span-pink-text';
+      textWrapper.className = 'span-green-text';
 
       const nodesToMove = [];
       span.childNodes.forEach((node) => {
@@ -110,9 +110,9 @@ function initPinkSpanOverflowBehavior() {
       span.appendChild(textWrapper);
     }
 
-    if (!span.querySelector('.span-pink-ellipsis')) {
+    if (!span.querySelector('.span-green-ellipsis')) {
       const ellipsis = document.createElement('span');
-      ellipsis.className = 'span-pink-ellipsis';
+      ellipsis.className = 'span-green-ellipsis';
       ellipsis.textContent = '...';
       ellipsis.setAttribute('aria-hidden', 'true');
       span.appendChild(ellipsis);
@@ -122,7 +122,7 @@ function initPinkSpanOverflowBehavior() {
   const updateTruncation = () => {
     spans.forEach((span) => {
       span.classList.remove('is-truncated');
-      const textWrapper = span.querySelector('.span-pink-text');
+      const textWrapper = span.querySelector('.span-green-text');
       if (!textWrapper) return;
 
       if (!desktopQuery.matches) {
@@ -149,7 +149,7 @@ function initPinkSpanOverflowBehavior() {
 }
 
 function colorWordStartsInDotSeperationBrackets() {
-  const spans = document.querySelectorAll('.dot-seperation .color-span, .dot-seperation .span-pink');
+  const spans = document.querySelectorAll('.dot-seperation .color-span, .dot-seperation .span-green');
   const colorClasses = ['edge-letter-c1', 'edge-letter-c2', 'edge-letter-c3', 'edge-letter-c4'];
 
   spans.forEach((span) => {

@@ -101,7 +101,7 @@ html, body {
 }
 
 .h3-bg-text {
-  background-color: var(--light-black);
+  background-color: var(--grey);
   padding: 0.5ch 1ch;
   display: flex;
   width: 100%;
@@ -109,6 +109,11 @@ html, body {
   align-items: center;
   box-sizing: border-box;
 }
+.h3-bg-text.secondary{
+  background-color: var(--light-black);
+  border: 3px solid var(--dark-turqoise);
+}
+
 .h3-text{
   /*background-color: var(--black)!important;*/
 }
@@ -121,12 +126,16 @@ color: var(--light-blue);
 .color-accent {
 color: var(--yellow)
 }
+
+.color-accent-secondary {
+color: var(--orange)
+}
 .color-p {
   color: var(--black)
 }
 
 .color-p-secondary {
-  color: var(--purple)
+  color: var(--pink)
 }
 .color-span {
   color:var(--black);
@@ -242,8 +251,8 @@ a {
   padding-right: 8px;
 }
 
-.span-pink {
-  color: var(--pink);
+.span-green {
+  color: var(--light-green);
   display: inline-block;
   width: 50%;
   flex: 0 0 50%;
@@ -257,7 +266,7 @@ a {
 }
 
 @media (min-width: 501px) {
-  .span-pink.is-truncated {
+  .span-green.is-truncated {
     position: absolute;
     right: 0;
     width: max-content;
@@ -272,28 +281,28 @@ a {
     overflow: visible;
   }
 
-  .dot-seperation:hover .span-pink.is-truncated {
+  .dot-seperation:hover .span-green.is-truncated {
     z-index: 4;
     max-width: min(120ch, calc(100vw - 4ch));
     overflow: visible;
   }
 }
 
-.span-pink-text {
+.span-green-text {
   display: block;
   overflow: hidden;
   white-space: nowrap;
 }
 
-.span-pink-ellipsis {
+.span-green-ellipsis {
   display: none;
 }
 
-.span-pink.is-truncated {
+.span-green.is-truncated {
   padding-right: 2ch;
 }
 
-.span-pink.is-truncated .span-pink-ellipsis {
+.span-green.is-truncated .span-green-ellipsis {
   display: inline;
   position: absolute;
   right: 1.4ch;
@@ -302,23 +311,23 @@ a {
   background: var(--blue);
 }
 
-.dot-seperation:hover .span-pink.is-truncated .span-pink-ellipsis {
+.dot-seperation:hover .span-green.is-truncated .span-green-ellipsis {
   display: none;
 }
 
-.span-pink::before,
-.span-pink::after {
-  color: var(--light-blue);
+.span-green::before,
+.span-green::after {
+  color: var(--dark-green);
   position: absolute;
   top: 0;
 }
 
-.span-pink::before {
+.span-green::before {
   content: "[";
   left: 0;
 }
 
-.span-pink::after {
+.span-green::after {
   content: "]";
   right: 0;
 }
@@ -1035,13 +1044,13 @@ background-color: transparent !important;
   cursor: pointer;
 }
 
-.dot-seperation:hover .span-pink,
-.dot-seperation:hover .span-pink-text {
+.dot-seperation:hover .span-green,
+.dot-seperation:hover .span-green-text {
   color: var(--turqoise);
 }
 
-.dot-seperation:hover .span-pink::before,
-.dot-seperation:hover .span-pink::after {
+.dot-seperation:hover .span-green::before,
+.dot-seperation:hover .span-green::after {
   color: var(--turqoise);
 }
 
