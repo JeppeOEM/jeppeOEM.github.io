@@ -112,6 +112,19 @@ html, body {
 .h3-bg-text.secondary{
   background-color: var(--light-black);
   border: 3px solid var(--dark-turqoise);
+  justify-content: center;
+  gap: 0;
+}
+
+.h3-bg-text.secondary::before,
+.h3-bg-text.secondary::after {
+  content: "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--grey);
+  line-height: 1;
 }
 
 .h3-text{
