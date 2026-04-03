@@ -775,7 +775,7 @@ background-color: var(--black);
   border: var(--light-black) solid;
 }
 .navbar.home-bottom-navbar{
-  max-width: none;
+  max-width: 500px;
 }
 
 .navbar-side{
@@ -921,7 +921,7 @@ nav a {
 }
 
 .nav a:hover {
-  text-decoration: underline;
+  /* text-decoration: underline; */
   color: var(--turqoise);
 }
 

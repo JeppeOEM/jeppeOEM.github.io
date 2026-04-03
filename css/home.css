@@ -125,12 +125,12 @@ body.home-ui-hidden .background-layer {
 }
 
 .home-bottom-nav {
-  padding-top: 8px;
-  padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 8px;
 }
 
 .home-bottom-navbar {
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .nav-toggle-btn {
@@ -141,7 +141,7 @@ body.home-ui-hidden .background-layer {
 
 .nav-toggle-btn:hover {
   color: var(--turqoise);
-  text-decoration: underline;
+  
 }
 
 
