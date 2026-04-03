@@ -168,7 +168,7 @@ color: var(--yellow)
 }
 
 .color-p-secondary {
-  color: var(--pink)
+  color: var(--white)
 }
 .color-span {
   color:var(--black);
@@ -382,13 +382,30 @@ a {
   color: white;
 }
 
-a.link::before {
+.link::before {
     content: "» ";
     color: var(--dark-turqoise);
   white-space: nowrap;
 }
 
-a.link {
+.link-block-title::before {
+    content: "» ";
+    color: var(--dark-turqoise);
+  white-space: nowrap;
+}
+.link-block-title{
+  color:var(--blue);
+}
+.link-block:hover{
+color: var(--turqoise);
+}
+
+.link-block:hover .link-block-title,
+.link-block:hover .color-span {
+  color: var(--turqoise);
+}
+
+.link {
 
     background-color: var(--grey);
     text-decoration: none;
@@ -396,29 +413,29 @@ a.link {
     transition: color 0.2s ease;
 }
 
-a.link-secondary  {
+.link-secondary  {
     background-color: var(--blue);
     text-decoration: none;
     color: var(--turqoise);
     transition: color 0.2s ease;
 }
 
-a.link:hover {
+.link:hover {
     color: var(--turqoise);
 }
 
 
-a.link-line {
+.link-line {
     text-decoration: underline;
     color: var(--blue);
     transition: color 0.2s ease;
 }
 
-a.link-line:hover {
+.link-line:hover {
     color: var(--turqoise);
 }
 
-a.link-line.turqoise{
+.link-line.turqoise{
     color: var(--turqoise);
 }
 .responsive-span,
@@ -458,6 +475,7 @@ a.link-line.turqoise{
 .ascii-box {
   position: relative;
   color: var(--ascii-box-outline-color, var(--light-black));
+  pointer-events: none;
 }
 
 .ascii-title-placeholder::before {
@@ -934,7 +952,19 @@ nav a {
     color: var(--light-green);
 }
 
+.pct-line {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: monospace;
+}
 
+.pct-line::before {
+  content: '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%';
+  display: block;
+  width: 100%;
+}
 
 
 .content {
