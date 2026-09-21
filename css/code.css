@@ -4,6 +4,26 @@
   margin-top: 6ch
 }
 
+/* canvas background (js/AsciiCanvasBackground.js) */
+.ascii-canvas-background {
+  opacity: 0;
+  transition: opacity 2s ease-in;
+}
+.ascii-canvas-background.show {
+  opacity: 1;
+}
+
+/* empty box in the middle: the canvas skips the cells behind it */
+.text-box {
+  position: relative;
+  z-index: 1;
+  width: 60ch;
+  max-width: calc(100vw - 4ch);
+  margin-top: 4ch;
+  padding: 2ch;
+  color: var(--grey);
+}
+
     .binaryContainer {
     transform: translate3d(0, 0, 0) scale(1);
     contain: layout paint;
