@@ -1,9 +1,5 @@
 @import url('./root.css');
 
-.outer{
-  margin-top: 6ch
-}
-
 /* canvas background (js/AsciiCanvasBackground.js) */
 .ascii-canvas-background {
   opacity: 0;
@@ -17,11 +13,31 @@
 .text-box {
   position: relative;
   z-index: 1;
-  width: 60ch;
+  width: 80ch;
   max-width: calc(100vw - 4ch);
   margin-top: 4ch;
+  margin-bottom: 4ch;
   padding: 2ch;
   color: var(--grey);
+}
+
+/* the box sits on black now, so lift the colors that were made for the grey box */
+.text-box .color-p,
+.text-box .color-span {
+  color: var(--grey);
+}
+
+.text-box .link-block-title,
+.text-box .link-line {
+  color: var(--light-blue);
+}
+
+.text-box ul {
+  list-style: none;
+}
+
+.text-box li + li {
+  margin-top: 1lh;
 }
 
     .binaryContainer {
