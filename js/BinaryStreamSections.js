@@ -8,10 +8,11 @@
  * logo is wide and then re-appears at the logo edge of the left-hand
  * section: one stream passing underneath the logo.
  *
- * When a `logo` element is given, every 0/1 character inside it is wrapped
- * in a span and shows the buffer bit at its own column, so the digits in
- * the logo move together with the side streams. The buffer is seeded with
- * the logo's original digits, so the first frame equals the static art.
+ * When a `logo` element is given, every cell on the stream rows of the logo
+ * that is not part of the lettering (the original 0/1 digits and the blank
+ * spaces) is wrapped in a span and shows the buffer bit at its own column.
+ * The bits therefore flow visibly through the dark areas around the `$`
+ * letters. The buffer is seeded with the logo's original digits.
  *
  * Sides are identified by measured position, not by element id, because
  * in code.html the element called "rightSection" is displayed on the left.
@@ -131,8 +132,9 @@ export default class BinaryStreamSections {
   }
 
   /**
-   * Wrap every 0/1 character inside the logo in its own span (once) and
-   * return the spans in document order.
+   * Wrap every 0, 1 and plain space inside the logo in its own span (once)
+   * and return the spans in document order. Spans that turn out not to sit
+   * on a stream row are unwrapped again by locateLogoBits().
    */
   wrapLogoDigits() {
     if (this.logoSpans) return this.logoSpans;
@@ -140,7 +142,7 @@ export default class BinaryStreamSections {
     const textNodes = [];
     let node;
     while ((node = walker.nextNode())) {
-      if (/[01]/.test(node.nodeValue)) textNodes.push(node);
+      if (/[01 ]/.test(node.nodeValue)) textNodes.push(node);
     }
 
     const spans = [];
@@ -152,7 +154,7 @@ export default class BinaryStreamSections {
         run = "";
       };
       for (const ch of textNode.nodeValue) {
-        if (ch === "0" || ch === "1") {
+        if (ch === "0" || ch === "1" || ch === " ") {
           flush();
           const span = document.createElement("span");
           span.className = "stream-bit";
@@ -183,14 +185,22 @@ export default class BinaryStreamSections {
     const originX = leftEl.getBoundingClientRect().right;
 
     this.logoBits = [];
+    const keep = [];
     for (const span of spans) {
       const r = span.getBoundingClientRect();
       const row = Math.round((r.top - rowTop) / lineH);
       const col = Math.round((r.left - originX) / charW);
-      if (row < 0 || row >= this.streamRows) continue;
-      if (col < 0 || col >= this.gapCols) continue;
+      const onStream =
+        row >= 0 && row < this.streamRows && col >= 0 && col < this.gapCols;
+      if (!onStream) {
+        // Not a stream cell (e.g. indentation on other rows): restore plain text.
+        span.replaceWith(document.createTextNode(span.textContent));
+        continue;
+      }
+      keep.push(span);
       this.logoBits.push({ span, row, col });
     }
+    this.logoSpans = keep;
 
     // First time only: put the logo's own digits into the buffer so the
     // stream starts from the static art instead of jumping to noise.
@@ -198,7 +208,8 @@ export default class BinaryStreamSections {
       this.logoSeeded = true;
       const chars = this.rows.map((row) => row.split(""));
       for (const { span, row, col } of this.logoBits) {
-        chars[row][this.leftCols + col] = span.textContent;
+        const ch = span.textContent;
+        if (ch === "0" || ch === "1") chars[row][this.leftCols + col] = ch;
       }
       this.rows = chars.map((c) => c.join(""));
     }
