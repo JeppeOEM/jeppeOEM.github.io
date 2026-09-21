@@ -9,6 +9,24 @@
   opacity: 1;
 }
 
+/* side streams (js/BinaryStreamSections.js): one pre per side, aligned to the logo */
+/* the sections no longer overflow with tiles, so the row must span the page itself */
+.flex-horizontal {
+  width: 100%;
+}
+.code-logo-left,
+.code-logo-right {
+  flex: none;
+  width: 100%;
+  margin: 0;
+}
+.code-logo-left {
+  text-align: right;
+}
+.code-logo-right {
+  text-align: left;
+}
+
 /* empty box in the middle: the canvas skips the cells behind it */
 .text-box {
   position: relative;

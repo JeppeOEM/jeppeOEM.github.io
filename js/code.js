@@ -1,8 +1,7 @@
 import AsciiCanvasBackground from "./AsciiCanvasBackground.js";
-import AsciiLogoBackground from "./AsciiLogoBackground.js";
+import BinaryStreamSections from "./BinaryStreamSections.js";
 
 import { patterns } from "./asciiPatterns.js";
-import { leftPre, rightPre } from "./codeBackground.js";
 
 export function codePage() {
   const bodyBackground = new AsciiCanvasBackground({
@@ -23,18 +22,16 @@ export function codePage() {
   });
   window.asciiBackground = bodyBackground;
 
-  const leftSection = document.getElementById("leftSection");
-  const rightSection = document.getElementById("rightSection");
-  const logoPre = document.querySelector(".center-pre");
-  console.log(leftSection, rightSection);
-  const logoBackground = new AsciiLogoBackground({
-    leftSection: leftSection,
-    rightSection: rightSection,
-    leftPre: leftPre,
-    rightPre: rightPre,
-    logoPre: logoPre,
+  // 0/1 rows beside the logo tick left as one stream passing under it
+  const binaryStream = new BinaryStreamSections({
+    sections: [
+      document.getElementById("leftSection"),
+      document.getElementById("rightSection"),
+    ],
+    stepMs: 150,
+    streamRows: 3,
+    blankLines: 4,
   });
-
-  logoBackground.fillSections();
-  logoBackground.init();
+  binaryStream.init();
+  window.binaryStream = binaryStream;
 }
