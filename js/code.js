@@ -32,7 +32,7 @@ export function codePage() {
     logo: document.querySelector(".center-pre"),
     logoZeroClass: "code-logo-color-2",
     logoOneClass: "code-logo-color-5",
-    stepMs: 150,
+    stepMs: 450,
     streamRows: 3,
     blankLines: 4,
   });

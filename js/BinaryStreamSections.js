@@ -25,6 +25,8 @@ export default class BinaryStreamSections {
    * @param {number} [config.blankLines=4]    Empty lines above the art (vertical alignment)
    * @param {string} [config.staticClass]     Class for the y/$ rows
    * @param {string} [config.streamClass]     Class for the 0/1 rows
+   * @param {string} [config.oneClass]        Class wrapping runs of 1 in the side rows
+   * @param {number} [config.oneProbability]  Chance that a new bit is a 1 (default 0.3)
    * @param {HTMLElement} [config.logo]       Logo pre whose 0/1 digits join the stream
    * @param {string} [config.logoZeroClass]   Class for a 0 inside the logo
    * @param {string} [config.logoOneClass]    Class for a 1 inside the logo
@@ -36,6 +38,9 @@ export default class BinaryStreamSections {
     this.blankLines = config.blankLines ?? 4;
     this.staticClass = config.staticClass || "code-logo-color-3";
     this.streamClass = config.streamClass || "black-bg";
+    // Like the logo art: 1 is drawn brighter than 0, and 1s are the minority.
+    this.oneClass = config.oneClass || "code-logo-color-5";
+    this.oneProbability = config.oneProbability ?? 0.3;
     this.logo = config.logo || null;
     this.logoZeroClass = config.logoZeroClass || "code-logo-color-2";
     this.logoOneClass = config.logoOneClass || "code-logo-color-5";
@@ -250,7 +255,12 @@ export default class BinaryStreamSections {
   }
 
   randomBit() {
-    return Math.random() < 0.5 ? "0" : "1";
+    return Math.random() < this.oneProbability ? "1" : "0";
+  }
+
+  /** Row text as HTML with every run of 1s wrapped in the bright class. */
+  rowHtml(text) {
+    return text.replace(/1+/g, (run) => `<span class="${this.oneClass}">${run}</span>`);
   }
 
   /** Write the visible windows of each row into both sides. */
@@ -260,8 +270,8 @@ export default class BinaryStreamSections {
     const rightStart = this.leftCols + this.gapCols;
     for (let i = 0; i < this.streamRows; i++) {
       const row = this.rows[i];
-      left.spans[i].textContent = row.slice(0, this.leftCols);
-      right.spans[i].textContent = row.slice(rightStart);
+      left.spans[i].innerHTML = this.rowHtml(row.slice(0, this.leftCols));
+      right.spans[i].innerHTML = this.rowHtml(row.slice(rightStart));
     }
     for (const { span, row, col } of this.logoBits) {
       const ch = this.rows[row][this.leftCols + col];
