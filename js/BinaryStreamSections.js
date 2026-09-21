@@ -8,6 +8,11 @@
  * logo is wide and then re-appears at the logo edge of the left-hand
  * section: one stream passing underneath the logo.
  *
+ * When a `logo` element is given, every 0/1 character inside it is wrapped
+ * in a span and shows the buffer bit at its own column, so the digits in
+ * the logo move together with the side streams. The buffer is seeded with
+ * the logo's original digits, so the first frame equals the static art.
+ *
  * Sides are identified by measured position, not by element id, because
  * in code.html the element called "rightSection" is displayed on the left.
  */
@@ -20,6 +25,9 @@ export default class BinaryStreamSections {
    * @param {number} [config.blankLines=4]    Empty lines above the art (vertical alignment)
    * @param {string} [config.staticClass]     Class for the y/$ rows
    * @param {string} [config.streamClass]     Class for the 0/1 rows
+   * @param {HTMLElement} [config.logo]       Logo pre whose 0/1 digits join the stream
+   * @param {string} [config.logoZeroClass]   Class for a 0 inside the logo
+   * @param {string} [config.logoOneClass]    Class for a 1 inside the logo
    */
   constructor(config) {
     this.sections = config.sections;
@@ -28,6 +36,14 @@ export default class BinaryStreamSections {
     this.blankLines = config.blankLines ?? 4;
     this.staticClass = config.staticClass || "code-logo-color-3";
     this.streamClass = config.streamClass || "black-bg";
+    this.logo = config.logo || null;
+    this.logoZeroClass = config.logoZeroClass || "code-logo-color-2";
+    this.logoOneClass = config.logoOneClass || "code-logo-color-5";
+    /** @type {HTMLSpanElement[]|null} digit spans inside the logo, wrapped once */
+    this.logoSpans = null;
+    /** @type {{span: HTMLSpanElement, row: number, col: number}[]} */
+    this.logoBits = [];
+    this.logoSeeded = false;
 
     this.reducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -105,6 +121,82 @@ export default class BinaryStreamSections {
       this.buildSide(leftEl, "code-logo-left", this.leftCols),
       this.buildSide(rightEl, "code-logo-right", this.rightCols),
     ];
+
+    if (this.logo) this.locateLogoBits(leftEl, charW);
+  }
+
+  /**
+   * Wrap every 0/1 character inside the logo in its own span (once) and
+   * return the spans in document order.
+   */
+  wrapLogoDigits() {
+    if (this.logoSpans) return this.logoSpans;
+    const walker = document.createTreeWalker(this.logo, NodeFilter.SHOW_TEXT);
+    const textNodes = [];
+    let node;
+    while ((node = walker.nextNode())) {
+      if (/[01]/.test(node.nodeValue)) textNodes.push(node);
+    }
+
+    const spans = [];
+    for (const textNode of textNodes) {
+      const frag = document.createDocumentFragment();
+      let run = "";
+      const flush = () => {
+        if (run) frag.appendChild(document.createTextNode(run));
+        run = "";
+      };
+      for (const ch of textNode.nodeValue) {
+        if (ch === "0" || ch === "1") {
+          flush();
+          const span = document.createElement("span");
+          span.className = "stream-bit";
+          span.textContent = ch;
+          frag.appendChild(span);
+          spans.push(span);
+        } else {
+          run += ch;
+        }
+      }
+      flush();
+      textNode.parentNode.replaceChild(frag, textNode);
+    }
+    this.logoSpans = spans;
+    return spans;
+  }
+
+  /**
+   * Work out which buffer cell each logo digit sits on, by geometry: rows
+   * relative to the first stream row, columns relative to the left side's
+   * logo edge. Digits outside the stream rows are left alone.
+   */
+  locateLogoBits(leftEl, charW) {
+    const spans = this.wrapLogoDigits();
+    const probe = this.sides[0].spans[0].getBoundingClientRect();
+    const rowTop = probe.top;
+    const lineH = probe.height || charW * 2;
+    const originX = leftEl.getBoundingClientRect().right;
+
+    this.logoBits = [];
+    for (const span of spans) {
+      const r = span.getBoundingClientRect();
+      const row = Math.round((r.top - rowTop) / lineH);
+      const col = Math.round((r.left - originX) / charW);
+      if (row < 0 || row >= this.streamRows) continue;
+      if (col < 0 || col >= this.gapCols) continue;
+      this.logoBits.push({ span, row, col });
+    }
+
+    // First time only: put the logo's own digits into the buffer so the
+    // stream starts from the static art instead of jumping to noise.
+    if (!this.logoSeeded) {
+      this.logoSeeded = true;
+      const chars = this.rows.map((row) => row.split(""));
+      for (const { span, row, col } of this.logoBits) {
+        chars[row][this.leftCols + col] = span.textContent;
+      }
+      this.rows = chars.map((c) => c.join(""));
+    }
   }
 
   /** Keep existing bits, extend with random ones on the right, or trim. */
@@ -170,6 +262,15 @@ export default class BinaryStreamSections {
       const row = this.rows[i];
       left.spans[i].textContent = row.slice(0, this.leftCols);
       right.spans[i].textContent = row.slice(rightStart);
+    }
+    for (const { span, row, col } of this.logoBits) {
+      const ch = this.rows[row][this.leftCols + col];
+      if (span.textContent !== ch) {
+        span.textContent = ch;
+        span.className = `stream-bit ${
+          ch === "1" ? this.logoOneClass : this.logoZeroClass
+        }`;
+      }
     }
   }
 

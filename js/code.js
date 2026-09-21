@@ -28,6 +28,10 @@ export function codePage() {
       document.getElementById("leftSection"),
       document.getElementById("rightSection"),
     ],
+    // the 0/1 inside the logo show the same stream at their own columns
+    logo: document.querySelector(".center-pre"),
+    logoZeroClass: "code-logo-color-2",
+    logoOneClass: "code-logo-color-5",
     stepMs: 150,
     streamRows: 3,
     blankLines: 4,
