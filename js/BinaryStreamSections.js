@@ -12,7 +12,8 @@
  * that is not part of the lettering (the original 0/1 digits and the blank
  * spaces) is wrapped in a span and shows the buffer bit at its own column.
  * The bits therefore flow visibly through the dark areas around the `$`
- * letters. The buffer is seeded with the logo's original digits.
+ * letters. Cells directly next to a letter stay blank, so the lettering
+ * keeps a dark outline. The buffer is seeded with the logo's original digits.
  *
  * Sides are identified by measured position, not by element id, because
  * in code.html the element called "rightSection" is displayed on the left.
@@ -184,7 +185,7 @@ export default class BinaryStreamSections {
     const lineH = probe.height || charW * 2;
     const originX = leftEl.getBoundingClientRect().right;
 
-    this.logoBits = [];
+    const cells = [];
     const keep = [];
     for (const span of spans) {
       const r = span.getBoundingClientRect();
@@ -198,7 +199,7 @@ export default class BinaryStreamSections {
         continue;
       }
       keep.push(span);
-      this.logoBits.push({ span, row, col });
+      cells.push({ span, row, col });
     }
     this.logoSpans = keep;
 
@@ -207,11 +208,29 @@ export default class BinaryStreamSections {
     if (!this.logoSeeded) {
       this.logoSeeded = true;
       const chars = this.rows.map((row) => row.split(""));
-      for (const { span, row, col } of this.logoBits) {
+      for (const { span, row, col } of cells) {
         const ch = span.textContent;
         if (ch === "0" || ch === "1") chars[row][this.leftCols + col] = ch;
       }
       this.rows = chars.map((c) => c.join(""));
+    }
+
+    // Any column on a stream row that is not a stream cell is lettering.
+    // Cells directly left or right of lettering stay blank as an outline.
+    const covered = Array.from({ length: this.streamRows }, () => new Set());
+    for (const { row, col } of cells) covered[row].add(col);
+    const isLetter = (row, col) =>
+      col >= 0 && col < this.gapCols && !covered[row].has(col);
+
+    this.logoBits = [];
+    for (const cell of cells) {
+      const { span, row, col } = cell;
+      if (isLetter(row, col - 1) || isLetter(row, col + 1)) {
+        span.textContent = " ";
+        span.className = "stream-bit";
+        continue;
+      }
+      this.logoBits.push(cell);
     }
   }
 
