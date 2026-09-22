@@ -21,22 +21,6 @@
 /*}*/
 
 
-@font-face {
-  font-family: PetMe;
-  src: url(PetMe.ttf);
-}
-@font-face {
-  font-family: IBMVGA8;
-  src: url(AcPlus_IBM_VGA_8x16.ttf);
-}
-@font-face {
-  font-family: IBMBIOS2Y;
-  src: url(AcPlus_IBM_BIOS-2y.ttf);
-}
-@font-face {
-  font-family: IBMEGA9;
-  src: url(Px437_IBM_EGA_9x14.ttf);
-}
 
 html, body {
   overflow-x: hidden;
@@ -55,11 +39,11 @@ html, body {
   /* font-size: 14px; */
   min-height: 100vh;
   /* overflow-x: hidden; */
-    /*opacity: 0;*/
-    /*transition: opacity 1s ease;*/
+  opacity: 0;
   }
   body.loaded {
     opacity: 1;
+    transition: opacity 0.2s ease;
   }
 
 
@@ -1195,3 +1179,14 @@ background-color: transparent !important;
 /*  }*/
 /*}*/
 
+
+/* top and bottom nav bars fade in slowly once the page is revealed */
+.nav-wrapper,
+.home-bottom-nav-wrapper {
+  opacity: 0;
+}
+body.loaded .nav-wrapper,
+body.loaded .home-bottom-nav-wrapper {
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}

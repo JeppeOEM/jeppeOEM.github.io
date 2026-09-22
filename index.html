@@ -5,29 +5,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Jeppe Marquardt's Portfolio</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter+Tight&display=swap"
-      rel="stylesheet"
-    />
 
     <link rel="prefetch" href="/src/run.js" />
     <link rel="prefetch" href="/src/programs/contributed/slime_dish2.js" />
     <link rel="prefetch" href="/src/core/textrenderer.js" />
     <link rel="prefetch" href="/src/modules/vec2.js" />
-    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="preload" as="font" type="font/ttf" href="fonts/AcPlus_IBM_VGA_8x16.ttf" crossorigin />
     <link rel="stylesheet" href="css/font.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/home.css" />
+      <script>
+      (function () {
+        try {
+          var f = localStorage.getItem("selectedFont") || "IBMVGA8";
+          document.documentElement.style.fontFamily = f + ", monospace";
+        } catch (e) {}
+        // safety net: never leave the page hidden
+        setTimeout(function () {
+          if (document.body) document.body.classList.add("loaded");
+        }, 1500);
+      })();
+    </script>
   </head>
   <body>
     <nav-bar></nav-bar>

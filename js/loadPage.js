@@ -3,6 +3,11 @@ import * as program from "/src/programs/contributed/slime_dish2.js";
 import AsciiBox from "./AsciiBox.js";
 
 export function loadPage(fontDependentCode) {
+  const start = () => {
+    fontDependentCode();
+    document.fonts.ready.then(() => document.body.classList.add("loaded"));
+  };
+
   const selectedFont = localStorage.getItem("selectedFont") || "IBMVGA8";
   const fontData = localStorage.getItem(`fontBase64_${selectedFont}`);
 
@@ -17,7 +22,7 @@ export function loadPage(fontDependentCode) {
           `${selectedFont}, monospace`,
           "important"
         );
-        fontDependentCode();
+        start();
       })
       .catch((error) => {
         console.error("Font failed to load:", error);
@@ -29,11 +34,11 @@ export function loadPage(fontDependentCode) {
       `${selectedFont}, monospace`,
       "important"
     );
-    fontDependentCode();
+    start();
   }
 
   function fallbackToDefault() {
     document.body.style.setProperty("font-family", "monospace", "important");
-    fontDependentCode();
+    start();
   }
 }
