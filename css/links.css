@@ -141,9 +141,9 @@
 /* dotted box growing out of the logo (see js/DotBox.js) */
 .dot-box {
   position: relative;
-  margin: 3lh auto 4lh;
-  width: min(85ch, calc(100vw - 2ch));
-  padding: 2lh 3ch; /* padding-top is set by DotBox to clear the header */
+  margin: 3lh auto 4lh; /* margin-top is set by DotBox to make room for the header */
+  width: min(85ch, calc(100vw - 4ch));
+  padding: 2lh 3ch;
   box-sizing: border-box;
   background-color: var(--black);
 }

@@ -5,17 +5,20 @@
  * drop straight down from them, land on the top edge of a box drawn with `.`
  * (horizontal) and `:` (vertical), and the box wraps the content element.
  *
- * The top edge can be replaced by a `header`: a few rows of line art (taken
- * from the top of the logo) that is stretched to the box width by inserting
- * cells at columns that are blank in every header row, or squeezed by
- * removing such columns. When it cannot be made to fit, the plain edge is used.
+ * A `header` of line art (taken from the top of the logo) can hang above the
+ * top edge, one cell wider than the box on each side so it sits outside the
+ * dotted line. It is stretched to that width by inserting cells at columns
+ * that are blank in every header row, or squeezed by removing such columns;
+ * when it cannot be made to fit it is left out. The dotted line is never
+ * altered by it: header cells only fill cells the outline leaves empty.
  *
  * The outline is a <pre> of one <span> per cell, absolutely positioned so that
  * its character grid is snapped to the logo's grid. Each span gets a step index
  * (`--i`) equal to its path distance from the logo, so a CSS animation-delay
- * makes the outline appear cell by cell: down the feeders, across the header
- * from the two landing points, down the sides and along the bottom edge until
- * it closes in the middle.
+ * makes the outline appear cell by cell: down the feeders (the header lines
+ * spread sideways from them as they pass), along the top edge from the two
+ * landing points, down the sides and along the bottom edge until it closes in
+ * the middle.
  */
 export default class DotBox {
   /**
@@ -24,11 +27,11 @@ export default class DotBox {
    * @param {HTMLElement} config.box         Wrapper the outline is positioned in
    * @param {HTMLElement} config.outline     <pre> that receives the cells
    * @param {HTMLElement} [config.content]   Element faded in once the outline closes
-   * @param {string[]} [config.header]       Rows of line art used as the box's top
+   * @param {string[]} [config.header]       Rows of line art hung above the top edge
+   * @param {number} [config.feederGap]      Blank rows between the logo and the header
    * @param {number[]} [config.feederCols]   Logo columns of the two `:` (default: found in the last logo row)
    * @param {number} [config.stepMs]         Delay between two cells appearing
    * @param {number} [config.startDelay]     ms before the first cell appears
-   * @param {number} [config.paddingRows]    Blank rows between the top edge/header and the content
    * @param {string} [config.vChar]          Character for vertical runs
    * @param {string} [config.hChar]          Character for horizontal runs
    */
@@ -41,7 +44,7 @@ export default class DotBox {
     this.feederCols = config.feederCols || null;
     this.stepMs = config.stepMs ?? 30;
     this.startDelay = config.startDelay ?? 600;
-    this.paddingRows = config.paddingRows ?? 1;
+    this.feederGap = config.feederGap ?? 2;
     this.vChar = config.vChar || ":";
     this.hChar = config.hChar || ".";
 
@@ -152,31 +155,33 @@ export default class DotBox {
     const cw = this.cellW;
     const ch = this.cellH;
 
-    // the box is as wide as CSS makes it; the header decides the top padding
+    // the box is as wide as CSS makes it; the header hangs in its top margin
     const boxWidth = this.box.getBoundingClientRect().width;
-    const cols = Math.floor(boxWidth / cw);
-    const header = this.fitHeader(cols);
-    const headerRows = header ? header.length : 1;
-    this.box.style.paddingTop = `${headerRows + this.paddingRows}lh`;
+    const boxCols = Math.floor(boxWidth / cw);
+    const header = this.header ? this.fitHeader(boxCols + 2) : null;
+    const pad = header ? 1 : 0; // grid columns outside the box on each side
+    this.box.style.marginTop = `${this.feederGap + (header ? header.length : 1)}lh`;
 
     const logoRect = this.logo.getBoundingClientRect();
     const boxRect = this.box.getBoundingClientRect();
 
     // Snap the outline grid to the logo grid: column c of the outline sits
     // under logo column c + shift.
-    const shift = Math.round((boxRect.left - logoRect.left) / cw);
+    const shift = Math.round((boxRect.left - logoRect.left) / cw) - pad;
     const left = logoRect.left + shift * cw - boxRect.left;
     const top = logoRect.bottom - boxRect.top;
 
+    const cols = boxCols + 2 * pad;
     const feederRows = Math.max(1, Math.round((boxRect.top - logoRect.bottom) / ch));
     const rows = feederRows + Math.round(boxRect.height / ch);
 
     const topRow = feederRows;
     const bottomRow = rows - 1;
-    const lastCol = cols - 1;
+    const firstCol = pad;
+    const lastCol = pad + boxCols - 1;
     const landings = feeders
       .map((c) => c - shift)
-      .filter((c) => c > 0 && c < lastCol);
+      .filter((c) => c > firstCol && c < lastCol);
 
     const chars = new Array(rows * cols).fill(" ");
     const steps = new Array(rows * cols).fill(-1);
@@ -192,60 +197,54 @@ export default class DotBox {
     for (const c of landings) {
       for (let r = 0; r < feederRows; r++) put(r, c, this.vChar, r);
     }
+    // top edge, growing away from each landing point
     const distTop = (c) =>
       landings.length ? Math.min(...landings.map((l) => Math.abs(c - l))) : c;
+    for (let c = firstCol; c <= lastCol; c++) {
+      put(topRow, c, this.hChar, feederRows + distTop(c));
+    }
+    // sides, growing down from the corners
+    const leftStart = feederRows + distTop(firstCol);
+    const rightStart = feederRows + distTop(lastCol);
+    for (let r = topRow + 1; r < bottomRow; r++) {
+      put(r, firstCol, this.vChar, leftStart + (r - topRow));
+      put(r, lastCol, this.vChar, rightStart + (r - topRow));
+    }
+    // bottom edge, closing in from both corners
+    const leftBottom = leftStart + (bottomRow - topRow);
+    const rightBottom = rightStart + (bottomRow - topRow);
+    for (let c = firstCol; c <= lastCol; c++) {
+      put(bottomRow, c, this.hChar,
+          Math.min(leftBottom + (c - firstCol), rightBottom + (lastCol - c)));
+    }
+    // corners and landing cells read as joints
+    put(topRow, firstCol, this.vChar, leftStart);
+    put(topRow, lastCol, this.vChar, rightStart);
+    put(bottomRow, firstCol, this.vChar, leftBottom);
+    put(bottomRow, lastCol, this.vChar, rightBottom);
+    for (const c of landings) put(topRow, c, this.vChar, feederRows);
 
-    let sidesFrom; // first row of the plain `:` sides
-    let leftStart; // step at which the left side starts growing
-    let rightStart;
+    // header: hangs directly above the top edge, spreading sideways from the
+    // feeders as they pass; it never overwrites a cell of the dotted line
     if (header) {
-      // header: a wave spreading from the landing points over the line art
+      const headerTop = Math.max(0, topRow - header.length);
       for (let r = 0; r < header.length; r++) {
-        for (let c = 0; c <= lastCol; c++) {
+        const row = headerTop + r;
+        if (row >= topRow) break;
+        for (let c = 0; c < cols; c++) {
           const chr = header[r][c] ?? " ";
-          if (chr === " ") continue;
-          put(topRow + r, c, chr, feederRows + distTop(c) + r,
+          if (chr === " " || chars[row * cols + c] !== " ") continue;
+          put(row, c, chr, row + distTop(c),
               chr === this.vChar || chr === this.hChar ? "" : "line");
         }
       }
-      for (const c of landings) {
-        if (chars[topRow * cols + c] === " ") put(topRow, c, this.vChar, feederRows);
-      }
-      sidesFrom = topRow + header.length;
-      leftStart = feederRows + distTop(0) + header.length;
-      rightStart = feederRows + distTop(lastCol) + header.length;
-    } else {
-      // plain top edge, growing away from each landing point
-      for (let c = 0; c <= lastCol; c++) {
-        put(topRow, c, this.hChar, feederRows + distTop(c));
-      }
-      put(topRow, 0, this.vChar, feederRows + distTop(0));
-      put(topRow, lastCol, this.vChar, feederRows + distTop(lastCol));
-      for (const c of landings) put(topRow, c, this.vChar, feederRows);
-      sidesFrom = topRow + 1;
-      leftStart = feederRows + distTop(0) + 1;
-      rightStart = feederRows + distTop(lastCol) + 1;
     }
-
-    // sides, growing down from the corners
-    for (let r = sidesFrom; r < bottomRow; r++) {
-      put(r, 0, this.vChar, leftStart + (r - sidesFrom));
-      put(r, lastCol, this.vChar, rightStart + (r - sidesFrom));
-    }
-    // bottom edge, closing in from both corners
-    const leftBottom = leftStart + (bottomRow - sidesFrom);
-    const rightBottom = rightStart + (bottomRow - sidesFrom);
-    for (let c = 0; c <= lastCol; c++) {
-      put(bottomRow, c, this.hChar, Math.min(leftBottom + c, rightBottom + (lastCol - c)));
-    }
-    put(bottomRow, 0, this.vChar, leftBottom);
-    put(bottomRow, lastCol, this.vChar, rightBottom);
 
     let total = 0;
     const html = [];
     for (let r = 0; r < rows; r++) {
       let line = "";
-      for (let c = 0; c <= lastCol; c++) {
+      for (let c = 0; c < cols; c++) {
         const i = r * cols + c;
         if (chars[i] === " ") {
           line += " ";
