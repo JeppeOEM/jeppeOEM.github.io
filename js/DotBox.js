@@ -13,9 +13,10 @@
  * between them, are kept fixed so they stay under the feeders. Only the
  * columns outside that span are stretched to fit, by inserting cells at
  * columns that are blank in every header row, or squeezed by removing such
- * columns; when a side cannot be made to fit it is left out. The dotted line
- * is never altered by the header: header cells only fill cells the outline
- * leaves empty.
+ * columns; their blank margins are dropped first so the outermost line work
+ * sits on the outline's outer columns. When a side cannot be made to fit the
+ * header is left out. The dotted line is never altered by the header: header
+ * cells only fill cells the outline leaves empty.
  *
  * The outline is a <pre> of one <span> per cell, absolutely positioned so that
  * its character grid is snapped to the logo's grid. Each span is an inline
@@ -79,7 +80,8 @@ export default class DotBox {
       this.outline.classList.add("grow");
       if (this.content) {
         const total = Number(this.outline.dataset.steps || 0);
-        setTimeout(() => this.content.classList.add("show"), total * this.stepMs + 200);
+        const contentDelay = Math.max(0, total * this.stepMs + 200 - 2000);
+        setTimeout(() => this.content.classList.add("show"), contentDelay);
       }
     }, this.startDelay);
   }
@@ -107,9 +109,9 @@ export default class DotBox {
 
   /**
    * Stretch or squeeze equal-length `rows` to `target` columns. Cells are
-   * added at two blank columns (one per half) or removed from blank columns
-   * spread over the width. Returns an array of char arrays, or null when the
-   * rows cannot be made to fit.
+   * added before, or removed from, blank columns spread evenly over the
+   * width, so no single gap swallows the whole difference. Returns an array
+   * of char arrays, or null when the rows cannot be made to fit.
    */
   stretchRows(rows, target) {
     const width = rows[0] ? rows[0].length : 0;
@@ -123,18 +125,19 @@ export default class DotBox {
     const extra = target - width;
     if (blank.length === 0) return null;
 
-    const nearest = (t) => blank.reduce((a, b) => (Math.abs(b - t) < Math.abs(a - t) ? b : a));
+    // the i-th of n picks, spread evenly over the blank columns
+    const pick = (i, n) => blank[Math.round(((i + 0.5) * blank.length) / n - 0.5)];
 
     if (extra > 0) {
-      const cutL = nearest(width * 0.2);
-      const cutR = nearest(width * 0.8);
-      const addL = Math.floor(extra / 2);
-      const addR = extra - addL;
+      const add = new Map();
+      for (let i = 0; i < extra; i++) {
+        const c = pick(i, extra);
+        add.set(c, (add.get(c) || 0) + 1);
+      }
       return grid.map((r) => {
         const out = [];
         for (let c = 0; c < width; c++) {
-          if (c === cutL) out.push(..." ".repeat(addL));
-          if (c === cutR) out.push(..." ".repeat(addR));
+          if (add.has(c)) out.push(..." ".repeat(add.get(c)));
           out.push(r[c]);
         }
         return out;
@@ -145,9 +148,7 @@ export default class DotBox {
     const remove = -extra;
     if (remove > blank.length) return null;
     const drop = new Set();
-    for (let i = 0; i < remove; i++) {
-      drop.add(blank[Math.round(((i + 0.5) * blank.length) / remove - 0.5)]);
-    }
+    for (let i = 0; i < remove; i++) drop.add(pick(i, remove));
     // rounding can pick the same column twice; fill from the remaining ones
     for (const c of blank) {
       if (drop.size >= remove) break;
@@ -157,13 +158,30 @@ export default class DotBox {
   }
 
   /**
+   * Drop the columns at the start (`fromEnd` false) or end of `rows` that are
+   * blank in every row. Returns new strings.
+   */
+  trimBlankCols(rows, fromEnd) {
+    const width = rows[0] ? rows[0].length : 0;
+    let n = 0;
+    while (n < width) {
+      const c = fromEnd ? width - 1 - n : n;
+      if (!rows.every((r) => r[c] === " ")) break;
+      n++;
+    }
+    return rows.map((r) => (fromEnd ? r.slice(0, width - n) : r.slice(n)));
+  }
+
+  /**
    * Fit the header to `cols` columns. `localLandings` are the two columns in
    * the header's own text (the logo's grid) that line up with the feeders;
    * `outLandings` are where those feeders actually land in the outline grid.
    * The span between the landings is copied verbatim so it stays put; only
-   * the columns outside it are stretched or squeezed. Falls back to
-   * stretching the whole header when there aren't exactly two landings on
-   * both sides. Returns null when it cannot be made to fit.
+   * the columns outside it are stretched or squeezed. Those outer parts are
+   * first stripped of their blank margin, so the header's outermost line work
+   * is pinned to the outline's outer columns, outside the dotted line. Falls
+   * back to stretching the whole header when there aren't exactly two
+   * landings on both sides. Returns null when it cannot be made to fit.
    */
   fitHeader(cols, localLandings, outLandings) {
     if (!this.header || this.header.length === 0) return null;
@@ -178,9 +196,9 @@ export default class DotBox {
     const [lLocal, rLocal] = localLandings;
     const [lOut, rOut] = outLandings;
 
-    const leftRows = rows.map((r) => r.slice(0, lLocal));
+    const leftRows = this.trimBlankCols(rows.map((r) => r.slice(0, lLocal)), false);
     const midRows = rows.map((r) => r.slice(lLocal, rLocal + 1));
-    const rightRows = rows.map((r) => r.slice(rLocal + 1));
+    const rightRows = this.trimBlankCols(rows.map((r) => r.slice(rLocal + 1)), true);
 
     const left = this.stretchRows(leftRows, lOut);
     const right = this.stretchRows(rightRows, cols - rOut - 1);

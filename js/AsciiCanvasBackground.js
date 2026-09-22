@@ -20,7 +20,10 @@ export default class AsciiCanvasBackground {
    * @param {number} [config.style.opacity]
    * @param {number} [config.style.zIndex]
    * @param {string} [config.charset]           Characters used when scrambling
-   * @param {number} [config.radius]            Scramble radius in pixels around the pointer
+   * @param {number} [config.radius]            Max scramble radius in pixels, reached at fast pointer speed
+   * @param {number} [config.minRadius]         Radius while the pointer is slow (default: radius / 3)
+   * @param {number} [config.maxSpeed]          Pointer speed in px/ms at which the radius hits `radius`
+   * @param {number} [config.flicker]           Per-frame chance (0-1) that an active cell changes character
    * @param {number} [config.restoreAfter]      ms before a scrambled cell reverts (0 = never)
    * @param {(string|HTMLElement)[]} [config.exclude]  Selectors/elements with no characters behind them
    * @param {number} [config.excludePadding]    Extra hole margin in cells
@@ -36,6 +39,13 @@ export default class AsciiCanvasBackground {
     };
     this.charset = config.charset || "0123456789abcdef";
     this.radius = config.radius ?? 40;
+    this.minRadius = config.minRadius ?? this.radius / 3;
+    this.maxSpeed = config.maxSpeed ?? 0.8;
+    this.flicker = config.flicker ?? 0.25;
+    this.curRadius = this.minRadius;
+    this.lastX = 0;
+    this.lastY = 0;
+    this.lastT = 0;
     this.restoreAfter = config.restoreAfter ?? 1200;
     this.exclude = config.exclude || [];
     this.excludePadding = config.excludePadding ?? 1;
@@ -43,7 +53,10 @@ export default class AsciiCanvasBackground {
     this.patternLines = this.asciiArt
       .split("\n")
       .filter((line) => line.trim() !== "");
-    this.patternWidth = Math.max(...this.patternLines.map((l) => l.length));
+    // +1 so a blank column separates the end of a tile from its own repeat;
+    // without it, lines with no trailing space run into themselves at the seam.
+    this.patternWidth =
+      Math.max(...this.patternLines.map((l) => l.length)) + 1;
 
     this.cols = 0;
     this.rows = 0;
@@ -271,12 +284,28 @@ export default class AsciiCanvasBackground {
     if (!this.ready) return;
     const x = e.clientX;
     const y = e.clientY;
-    const rc = Math.ceil(this.radius / this.cellW);
-    const rr = Math.ceil(this.radius / this.cellH);
+    const now = performance.now();
+
+    // Radius follows pointer speed: small while slow, easing toward `radius`
+    // on a fast sweep. A pause (or the first event) restarts it small.
+    const dt = now - this.lastT;
+    let target = this.minRadius;
+    if (this.lastT && dt > 0 && dt < 200) {
+      const speed = Math.hypot(x - this.lastX, y - this.lastY) / dt;
+      const k = Math.min(speed / this.maxSpeed, 1);
+      target = this.minRadius + (this.radius - this.minRadius) * k;
+    }
+    this.curRadius += (target - this.curRadius) * 0.25;
+    this.lastX = x;
+    this.lastY = y;
+    this.lastT = now;
+
+    const radius = this.curRadius;
+    const rc = Math.ceil(radius / this.cellW);
+    const rr = Math.ceil(radius / this.cellH);
     const col = Math.floor(x / this.cellW);
     const row = Math.floor(y / this.cellH);
-    const now = performance.now();
-    const r2 = this.radius * this.radius;
+    const r2 = radius * radius;
 
     for (let r = row - rr; r <= row + rr; r++) {
       if (r < 0 || r >= this.rows) continue;
@@ -287,6 +316,7 @@ export default class AsciiCanvasBackground {
         const dy = (r + 0.5) * this.cellH - y;
         if (dx * dx + dy * dy > r2) continue;
         if (this.inHole(r, c)) continue;
+        if (this.baseChar(r, c) === " ") continue;
         const i = r * this.cols + c;
         this.chars[i] = this.randomChar();
         this.active.set(i, now);
@@ -298,15 +328,27 @@ export default class AsciiCanvasBackground {
     }
   }
 
-  /** Restore scrambled cells whose time is up. Runs only while cells are active. */
+  /**
+   * Keep active cells flickering and restore those whose time is up.
+   * Runs only while cells are active.
+   */
   tick() {
     this.rafId = 0;
     const now = performance.now();
     for (const [i, t] of this.active) {
-      if (now - t < this.restoreAfter) continue;
-      this.active.delete(i);
       const r = Math.floor(i / this.cols);
       const c = i - r * this.cols;
+      const age = now - t;
+      if (age < this.restoreAfter) {
+        // flicker slows from full rate to a tenth of it over the cell's life
+        const rate = this.flicker * (1 - (9 / 10) * (age / this.restoreAfter));
+        if (Math.random() < rate) {
+          this.chars[i] = this.randomChar();
+          this.drawCell(r, c, this.colors.highlight);
+        }
+        continue;
+      }
+      this.active.delete(i);
       this.chars[i] = this.baseChar(r, c);
       this.drawCell(r, c, this.colors.base);
     }
@@ -330,7 +372,8 @@ export default class AsciiCanvasBackground {
   setAsciiArt(newArt) {
     this.asciiArt = newArt;
     this.patternLines = newArt.split("\n").filter((l) => l.trim() !== "");
-    this.patternWidth = Math.max(...this.patternLines.map((l) => l.length));
+    this.patternWidth =
+      Math.max(...this.patternLines.map((l) => l.length)) + 1;
     this.build();
     this.draw();
   }
