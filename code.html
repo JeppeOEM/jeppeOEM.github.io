@@ -13,6 +13,9 @@
   <link rel="modulepreload" href="./js/saveFontSelection.js" />
   <link rel="modulepreload" href="./js/loadPage.js" />
   <link rel="modulepreload" href="./js/code.js" />
+  <link rel="modulepreload" href="./js/P5Background.js" />
+  <!-- p5.js for the background canvas (js/P5Background.js); pinned, instance mode only -->
+  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js" crossorigin="anonymous"></script>
     <script>
       (function () {
         try {
@@ -117,6 +120,21 @@
       </section>
     </div>
   </div>
+
+          <div class="home-bottom-nav-wrapper" aria-label="Background controls">
+            <nav class="nav home-bottom-nav">
+              <div class="navbar-side"></div>
+              <div class="navbar home-bottom-navbar">
+                <div>
+                  <span class="font-controls"><span class="bracket">[</span><label for="background-selector">BACKGROUND:</label><select id="background-selector"></select><span class="bracket">]</span></span>
+                </div>
+                <div>
+                  <span class="font-controls"><span class="bracket">[</span>DRAWN WITH:<a class="link-line turqoise" href="https://p5js.org/">p5.js</a><span class="bracket">]</span></span>
+                </div>
+              </div>
+              <div class="navbar-side"></div>
+            </nav>
+          </div>
 
           <script src="./js/components/nav-bar.js"></script>
           <script type="module">
