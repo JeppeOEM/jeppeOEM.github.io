@@ -1,11 +1,11 @@
 @import url('./root.css');
 
-/* canvas background (js/AsciiCanvasBackground.js) */
-.ascii-canvas-background {
+/* p5 canvas background (js/P5Background.js) */
+.p5-background {
   opacity: 0;
   transition: opacity 2s ease-in;
 }
-.ascii-canvas-background.show {
+.p5-background.show {
   opacity: 1;
 }
 
