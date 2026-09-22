@@ -13,41 +13,59 @@ export function codePage() {
   } catch (e) {}
   const initial = [wanted, saved].find((n) => n && animations[n]) || names[0];
 
-  const bodyBackground = new P5Background({
-    animations,
-    initial,
-    container: document.body,
-    colors: {
-      base: "var(--dark-green)",
-      highlight: "var(--light-green)",
-    },
-    zIndex: -1,
-    frameRate: 30,
-    // nothing is drawn behind these elements
-    exclude: [".text-box"],
-    excludePadding: 1,
-  });
-  bodyBackground.init();
-  // console: p5Background.list(), p5Background.run("hexRain"), p5Background.next()
-  window.p5Background = bodyBackground;
+  // The background is not load-bearing for the rest of the page: if p5 (or
+  // this constructor) fails for any reason, the binary stream below and the
+  // rest of the page must still work, just without a canvas behind them.
+  let bodyBackground = null;
+  try {
+    if (typeof p5 === "undefined") {
+      throw new Error("p5.js did not load (js/vendor/p5.min.js missing or blocked)");
+    }
+    bodyBackground = new P5Background({
+      animations,
+      initial,
+      container: document.body,
+      colors: {
+        base: "var(--dark-green)",
+        highlight: "var(--light-green)",
+      },
+      zIndex: -1,
+      frameRate: 30,
+      // nothing is drawn behind these elements
+      exclude: [".text-box"],
+      excludePadding: 1,
+    });
+    bodyBackground.init();
+    // console: p5Background.list(), p5Background.run("hexRain"), p5Background.next()
+    window.p5Background = bodyBackground;
+  } catch (err) {
+    console.error("Background canvas unavailable:", err);
+  }
 
   // bottom bar: one option per registered animation, remembered like the font
   const selector = document.getElementById("background-selector");
   if (selector) {
-    for (const name of names) {
+    if (bodyBackground) {
+      for (const name of names) {
+        const option = document.createElement("option");
+        option.value = name;
+        option.textContent = name;
+        selector.appendChild(option);
+      }
+      selector.value = initial;
+      selector.addEventListener("change", (e) => {
+        const name = e.target.value;
+        bodyBackground.run(name);
+        try {
+          localStorage.setItem("selectedBackground", name);
+        } catch (e2) {}
+      });
+    } else {
       const option = document.createElement("option");
-      option.value = name;
-      option.textContent = name;
+      option.textContent = "unavailable";
       selector.appendChild(option);
+      selector.disabled = true;
     }
-    selector.value = initial;
-    selector.addEventListener("change", (e) => {
-      const name = e.target.value;
-      bodyBackground.run(name);
-      try {
-        localStorage.setItem("selectedBackground", name);
-      } catch (e2) {}
-    });
   }
 
   // 0/1 rows beside the logo tick left as one stream passing under it

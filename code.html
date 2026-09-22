@@ -14,8 +14,9 @@
   <link rel="modulepreload" href="./js/loadPage.js" />
   <link rel="modulepreload" href="./js/code.js" />
   <link rel="modulepreload" href="./js/P5Background.js" />
-  <!-- p5.js for the background canvas (js/P5Background.js); pinned, instance mode only -->
-  <script src="https://cdn.jsdelivr.net/npm/p5@1.11.3/lib/p5.min.js" crossorigin="anonymous"></script>
+  <!-- p5.js for the background canvas (js/P5Background.js); vendored locally (js/vendor/p5.min.js,
+       v1.11.3), no CDN, so the page has no network dependency for its background -->
+  <script src="./js/vendor/p5.min.js"></script>
     <script>
       (function () {
         try {
