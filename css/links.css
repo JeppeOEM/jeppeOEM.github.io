@@ -2,7 +2,7 @@
 
 
 .h3-bg-text {
-   background-color: var(--blue);
+   background-color: var(--black);
 }
 
 .h3-bg-text .color-accent-secondary {
@@ -136,3 +136,64 @@
 /*      font-size: 12px !important;*/
 /*    }*/
 
+
+
+/* dotted box growing out of the logo (see js/DotBox.js) */
+.dot-box {
+  position: relative;
+  margin: 3lh auto 4lh;
+  width: min(85ch, calc(100vw - 2ch));
+  padding: 2lh 3ch;
+  box-sizing: border-box;
+  background-color: var(--black);
+}
+
+.dot-box-outline {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  overflow: visible;
+  pointer-events: none;
+  user-select: none;
+  color: var(--white);
+  font-weight: bold;
+  z-index: 1;
+}
+
+.dot-box-outline span {
+  opacity: 0;
+}
+
+.dot-box-outline.grow span {
+  animation: dotIn 1ms steps(1) forwards;
+  animation-delay: calc(var(--i) * var(--dot-step, 30ms));
+}
+
+.dot-box-outline.done span {
+  opacity: 1;
+  animation: none;
+}
+
+@keyframes dotIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.dot-box-content {
+  position: relative;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.dot-box-content.show {
+  opacity: 1;
+}
+
+/* the link rows mask their dot leader with the page colour, not the old blue panel */
+.dot-box .link-secondary,
+.dot-box .dot-seperation span,
+.dot-box .span-green.is-truncated,
+.dot-box .span-green.is-truncated .span-green-ellipsis {
+  background: var(--black);
+}
