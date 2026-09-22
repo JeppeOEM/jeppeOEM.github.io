@@ -117,22 +117,6 @@ body.home-ui-hidden .background-layer {
   pointer-events: none !important;
 }
 
-.home-bottom-nav-wrapper {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.home-bottom-nav {
-  padding-top: 5px;
-  padding-bottom: 8px;
-}
-
-.home-bottom-navbar {
-  justify-content: space-between;
-}
-
 .nav-toggle-btn {
   all: unset;
   cursor: pointer;

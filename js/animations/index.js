@@ -8,8 +8,10 @@
 import asciiScramble from "./asciiScramble.js";
 import hexRain from "./hexRain.js";
 import flowField from "./flowField.js";
+import tenPrint from "./tenPrint.js";
 
 export const animations = {
+  tenPrint,
   asciiScramble,
   hexRain,
   flowField,

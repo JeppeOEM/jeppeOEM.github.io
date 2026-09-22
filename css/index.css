@@ -1180,6 +1180,23 @@ background-color: transparent !important;
 /*}*/
 
 
+/* bottom bar shared by index.html and code.html (home.css keeps the toggle button) */
+.home-bottom-nav-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.home-bottom-nav {
+  padding-top: 5px;
+  padding-bottom: 8px;
+}
+
+.home-bottom-navbar {
+  justify-content: space-between;
+}
+
 /* top and bottom nav bars fade in slowly once the page is revealed */
 .nav-wrapper,
 .home-bottom-nav-wrapper {
