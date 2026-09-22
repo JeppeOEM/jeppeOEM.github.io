@@ -1,7 +1,7 @@
 /**
  * The tiled ASCII pattern with pointer scramble, as a p5 animation.
  *
- * Port of js/AsciiCanvasBackground.js: the pattern is drawn once into an
+ * Port of js/AsciiCanvasBackground.js (the tiled hex-digit pattern): the pattern is drawn once into an
  * off-screen buffer; each frame blits that buffer and draws only the cells
  * the pointer has scrambled, which fall back to the pattern after
  * `restoreAfter` ms. The scramble radius grows with pointer speed.
@@ -22,7 +22,7 @@ const patternWidth = Math.max(...lines.map((l) => l.length)) + 1;
 const baseChar = (r, c) => lines[r % lines.length][c % patternWidth] ?? " ";
 
 export default {
-  name: "asciiScramble",
+  name: "hexadecimal",
 
   setup(p, bg) {
     this.cols = bg.cols;
