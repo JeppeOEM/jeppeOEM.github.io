@@ -39,14 +39,15 @@ export function linksPage() {
     box: document.querySelector(".dot-box"),
     outline: document.querySelector(".dot-box-outline"),
     content: document.querySelector(".dot-box-content"),
-    // line work from the top of the logo, stretched to the box width
+    // line work from the top of the logo, on the logo's own columns so its
+    // feeder-analog columns land exactly under the `:` dropping from it
     header: [
-      "    .                        - - ── ┐│┌ ── - -                         .    ",
-      "    ┌ ── ─ ─                   :   ┌───┐   :                    ─ ─ ── ┐    ",
-      "    |          .      ^.....┌ ─ ── | . | ── ─    ...^                  |    ",
-      ". ┌ ─                .... : |  |   : : :        : ....        ─        ─ ┐ .",
-      ": 1 │                 :   : .  1   . |          :   : ..        .      │ 1 :",
-      "│  ²:                 ∙   ∙ :  :     │        : .   .  :        :      :²  │",
+      "    .                           - - ── ┐:┌ ── - -                         .",
+      "    ┌ ── ─ ─                      :   ┌─:─┐   :                    ─ ─ ── ┐",
+      "    |             .      ^.....┌ ─ ── | . | ── ─ ┐ ....^                  |",
+      ". ┌ ─                   .... : |  |   : : :      | : ....        ─        ─ ┐ .",
+      ": 1 │                    :   : .  1   . | .      1 :   :           .      │ 1 :",
+      "│  ²:                 ∙   ∙ :  :     │        : .   .           :      :²  │",
     ],
     stepMs: 30,
     startDelay: 600,

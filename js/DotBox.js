@@ -5,15 +5,23 @@
  * drop straight down from them, land on the top edge of a box drawn with `.`
  * (horizontal) and `:` (vertical), and the box wraps the content element.
  *
- * A `header` of line art (taken from the top of the logo) can hang above the
- * top edge, one cell wider than the box on each side so it sits outside the
- * dotted line. It is stretched to that width by inserting cells at columns
- * that are blank in every header row, or squeezed by removing such columns;
- * when it cannot be made to fit it is left out. The dotted line is never
- * altered by it: header cells only fill cells the outline leaves empty.
+ * A `header` of line art (taken from the top of the logo, on the logo's own
+ * columns) can hang above the top edge, one cell wider than the box on each
+ * side so it sits outside the dotted line. Because the header text shares the
+ * logo's column grid, the header columns that line up with the two feeders
+ * are known without measuring anything; those two columns, and everything
+ * between them, are kept fixed so they stay under the feeders. Only the
+ * columns outside that span are stretched to fit, by inserting cells at
+ * columns that are blank in every header row, or squeezed by removing such
+ * columns; when a side cannot be made to fit it is left out. The dotted line
+ * is never altered by the header: header cells only fill cells the outline
+ * leaves empty.
  *
  * The outline is a <pre> of one <span> per cell, absolutely positioned so that
- * its character grid is snapped to the logo's grid. Each span gets a step index
+ * its character grid is snapped to the logo's grid. Each span is an inline
+ * block exactly one measured logo cell wide, so the grid stays on the logo's
+ * columns even where a browser synthesises the bold weight with a rounded
+ * advance (Firefox). Each span gets a step index
  * (`--i`) equal to its path distance from the logo, so a CSS animation-delay
  * makes the outline appear cell by cell: down the feeders (the header lines
  * spread sideways from them as they pass), along the top edge from the two
@@ -98,38 +106,38 @@ export default class DotBox {
   }
 
   /**
-   * Stretch or squeeze the header rows to `cols` columns. Cells are added at
-   * two blank columns (one per half) or removed from blank columns spread over
-   * the width. Returns null when the rows cannot be made to fit.
+   * Stretch or squeeze equal-length `rows` to `target` columns. Cells are
+   * added at two blank columns (one per half) or removed from blank columns
+   * spread over the width. Returns an array of char arrays, or null when the
+   * rows cannot be made to fit.
    */
-  fitHeader(cols) {
-    if (!this.header || this.header.length === 0) return null;
-    const width = Math.max(...this.header.map((r) => r.length));
-    const rows = this.header.map((r) => [...r.padEnd(width, " ")]);
+  stretchRows(rows, target) {
+    const width = rows[0] ? rows[0].length : 0;
+    const grid = rows.map((r) => [...r]);
+    if (width === target) return grid;
+
     const blank = [];
     for (let c = 0; c < width; c++) {
-      if (rows.every((r) => r[c] === " ")) blank.push(c);
+      if (grid.every((r) => r[c] === " ")) blank.push(c);
     }
-    const extra = cols - width;
-    if (extra === 0) return rows.map((r) => r.join(""));
+    const extra = target - width;
     if (blank.length === 0) return null;
 
-    const nearest = (target) =>
-      blank.reduce((a, b) => (Math.abs(b - target) < Math.abs(a - target) ? b : a));
+    const nearest = (t) => blank.reduce((a, b) => (Math.abs(b - t) < Math.abs(a - t) ? b : a));
 
     if (extra > 0) {
       const cutL = nearest(width * 0.2);
       const cutR = nearest(width * 0.8);
       const addL = Math.floor(extra / 2);
       const addR = extra - addL;
-      return rows.map((r) => {
+      return grid.map((r) => {
         const out = [];
         for (let c = 0; c < width; c++) {
           if (c === cutL) out.push(..." ".repeat(addL));
           if (c === cutR) out.push(..." ".repeat(addR));
           out.push(r[c]);
         }
-        return out.join("");
+        return out;
       });
     }
 
@@ -145,7 +153,40 @@ export default class DotBox {
       if (drop.size >= remove) break;
       drop.add(c);
     }
-    return rows.map((r) => r.filter((_, c) => !drop.has(c)).join(""));
+    return grid.map((r) => r.filter((_, c) => !drop.has(c)));
+  }
+
+  /**
+   * Fit the header to `cols` columns. `localLandings` are the two columns in
+   * the header's own text (the logo's grid) that line up with the feeders;
+   * `outLandings` are where those feeders actually land in the outline grid.
+   * The span between the landings is copied verbatim so it stays put; only
+   * the columns outside it are stretched or squeezed. Falls back to
+   * stretching the whole header when there aren't exactly two landings on
+   * both sides. Returns null when it cannot be made to fit.
+   */
+  fitHeader(cols, localLandings, outLandings) {
+    if (!this.header || this.header.length === 0) return null;
+    const width = Math.max(...this.header.map((r) => r.length));
+    const rows = this.header.map((r) => r.padEnd(width, " "));
+
+    if (localLandings.length !== 2 || outLandings.length !== 2) {
+      const grid = this.stretchRows(rows, cols);
+      return grid ? grid.map((r) => r.join("")) : null;
+    }
+
+    const [lLocal, rLocal] = localLandings;
+    const [lOut, rOut] = outLandings;
+
+    const leftRows = rows.map((r) => r.slice(0, lLocal));
+    const midRows = rows.map((r) => r.slice(lLocal, rLocal + 1));
+    const rightRows = rows.map((r) => r.slice(rLocal + 1));
+
+    const left = this.stretchRows(leftRows, lOut);
+    const right = this.stretchRows(rightRows, cols - rOut - 1);
+    if (!left || !right) return null;
+
+    return rows.map((_, i) => left[i].join("") + midRows[i] + right[i].join(""));
   }
 
   /** Build the character grid and step index per cell, then write the spans. */
@@ -154,34 +195,51 @@ export default class DotBox {
     const feeders = this.findFeederCols();
     const cw = this.cellW;
     const ch = this.cellH;
+    // pin each cell to the logo's advance so a synthesised bold cannot widen it
+    this.outline.style.setProperty("--dot-cell", `${cw}px`);
 
     // the box is as wide as CSS makes it; the header hangs in its top margin
     const boxWidth = this.box.getBoundingClientRect().width;
     const boxCols = Math.floor(boxWidth / cw);
-    const header = this.header ? this.fitHeader(boxCols + 2) : null;
-    const pad = header ? 1 : 0; // grid columns outside the box on each side
-    this.box.style.marginTop = `${this.feederGap + (header ? header.length : 1)}lh`;
+
+    // Snap the outline grid to the logo grid: column c of the outline sits
+    // under logo column c + shift. This only depends on horizontal position,
+    // which margin-top doesn't change, so it can be settled before the
+    // header (which decides how tall that top margin needs to be) is fit.
+    const geoFor = (pad) => {
+      const logoRect = this.logo.getBoundingClientRect();
+      const boxRect = this.box.getBoundingClientRect();
+      const shift = Math.round((boxRect.left - logoRect.left) / cw) - pad;
+      const cols = boxCols + 2 * pad;
+      const firstCol = pad;
+      const lastCol = pad + boxCols - 1;
+      const landings = feeders
+        .map((c) => c - shift)
+        .filter((c) => c > firstCol && c < lastCol);
+      return { shift, cols, firstCol, lastCol, landings };
+    };
+
+    let pad = this.header ? 1 : 0; // grid columns outside the box on each side
+    let geo = geoFor(pad);
+    let header = this.header ? this.fitHeader(geo.cols, feeders, geo.landings) : null;
+    if (this.header && !header) {
+      pad = 0;
+      geo = geoFor(pad);
+    }
+    const { shift, cols, firstCol, lastCol, landings } = geo;
+
+    this.box.style.marginTop = `${this.feederGap + (header ? this.header.length : 1)}lh`;
 
     const logoRect = this.logo.getBoundingClientRect();
     const boxRect = this.box.getBoundingClientRect();
-
-    // Snap the outline grid to the logo grid: column c of the outline sits
-    // under logo column c + shift.
-    const shift = Math.round((boxRect.left - logoRect.left) / cw) - pad;
     const left = logoRect.left + shift * cw - boxRect.left;
     const top = logoRect.bottom - boxRect.top;
 
-    const cols = boxCols + 2 * pad;
     const feederRows = Math.max(1, Math.round((boxRect.top - logoRect.bottom) / ch));
     const rows = feederRows + Math.round(boxRect.height / ch);
 
     const topRow = feederRows;
     const bottomRow = rows - 1;
-    const firstCol = pad;
-    const lastCol = pad + boxCols - 1;
-    const landings = feeders
-      .map((c) => c - shift)
-      .filter((c) => c > firstCol && c < lastCol);
 
     const chars = new Array(rows * cols).fill(" ");
     const steps = new Array(rows * cols).fill(-1);

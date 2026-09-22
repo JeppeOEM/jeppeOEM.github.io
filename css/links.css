@@ -156,11 +156,20 @@
   pointer-events: none;
   user-select: none;
   color: var(--white);
-  font-weight: bold;
   z-index: 1;
 }
 
+/*
+ * Every cell is pinned to the logo's measured cell width (--dot-cell, set by
+ * DotBox). The font has no bold face, and a browser that synthesises one may
+ * round its advance to whole pixels (Firefox does), which would widen the grid
+ * and let rows mixing bold and normal cells drift. The <pre> itself stays at
+ * the logo's weight so the blank cells between spans keep the logo's advance.
+ */
 .dot-box-outline span {
+  display: inline-block;
+  width: var(--dot-cell);
+  font-weight: bold;
   opacity: 0;
 }
 
