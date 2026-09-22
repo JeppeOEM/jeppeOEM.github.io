@@ -39,6 +39,15 @@ export function linksPage() {
     box: document.querySelector(".dot-box"),
     outline: document.querySelector(".dot-box-outline"),
     content: document.querySelector(".dot-box-content"),
+    // line work from the top of the logo, stretched to the box width
+    header: [
+      "    .                        - - ── ┐│┌ ── - -                         .    ",
+      "    ┌ ── ─ ─                   :   ┌───┐   :                    ─ ─ ── ┐    ",
+      "    |          .      ^.....┌ ─ ── | . | ── ─    ...^                  |    ",
+      ". ┌ ─                .... : |  |   : : :        : ....        ─        ─ ┐ .",
+      ": 1 │                 :   : .  1   . |          :   : ..        .      │ 1 :",
+      "│  ²:                 ∙   ∙ :  :     │        : .   .  :        :      :²  │",
+    ],
     stepMs: 30,
     startDelay: 600,
   });

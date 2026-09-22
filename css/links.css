@@ -143,7 +143,7 @@
   position: relative;
   margin: 3lh auto 4lh;
   width: min(85ch, calc(100vw - 2ch));
-  padding: 2lh 3ch;
+  padding: 2lh 3ch; /* padding-top is set by DotBox to clear the header */
   box-sizing: border-box;
   background-color: var(--black);
 }
@@ -162,6 +162,12 @@
 
 .dot-box-outline span {
   opacity: 0;
+}
+
+/* header line art keeps the logo's frame colour; the `:` and `.` stay white */
+.dot-box-outline .line {
+  color: var(--light-blue);
+  font-weight: normal;
 }
 
 .dot-box-outline.grow span {
