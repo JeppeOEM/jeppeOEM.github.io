@@ -163,7 +163,7 @@
 
       document
         .getElementById("font-selector")
-        .addEventListener("change", (e) => {
+        ?.addEventListener("change", (e) => {
           const selectedFont = e.target.value;
           saveFontSelection(selectedFont);
 

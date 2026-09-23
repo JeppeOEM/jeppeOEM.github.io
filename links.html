@@ -412,16 +412,15 @@
 
 
     document.addEventListener('DOMContentLoaded', () => {
-      console.log("DOM fully loaded");
+      // Start the page first: nav-bar's font-selector is a nice-to-have,
+      // and must never be able to block the rest of the page from loading
+      // if it's missing/slow.
+      loadPage(linksPage)
 
-
-      document.getElementById('font-selector').addEventListener('change', (e) => {
+      document.getElementById('font-selector')?.addEventListener('change', (e) => {
         const selectedFont = e.target.value;
         saveFontSelection(selectedFont);
       });
-
-      loadPage(linksPage)
-
     });
   </script>
 </body>

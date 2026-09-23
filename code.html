@@ -145,16 +145,15 @@
 
 
             document.addEventListener('DOMContentLoaded', () => {
-              console.log("DOM fully loaded");
-        
+              // Start the page (and its p5.js background) first: nav-bar's
+              // font-selector is a nice-to-have, and must never be able to
+              // block the background from loading if it's missing/slow.
+              loadPage(codePage)
 
-              document.getElementById('font-selector').addEventListener('change', (e) => {
+              document.getElementById('font-selector')?.addEventListener('change', (e) => {
                 const selectedFont = e.target.value;
                 saveFontSelection(selectedFont);
               });
-
-              loadPage(codePage)
-
             });
           </script>
           </body>
