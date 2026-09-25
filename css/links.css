@@ -220,7 +220,7 @@
      blank space between rows needs that space selectable too, or the line
      break between rows blocks the selection from crossing it. */
   pointer-events: none;
-  color: var(--grey);
+  color: var(--white);
   z-index: 1;
 }
 
@@ -240,7 +240,7 @@
   user-select: text;
 }
 
-/* header line art keeps the logo's frame colour; the `:` and `.` stay grey */
+/* header line art keeps the logo's frame colour; the `:` and `.` stay white */
 .dot-box-outline .line {
   color: var(--light-blue);
   font-weight: normal;
