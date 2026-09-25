@@ -67,10 +67,6 @@ export default class AsciiBox {
     const { horizontalChars, verticalLines, verticalHeaderLines } =
       this.getBreakpointSettings(currentBreakpoint);
 
-    console.log(
-      `Current breakpoint: ${currentBreakpoint}, Chars: ${horizontalChars}, Lines: ${verticalLines}`
-    );
-
     // Handle responsive spans
     const spans = templateContent.querySelectorAll(".responsive-span");
     spans.forEach((span) => {
@@ -171,7 +167,6 @@ export default class AsciiBox {
   init() {
     // Store initial breakpoint
     this._currentBreakpoint = this.getBreakpoint();
-    console.log(`Initializing with breakpoint: ${this._currentBreakpoint}`);
 
     // Create initial template
     this.createResponsiveTemplate();

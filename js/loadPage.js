@@ -1,44 +1,9 @@
-import { run } from "/src/run.js";
-import * as program from "/src/programs/contributed/slime_dish2.js";
-import AsciiBox from "./AsciiBox.js";
+import { applyFont, getSavedFont } from "./font.js";
 
-export function loadPage(fontDependentCode) {
-  const start = () => {
-    fontDependentCode();
-    document.fonts.ready.then(() => document.body.classList.add("loaded"));
-  };
-
-  const selectedFont = localStorage.getItem("selectedFont") || "IBMVGA8";
-  const fontData = localStorage.getItem(`fontBase64_${selectedFont}`);
-
-  if (fontData) {
-    const font = new FontFace(selectedFont, `url(${fontData})`);
-    font
-      .load()
-      .then((loadedFont) => {
-        document.fonts.add(loadedFont);
-        document.body.style.setProperty(
-          "font-family",
-          `${selectedFont}, monospace`,
-          "important"
-        );
-        start();
-      })
-      .catch((error) => {
-        console.error("Font failed to load:", error);
-        fallbackToDefault();
-      });
-  } else {
-    document.body.style.setProperty(
-      "font-family",
-      `${selectedFont}, monospace`,
-      "important"
-    );
-    start();
-  }
-
-  function fallbackToDefault() {
-    document.body.style.setProperty("font-family", "monospace", "important");
-    start();
-  }
+// Apply the saved font, start the page, and reveal the body (hidden by
+// css/base.css) once the font is ready.
+export function loadPage(startPage) {
+  applyFont(getSavedFont());
+  startPage();
+  document.fonts.ready.then(() => document.body.classList.add("loaded"));
 }

@@ -4,48 +4,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jeppe Marquardt's Portfolio</title>
+  <title>Left box demo</title>
   <link rel="preload" as="font" type="font/ttf" href="fonts/AcPlus_IBM_VGA_8x16.ttf" crossorigin />
   <link rel="stylesheet" href="css/font.css" />
-  <link rel="stylesheet" href="css/root.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/utilities.css" />
+  <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/links.css" />
-  <link rel="modulepreload" href="./js/font.js" />
-  <link rel="modulepreload" href="./js/loadPage.js" />
-  <link rel="modulepreload" href="./js/linksPage.js" />
   <script>
     (function () {
       try {
         var f = localStorage.getItem("selectedFont") || "IBMVGA8";
         document.documentElement.style.fontFamily = f + ", monospace";
       } catch (e) {}
-      // safety net: never leave the page hidden
       setTimeout(function () {
         if (document.body) document.body.classList.add("loaded");
       }, 1500);
     })();
   </script>
+  <style>
+    /*
+     * Same DotBox effect as links.html, but the logo sits at the page's
+     * left edge instead of being centered. DotBox itself doesn't care where
+     * the logo/box are on the page — it only measures the logo's position
+     * relative to the box's — so pinning both to the left is enough; no
+     * changes to DotBox.js were needed.
+     */
+    .left-align {
+      display: flex;
+      justify-content: flex-start;
+      padding: 0 2ch;
+    }
+
+    .dot-box-left {
+      margin: 3lh 0 4lh 0; /* same top/bottom spacing as links.html, no auto-centering */
+      width: min(90ch, calc(100vw - 4ch));
+    }
+  </style>
 </head>
 
 <body>
-  <nav-bar></nav-bar>
 
-  <div class="column-align-center">
+  <div class="left-align">
+    <div class="center-pre-wrapper fade-in-fast">
+      <div class="background-layer"></div>
 
-    <div class="flex-horizontal">
-
-      <div class="container bg-black z-2">
-        <div class="left-section fade-in-fast" id="leftSection">
-          <!-- side art is added by js/AsciiLogoBackground.js -->
-        </div>
-
-        <div class="center-section">
-          <div class="center-pre-wrapper fade-in-fast">
-            <div class="background-layer"></div>
-
-            <pre class="center-pre">
+      <pre class="center-pre">
         <span class="link-logo-color-2">.<span class="link-logo-color-3">                        <span class="link-logo-color-2">-<span class="link-logo-color-3"> <b><span class="link-logo-color-2">-</span></b></span></span></span></span> <span class="link-logo-color-2">──<span class="link-logo-color-3"> <b><span class="link-logo-color-2">┐</span></b></span></span><span class="link-logo-color-2">│<b>┌</b></span> <span class="link-logo-color-2">──<span class="link-logo-color-3"> <b><span class="link-logo-color-2">-</span></b></span></span> <span class="link-logo-color-2">-<span class="link-logo-color-3">                         <span class="link-logo-color-2">.<span class="link-logo-color-3">
         <span class="link-logo-color-2">┌ ── ─ ─<span class="link-logo-color-3">                   <b><span class="link-logo-color-2">:</span></b></span></span></span></span></span></span><span class="link-logo-color-2">   ┌─<b>─</b></span><span class="link-logo-color-2">─┐   <b>:</b></span>                    <span class="link-logo-color-2">─ ─ ── ┐<span class="link-logo-color-3">
         <b><span class="link-logo-color-2">|</span></b></span></span>          <b><span class="link-logo-color-4">.</span></b>      <b><span class="link-logo-color-2">^<span class="link-logo-color-5">.</span></span></b>.<span class="link-logo-color-2">...┌<span class="link-logo-color-3"> <span class="link-logo-color-2">─ ─<b>─</b></span></span></span> <span class="link-logo-color-2">|<span class="link-logo-color-3"> <span class="link-logo-color-2">.<span class="link-logo-color-3"> <span class="link-logo-color-2">|<span class="link-logo-color-3"> <b><span class="link-logo-color-2">─</span></b></span></span></span></span></span></span><span class="link-logo-color-2">─ ─<span class="link-logo-color-3">    <span class="link-logo-color-2">...<b>^</b></span></span></span>                  <b><span class="link-logo-color-2">|</span></b>
@@ -61,311 +63,51 @@
 <span class="link-logo-color-7">═════════════</span> <span class="link-logo-color-1">$$<b><span class="link-logo-color-6"><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;<span class="link-logo-color-3">══</span></span></span></span></span></span></span></b></span> <span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;<span class="link-logo-color-3">══</span></span></span></span></span></span></b></span> <span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></span></span></b></span> <span class="link-logo-color-7">═</span> <span class="link-logo-color-1">$$<b><span class="bg-logo-1">¼<span class="link-logo-color-3"><span class="bg-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></span></span></b></span> <span class="link-logo-color-7">═</span> <span class="link-logo-color-1">$$<b><span class="link-logo-color-6"><span class="bg-logo-1">¼<span class="link-logo-color-3">¼<span class="link-logo-color-4"><span class="bg-color-2">;</span></span></span></span></span></b></span> <span class="link-logo-color-7">════<span class="link-logo-color-4">`╙</span></b><span class="link-logo-color-1">$<b><span class="link-logo-color-4">,</span></b></span> <b><span class="link-logo-color-4">S<span class="link-logo-color-6"><span class="bg-logo-1">¼<span class="link-logo-color-3">¼</span></span></span></span></b><span class="link-logo-color-1">SS2...$$$$<span class="link-logo-color-3"><span class="bg-logo-1">¼<b>¼<span class="link-logo-color-4"><span class="bg-color-2">$<span class="link-logo-color-1"> <span class="link-logo-color-3">-════</span></span></span></span></b></span></span></span>
     <b><span class="link-logo-color-2">│   :</span></b><span class="link-logo-color-2">°·<span class="link-logo-color-3">   <b><span class="link-logo-color-4">$$²^<span class="link-logo-color-3">  <span class="link-logo-color-5">..</span></span></span></b></span></span><span class="link-logo-color-1">s<b><span class="link-logo-color-4">$$²^<span class="link-logo-color-3"> <span class="link-logo-color-5">..</span></span></span></b></span><span class="link-logo-color-1">s<b><span class="link-logo-color-4">$$²^<span class="link-logo-color-3"> <span class="link-logo-color-5">..</span></span></span></b></span><span class="link-logo-color-1">s<b><span class="link-logo-color-4">$$²^</span></b></span>   <b><span class="link-logo-color-4">$$²^       </span></b>:<b>    <span class="link-logo-color-4">`╙I</span></b><span class="link-logo-color-1">£$$$$<b><span class="link-logo-color-4">S"     </span></b></span><span class="link-logo-color-7">`<b> <span class="link-logo-color-2">│</span></b></span>
     <b><span class="link-logo-color-2">: 1</span></b><span class="link-logo-color-4"> <span class="link-logo-color-2">│<span class="link-logo-color-3">  <b><span class="link-logo-color-2"><span class="bg-color-3">$<span class="bg-color-2">S</span></span></span></b></span></span></span><span class="link-logo-color-2">g<b>  </b></span>:.....  :..<b><span class="link-logo-color-5">.</span></b>.<b><span class="link-logo-color-5">  <span class="link-logo-color-3">.</span></span></b><span class="link-logo-color-2">..<b><span class="link-logo-color-3">...</span></b></span><span class="link-logo-color-2">: :<b><span class="link-logo-color-3">;<span class="link-logo-color-2">|<span class="link-logo-color-3">;</span></span></span></b></span><span class="link-logo-color-2">: :<b><span class="link-logo-color-3">...</span></b></span><span class="link-logo-color-2">..<b><span class="link-logo-color-3">.</span></b></span>  ...: .....:  <b><span class="link-logo-color-4">""'</span></b>   <span class="link-logo-color-2">·°│<span class="link-logo-color-7"> <b><span class="link-logo-color-2">1 </span></b></span></span><span class="link-logo-color-2">:<span class="link-logo-color-3">
-    <span class="link-logo-color-2">. └ ─<span class="link-logo-color-3">   <b><span class="link-logo-color-2">` </span></b></span></span></span></span><span class="link-logo-color-2">'<span class="link-logo-color-3">   :...<b><span class="link-logo-color-5">..</span></b></span></span>.  :     <span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<b><span class="link-logo-color-3">:</span></b></span></span></span><span class="link-logo-color-2">  <b><span class="pink">links</span></b></span>  <b>:</b><span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<span class="link-logo-color-3">     :  ......:     <span class="link-logo-color-2">y<b>S<span class="bg-color-3">$<span class="bg-color-2">  </span></span></b></span></span></span></span></span><span class="link-logo-color-2">─ ┘<span class="link-logo-color-7"> <span class="link-logo-color-2">.<span class="link-logo-color-3">
+    <span class="link-logo-color-2">. └ ─<span class="link-logo-color-3">   <b><span class="link-logo-color-2">` </span></b></span></span></span></span><span class="link-logo-color-2">'<span class="link-logo-color-3">   :...<b><span class="link-logo-color-5">..</span></b></span></span>.  :     <span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<b><span class="link-logo-color-3">:</span></b></span></span></span><span class="link-logo-color-2">  <b><span class="pink">left</span></b></span>  <b>:</b><span class="link-logo-color-2">:<span class="link-logo-color-3"> <span class="link-logo-color-2">:<span class="link-logo-color-3">     :  ......:     <span class="link-logo-color-2">y<b>S<span class="bg-color-3">$<span class="bg-color-2">  </span></span></b></span></span></span></span></span><span class="link-logo-color-2">─ ┘<span class="link-logo-color-7"> <span class="link-logo-color-2">.<span class="link-logo-color-3">
         <b><span class="link-logo-color-2">|</span></b></span></span></span></span>                       <span class="link-logo-color-2">.:..:.<span class="link-logo-color-3"> <span class="link-logo-color-2">;:::; .:..:.<span class="link-logo-color-3">                  <span class="link-logo-color-2">`<span class="link-logo-color-7"> <b><span class="link-logo-color-2">'</span></b></span></span></span></span></span></span><span class="link-logo-color-7">   <b><span class="link-logo-color-2">|</span></b></span>
         <span class="link-logo-color-2">└ ── ─ ─                 .<span class="link-logo-color-3">  <b>:</b></span></span>         <b>:</b>  <span class="link-logo-color-2">.<span class="link-logo-color-3">                  <span class="link-logo-color-2">─ ─ ── ┘<span class="link-logo-color-3"></span></span></span></span></pre>
 
-          </div>
-        </div>
-
-        <div class="right-section fade-in-fast" id="rightSection">
-          <!-- side art is added by js/AsciiLogoBackground.js -->
-        </div>
-
-      </div>
-
     </div>
-
-    <section class="dot-box">
-      <pre class="dot-box-outline" aria-hidden="true"></pre>
-      <div class="dot-box-content">
-
-          <p class="padding-2ch-top color-p-secondary">
-            Here is a collection of the most interesting or usefull links i found in digital art, creative coding with a
-            focus on textmode.
-          </p>
-          <br>
-          <h3 class="h3"><span class="h3-bg-text secondary"><span class="color-accent-secondary">[ </span>TEXT MODE<span class="color-accent-secondary"> ]</span></span></h3>
-          <br>
-          <ul class="link-list">
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://16colo.rs/">16colo.rs</a>
-                <span class="span-green">The number one ANSI/ASCII art library</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://hornet.org/">hornet.org</a>
-                <span class="span-green">Demoscene archive from 1987 to 1998</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://textfiles.com/">textfiles.com</a>
-                <span class="span-green">Huge collection of old ANSI/ASCII</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://int10h.org/">int10h.org</a>
-                <span class="span-green">Worlds largest collection of oldschool computer fonts</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://defacto2.net/">defacto2.net</a>
-                <span class="span-green">A historical archive of the software cracking and warez scene</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://text-mode.org/">text-mode.org</a>
-                <span class="span-green">goto80's text-mode blog</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://asciiarena.se/">asciiarena.se</a>
-                <span class="span-green">The number one ASCII art community and library</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.acid.org/">acid.org</a>
-                <span class="span-green">ANSI Creators in demand(ACID)</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://roysac.com/">roysac.com</a>
-                <span class="span-green">Superior Art Creation(SAC)</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.ice.org">ice.org</a>
-                <span class="span-green">Insane Creators Enterprise(ICE)</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://demozoo.org/">demozoo.org</a>
-                <span class="span-green">Demoscene library and general resource</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://csdb.dk/">csdb.dk</a>
-                <span class="span-green">Commodore 64 Scene Database</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://battleofthebits.com/">battleofthebits.com</a>
-                <span class="span-green">Chiptune, art and code competition community</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://ascii.designforthe.net/">ascii.designforthe.net</a>
-                <span class="span-green">Directory of ASCII art houses, linking to each creator's page</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://ascii.theater/">ascii.theater</a>
-                <span class="span-green">Streams text-mode movies playable in a terminal over SSH</span>
-              </div>
-            </li>
-          </ul>
-
-          <br>
-          <h3 class="h3"><span class="h3-bg-text secondary"><span class="color-accent-secondary">[ </span>CREATIVE CODING<span class="color-accent-secondary"> ]</span></span></h3>
-          <br>
-          <ul class="link-list">
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://play.ertdfgcvb.xyz/">play.ertdfgcv.xyz</a>
-                <span class="span-green">Create textmode GLSL animations in the browser</span>
-              </div>
-            </li>
-          </ul>
-
-          <br>
-          <h3 class="h3"><span class="h3-bg-text secondary"><span class="color-accent-secondary">[ </span>MULTIMEDIA<span class="color-accent-secondary"> ]</span></span></h3>
-          <br>
-          <ul class="link-list">
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://whydoweinterface.com/information/">whydoweinterface.com</a>
-                <span class="span-green">digital micro book on why we create interfaces</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://int10h.org/blog/2022/06/ibm-5153-color-true-cga-palette/">cga color palette</a>
-                <span class="span-green">True Color Graphics Adapter palette</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://thunderperfectwitchcraft.org/arcane_cache/2024/11/02/the-works-of-cal-michael/">the works of Cal Michael</a>
-                <span class="span-green">Weird games: surrealist indie Twine/Bitsy works on mysticism and the ocean</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://melonland.net/">melonland.net</a>
-                <span class="span-green">Indie web hub and webring celebrating old-internet creativity</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://pixelsea.neocities.org/">pixelsea.neocities.org</a>
-                <span class="span-green">Retro-styled directory of pixel art and old-web communities</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://indieseek.xyz/">indieseek.xyz</a>
-                <span class="span-green">Web directory of independent, personal websites and blogs</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://wackypacks.com/">wackypacks.com</a>
-                <span class="span-green">Archive of Wacky Packages stickers from 1967 to present</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://ay-3-8910-online.w10.site/">ay-3-8910-online.w10.site</a>
-                <span class="span-green">Personal retro-web page with MS-DOS files and link shrines</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://seeburg1000.com/">seeburg1000.com</a>
-                <span class="span-green">Archive streaming the vintage SEEBURG 1000 background-music system</span>
-              </div>
-            </li>
-          </ul>
-          <br>
-          <h3 class="h3"><span class="h3-bg-text secondary"><span class="color-accent-secondary">[ </span>VIDEOS<span class="color-accent-secondary"> ]</span></span></h3>
-          <br>
-          <ul class="link-list">
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.youtube.com/watch?v=Yd-s9htpHgQ&t=22s&ab_channel=ArakNetTV">The art of warez</a>
-                <span class="span-green">Documentary of the ANSI, BBS and Warez scene</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.youtube.com/watch?v=nO5vjmDFZaI&t=26s">BBS the documentary</a>
-                <span class="span-green">Documentary series about the pre internet BBS's</span>
-              </div>
-            </li>
-          </ul>
-          <br>
-          <h3 class="h3"><span class="h3-bg-text secondary"><span class="color-accent-secondary">[ </span>TOOLS<span class="color-accent-secondary"> ]</span></span></h3>
-          <br> 
-          <ul class="link-list">
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://p5js.org/">p5js.org</a>
-                <span class="span-green">Wonderfull crative coding framework in javascript</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://ansidraw.com/">ansidraw.com</a>
-                <span class="span-green">Online text-mode editor</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://lvllvl.com/">lvllvl.com</a>
-                <span class="span-green">Online text-mode editor</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://blocktronics.github.io/moebius/">moebius</a>
-                <span class="span-green">Software for creating ANSI art</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://blog.glyphdrawing.club/moebius-ansi-and-ascii-art-editor-with-custom-font-support/">blog.glyphdrawing.club</a>
-                <span class="span-green">Textmode editor that uses "glyphs"</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.aseprite.org/">aseprite.org</a>
-                <span class="span-green">Animated sprite editor and pixel art tool</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://lospec.com/">lospec.com</a>
-                <span class="span-green">Pixel art palettes, tutorials and tools</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://bbcat.dev/">bbcat.dev</a>
-                <span class="span-green">Terminal viewer for classic BBS art formats (ANSI, XBin, ADF, RIP)</span>
-              </div>
-            </li>
-          </ul>
-          <br>
-          <h3 class="h3"><span class="h3-bg-text secondary"><span class="color-accent-secondary">[ </span>ARTISTS<span class="color-accent-secondary"> ]</span></span></h3>
-          <br>
-          <ul class="link-list">
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://timrodenbroeker.de/">Tim Rodenbroeker</a>
-                <span class="span-green">Creative coding educator and artist</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://toimin.to/">Toiminto</a>
-                <span class="span-green">Dense generative artworks</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.goto80.com/">goto80</a>
-                <span class="span-green">chiptune/electronic musician and text-mode artist</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://www.edwardburtynsky.com/projects/photographs/railcuts">Edward Burtynsky</a>
-                <span class="span-green">Photographer of industrial landscapes (Railcuts series)</span>
-              </div>
-            </li>
-            <li>
-              <div class="dot-separation">
-                <a class="link-secondary" href="https://ertdfgcvb.xyz/">Andreas Gysin</a>
-                <span class="span-green">Modern text-mode legend</span>
-              </div>
-            </li>
-          </ul>
-      </div>
-    </section>
   </div>
 
-  <script type="module" src="./js/components/nav-bar.js"></script>
-  <script type="module">
-    import { loadPage } from "./js/loadPage.js";
-    import { linksPage } from "./js/linksPage.js";
+  <section class="dot-box dot-box-left">
+    <pre class="dot-box-outline" aria-hidden="true"></pre>
+    <div class="dot-box-content">
+      <p class="padding-2ch-top color-p-secondary">
+        Same box-growing effect as links.html's DotBox, just started from a
+        logo pinned to the left edge of the page instead of a centered one.
+      </p>
+    </div>
+  </section>
 
-    document.addEventListener("DOMContentLoaded", () => loadPage(linksPage));
+  <script type="module">
+    import DotBox from './js/DotBox.js';
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      try {
+        await document.fonts.ready;
+      } catch (e) {}
+      document.body.classList.add('loaded');
+
+      const dotBox = new DotBox({
+        logo: document.querySelector('.center-pre'),
+        box: document.querySelector('.dot-box'),
+        outline: document.querySelector('.dot-box-outline'),
+        content: document.querySelector('.dot-box-content'),
+        header: [
+          "        .                        - - ── ┐:┌ ── - -                        .",
+          "        ┌ ── ─ ─                   :   ┌─:─┐   :                   ─ ─ ── ┐",
+          "        |          .      ^.....┌ ─ ── | . | ── ─ ┐.....^      .          |",
+          "    . ┌ ─                .... : |  |   : : :   |  | : ....                ─ ┐ .",
+          "    : 1 │                 :   : .  1   . | .   1  . :   :                 │ 1 :",
+          "    │  ²:                 ∙   ∙ :  :     │     :  : ∙   ∙                 :²  │",
+        ],
+        stepMs: 30,
+        startDelay: 600,
+      });
+      dotBox.init();
+      window.dotBox = dotBox;
+    });
   </script>
 </body>
 

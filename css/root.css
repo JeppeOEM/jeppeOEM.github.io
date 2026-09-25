@@ -1,31 +1,22 @@
-
-
-
+/* Design tokens. Colors follow the 16-color CGA palette. */
 :root {
---brown: #AA5500;
---pink: #FF55FF;
---purple:  #AA00AA;
---red: #AA0000;
---light-red: #FF5555;
---black: #000000;
---light-black:#555555;
---yellow: #FFFF55;
---dark-grey: #AAAAAA;
---grey: #bebdbd;
---light-green: #55FF55;
---dark-green: #00AA00;
---orange: #FF5555;
---dark-turqoise: #00AAAA;
---turqoise: #55FFFF;
---white: white;
---pink: #FD65FD;
---ascii-arena: #070766;
---grey-ascii-arena: #A1A1A1;
---light-grey: #FFFFFF;
---light-blue: #5555FF;
---blue: #0000AA;
-    /*half height for the mrqdt logo*/
---half-height: 0ch;
---transparent: transparent;
---small-pad: 2ch;
+  /* palette */
+  --black: #000000;
+  --light-black: #555555;
+  --dark-grey: #aaaaaa;
+  --grey: #bebdbd;
+  --white: white;
+  --blue: #0000aa;
+  --light-blue: #5555ff;
+  --dark-turquoise: #00aaaa;
+  --turquoise: #55ffff;
+  --dark-green: #00aa00;
+  --light-green: #55ff55;
+  --purple: #aa00aa;
+  --pink: #fd65fd;
+  --orange: #ff5555;
+  --yellow: #ffff55;
+
+  /* spacing */
+  --small-pad: 2ch;
 }

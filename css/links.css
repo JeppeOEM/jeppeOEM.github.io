@@ -1,144 +1,204 @@
-@import url('./root.css');
+/* Links page (links.html). */
 
+/* ── logo colors ─────────────────────────────────────────────────────── */
+
+.link-logo-color-1,
+.bg-logo-1 {
+  color: var(--dark-turquoise);
+}
+
+.link-logo-color-2 {
+  color: var(--light-blue);
+}
+
+.link-logo-color-3,
+.link-logo-color-7 {
+  color: var(--white);
+}
+
+.link-logo-color-4 {
+  color: var(--turquoise);
+}
+
+.link-logo-color-5 {
+  color: var(--blue);
+}
+
+.link-logo-color-6 {
+  color: var(--yellow);
+}
+
+/* ── section headings sit on black here ──────────────────────────────── */
 
 .h3-bg-text {
-   background-color: var(--black);
+  background-color: var(--black);
 }
 
-.h3-bg-text .color-accent-secondary {
-   color: var(--orange);
+/* ── link rows: "name ::::.:.. <@> + [description]" ──────────────────── */
+
+.link-secondary {
+  background-color: var(--blue);
+  color: var(--turquoise);
+  transition: color 0.2s ease;
 }
 
-
-
-    .binaryContainer {
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .binary {
-      z-index: 100;
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    .leftBinary {
-      text-align: right;
-    }
-
-    .rightBinary {
-      text-align: left;
-    }
-
-    .rightChars {
-      width: 100vw;
-      z-index: -9;
-     transform:translateX(3px) translateY(20.9ch);
-      position: absolute;
-      top: 0px;
-     right: 50vw;
-    }
-
-
-    .leftChars {
-
-      width: 50vw;
-      z-index: -9;
-      transform: translateX(3px) translateY(20.9ch);
-      position: absolute;
-      top: 0px;
-       left: 50vw;
-    }
-
-
-
-
-.fade-in-fast{
-
+.dot-separation {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  overflow: hidden;
 }
 
-
-
-
-/*reverses the insert char animation */
-.mirrored {
-  transform: scaleX(-1);
-  direction: rtl; /* optional, can help with layout direction if needed */
+.dot-separation:hover {
+  color: var(--turquoise);
+  cursor: pointer;
 }
 
-/*flip each letter back so they are not mirrored but ony the direction */
-.mirrored span {
-  transform: scaleX(-1);
+.dot-separation span {
+  position: relative;
+  z-index: 2;
+  background: var(--blue);
+}
+
+/* the dot leader drawn behind the row */
+.dot-separation::before,
+.dot-separation::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.1ch;
+  letter-spacing: 2px;
+  white-space: pre;
+  overflow: hidden;
+}
+
+.dot-separation::before {
+  content: "::::::::::::.:..  <@>   +         ";
+  z-index: -1;
+  color: var(--light-blue);
+}
+
+.dot-separation::after {
+  content: "                   @          ";
+  z-index: 0;
+  color: var(--yellow);
+  pointer-events: none;
+}
+
+.dot-separation:hover::before {
+  content: "::::::::::::.:..  <@>   -     ";
+  color: var(--turquoise);
+}
+
+.dot-separation:hover::after {
+  content: "                  <@>         ";
+  color: var(--orange);
+}
+
+/* description in brackets; js/linksPage.js wraps its text and adds an
+   ellipsis, then marks it .is-truncated when the text doesn't fit */
+.span-green {
+  position: relative;
   display: inline-block;
+  flex: 0 0 50%;
+  width: 50%;
+  padding-left: 1ch;
+  padding-right: 2ch;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--light-green);
 }
 
-
-.link-logo-color-1{
-   color: var(--dark-turqoise);
-}
-.link-logo-color-2{
-
-   color: var(--light-blue);
-
-}
-.link-logo-color-3{
-
-   color: var(--white);
-}
-.link-logo-color-4{
-
-   color: var(--turqoise);
-}
-.link-logo-color-5{
-
-   color: var(--blue);
-}
-.link-logo-color-6{
-   color: var(--yellow);
-}
-.link-logo-color-7{
-   color: var(--white);
+.span-green::before,
+.span-green::after {
+  position: absolute;
+  top: 0;
+  color: var(--dark-green);
 }
 
-.link-logo-color-8{
-   color: var(--blue);
+.span-green::before {
+  content: "[";
+  left: 0;
 }
 
-.word-letter-1 { color: var(--pink); }
-.word-letter-2 { color: var(--purple); }
-
-.edge-letter-c1 { color: var(--light-blue); }
-.edge-letter-c2 { color: var(--light-blue); }
-.edge-letter-c3 { color: var(--blue); }
-.edge-letter-c4 { color: var(--blue); }
-
-
-.bg-logo-1{
-    /*background-color: var(--purple);*/
-    color: var(--dark-turqoise);
+.span-green::after {
+  content: "]";
+  right: 0;
 }
 
-.bg-logo-2{
-    background-color: var(--pink);
-    color: var(--grey);
+.dot-separation:hover .span-green,
+.dot-separation:hover .span-green-text,
+.dot-separation:hover .span-green::before,
+.dot-separation:hover .span-green::after {
+  color: var(--turquoise);
 }
 
-.bg-logo-3{
-    background-color: var(--grey);
-    color: var(--yellow);
+.span-green-text {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-/*@media (max-width: 768px) {*/
-/*    .center-pre span{*/
-/*      font-size: 12px !important;*/
-/*    }*/
+.span-green-ellipsis {
+  display: none;
+}
 
+.span-green.is-truncated .span-green-ellipsis {
+  display: inline;
+  position: absolute;
+  top: 0;
+  right: 1.4ch;
+  color: var(--dark-green);
+  background: var(--blue);
+}
 
+.dot-separation:hover .span-green.is-truncated .span-green-ellipsis {
+  display: none;
+}
 
-/* dotted box growing out of the logo (see js/DotBox.js) */
+/* desktop: a truncated description expands over the row on hover */
+@media (min-width: 501px) {
+  .span-green.is-truncated {
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    width: max-content;
+    max-width: 50%;
+    overflow: hidden;
+    background: var(--blue);
+    transition: max-width 1.5s ease;
+  }
+
+  .dot-separation:hover {
+    overflow: visible;
+  }
+
+  .dot-separation:hover .span-green.is-truncated {
+    z-index: 4;
+    max-width: min(120ch, calc(100vw - 4ch));
+    overflow: visible;
+  }
+}
+
+/* mobile: name and description stack, no dot leader (matches the ascii box breakpoint) */
+@media (max-width: 500px) {
+  .dot-separation {
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+
+  .dot-separation span {
+    text-align: left;
+  }
+
+  .dot-separation::before {
+    display: none;
+  }
+}
+
+/* ── dotted box growing out of the logo (js/DotBox.js) ──── */
 .dot-box {
   position: relative;
   margin: 3lh auto 4lh; /* margin-top is set by DotBox to make room for the header */
@@ -153,9 +213,14 @@
   margin: 0;
   padding: 0;
   overflow: visible;
+  /* Blank cells stay click-through so the outline never steals clicks aimed
+     at the links underneath; only the drawn characters (the spans below)
+     opt back in, so those can be click-dragged and copied. user-select is
+     left at its default (selectable) here: a selection dragged across the
+     blank space between rows needs that space selectable too, or the line
+     break between rows blocks the selection from crossing it. */
   pointer-events: none;
-  user-select: none;
-  color: var(--white);
+  color: var(--grey);
   z-index: 1;
 }
 
@@ -171,9 +236,11 @@
   width: var(--dot-cell);
   font-weight: bold;
   opacity: 0;
+  pointer-events: auto;
+  user-select: text;
 }
 
-/* header line art keeps the logo's frame colour; the `:` and `.` stay white */
+/* header line art keeps the logo's frame colour; the `:` and `.` stay grey */
 .dot-box-outline .line {
   color: var(--light-blue);
   font-weight: normal;
@@ -207,7 +274,7 @@
 
 /* the link rows mask their dot leader with the page colour, not the old blue panel */
 .dot-box .link-secondary,
-.dot-box .dot-seperation span,
+.dot-box .dot-separation span,
 .dot-box .span-green.is-truncated,
 .dot-box .span-green.is-truncated .span-green-ellipsis {
   background: var(--black);

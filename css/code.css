@@ -1,33 +1,71 @@
-@import url('./root.css');
+/* Code page (code.html). */
 
-/* p5 canvas background (js/P5Background.js) */
+/* ── p5 canvas background (js/P5Background.js) ───────────────────────── */
+
 .p5-background {
   opacity: 0;
   transition: opacity 2s ease-in;
 }
+
 .p5-background.show {
   opacity: 1;
 }
 
-/* side streams (js/BinaryStreamSections.js): one pre per side, aligned to the logo */
-/* the sections no longer overflow with tiles, so the row must span the page itself */
+/* ── logo and side streams (js/BinaryStreamSections.js) ──────────────── */
+
+/* the sections don't overflow with tiles, so the row must span the page itself */
 .flex-horizontal {
   width: 100%;
 }
+
+/* one pre per side, aligned to the logo */
 .code-logo-left,
 .code-logo-right {
   flex: none;
   width: 100%;
   margin: 0;
 }
+
 .code-logo-left {
   text-align: right;
 }
+
 .code-logo-right {
   text-align: left;
 }
 
-/* empty box in the middle: the canvas skips the cells behind it */
+/* the logo and streams mask the canvas behind them */
+.center-pre span,
+.center-pre span *,
+.code-logo-color-1,
+.code-logo-color-2,
+.code-logo-color-3,
+.code-logo-color-4,
+.code-logo-color-5,
+.code-logo-color-6 {
+  background-color: var(--black);
+}
+
+.code-logo-color-1,
+.code-logo-color-5,
+.code-logo-color-6 {
+  color: var(--light-green);
+}
+
+.code-logo-color-2 {
+  color: var(--dark-green);
+}
+
+.code-logo-color-3 {
+  color: var(--light-black);
+}
+
+.code-logo-color-4 {
+  color: var(--blue);
+}
+
+/* ── project list: the canvas skips the cells behind this box ────────── */
+
 .text-box {
   position: relative;
   z-index: 1;
@@ -39,7 +77,10 @@
   color: var(--grey);
 }
 
-/* the box sits on black now, so lift the colors that were made for the grey box */
+.text-box li + li {
+  margin-top: 1lh;
+}
+
 .text-box .color-p,
 .text-box .color-span {
   color: var(--grey);
@@ -50,167 +91,15 @@
   color: var(--light-blue);
 }
 
-.text-box ul {
-  list-style: none;
+.link-block-title::before {
+  content: "» ";
+  color: var(--dark-turquoise);
+  white-space: nowrap;
 }
 
-.text-box li + li {
-  margin-top: 1lh;
+.link-block:hover,
+.link-block:hover .link-block-title,
+.link-block:hover .color-span,
+.text-box .link-line:hover {
+  color: var(--turquoise);
 }
-
-    .binaryContainer {
-    transform: translate3d(0, 0, 0) scale(1);
-    contain: layout paint;
-    will-change: transform;
-
-      display: flex;
-      width: 100%;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .binary {
-      z-index: 100;
-      width: 100%;
-      overflow: hidden;
-      white-space: nowrap;
-      color: #0f0;
-    }
-
-    .leftBinary {
-      text-align: right;
-    }
-
-    .rightBinary {
-      text-align: left;
-    }
-
-    .binaryPosition {
-      z-index: -100;
-      transform: translateY(calc(-19.2ch))
-      /*position: fixed;*/
-      /*top: 10px;*/
-      /*right: 10px;*/
-    }
-
-
-
-
-
-.color2-trans{
-  background-color: transparent !important;
-  opacity: 0;
-}
-
-
-
-.fade-in {
-      /*z-index:1;*/
-  opacity: 0;
-  animation: fadeInBackground 1.5s ease-in forwards;
-  animation-delay: 2s;
-}
-
-
-
-/*logo*/
-.center-pre span {
-background-color: var(--black) !important;
-
-}
-
-
-.center-pre span * {
-background-color: var(--black) !important;
-
-}
-
-
-.code-logo-color-1{
-  color: var(--light-green);
-
-  background-color: var(--black) !important
-}
-
-.code-logo-color-2{
-  color: var(--dark-green);
-  background-color: var(--black) !important
-}
-
-.code-logo-color-3{
-  color: var(--light-black);
-
-  background-color: var(--black) !important
-}
-.code-logo-color-4{
-  color:#00A;
-
-  background-color: var(--black) !important
-}
-
-.code-logo-color-5{
-color:var(--light-green);
-
-  background-color: var(--black) !important
-
-}
-
-.code-logo-color-6{
-color:var(--light-green);
-
-  background-color: var(--black) !important
-
-}
-
-.projects {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  padding: 10px 20px;
-  justify-content: center;
-  margin-top: 3lh;
-  background-color: var(--dark-grey);
-}
-
-.project {
-  z-index: 1;
-  border: 1px solid;
-  margin: var(--small-pad);
-  padding: var(--small-pad);
-  width: auto;
-  height: auto;
-  background-color: var(--grey);
-}
-
-.project:not(:last-child) {
-  margin-bottom: 0;
-}
-
-.project:hover{
-background-color: var(--light-black);
-color: var(--turqoise);
-
-}
-
-
-.vertical-line{
-  font: inherit;
-}
-
-.margin-code-ascii-box{
-  margin-top: 5ch
-}
-
-.ascii-box {
-  position: relative;
-}
-
-
-@media (max-width: 768px) {
-    .projects{
-      padding: 5px 5px;
-    }
-
-
-}
-

@@ -1,35 +1,37 @@
 <!DOCTYPE html>
-<!-- divinectorweb.com -->
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jeppe Marquardt's Portfolio</title>
-      <link rel="preload" as="font" type="font/ttf" href="fonts/AcPlus_IBM_VGA_8x16.ttf" crossorigin />
-    <link rel="stylesheet" href="css/font.css" />
-  <link rel="stylesheet" href="css/index.css" />
+  <link rel="preload" as="font" type="font/ttf" href="fonts/AcPlus_IBM_VGA_8x16.ttf" crossorigin />
+  <link rel="stylesheet" href="css/font.css" />
+  <link rel="stylesheet" href="css/root.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
   <link rel="stylesheet" href="css/code.css" />
-  <link rel="modulepreload" href="./js/saveFontSelection.js" />
+  <link rel="modulepreload" href="./js/font.js" />
   <link rel="modulepreload" href="./js/loadPage.js" />
   <link rel="modulepreload" href="./js/code.js" />
   <link rel="modulepreload" href="./js/P5Background.js" />
   <!-- p5.js for the background canvas (js/P5Background.js); vendored locally (js/vendor/p5.min.js,
        v1.11.3), no CDN, so the page has no network dependency for its background -->
   <script src="./js/vendor/p5.min.js"></script>
-    <script>
-      (function () {
-        try {
-          var f = localStorage.getItem("selectedFont") || "IBMVGA8";
-          document.documentElement.style.fontFamily = f + ", monospace";
-        } catch (e) {}
-        // safety net: never leave the page hidden
-        setTimeout(function () {
-          if (document.body) document.body.classList.add("loaded");
-        }, 1500);
-      })();
-    </script>
-  </head>
+  <script>
+    (function () {
+      try {
+        var f = localStorage.getItem("selectedFont") || "IBMVGA8";
+        document.documentElement.style.fontFamily = f + ", monospace";
+      } catch (e) {}
+      // safety net: never leave the page hidden
+      setTimeout(function () {
+        if (document.body) document.body.classList.add("loaded");
+      }, 1500);
+    })();
+  </script>
+</head>
 
 <body>
   <nav-bar></nav-bar>
@@ -71,91 +73,71 @@
 
     <div class="center">
       <section class="text-box fade-in-fast">
-          <p class="color-p">
-            Hand picked selection of projects from my
-            <a class="link-line" href="https://github.com">github.com profile</a>
-          </p>
-          <br>
-              <h3 class="h3"><span class="h3-bg-text primary"><span class="color-accent-primary">[ </span>AI/ML<span class="color-accent-primary">
-                ]</span></span></h3>
-          <br>
-          <ul>
-            <li>
-              <div class="flex-vertical">
-                <a class="link-block"  href="https://github.com/JeppeOEM/pipe_dream_trader">
-               <p class = "link-block-title">
+        <p class="color-p">
+          Hand picked selection of projects from my
+          <a class="link-line" href="https://github.com">github.com profile</a>
+        </p>
+        <br>
+        <h3 class="h3"><span class="h3-bg-text primary"><span class="color-accent-primary">[ </span>AI/ML<span class="color-accent-primary"> ]</span></span></h3>
+        <br>
+        <ul>
+          <li>
+            <div class="flex-vertical">
+              <a class="link-block" href="https://github.com/JeppeOEM/pipe_dream_trader">
+                <p class="link-block-title">
                   Genetic algorithm playing Snake
-               </p> 
+                </p>
                 <span class="color-span">Snake playing agents using a untrained neural network and a custom made genetic
                   algorithm</span>
+              </a>
+            </div>
+          </li>
+        </ul>
 
-                </a>
-
-              </div>
-            </li>
-          </ul>
-
-          <br>
-              <h3 class="h3"><span class="h3-bg-text primary"><span class="color-accent-primary">[ </span>WEB DEVELOPMENT<span class="color-accent-primary">
-                ]</span></span></h3>
-          <br>
-          <ul>
-
-          
-            <li>
-              <div class="flex-vertical">
-
-                <a class="link-block"  href="https://github.com/JeppeOEM/pipe_dream_trader">
-               <p class = "link-block-title">
-                  Backtesting and Charting financial data 
-               </p> 
+        <br>
+        <h3 class="h3"><span class="h3-bg-text primary"><span class="color-accent-primary">[ </span>WEB DEVELOPMENT<span class="color-accent-primary"> ]</span></span></h3>
+        <br>
+        <ul>
+          <li>
+            <div class="flex-vertical">
+              <a class="link-block" href="https://github.com/JeppeOEM/pipe_dream_trader">
+                <p class="link-block-title">
+                  Backtesting and Charting financial data
+                </p>
                 <span class="color-span">a web application that allows you to design and backtest trading strategies on
                   historical data, and to visualize technical indicators on price charts. It combines a FastAPI backend
                   for computation and backtesting with a TypeScript + React frontend for the interactive charts and
                   dashboards.</span>
-
-                </a>
-              </div>
-            </li>
-          </ul>
+              </a>
+            </div>
+          </li>
+        </ul>
       </section>
     </div>
   </div>
 
-          <div class="home-bottom-nav-wrapper" aria-label="Background controls">
-            <nav class="nav home-bottom-nav">
-              <div class="navbar-side"></div>
-              <div class="navbar home-bottom-navbar">
-                <div>
-                  <span class="font-controls"><span class="bracket">[</span><label for="background-selector">BACKGROUND:</label><select id="background-selector"></select><span class="bracket">]</span></span>
-                </div>
-                <div>
-                  <span class="font-controls"><span class="bracket">[</span>DRAWN WITH:<a class="link-line turqoise" href="https://p5js.org/">p5.js</a><span class="bracket">]</span></span>
-                </div>
-              </div>
-              <div class="navbar-side"></div>
-            </nav>
-          </div>
+  <div class="home-bottom-nav-wrapper" aria-label="Background controls">
+    <nav class="nav">
+      <div class="navbar-side"></div>
+      <div class="navbar">
+        <div>
+          <span class="font-controls"><span class="bracket">[</span><label for="background-selector">BACKGROUND:</label><select id="background-selector"></select><span class="bracket">]</span></span>
+        </div>
+        <div>
+          <span class="font-controls"><span class="bracket">[</span>DRAWN WITH:<a class="link-line turquoise" href="https://p5js.org/">p5.js</a><span class="bracket">]</span></span>
+        </div>
+      </div>
+      <div class="navbar-side"></div>
+    </nav>
+  </div>
 
-          <script src="./js/components/nav-bar.js"></script>
-          <script type="module">
-            import { saveFontSelection } from './js/saveFontSelection.js';
-            import { loadPage } from './js/loadPage.js'
-            import { codePage } from './js/code.js'
+  <script type="module" src="./js/components/nav-bar.js"></script>
+  <script type="module">
+    import { loadPage } from "./js/loadPage.js";
+    import { codePage } from "./js/code.js";
 
+    document.addEventListener("DOMContentLoaded", () => loadPage(codePage));
+  </script>
+</body>
 
-            document.addEventListener('DOMContentLoaded', () => {
-              // Start the page (and its p5.js background) first: nav-bar's
-              // font-selector is a nice-to-have, and must never be able to
-              // block the background from loading if it's missing/slow.
-              loadPage(codePage)
-
-              document.getElementById('font-selector')?.addEventListener('change', (e) => {
-                const selectedFont = e.target.value;
-                saveFontSelection(selectedFont);
-              });
-            });
-          </script>
-          </body>
-
-          </html>
+</html>

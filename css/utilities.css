@@ -1,0 +1,83 @@
+/* Single-purpose helper classes. */
+
+/* ── layout ──────────────────────────────────────────────────────────── */
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-horizontal {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-vertical,
+.column-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.column-align-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flex-between-y {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.z-1 {
+  z-index: 1;
+}
+
+.z-2 {
+  z-index: 2;
+}
+
+.padding-2ch-top {
+  padding-top: 2ch;
+}
+
+.trans-y-1ch {
+  transform: translateY(-1ch);
+}
+
+/* ── color ───────────────────────────────────────────────────────────── */
+
+.bg-black {
+  background-color: var(--black);
+}
+
+.black-bg {
+  color: var(--dark-green);
+  background-color: var(--black);
+}
+
+.turquoise {
+  color: var(--turquoise);
+}
+
+.pink {
+  color: var(--pink);
+}
+
+/* ── animation ───────────────────────────────────────────────────────── */
+
+.fade-in-fast {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+}

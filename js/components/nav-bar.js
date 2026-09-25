@@ -1,8 +1,7 @@
-class NavBar extends HTMLElement {
-    constructor() {
-        super();
-    }
+import { getSavedFont, saveFont } from "../font.js";
 
+// <nav-bar>: the fixed top bar with page links and the font picker.
+class NavBar extends HTMLElement {
     connectedCallback() {
         this.innerHTML = `
     <div class="nav-wrapper">
@@ -101,14 +100,8 @@ class NavBar extends HTMLElement {
     `;
 
         const fontSelector = this.querySelector('#font-selector');
-        // Get font from localStorage
-        const savedFont = localStorage.getItem('selectedFont');
-        if (savedFont && fontSelector) {
-            fontSelector.value = savedFont;
-            // Optionally apply it globally
-            document.body.style.fontFamily = savedFont;
-        }
-        // Listen for changes and update localStorage
+        fontSelector.value = getSavedFont();
+        fontSelector.addEventListener('change', (e) => saveFont(e.target.value));
     }
 }
 customElements.define('nav-bar', NavBar);

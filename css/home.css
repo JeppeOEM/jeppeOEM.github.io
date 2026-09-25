@@ -1,106 +1,151 @@
-@import url('./root.css');
+/* Home page (index.html). */
 
-.background-layer {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate3d(-50%, 0, 0);
-  background-color: var(--black);
-  z-index: 0;
-  width: 80ch;
-  height: 15lh;
-  opacity: 0;
-  visibility: hidden;
-  will-change: opacity, visibility;
-  animation: fadeInBg 1.5s ease-in-out 9s forwards;
-}
-
-@keyframes fadeInBg {
-  0% {
-    opacity: 0;
-    visibility: hidden;
-  }
-  1% {
-    visibility: visible;
-  }
-  100% {
-    opacity: 1;
-    visibility: visible;
-  }
-}
-
-.target-text {
-  color: white;
-  opacity: 0;
-  transition: opacity 2s ease-in;
-}
-
-.target-text.visible {
-  opacity: 1;
-}
-
-.slime span {
-  animation: fadeIn 3s ease-in forwards;
-  color: var(--dark-green);
-}
+/* ── slime background (js/home.js) ───────────────────────────────────── */
 
 .slime,
 .slime-canvas {
-  /* Keep background animation in an isolated fixed layer. */
+  /* keep the background animation in an isolated fixed layer */
   contain: strict;
   will-change: transform, opacity;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: -1;
   width: 100vw;
   height: calc(100vh + 1lh);
   margin: 0;
   padding: 0;
-  z-index: -1; /* Send behind other content */
+}
+
+.slime span {
+  color: var(--dark-green);
+  animation: fadeIn 3s ease-in forwards;
 }
 
 .slime-canvas {
   display: block;
 }
 
-
-.mrqdt-color-1 {
-  opacity: 0;
-  color: var(--light-black);
-  animation: fadeIn 1.5s ease-in-out 9s forwards;
-  will-change: opacity;
-}
-
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-.mrqdt-color-2{
-  color: var(--dark-green);
-  /* opacity: 0; */
-}
-.mrqdt-color-3{
-  color: var(--light-green);
-  /* opacity: 0; */
-}
-
+/* ── logo ────────────────────────────────────────────────────────────── */
 
 .ascii-art {
-  transform: translate3d(0, 0, 0) scale(1);
-  will-change: transform;
-  margin-top: 8px;
   position: relative;
+  z-index: 100;
+  margin-top: 8px;
   color: #39ff14;
   font-size: inherit;
   white-space: pre;
   text-align: center;
+  transform: translate3d(0, 0, 0) scale(1);
   transform-origin: center;
+  will-change: transform;
   opacity: 0;
-  z-index: 100;
   animation: fadeInLogo 1.5s ease-in-out 9s forwards;
+}
+
+.ascii-art span {
+  background-color: black;
+}
+
+.mrqdt-color-1 {
+  color: var(--light-black);
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out 9s forwards;
+  will-change: opacity;
+}
+
+.mrqdt-color-2 {
+  color: var(--dark-green);
+}
+
+.mrqdt-color-3 {
+  color: var(--light-green);
+}
+
+/* black panel behind the logo, shown once the logo has faded in */
+.background-layer {
+  top: 0;
+  bottom: auto;
+  left: 50%;
+  right: auto;
+  width: 80ch;
+  height: 15lh;
+  transform: translate3d(-50%, 0, 0);
+  opacity: 0;
+  visibility: hidden;
+  will-change: opacity, visibility;
+  animation: fadeInBg 1.5s ease-in-out 9s forwards;
+}
+
+/* ── intro box (template filled by js/AsciiBox.js) ───────────────────── */
+
+.outer {
+  position: relative;
+  width: min-content;
+}
+
+/* grey panels positioned in character cells via --x/--y/--w/--h */
+.bg {
+  position: absolute;
+  left: calc(var(--x) * 1ch);
+  top: calc(var(--y) * 1lh);
+  width: calc(100% - var(--w) * 1ch);
+  height: calc(100% - var(--h) * 1lh);
+  margin: 0.5lh 0.5ch;
+  background-color: var(--ascii-box-bg-color, var(--bg));
+}
+
+.ascii-box {
+  position: relative;
+  color: var(--ascii-box-outline-color, var(--light-black));
+  pointer-events: none;
+}
+
+.ascii-title-placeholder::before {
+  content: attr(data-title);
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  padding: 0.2ch 0.8ch;
+  color: var(--ascii-box-outline-color, var(--light-black));
+  white-space: nowrap;
+  transform: translateX(-50%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.responsive-span {
+  z-index: -1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.link {
+  background-color: var(--grey);
+  color: var(--blue);
+  transition: color 0.2s ease;
+}
+
+.link::before {
+  content: "» ";
+  color: var(--dark-turquoise);
+  white-space: nowrap;
+}
+
+.link:hover {
+  color: var(--turquoise);
+}
+
+/* ── "BG ONLY" toggle in the bottom bar ──────────────────────────────── */
+
+.nav-toggle-btn {
+  all: unset;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav-toggle-btn:hover {
+  color: var(--turquoise);
 }
 
 #ascii-logo,
@@ -117,38 +162,33 @@ body.home-ui-hidden .background-layer {
   pointer-events: none !important;
 }
 
-.nav-toggle-btn {
-  all: unset;
-  cursor: pointer;
-  color: var(--white);
-}
+/* ── mobile ──────────────────────────────────────────────────────────── */
 
-.nav-toggle-btn:hover {
-  color: var(--turqoise);
-  
-}
+@media (max-width: 546px) {
+  .background-layer {
+    width: 45ch;
+    height: 10lh;
+  }
 
+  .ascii-art {
+    width: max-content;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 9px !important;
+    line-height: 1 !important;
+    letter-spacing: 0;
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
 
-
-.ascii-art span {
-  background-color: black;
-}
-
-.hide-span-bg {
-  animation: hideSpanBgToggle 9s ease-in-out none;
-}
-
-
-.fade-in {
-  opacity: 0;
-  animation: fadeInBackground 4s ease-in forwards;
-}
-
-@keyframes fadeInBackground {
-  to {
-    opacity: 1;
+  .ascii-art * {
+    font-size: inherit;
+    line-height: inherit;
   }
 }
+
+/* ── keyframes ───────────────────────────────────────────────────────── */
 
 @keyframes fadeInLogo {
   from {
@@ -160,57 +200,36 @@ body.home-ui-hidden .background-layer {
   }
 }
 
-
-
-
-
-
-
-@keyframes fadeSlideScale {
-    0% {
-        opacity: 0;
-        transform: translateY(200%) scale(0.5);
-    }
-    50% {
-        opacity: 1;
-        transform: translateY(0%) scale(0.5);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0%) scale(1);
-    }
-}
-
-@keyframes hideSpanBgToggle {
-  0%, 97.8% {
-    background-color: transparent;
+@keyframes fadeInBg {
+  0% {
+    opacity: 0;
+    visibility: hidden;
   }
+
+  1% {
+    visibility: visible;
+  }
+
   100% {
-    background-color: black;
+    opacity: 1;
+    visibility: visible;
   }
 }
 
-  @media (max-width: 546px) {
-
-  .background-layer{
-  width: 45ch;
-  height: 10lh;
-  }
-  .ascii-art{
-    font-size: 9px !important;
-    line-height: 1 !important;
-    letter-spacing: 0;
-    width: max-content;
-    max-width: none;
-    margin-left: auto;
-    margin-right: auto;
-    text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-  }
-    .ascii-art * {
-      font-size: inherit;
-      line-height: inherit;
-    }
-     
+/* used by the fade-in style js/home.js hands to AsciiBox */
+@keyframes fadeSlideScale {
+  0% {
+    opacity: 0;
+    transform: translateY(200%) scale(0.5);
   }
 
+  50% {
+    opacity: 1;
+    transform: translateY(0%) scale(0.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0%) scale(1);
+  }
+}

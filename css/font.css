@@ -1,19 +1,8 @@
-@font-face {
-  font-family: PetMe;
-  font-display: block; src: url(../fonts/PetMe.ttf);
-}
-@font-face {
-  font-family: IBMVGA8;
-  font-display: block; src: url(../fonts/AcPlus_IBM_VGA_8x16.ttf);
-}
-@font-face {
-  font-family: IBMBIOS2Y;
-  font-display: block; src: url(../fonts/AcPlus_IBM_BIOS-2y.ttf);
-}
-@font-face {
-  font-family: IBMEGA9;
-  font-display: block; src: url(../fonts/Px437_IBM_EGA_9x14.ttf);
-}
+/* Bundled DOS fonts (fonts/*.ttf). Family names match the <option> values in
+   js/components/nav-bar.js; IBMVGA8 is the default. */
+
+@font-face { font-family: IBMVGA8; font-display: block; src: url(../fonts/AcPlus_IBM_VGA_8x16.ttf); }
+@font-face { font-family: IBMBIOS2Y; font-display: block; src: url(../fonts/AcPlus_IBM_BIOS-2y.ttf); }
 
 /* AcPlus — VGA 8×16 */
 @font-face { font-family: AcPlus_IBM_VGA_8x16; font-display: block; src: url(../fonts/AcPlus_IBM_VGA_8x16.ttf); }

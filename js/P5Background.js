@@ -107,6 +107,12 @@ export default class P5Background {
 
   /** The p5 sketch: canvas creation plus dispatch to the current animation. */
   sketch(p) {
+    // p5 calls this synchronously before deciding whether to run setup()
+    // right away (it does, if the document is already loaded) — so this.p
+    // must be set here, not by the `this.p = new p5(...)` assignment below,
+    // which wouldn't happen until after that synchronous setup() returns.
+    this.p = p;
+
     p.setup = () => {
       const canvas = p.createCanvas(window.innerWidth, window.innerHeight);
       canvas.elt.className = "p5-background";

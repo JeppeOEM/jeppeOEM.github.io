@@ -1,0 +1,191 @@
+/* Components used on more than one page. Single-page components live in
+   that page's stylesheet (home.css, code.css, links.css). */
+
+/* ── nav bars ─────────────────────────────────────────────────────────── */
+
+/* top bar: js/components/nav-bar.js */
+.nav-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* bottom bar on the home and code pages */
+.home-bottom-nav-wrapper {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px 5px 8px;
+  background-color: var(--black);
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  flex: 1 1 500px;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 500px;
+  padding: 0 1ch;
+  border: var(--light-black) solid;
+}
+
+.navbar-side {
+  flex: 1;
+  border: var(--light-black) solid;
+  background-color: var(--light-black);
+}
+
+nav a {
+  color: var(--white);
+}
+
+.nav a:hover {
+  color: var(--turquoise);
+}
+
+.bracket {
+  color: var(--yellow);
+}
+
+/* both bars fade in slowly once the page is revealed */
+.nav-wrapper,
+.home-bottom-nav-wrapper {
+  opacity: 0;
+}
+
+body.loaded .nav-wrapper,
+body.loaded .home-bottom-nav-wrapper {
+  opacity: 1;
+  transition: opacity 1.5s ease;
+}
+
+/* ── section headings: "%%%%[ TITLE ]%%%%" ───────────────────────────── */
+
+.h3 {
+  color: var(--white);
+}
+
+.h3-bg-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: var(--grey);
+}
+
+.h3-bg-text::before,
+.h3-bg-text::after {
+  content: "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.h3-bg-text.primary {
+  background-color: var(--light-black);
+}
+
+.h3-bg-text.primary::before,
+.h3-bg-text.primary::after {
+  color: var(--light-black);
+}
+
+.h3-bg-text.secondary::before,
+.h3-bg-text.secondary::after {
+  color: var(--grey);
+}
+
+/* ── text colors ─────────────────────────────────────────────────────── */
+
+.color-accent-primary {
+  color: var(--yellow);
+}
+
+.color-accent-secondary {
+  color: var(--orange);
+}
+
+.color-p,
+.color-span {
+  color: var(--black);
+}
+
+.color-p-secondary {
+  color: var(--white);
+}
+
+/* ── links ───────────────────────────────────────────────────────────── */
+
+.link-list li a {
+  position: relative;
+  z-index: 1;
+  padding-right: 8px;
+}
+
+.link-line {
+  color: var(--blue);
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.link-line:hover,
+.link-line.turquoise {
+  color: var(--turquoise);
+}
+
+/* ── logo row: side art | logo | side art (code and links pages) ────── */
+
+.left-section,
+.right-section {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  margin-top: var(--small-pad);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.left-section {
+  flex-direction: row-reverse;
+}
+
+.center-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.center-pre-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-top: var(--small-pad);
+}
+
+.center-pre {
+  position: relative;
+  z-index: 10;
+}
+
+/* black panel behind the logo */
+.background-layer {
+  position: absolute;
+  top: 6ch;
+  bottom: 8ch;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  background-color: var(--black);
+}
