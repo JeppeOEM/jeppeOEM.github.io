@@ -1,6 +1,7 @@
 import DotBox from "./DotBox.js";
 import AsciiLogoBackground from "./AsciiLogoBackground.js";
 import { leftPre, rightPre } from "./linkBackground.js";
+import { header, headerColors, headerFeederCols } from "./linkHeader.js";
 
 export function linksPage() {
   const leftSection = document.getElementById("leftSection");
@@ -16,17 +17,11 @@ export function linksPage() {
     box: document.querySelector(".dot-box"),
     outline: document.querySelector(".dot-box-outline"),
     content: document.querySelector(".dot-box-content"),
-    // line work from the top of the logo, on the logo's own columns so its
-    // feeder-analog columns land exactly under the `:` dropping from it; the
-    // rows are mirror images about column 41, midway between the feeders
-    header: [
-      "        .                        - - ── ┐:┌ ── - -                        .",
-      "        ┌ ── ─ ─                   :   ┌─:─┐   :                   ─ ─ ── ┐",
-      "        |          .      ^.....┌ ─ ── | . | ── ─ ┐.....^      .          |",
-      "    . ┌ ─                .... : |  |   : : :   |  | : ....                ─ ┐ .",
-      "    : 1 │                 :   : .  1   . | .   1  . :   :                 │ 1 :",
-      "    │  ²:                 ∙   ∙ :  :     │     :  : ∙   ∙                 :²  │",
-    ],
+    // coloured line art (js/linkHeader.js, from gg.ans); its two `:` columns
+    // in headerFeederCols land exactly under the `:` dropping from the logo
+    header,
+    headerColors,
+    headerFeederCols,
     stepMs: 30,
     startDelay: 600,
   });

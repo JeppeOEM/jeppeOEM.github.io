@@ -29,6 +29,8 @@
  * landing points, down the sides and along the bottom edge until it closes in
  * the middle.
  */
+const BLANK = { ch: " ", color: "" };
+
 export default class DotBox {
   /**
    * @param {Object} config
@@ -37,6 +39,8 @@ export default class DotBox {
    * @param {HTMLElement} config.outline     <pre> that receives the cells
    * @param {HTMLElement} [config.content]   Element faded in once the outline closes
    * @param {string[]} [config.header]       Rows of line art hung above the top edge
+   * @param {string[]} [config.headerColors] Per-cell ANSI colour (hex digit 0-f) for each header row
+   * @param {number[]} [config.headerFeederCols] Header columns under the feeders (default: the feeders' logo columns)
    * @param {number} [config.feederGap]      Blank rows between the logo and the header
    * @param {number[]} [config.feederCols]   Logo columns of the two `:` (default: found in the last logo row)
    * @param {number} [config.stepMs]         Delay between two cells appearing
@@ -50,6 +54,8 @@ export default class DotBox {
     this.outline = config.outline;
     this.content = config.content || null;
     this.header = config.header || null;
+    this.headerColors = config.headerColors || null;
+    this.headerFeederCols = config.headerFeederCols || null;
     this.feederCols = config.feederCols || null;
     this.stepMs = config.stepMs ?? 30;
     this.startDelay = config.startDelay ?? 600;
@@ -110,8 +116,9 @@ export default class DotBox {
   /**
    * Stretch or squeeze equal-length `rows` to `target` columns. Cells are
    * added before, or removed from, blank columns spread evenly over the
-   * width, so no single gap swallows the whole difference. Returns an array
-   * of char arrays, or null when the rows cannot be made to fit.
+   * width, so no single gap swallows the whole difference. `rows` are arrays
+   * of `{ ch, color }` cells. Returns a new grid of cells, or null when the
+   * rows cannot be made to fit.
    */
   stretchRows(rows, target) {
     const width = rows[0] ? rows[0].length : 0;
@@ -120,7 +127,7 @@ export default class DotBox {
 
     const blank = [];
     for (let c = 0; c < width; c++) {
-      if (grid.every((r) => r[c] === " ")) blank.push(c);
+      if (grid.every((r) => r[c].ch === " ")) blank.push(c);
     }
     const extra = target - width;
     if (blank.length === 0) return null;
@@ -137,7 +144,7 @@ export default class DotBox {
       return grid.map((r) => {
         const out = [];
         for (let c = 0; c < width; c++) {
-          if (add.has(c)) out.push(..." ".repeat(add.get(c)));
+          for (let n = add.get(c) || 0; n > 0; n--) out.push(BLANK);
           out.push(r[c]);
         }
         return out;
@@ -159,14 +166,14 @@ export default class DotBox {
 
   /**
    * Drop the columns at the start (`fromEnd` false) or end of `rows` that are
-   * blank in every row. Returns new strings.
+   * blank in every row. Returns new cell rows.
    */
   trimBlankCols(rows, fromEnd) {
     const width = rows[0] ? rows[0].length : 0;
     let n = 0;
     while (n < width) {
       const c = fromEnd ? width - 1 - n : n;
-      if (!rows.every((r) => r[c] === " ")) break;
+      if (!rows.every((r) => r[c].ch === " ")) break;
       n++;
     }
     return rows.map((r) => (fromEnd ? r.slice(0, width - n) : r.slice(n)));
@@ -181,16 +188,20 @@ export default class DotBox {
    * first stripped of their blank margin, so the header's outermost line work
    * is pinned to the outline's outer columns, outside the dotted line. Falls
    * back to stretching the whole header when there aren't exactly two
-   * landings on both sides. Returns null when it cannot be made to fit.
+   * landings on both sides. Returns rows of `{ ch, color }` cells, or null
+   * when it cannot be made to fit.
    */
   fitHeader(cols, localLandings, outLandings) {
     if (!this.header || this.header.length === 0) return null;
-    const width = Math.max(...this.header.map((r) => r.length));
-    const rows = this.header.map((r) => r.padEnd(width, " "));
+    const cellRows = this.header.map((r, i) => {
+      const colors = [...((this.headerColors && this.headerColors[i]) || "")];
+      return [...r].map((ch, c) => ({ ch, color: (colors[c] || "").trim() }));
+    });
+    const width = Math.max(...cellRows.map((r) => r.length));
+    const rows = cellRows.map((r) => r.concat(new Array(width - r.length).fill(BLANK)));
 
     if (localLandings.length !== 2 || outLandings.length !== 2) {
-      const grid = this.stretchRows(rows, cols);
-      return grid ? grid.map((r) => r.join("")) : null;
+      return this.stretchRows(rows, cols);
     }
 
     const [lLocal, rLocal] = localLandings;
@@ -204,7 +215,7 @@ export default class DotBox {
     const right = this.stretchRows(rightRows, cols - rOut - 1);
     if (!left || !right) return null;
 
-    return rows.map((_, i) => left[i].join("") + midRows[i] + right[i].join(""));
+    return rows.map((_, i) => [...left[i], ...midRows[i], ...right[i]]);
   }
 
   /** Build the character grid and step index per cell, then write the spans. */
@@ -239,7 +250,8 @@ export default class DotBox {
 
     let pad = this.header ? 1 : 0; // grid columns outside the box on each side
     let geo = geoFor(pad);
-    let header = this.header ? this.fitHeader(geo.cols, feeders, geo.landings) : null;
+    const headerLandings = this.headerFeederCols || feeders;
+    let header = this.header ? this.fitHeader(geo.cols, headerLandings, geo.landings) : null;
     if (this.header && !header) {
       pad = 0;
       geo = geoFor(pad);
@@ -308,10 +320,11 @@ export default class DotBox {
         const row = headerTop + r;
         if (row >= topRow) break;
         for (let c = 0; c < cols; c++) {
-          const chr = header[r][c] ?? " ";
-          if (chr === " " || chars[row * cols + c] !== " ") continue;
-          put(row, c, chr, row + distTop(c),
-              chr === this.vChar || chr === this.hChar ? "" : "line");
+          const cell = header[r][c] || BLANK;
+          if (cell.ch === " " || chars[row * cols + c] !== " ") continue;
+          let kind = cell.ch === this.vChar || cell.ch === this.hChar ? "" : "line";
+          if (cell.color) kind = `line ansi-${cell.color}`;
+          put(row, c, cell.ch, row + distTop(c), kind);
         }
       }
     }

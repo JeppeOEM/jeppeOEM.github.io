@@ -246,6 +246,24 @@
   font-weight: normal;
 }
 
+/* header cells coloured from the ANSI art (js/linkHeader.js) */
+.dot-box-outline .ansi-0 { color: var(--black); }
+.dot-box-outline .ansi-1 { color: #aa0000; }
+.dot-box-outline .ansi-2 { color: var(--dark-green); }
+.dot-box-outline .ansi-3 { color: #aa5500; }
+.dot-box-outline .ansi-4 { color: var(--blue); }
+.dot-box-outline .ansi-5 { color: var(--purple); }
+.dot-box-outline .ansi-6 { color: var(--dark-turquoise); }
+.dot-box-outline .ansi-7 { color: var(--dark-grey); }
+.dot-box-outline .ansi-8 { color: var(--light-black); }
+.dot-box-outline .ansi-9 { color: var(--light-blue); }
+.dot-box-outline .ansi-a { color: var(--light-green); }
+.dot-box-outline .ansi-b { color: var(--turquoise); }
+.dot-box-outline .ansi-c { color: var(--orange); }
+.dot-box-outline .ansi-d { color: var(--pink); }
+.dot-box-outline .ansi-e { color: var(--yellow); }
+.dot-box-outline .ansi-f { color: var(--white); }
+
 .dot-box-outline.grow span {
   animation: dotIn 1ms steps(1) forwards;
   animation-delay: calc(var(--i) * var(--dot-step, 30ms));
