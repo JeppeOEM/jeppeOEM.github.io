@@ -53,9 +53,17 @@ export function codePage() {
         selector.appendChild(option);
       }
       selector.value = initial;
+      // only animations that draw a random pattern can be regenerated
+      const regenerate = document.getElementById("background-regenerate");
+      const showRegenerate = (name) => {
+        if (regenerate) regenerate.hidden = !animations[name].random;
+      };
+      showRegenerate(initial);
+      regenerate?.addEventListener("click", () => bodyBackground.regenerate());
       selector.addEventListener("change", (e) => {
         const name = e.target.value;
         bodyBackground.run(name);
+        showRegenerate(name);
         try {
           localStorage.setItem("selectedBackground", name);
         } catch (e2) {}

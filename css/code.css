@@ -104,3 +104,20 @@
 .text-box .link-line:hover {
   color: var(--white);
 }
+
+/* bottom bar: new random background pattern (shown by js/code.js) */
+.background-regenerate {
+  all: unset;
+  margin-left: 1ch;
+  color: var(--turquoise);
+  cursor: pointer;
+}
+
+.background-regenerate[hidden] {
+  display: none;
+}
+
+.background-regenerate:hover,
+.background-regenerate:focus-visible {
+  color: var(--white);
+}

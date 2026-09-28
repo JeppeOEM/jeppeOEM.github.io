@@ -9,6 +9,7 @@
  *
  *   {
  *     name: "hitzo",
+ *     random: true,            // optional; setup draws a new random pattern (enables regenerate)
  *     setup(p, bg)   { ... }   // once, after the canvas exists (also after a resize)
  *     draw(p, bg)    { ... }   // every frame
  *     resize(p, bg)  { ... }   // optional; default re-runs setup
@@ -187,6 +188,11 @@ export default class P5Background {
   }
 
   /** Switch to the next animation in registry order (wraps around). */
+  /** Re-run the current animation from scratch, e.g. for a new random pattern. */
+  regenerate() {
+    return this.run(this.currentName || this.pending);
+  }
+
   next() {
     const i = this.names.indexOf(this.currentName);
     return this.run(this.names[(i + 1) % this.names.length]);

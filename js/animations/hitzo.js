@@ -10,6 +10,8 @@
 
 export default {
   name: "hitzo",
+  // new random bits on every setup, so a re-run gives a new pattern
+  random: true,
 
   setup(p, bg) {
     // one stitch is one character cell tall, so it lines up with the text rows
