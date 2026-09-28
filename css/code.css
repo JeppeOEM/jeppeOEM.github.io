@@ -83,12 +83,12 @@
 
 .text-box .color-p,
 .text-box .color-span {
-  color: var(--grey);
+  color: var(--white);
 }
 
 .text-box .link-block-title,
 .text-box .link-line {
-  color: var(--light-blue);
+  color: var(--turquoise);
 }
 
 .link-block-title::before {
@@ -97,9 +97,10 @@
   white-space: nowrap;
 }
 
+/* links are turquoise at rest, so hover lifts the whole block to white */
 .link-block:hover,
 .link-block:hover .link-block-title,
 .link-block:hover .color-span,
 .text-box .link-line:hover {
-  color: var(--turquoise);
+  color: var(--white);
 }

@@ -28,12 +28,6 @@
   color: var(--yellow);
 }
 
-/* ── section headings sit on black here ──────────────────────────────── */
-
-.h3-bg-text {
-  background-color: var(--black);
-}
-
 /* ── link rows: "name ::::.:.. <@> + [description]" ──────────────────── */
 
 .link-secondary {
@@ -198,14 +192,31 @@
   }
 }
 
-/* ── dotted box growing out of the logo (js/DotBox.js) ──── */
+/* ── framed box growing out of the logo (js/DotBox.js) ──── */
 .dot-box {
+  /* width of the links column; the frame is drawn to fit it */
+  --column-size: 105ch;
   position: relative;
   margin: 3lh auto 4lh; /* margin-top is set by DotBox to make room for the header */
-  width: min(105ch, calc(100vw - 4ch));
-  padding: 2lh 3ch;
+  width: min(var(--column-size), calc(100vw - 4ch));
+  /* clears the `║ ::` frame on each side and the `:` rows above and below */
+  padding: 3lh 6ch;
   box-sizing: border-box;
   background-color: var(--black);
+}
+
+/* section headings: DotBox draws them as `╠═╣  TITLE  ╠═╣` dividers on the
+   row they occupy, so once it has, the heading only holds that row */
+.dot-box-title {
+  height: 1lh;
+  /* a `:` row and one blank row on each side of the divider */
+  margin: 2lh 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.dot-box.has-titles .dot-box-title {
+  color: transparent;
 }
 
 .dot-box-outline {
@@ -235,7 +246,9 @@
   display: inline-block;
   width: var(--dot-cell);
   font-weight: bold;
-  opacity: 0;
+  /* visibility, not opacity: a discrete change needs no compositor layer
+     per cell, so thousands of cells can't exhaust the layer budget */
+  visibility: hidden;
   pointer-events: auto;
   user-select: text;
 }
@@ -270,13 +283,13 @@
 }
 
 .dot-box-outline.done span {
-  opacity: 1;
+  visibility: visible;
   animation: none;
 }
 
 @keyframes dotIn {
   to {
-    opacity: 1;
+    visibility: visible;
   }
 }
 

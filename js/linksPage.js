@@ -11,12 +11,14 @@ export function linksPage() {
   // side art repeated out from the logo to the window edges
   new AsciiLogoBackground({ leftSection, rightSection, leftPre, rightPre }).init();
 
-  // dotted outline continuing out of the two `:` at the bottom of the logo
+  // framed outline continuing out of the two `:` at the bottom of the logo
   const dotBox = new DotBox({
     logo: logoPre,
     box: document.querySelector(".dot-box"),
     outline: document.querySelector(".dot-box-outline"),
     content: document.querySelector(".dot-box-content"),
+    // section headings drawn as `╠═╣  TITLE  ╠═╣` dividers across the box
+    titles: document.querySelectorAll(".dot-box-title"),
     // coloured line art (js/linkHeader.js, from gg.ans); its two `:` columns
     // in headerFeederCols land exactly under the `:` dropping from the logo
     header,

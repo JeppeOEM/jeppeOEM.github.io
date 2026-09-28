@@ -1,13 +1,16 @@
 /**
- * Dotted outline that grows out of a logo.
+ * Framed outline that grows out of a logo.
  *
  * The last row of the logo <pre> contains two `:` characters. Two `:` columns
- * drop straight down from them, land on the top edge of a box drawn with `.`
- * (horizontal) and `:` (vertical), and the box wraps the content element.
+ * drop straight down from them, land on the top edge of a double-line frame
+ * (`╔═╗║╚╝`) with a ring of `:` just inside it, and the box wraps the content
+ * element. Each `titles` element becomes a `╠═╣  TITLE  ╠═╣` divider across
+ * the box on the row it occupies, with `:` rows closing the panel above it
+ * and opening the one below (the design of lol.ans).
  *
  * A `header` of line art (taken from the top of the logo, on the logo's own
  * columns) can hang above the top edge, one cell wider than the box on each
- * side so it sits outside the dotted line. Because the header text shares the
+ * side so it sits outside the outline. Because the header text shares the
  * logo's column grid, the header columns that line up with the two feeders
  * are known without measuring anything; those two columns, and everything
  * between them, are kept fixed so they stay under the feeders. Only the
@@ -27,9 +30,13 @@
  * makes the outline appear cell by cell: down the feeders (the header lines
  * spread sideways from them as they pass), along the top edge from the two
  * landing points, down the sides and along the bottom edge until it closes in
- * the middle.
+ * the middle. The `:` ring and the dividers spread inward from the walls as
+ * they pass, the two halves of a divider meeting at its title.
  */
 const BLANK = { ch: " ", color: "" };
+const FRAME = "ansi-f";
+const COLON = "ansi-7";
+const COLON_DIM = "ansi-8";
 
 export default class DotBox {
   /**
@@ -41,12 +48,13 @@ export default class DotBox {
    * @param {string[]} [config.header]       Rows of line art hung above the top edge
    * @param {string[]} [config.headerColors] Per-cell ANSI colour (hex digit 0-f) for each header row
    * @param {number[]} [config.headerFeederCols] Header columns under the feeders (default: the feeders' logo columns)
+   * @param {Iterable<HTMLElement>} [config.titles] Headings drawn as dividers across the box
    * @param {number} [config.feederGap]      Blank rows between the logo and the header
    * @param {number[]} [config.feederCols]   Logo columns of the two `:` (default: found in the last logo row)
    * @param {number} [config.stepMs]         Delay between two cells appearing
    * @param {number} [config.startDelay]     ms before the first cell appears
-   * @param {string} [config.vChar]          Character for vertical runs
-   * @param {string} [config.hChar]          Character for horizontal runs
+   * @param {string} [config.vChar]          Character of the feeders
+   * @param {string} [config.hChar]          Header character kept at the outline's colour
    */
   constructor(config) {
     this.logo = config.logo;
@@ -57,6 +65,7 @@ export default class DotBox {
     this.headerColors = config.headerColors || null;
     this.headerFeederCols = config.headerFeederCols || null;
     this.feederCols = config.feederCols || null;
+    this.titles = config.titles || [];
     this.stepMs = config.stepMs ?? 30;
     this.startDelay = config.startDelay ?? 600;
     this.feederGap = config.feederGap ?? 2;
@@ -84,8 +93,10 @@ export default class DotBox {
     setTimeout(() => {
       this.started = true;
       this.outline.classList.add("grow");
+      const total = Number(this.outline.dataset.steps || 0);
+      // once every cell is in, drop the per-cell animations for static cells
+      setTimeout(() => this.outline.classList.add("done"), total * this.stepMs + 50);
       if (this.content) {
-        const total = Number(this.outline.dataset.steps || 0);
         const contentDelay = Math.max(0, total * this.stepMs + 200 - 2000);
         setTimeout(() => this.content.classList.add("show"), contentDelay);
       }
@@ -186,7 +197,7 @@ export default class DotBox {
    * The span between the landings is copied verbatim so it stays put; only
    * the columns outside it are stretched or squeezed. Those outer parts are
    * first stripped of their blank margin, so the header's outermost line work
-   * is pinned to the outline's outer columns, outside the dotted line. Falls
+   * is pinned to the outline's outer columns, outside the outline. Falls
    * back to stretching the whole header when there aren't exactly two
    * landings on both sides. Returns rows of `{ ch, color }` cells, or null
    * when it cannot be made to fit.
@@ -285,35 +296,91 @@ export default class DotBox {
     for (const c of landings) {
       for (let r = 0; r < feederRows; r++) put(r, c, this.vChar, r);
     }
-    // top edge, growing away from each landing point
+    // double-line frame: top edge growing away from each landing point
     const distTop = (c) =>
       landings.length ? Math.min(...landings.map((l) => Math.abs(c - l))) : c;
     for (let c = firstCol; c <= lastCol; c++) {
-      put(topRow, c, this.hChar, feederRows + distTop(c));
+      put(topRow, c, "═", feederRows + distTop(c), FRAME);
     }
     // sides, growing down from the corners
     const leftStart = feederRows + distTop(firstCol);
     const rightStart = feederRows + distTop(lastCol);
+    const leftWall = (r) => leftStart + (r - topRow);
+    const rightWall = (r) => rightStart + (r - topRow);
     for (let r = topRow + 1; r < bottomRow; r++) {
-      put(r, firstCol, this.vChar, leftStart + (r - topRow));
-      put(r, lastCol, this.vChar, rightStart + (r - topRow));
+      put(r, firstCol, "║", leftWall(r), FRAME);
+      put(r, lastCol, "║", rightWall(r), FRAME);
     }
     // bottom edge, closing in from both corners
-    const leftBottom = leftStart + (bottomRow - topRow);
-    const rightBottom = rightStart + (bottomRow - topRow);
-    for (let c = firstCol; c <= lastCol; c++) {
-      put(bottomRow, c, this.hChar,
-          Math.min(leftBottom + (c - firstCol), rightBottom + (lastCol - c)));
+    const stepAt = (r, c) => Math.min(leftWall(r) + (c - firstCol), rightWall(r) + (lastCol - c));
+    for (let c = firstCol; c <= lastCol; c++) put(bottomRow, c, "═", stepAt(bottomRow, c), FRAME);
+    put(topRow, firstCol, "╔", leftStart, FRAME);
+    put(topRow, lastCol, "╗", rightStart, FRAME);
+    put(bottomRow, firstCol, "╚", leftWall(bottomRow), FRAME);
+    put(bottomRow, lastCol, "╝", rightWall(bottomRow), FRAME);
+
+    // inner `:` ring, two cells inside the frame; each row spreads inward
+    // from the walls as they pass
+    const inL = firstCol + 2;
+    const inR = lastCol - 2;
+    if (inR - inL >= 3 && bottomRow - topRow >= 4) {
+      const colonRow = (r) => {
+        for (let c = inL; c <= inR; c++) {
+          put(r, c, ":", stepAt(r, c), c === inL || c === inR ? COLON : COLON_DIM);
+        }
+      };
+
+      // section titles become `╠═╣  TITLE  ╠═╣` dividers across the box,
+      // with `:` rows closing the panel above and opening the one below
+      const boxTop = boxRect.top;
+      const dividers = [];
+      for (const el of this.titles) {
+        const rect = el.getBoundingClientRect();
+        if (rect.height === 0) continue;
+        const r = topRow + Math.round((rect.top - boxTop) / ch);
+        if (r - 1 <= topRow + 1 || r + 1 >= bottomRow - 1) continue;
+        dividers.push({ r, text: el.textContent.trim().toUpperCase() });
+      }
+      const skip = new Set(dividers.flatMap(({ r }) => [r - 1, r, r + 1]));
+
+      for (let r = topRow + 2; r <= bottomRow - 2; r++) {
+        if (skip.has(r)) continue;
+        put(r, inL, ":", stepAt(r, inL), COLON);
+        put(r, inL + 1, ":", stepAt(r, inL + 1), COLON_DIM);
+        put(r, inR - 1, ":", stepAt(r, inR - 1), COLON_DIM);
+        put(r, inR, ":", stepAt(r, inR), COLON);
+      }
+      colonRow(topRow + 1);
+      colonRow(bottomRow - 1);
+
+      const inner = lastCol - firstCol - 1; // cells between the walls
+      for (const { r, text } of dividers) {
+        const maxText = inner - 8; // `═╣  ` + `  ╠═`
+        const label = maxText > 0 ? `  ${text.slice(0, maxText)}  ` : "";
+        const s = firstCol + 1 + Math.floor((inner - label.length - 2) / 2); // `╣`
+        const e = s + label.length + 1; // `╠`
+        put(r, firstCol, "╠", leftWall(r), FRAME);
+        put(r, lastCol, "╣", rightWall(r), FRAME);
+        for (let c = firstCol + 1; c < lastCol; c++) {
+          let chr = "═";
+          if (c === s) chr = "╣";
+          else if (c === e) chr = "╠";
+          else if (c > s && c < e) chr = label[c - s - 1];
+          if (chr !== " ") put(r, c, chr, stepAt(r, c), FRAME);
+        }
+        colonRow(r - 1);
+        colonRow(r + 1);
+        for (let c = s; c <= e; c++) {
+          const edge = c === s || c === e;
+          put(r - 1, c, edge ? (c === s ? "╔" : "╗") : "═", stepAt(r - 1, c), FRAME);
+          put(r + 1, c, edge ? (c === s ? "╚" : "╝") : "═", stepAt(r + 1, c), FRAME);
+        }
+      }
+      this.box.classList.toggle("has-titles", dividers.length > 0);
     }
-    // corners and landing cells read as joints
-    put(topRow, firstCol, this.vChar, leftStart);
-    put(topRow, lastCol, this.vChar, rightStart);
-    put(bottomRow, firstCol, this.vChar, leftBottom);
-    put(bottomRow, lastCol, this.vChar, rightBottom);
-    for (const c of landings) put(topRow, c, this.vChar, feederRows);
 
     // header: hangs directly above the top edge, spreading sideways from the
-    // feeders as they pass; it never overwrites a cell of the dotted line
+    // feeders as they pass; it never overwrites a cell of the outline
     if (header) {
       const headerTop = Math.max(0, topRow - header.length);
       for (let r = 0; r < header.length; r++) {
