@@ -36,7 +36,7 @@ export function codePage() {
       excludePadding: 1,
     });
     bodyBackground.init();
-    // console: p5Background.list(), p5Background.run("hexRain"), p5Background.next()
+    // console: p5Background.list(), p5Background.run("hitzo"), p5Background.next()
     window.p5Background = bodyBackground;
   } catch (err) {
     console.error("Background canvas unavailable:", err);

@@ -64,8 +64,17 @@ export default class AsciiBox {
 
     // Determine current breakpoint and get settings
     const currentBreakpoint = this.getBreakpoint();
-    const { horizontalChars, verticalLines, verticalHeaderLines } =
+    const { horizontalChars, verticalHeaderLines } =
       this.getBreakpointSettings(currentBreakpoint);
+    let { verticalLines } = this.getBreakpointSettings(currentBreakpoint);
+
+    // desktop height (number of `│ │` lines) can be set in the template:
+    // <span class="column" style="--column-size: 5">
+    const columnSize = parseInt(
+      templateContent.querySelector(".column")?.style.getPropertyValue("--column-size"),
+      10
+    );
+    if (currentBreakpoint === "desktop" && columnSize >= 0) verticalLines = columnSize;
 
     // Handle responsive spans
     const spans = templateContent.querySelectorAll(".responsive-span");

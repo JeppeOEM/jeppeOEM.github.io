@@ -8,7 +8,7 @@
  * Each animation is a plain object:
  *
  *   {
- *     name: "hexRain",
+ *     name: "hitzo",
  *     setup(p, bg)   { ... }   // once, after the canvas exists (also after a resize)
  *     draw(p, bg)    { ... }   // every frame
  *     resize(p, bg)  { ... }   // optional; default re-runs setup

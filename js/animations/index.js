@@ -6,15 +6,11 @@
  * is the name used by `?anim=<name>` and by `window.p5Background.run(name)`.
  */
 import hexadecimal from "./hexadecimal.js";
-import hexRain from "./hexRain.js";
-import flowField from "./flowField.js";
-import tenPrint from "./tenPrint.js";
+import hitzo from "./hitzo.js";
 
 // hexadecimal listed first: Object.keys() order is insertion order, and
 // js/code.js falls back to the first key when no ?anim= or saved pick applies.
 export const animations = {
   hexadecimal,
-  tenPrint,
-  hexRain,
-  flowField,
+  hitzo,
 };

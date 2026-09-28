@@ -22,8 +22,8 @@ The site is very much a playground where I experiment with bringing ANSI art ont
 (`js/P5Background.js`, instance mode, loaded from a pinned CDN URL). One animation runs at a
 time, picked from the registry in `js/animations/index.js`:
 
-- `?anim=<name>` in the URL picks one, e.g. `code.html?anim=hexRain`
-- in the browser console: `p5Background.list()`, `p5Background.run("flowField")`, `p5Background.next()`
+- `?anim=<name>` in the URL picks one, e.g. `code.html?anim=hitzo`
+- in the browser console: `p5Background.list()`, `p5Background.run("hitzo")`, `p5Background.next()`
 
 To add one, create `js/animations/<name>.js` exporting an object with `setup(p, bg)` and
 `draw(p, bg)` (optional `resize`, `pointer`, `holesChanged`, `destroy`), then register it in
