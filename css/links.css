@@ -37,6 +37,11 @@
 }
 
 .dot-separation {
+  /* the leader below is spaced out by --leader-gap per char, so its `+`
+     (char 24) starts at 24 * (1ch + --leader-gap); the description opens
+     one cell after it, at char 26 */
+  --leader-gap: 2px;
+  --desc-left: calc(26ch + 26 * var(--leader-gap));
   position: relative;
   z-index: 1;
   display: flex;
@@ -63,7 +68,7 @@
   left: 0;
   right: 0;
   bottom: 0.1ch;
-  letter-spacing: 2px;
+  letter-spacing: var(--leader-gap);
   white-space: pre;
   overflow: hidden;
 }
@@ -96,8 +101,10 @@
 .span-green {
   position: relative;
   display: inline-block;
-  flex: 0 0 50%;
-  width: 50%;
+  /* right-aligned by space-between, so its width sets where the `[` lands:
+     one cell after the `+` (never less than half the row on narrow boxes);
+     it only shrinks when the name runs past that */
+  flex: 0 1 max(50%, calc(100% - var(--desc-left)));
   padding-left: 1ch;
   padding-right: 2ch;
   overflow: hidden;
@@ -159,7 +166,7 @@
     right: 0;
     z-index: 2;
     width: max-content;
-    max-width: 50%;
+    max-width: max(50%, calc(100% - var(--desc-left)));
     overflow: hidden;
     background: var(--blue);
     transition: max-width 1.5s ease;
@@ -187,8 +194,28 @@
     text-align: left;
   }
 
-  .dot-separation::before {
+  .dot-separation::before,
+  .dot-separation::after {
     display: none;
+  }
+
+  /* the description takes the full width and wraps, brackets inline so
+     the `]` follows the last word */
+  .span-green {
+    flex: none;
+    width: 100%;
+    padding: 0;
+    white-space: normal;
+  }
+
+  .span-green::before,
+  .span-green::after {
+    position: static;
+  }
+
+  .span-green-text {
+    display: inline;
+    white-space: normal;
   }
 }
 
