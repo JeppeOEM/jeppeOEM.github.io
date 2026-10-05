@@ -5,6 +5,10 @@
  * off-screen buffer; each frame blits that buffer and draws only the cells
  * the pointer has scrambled, which fall back to the pattern after
  * `restoreAfter` ms. The scramble radius grows with pointer speed.
+ *
+ * `dissolve` (see P5Background.uncover) runs the same scramble over the cells
+ * of newly opened holes, rippling left to right in the base colour, and leaves
+ * them blank afterwards instead of restoring the pattern.
  */
 import { patterns } from "../asciiPatterns.js";
 
@@ -14,6 +18,12 @@ const minRadius = radius / 3;
 const maxSpeed = 0.8; // px/ms that reaches `radius`
 const flicker = 0.25; // per-frame chance an active cell changes character
 const restoreAfter = 1500; // ms
+const dissolveSweep = 900; // ms for the dissolve ripple to cross the hole
+const dissolveJitter = 250; // ms of random delay per cell
+
+// flicker slows from full rate to a tenth of it over a cell's life
+const flickerRate = (age) => flicker * (1 - (9 / 10) * (age / restoreAfter));
+const randomChar = () => charset[(Math.random() * charset.length) | 0];
 
 const lines = patterns.pattern1.split("\n").filter((l) => l.trim() !== "");
 // +1 so a blank column separates a tile from its own repeat.
@@ -25,10 +35,14 @@ export default {
   name: "hexadecimal",
 
   setup(p, bg) {
+    // a resize mid-dissolve rebuilds everything: release whoever waits on it
+    this.finishDissolve();
     this.cols = bg.cols;
     this.rows = bg.rows;
     /** @type {Map<number, {t: number, ch: string}>} cell index -> scramble time + char */
     this.active = new Map();
+    /** @type {Map<number, {start: number, base: string, ch: string}>} cell index -> dissolve state */
+    this.dissolving = new Map();
     this.curRadius = minRadius;
     this.buildBuffer(p, bg);
   },
@@ -63,6 +77,7 @@ export default {
   draw(p, bg) {
     p.clear();
     p.image(this.buffer, 0, 0);
+    if (this.dissolving.size > 0) this.drawDissolve(p, bg);
     if (this.active.size === 0) return;
 
     const now = performance.now();
@@ -75,9 +90,7 @@ export default {
         this.active.delete(i);
         continue;
       }
-      // flicker slows from full rate to a tenth of it over the cell's life
-      const rate = flicker * (1 - (9 / 10) * (age / restoreAfter));
-      if (Math.random() < rate) cell.ch = charset[(Math.random() * charset.length) | 0];
+      if (Math.random() < flickerRate(age)) cell.ch = randomChar();
       const x = c * bg.cellW;
       const y = r * bg.cellH;
       // the buffer still shows the base character here: cover it first
@@ -114,16 +127,73 @@ export default {
         const x0 = c * bg.cellW;
         const y0 = r * bg.cellH;
         if (bg.rectInHole(x0, y0, x0 + bg.cellW, y0 + bg.cellH)) continue;
-        this.active.set(r * this.cols + c, {
-          t: now,
-          ch: charset[(Math.random() * charset.length) | 0],
+        this.active.set(r * this.cols + c, { t: now, ch: randomChar() });
+      }
+    }
+  },
+
+  /** The holes just opened: scramble the pattern cells inside them away. */
+  dissolve(p, bg, done) {
+    this.buildBuffer(p, bg);
+    this.dissolveDone = done;
+    if (bg.holes.length === 0) return this.finishDissolve();
+
+    // the ripple crosses the holes' combined width, like a drag from the left
+    const left = Math.min(...bg.holes.map((h) => h.left));
+    const width = Math.max(...bg.holes.map((h) => h.right)) - left || 1;
+    const now = performance.now();
+    for (let r = 0; r < this.rows; r++) {
+      const y = r * bg.cellH;
+      for (let c = 0; c < this.cols; c++) {
+        const base = baseChar(r, c);
+        if (base === " ") continue;
+        const x = c * bg.cellW;
+        if (!bg.rectInHole(x, y, x + bg.cellW, y + bg.cellH)) continue;
+        const i = r * this.cols + c;
+        this.active.delete(i);
+        this.dissolving.set(i, {
+          start: now + (dissolveSweep * (x - left)) / width + Math.random() * dissolveJitter,
+          base,
+          ch: randomChar(),
         });
       }
     }
+    if (this.dissolving.size === 0) this.finishDissolve();
+  },
+
+  /** Dissolving cells: pattern until their start, then flicker, then blank. */
+  drawDissolve(p, bg) {
+    const now = performance.now();
+    p.fill(bg.colors.base);
+    for (const [i, cell] of this.dissolving) {
+      const age = now - cell.start;
+      if (age >= restoreAfter) {
+        this.dissolving.delete(i);
+        continue;
+      }
+      const r = Math.floor(i / this.cols);
+      const c = i - r * this.cols;
+      if (age < 0) {
+        p.text(cell.base, c * bg.cellW, r * bg.cellH);
+        continue;
+      }
+      if (Math.random() < flickerRate(age)) cell.ch = randomChar();
+      p.text(cell.ch, c * bg.cellW, r * bg.cellH);
+    }
+    if (this.dissolving.size === 0) this.finishDissolve();
+  },
+
+  finishDissolve() {
+    this.dissolving?.clear();
+    const done = this.dissolveDone;
+    this.dissolveDone = null;
+    if (done) done();
   },
 
   destroy() {
     if (this.buffer) this.buffer.remove();
     this.buffer = null;
+    // switched away mid-dissolve: whoever waits on it must not hang
+    this.finishDissolve();
   },
 };

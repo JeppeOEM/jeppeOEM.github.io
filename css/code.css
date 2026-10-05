@@ -121,3 +121,18 @@
 .background-regenerate:focus-visible {
   color: var(--white);
 }
+
+/* intro (js/code.js): box content hidden until its characters decode in
+   (js/TextScramble.js), flickering in the background's base green */
+.text-box.scrambling {
+  visibility: hidden;
+}
+
+.text-box.scrambling .scramble-char.on {
+  visibility: visible;
+  color: var(--dark-green);
+}
+
+.text-box.scrambling .scramble-char.done {
+  color: inherit;
+}

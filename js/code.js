@@ -1,5 +1,6 @@
 import BinaryStreamSections from "./BinaryStreamSections.js";
 import P5Background from "./P5Background.js";
+import { scrambleIn } from "./TextScramble.js";
 import { animations } from "./animations/index.js";
 
 export function codePage() {
@@ -31,11 +32,13 @@ export function codePage() {
       },
       zIndex: -1,
       frameRate: 30,
-      // nothing is drawn behind these elements
+      // nothing is drawn behind these elements, once the intro below opens them
       exclude: [".text-box"],
       excludePadding: 1,
+      coverExcluded: true,
     });
     bodyBackground.init();
+    introTextBox(bodyBackground);
     // console: p5Background.list(), p5Background.run("hitzo"), p5Background.next()
     window.p5Background = bodyBackground;
   } catch (err) {
@@ -92,4 +95,27 @@ export function codePage() {
   });
   binaryStream.init();
   window.binaryStream = binaryStream;
+}
+
+/**
+ * The project list starts covered by the background pattern. Once the canvas
+ * has faded in, the pattern over it scrambles away to black and the box's
+ * text decodes in. The text is never left hidden, whatever fails.
+ */
+async function introTextBox(background) {
+  const textBox = document.querySelector(".text-box");
+  if (!textBox) return background.uncover();
+  const animate = !background.reducedMotion;
+  if (animate) textBox.classList.add("scrambling");
+  try {
+    // let the canvas's 2s fade-in (css/code.css) mostly finish first
+    if (animate) await new Promise((r) => setTimeout(r, 1500));
+    // if the canvas never comes up, show the text anyway after a while
+    await Promise.race([background.uncover(), new Promise((r) => setTimeout(r, 5000))]);
+    if (animate) await scrambleIn(textBox, { duration: 1200, charLife: 400 });
+  } catch (err) {
+    console.error("Text box intro failed:", err);
+  } finally {
+    textBox.classList.remove("scrambling");
+  }
 }

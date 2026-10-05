@@ -15,6 +15,7 @@
  *     resize(p, bg)  { ... }   // optional; default re-runs setup
  *     pointer(p, bg, x, y, speed) { ... } // optional; pointer moved (viewport px, px/ms)
  *     holesChanged(p, bg) { ... }  // optional; excluded elements moved (scroll)
+ *     dissolve(p, bg, done) { ... } // optional; covered holes just opened (see uncover)
  *     destroy(p, bg) { ... }   // optional; when switched away from
  *   }
  *
@@ -30,6 +31,10 @@
  *
  * Elements listed in `exclude` are re-measured on scroll and resize, so an
  * animation that checks `bg.inHole` keeps the text box readable.
+ *
+ * With `coverExcluded`, the holes start closed (the animation draws over the
+ * excluded elements) until `uncover()` opens them; an animation with a
+ * `dissolve` hook animates what was drawn there away and calls `done()`.
  */
 export default class P5Background {
   /**
@@ -40,6 +45,7 @@ export default class P5Background {
    * @param {Object<string, string>} [config.colors]  name -> CSS color or `var(--x)` to resolve
    * @param {(string|HTMLElement)[]} [config.exclude]  Selectors/elements to keep clear
    * @param {number} [config.excludePadding]      Extra hole margin in character cells
+   * @param {boolean} [config.coverExcluded]      Start with the holes closed until uncover()
    * @param {number} [config.zIndex]
    * @param {number} [config.frameRate]           Cap for p5's frame rate (default 30)
    */
@@ -54,6 +60,7 @@ export default class P5Background {
     this.colorSpec = config.colors || {};
     this.exclude = config.exclude || [];
     this.excludePadding = config.excludePadding ?? 1;
+    this.covered = Boolean(config.coverExcluded);
     this.zIndex = config.zIndex ?? -1;
     this.frameRate = config.frameRate ?? 30;
 
@@ -72,6 +79,8 @@ export default class P5Background {
     this.pending = config.initial || this.names[0];
     this.p = null;
     this.ready = false;
+    /** resolves once p5's setup has run and an animation is current */
+    this.whenReady = new Promise((resolve) => (this.resolveReady = resolve));
 
     this.lastX = 0;
     this.lastY = 0;
@@ -131,6 +140,7 @@ export default class P5Background {
       p.textSize(this.fontSize);
       this.ready = true;
       this.run(this.pending);
+      this.resolveReady();
       requestAnimationFrame(() => canvas.elt.classList.add("show"));
     };
 
@@ -199,6 +209,28 @@ export default class P5Background {
   }
 
   /**
+   * Open the holes of a `coverExcluded` background. Resolves once the current
+   * animation's `dissolve` has finished, or right away if it has none.
+   */
+  async uncover() {
+    await this.whenReady;
+    if (!this.covered) return;
+    this.covered = false;
+    this.updateHoles();
+    const p = this.p;
+    const anim = this.current;
+    if (anim && anim.dissolve && !this.reducedMotion) {
+      await new Promise((done) => anim.dissolve(p, this, done));
+    } else if (anim && anim.holesChanged) {
+      anim.holesChanged(p, this);
+    } else if (anim) {
+      // no hook to rebuild with: redraw from scratch with the holes open
+      this.run(this.currentName);
+    }
+    if (this.reducedMotion) p.redraw();
+  }
+
+  /**
    * Canvas fill cannot read CSS variables, so resolve e.g. "var(--x)" to the
    * computed color through a temporary element. Also reads the body font.
    */
@@ -246,6 +278,7 @@ export default class P5Background {
     const padX = this.excludePadding * this.cellW;
     const padY = this.excludePadding * this.cellH;
     this.holes = [];
+    if (this.covered) return;
     for (const item of this.exclude) {
       const els = typeof item === "string" ? document.querySelectorAll(item) : [item];
       for (const el of els) {
