@@ -25,9 +25,10 @@
  * its character grid is snapped to the logo's grid. Each span is an inline
  * block exactly one measured logo cell wide, so the grid stays on the logo's
  * columns even where a browser synthesises the bold weight with a rounded
- * advance (Firefox). Each span gets a step index
- * (`--i`) equal to its path distance from the logo, so a CSS animation-delay
- * makes the outline appear cell by cell: down the feeders (the header lines
+ * advance (Firefox). Each span gets a step index equal to its path distance
+ * from the logo, and a frame loop adds `on` to every span whose step has come,
+ * so the outline appears cell by cell (not one CSS animation per cell: with
+ * thousands of them Chrome left finished cells hidden until the end): down the feeders (the header lines
  * spread sideways from them as they pass), along the top edge from the two
  * landing points, down the sides and along the bottom edge until it closes in
  * the middle. The `:` ring and the dividers spread inward from the walls as
@@ -75,7 +76,14 @@ export default class DotBox {
     this.cellW = 8;
     this.cellH = 16;
     this.started = false;
+    this.finished = false;
     this.rafId = 0;
+    this.growId = 0;
+    /** @type {HTMLElement[][]} spans of the current render, by step */
+    this.byStep = [];
+    this.shown = 0; // steps revealed so far in the current render
+
+    this.grow = this.grow.bind(this);
 
     this.onResize = this.onResize.bind(this);
   }
@@ -86,21 +94,35 @@ export default class DotBox {
     } catch (e) {
       /* draw with whatever font is available */
     }
-    this.outline.style.setProperty("--dot-step", `${this.stepMs}ms`);
     this.render();
     window.addEventListener("resize", this.onResize);
 
     setTimeout(() => {
       this.started = true;
-      this.outline.classList.add("grow");
-      const total = Number(this.outline.dataset.steps || 0);
-      // once every cell is in, drop the per-cell animations for static cells
-      setTimeout(() => this.outline.classList.add("done"), total * this.stepMs + 50);
+      this.startedAt = performance.now();
+      this.growId = requestAnimationFrame(this.grow);
+      const total = this.byStep.length - 1;
       if (this.content) {
         const contentDelay = Math.max(0, total * this.stepMs + 200 - 2000);
         setTimeout(() => this.content.classList.add("show"), contentDelay);
       }
     }, this.startDelay);
+  }
+
+  /** Frame loop: reveal every step whose time has come, until all are in. */
+  grow() {
+    const step = Math.floor((performance.now() - this.startedAt) / this.stepMs);
+    const last = Math.min(step, this.byStep.length - 1);
+    for (; this.shown <= last; this.shown++) {
+      for (const span of this.byStep[this.shown] || []) span.classList.add("on");
+    }
+    if (this.shown >= this.byStep.length) {
+      this.finished = true;
+      this.growId = 0;
+      this.outline.classList.add("done");
+      return;
+    }
+    this.growId = requestAnimationFrame(this.grow);
   }
 
   /** Width/height of one character cell, measured in the logo's own font. */
@@ -397,6 +419,7 @@ export default class DotBox {
     }
 
     let total = 0;
+    const order = []; // step of each span, in document order
     const html = [];
     for (let r = 0; r < rows; r++) {
       let line = "";
@@ -408,13 +431,18 @@ export default class DotBox {
         }
         total = Math.max(total, steps[i]);
         const cls = kinds[i] ? ` class="${kinds[i]}"` : "";
-        line += `<span${cls} style="--i:${steps[i]}">${chars[i]}</span>`;
+        order.push(steps[i]);
+        line += `<span${cls}>${chars[i]}</span>`;
       }
       html.push(line);
     }
 
     this.outline.innerHTML = html.join("\n");
-    this.outline.dataset.steps = String(total);
+    this.byStep = Array.from({ length: total + 1 }, () => []);
+    const spans = this.outline.querySelectorAll("span");
+    order.forEach((step, k) => this.byStep[step].push(spans[k]));
+    // a re-render mid-grow starts its new spans hidden; the loop catches up
+    this.shown = 0;
     Object.assign(this.outline.style, {
       left: `${left}px`,
       top: `${top}px`,
@@ -428,13 +456,14 @@ export default class DotBox {
       this.rafId = 0;
       this.render();
       // a resize after the animation ran shows the outline at once
-      if (this.started) this.outline.classList.add("done");
+      if (this.finished) this.outline.classList.add("done");
     });
   }
 
   destroy() {
     window.removeEventListener("resize", this.onResize);
     if (this.rafId) cancelAnimationFrame(this.rafId);
+    if (this.growId) cancelAnimationFrame(this.growId);
     this.outline.innerHTML = "";
   }
 }

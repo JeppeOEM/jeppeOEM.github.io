@@ -304,20 +304,10 @@
 .dot-box-outline .ansi-e { color: var(--yellow); }
 .dot-box-outline .ansi-f { color: var(--white); }
 
-.dot-box-outline.grow span {
-  animation: dotIn 1ms steps(1) forwards;
-  animation-delay: calc(var(--i) * var(--dot-step, 30ms));
-}
-
+/* DotBox adds `on` cell by cell as the outline grows, `done` once it's all in */
+.dot-box-outline span.on,
 .dot-box-outline.done span {
   visibility: visible;
-  animation: none;
-}
-
-@keyframes dotIn {
-  to {
-    visibility: visible;
-  }
 }
 
 .dot-box-content {
