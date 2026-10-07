@@ -115,8 +115,12 @@ export default class BinaryStreamSections {
     const leftRect = leftEl.getBoundingClientRect();
     const rightRect = rightEl.getBoundingClientRect();
 
-    this.leftCols = Math.max(0, Math.floor(leftRect.width / charW));
-    this.rightCols = Math.max(0, Math.floor(rightRect.width / charW));
+    // Round up, not down: a side is rarely a whole number of characters wide,
+    // and flooring left up to one blank character at the screen edge. The
+    // extra character overflows at the outer edge and is clipped there
+    // (css/code.css anchors each pre to its logo edge).
+    this.leftCols = Math.max(0, Math.ceil(leftRect.width / charW));
+    this.rightCols = Math.max(0, Math.ceil(rightRect.width / charW));
     this.gapCols = Math.max(
       0,
       Math.round((rightRect.left - leftRect.right) / charW)
@@ -249,11 +253,15 @@ export default class BinaryStreamSections {
 
   /**
    * Replace a section's children with a single <pre> that mirrors the
-   * layout of the old 52-character tiles, sized to the section's width.
+   * layout of the old 52-character tiles, at least as wide as the section.
    */
   buildSide(el, className, cols) {
     const pre = document.createElement("pre");
     pre.className = className;
+    // Mark the section with its visual side too, so CSS can anchor the pre
+    // to the logo edge and let the partial outer character overflow.
+    el.classList.remove("stream-side-left", "stream-side-right");
+    el.classList.add(className === "code-logo-left" ? "stream-side-left" : "stream-side-right");
 
     const staticRow = (ch) => {
       const span = document.createElement("span");

@@ -35,6 +35,9 @@
  * With `coverExcluded`, the holes start closed (the animation draws over the
  * excluded elements) until `uncover()` opens them; an animation with a
  * `dissolve` hook animates what was drawn there away and calls `done()`.
+ *
+ * `setFillHoles(true)` closes the holes again for as long as the page shows
+ * the background alone; `setFillHoles(false)` reopens them.
  */
 export default class P5Background {
   /**
@@ -61,6 +64,7 @@ export default class P5Background {
     this.exclude = config.exclude || [];
     this.excludePadding = config.excludePadding ?? 1;
     this.covered = Boolean(config.coverExcluded);
+    this.fillHoles = false;
     this.zIndex = config.zIndex ?? -1;
     this.frameRate = config.frameRate ?? 30;
 
@@ -231,6 +235,20 @@ export default class P5Background {
   }
 
   /**
+   * Draw over the excluded elements too (true), e.g. while the page shows the
+   * background alone, or leave them empty again (false).
+   */
+  setFillHoles(fill) {
+    this.fillHoles = Boolean(fill);
+    this.updateHoles();
+    const anim = this.current;
+    if (!this.ready || !anim) return;
+    if (anim.holesChanged) anim.holesChanged(this.p, this);
+    else this.run(this.currentName);
+    if (this.reducedMotion) this.p.redraw();
+  }
+
+  /**
    * Canvas fill cannot read CSS variables, so resolve e.g. "var(--x)" to the
    * computed color through a temporary element. Also reads the body font.
    */
@@ -278,7 +296,7 @@ export default class P5Background {
     const padX = this.excludePadding * this.cellW;
     const padY = this.excludePadding * this.cellH;
     this.holes = [];
-    if (this.covered) return;
+    if (this.covered || this.fillHoles) return;
     for (const item of this.exclude) {
       const els = typeof item === "string" ? document.querySelectorAll(item) : [item];
       for (const el of els) {

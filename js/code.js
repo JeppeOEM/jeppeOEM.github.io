@@ -1,4 +1,5 @@
 import BinaryStreamSections from "./BinaryStreamSections.js";
+import HeadingFill from "./HeadingFill.js";
 import P5Background from "./P5Background.js";
 import { scrambleIn } from "./TextScramble.js";
 import { animations } from "./animations/index.js";
@@ -29,6 +30,11 @@ export function codePage() {
       colors: {
         base: "var(--dark-green)",
         highlight: "var(--light-green)",
+        // region fills and stitches of hitzo-ansi-color
+        white: "var(--white)",
+        grey: "var(--grey)",
+        darkGrey: "var(--dark-grey)",
+        stitch: "var(--light-black)",
       },
       zIndex: -1,
       frameRate: 30,
@@ -79,6 +85,14 @@ export function codePage() {
     }
   }
 
+  // bottom bar: fade the page out and let the canvas fill the screen
+  const bgOnly = document.getElementById("toggle-bg-only");
+  bgOnly?.addEventListener("click", () => {
+    const on = document.body.classList.toggle("bg-only");
+    bgOnly.innerHTML = `<span class="bracket">[</span>BG ONLY: ${on ? "ON" : "OFF"}<span class="bracket">]</span>`;
+    bodyBackground?.setFillHoles(on);
+  });
+
   // 0/1 rows beside the logo tick left as one stream passing under it
   const binaryStream = new BinaryStreamSections({
     sections: [
@@ -106,6 +120,11 @@ async function introTextBox(background) {
   const textBox = document.querySelector(".text-box");
   if (!textBox) return background.uncover();
   const animate = !background.reducedMotion;
+  // "%%%%[ TITLE ]%%%%" headings: sized to the box once the font is ready,
+  // before their characters are animated, and kept fitted afterwards
+  const headings = new HeadingFill(textBox);
+  await document.fonts.ready;
+  headings.init();
   if (animate) textBox.classList.add("scrambling");
   try {
     // let the canvas's 2s fade-in (css/code.css) mostly finish first
@@ -117,5 +136,7 @@ async function introTextBox(background) {
     console.error("Text box intro failed:", err);
   } finally {
     textBox.classList.remove("scrambling");
+    // the box may have been resized while its headings were frozen
+    headings.fit();
   }
 }

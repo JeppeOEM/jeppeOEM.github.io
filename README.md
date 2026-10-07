@@ -22,7 +22,11 @@ The site is very much a playground where I experiment with bringing ANSI art ont
 (`js/P5Background.js`, instance mode, loaded from a pinned CDN URL). One animation runs at a
 time, picked from the registry in `js/animations/index.js`:
 
-- `?anim=<name>` in the URL picks one, e.g. `code.html?anim=hitzo`
+- `?anim=<name>` in the URL picks one, e.g. `code.html?anim=hitzo` (the Hitomezashi
+  stitch pattern drawn with p5 lines) or `code.html?anim=hitzo-ansi` (the same lattice drawn
+  with box-drawing characters, one corner glyph per lattice node) or `code.html?anim=hitzo-ansi-color`
+  (the character version with every enclosed region filled in white, grey or dark grey by its
+  size, after [this Stack Overflow answer](https://stackoverflow.com/questions/71444608))
 - in the browser console: `p5Background.list()`, `p5Background.run("hitzo")`, `p5Background.next()`
 
 To add one, create `js/animations/<name>.js` exporting an object with `setup(p, bg)` and

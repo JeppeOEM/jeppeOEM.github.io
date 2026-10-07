@@ -136,17 +136,7 @@
   color: var(--turquoise);
 }
 
-/* ── "BG ONLY" toggle in the bottom bar ──────────────────────────────── */
-
-.nav-toggle-btn {
-  all: unset;
-  color: var(--white);
-  cursor: pointer;
-}
-
-.nav-toggle-btn:hover {
-  color: var(--turquoise);
-}
+/* ── "BG ONLY" toggle (button in css/components.css) ─────────────────── */
 
 #ascii-logo,
 .ascii-box-wrapper,
@@ -154,9 +144,9 @@
   transition: opacity 1500ms ease, visibility 1500ms ease;
 }
 
-body.home-ui-hidden #ascii-logo,
-body.home-ui-hidden .ascii-box-wrapper,
-body.home-ui-hidden .background-layer {
+body.bg-only #ascii-logo,
+body.bg-only .ascii-box-wrapper,
+body.bg-only .background-layer {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;

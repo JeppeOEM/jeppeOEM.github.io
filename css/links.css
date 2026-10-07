@@ -1,5 +1,9 @@
 /* Links page (links.html). */
 
+/* The logo and the side art share one .fade-in-fast (css/utilities.css) with
+   no delay on either, so all three fade in together; the dot box follows
+   (startDelay in js/linksPage.js). */
+
 /* ── logo colors ─────────────────────────────────────────────────────── */
 
 .link-logo-color-1,

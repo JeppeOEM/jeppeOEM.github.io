@@ -1,5 +1,13 @@
 /* Code page (code.html). */
 
+/* css/base.css gives body min-height: 100vh plus a 30px top margin, which
+   makes every page 30px taller than the viewport, so this page always had a
+   scrollbar. It only scrolls when the project box really is taller than the
+   screen (phones). */
+body {
+  min-height: calc(100vh - 30px);
+}
+
 /* ── p5 canvas background (js/P5Background.js) ───────────────────────── */
 
 .p5-background {
@@ -18,20 +26,30 @@
   width: 100%;
 }
 
-/* one pre per side, aligned to the logo */
+/* One pre per side, anchored to the logo edge. The pre is a whole number of
+   characters wide, which is a little more than the section (the script rounds
+   up), so the partial character spills out at the screen edge, where the
+   section's overflow: hidden clips it, instead of leaving a gap there. The
+   sections are marked by measured side (js/BinaryStreamSections.js) because
+   .left-section is displayed on the right. */
+.stream-side-left,
+.stream-side-right {
+  flex-direction: row;
+}
+
+.stream-side-left {
+  justify-content: flex-end;
+}
+
+.stream-side-right {
+  justify-content: flex-start;
+}
+
 .code-logo-left,
 .code-logo-right {
   flex: none;
-  width: 100%;
+  width: auto;
   margin: 0;
-}
-
-.code-logo-left {
-  text-align: right;
-}
-
-.code-logo-right {
-  text-align: left;
 }
 
 /* the logo and streams mask the canvas behind them */
@@ -66,11 +84,19 @@
 
 /* ── project list: the canvas skips the cells behind this box ────────── */
 
+/* full width, so the box's max-width below is relative to the page */
+.center {
+  width: 100%;
+}
+
+/* 80 characters, or the page less 2 characters on each side when the screen
+   is narrower. Relative to the page, not 100vw: 100vw includes a classic
+   scrollbar, which would eat into the margins while the page scrolls. */
 .text-box {
   position: relative;
   z-index: 1;
   width: 80ch;
-  max-width: calc(100vw - 4ch);
+  max-width: calc(100% - 4ch);
   margin-top: 4ch;
   margin-bottom: 4ch;
   padding: 2ch;
@@ -83,12 +109,22 @@
 
 .text-box .color-p,
 .text-box .color-span {
-  color: var(--white);
+  color: var(--grey);
+}
+
+/* section headings ([ AI/ML ], [ WEB DEVELOPMENT ]): dark turquoise, brackets
+   included; the fill sides keep their own color */
+.text-box .h3 {
+  color: var(--dark-turquoise);
+}
+
+.text-box .h3 .color-accent-primary {
+  color: var(--dark-turquoise);
 }
 
 .text-box .link-block-title,
 .text-box .link-line {
-  color: var(--turquoise);
+  color: var(--dark-turquoise);
 }
 
 .link-block-title::before {
@@ -123,16 +159,21 @@
 }
 
 /* intro (js/code.js): box content hidden until its characters decode in
-   (js/TextScramble.js), flickering in the background's base green */
+   (js/TextScramble.js); a flickering character is drawn in the colour its
+   text has when settled, so headings, brackets and links decode in their own
+   colours */
 .text-box.scrambling {
   visibility: hidden;
 }
 
 .text-box.scrambling .scramble-char.on {
   visibility: visible;
-  color: var(--dark-green);
 }
 
-.text-box.scrambling .scramble-char.done {
-  color: inherit;
+/* bottom bar "BG ONLY" (js/code.js): everything above the canvas is removed
+   at once, and the canvas draws over where the text box was */
+body.bg-only .column-align-center {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }

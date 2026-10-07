@@ -14,9 +14,9 @@
     <link rel="stylesheet" href="css/font.css?v=2" />
     <link rel="stylesheet" href="css/root.css?v=2" />
     <link rel="stylesheet" href="css/base.css?v=2" />
-    <link rel="stylesheet" href="css/components.css?v=2" />
+    <link rel="stylesheet" href="css/components.css?v=4" />
     <link rel="stylesheet" href="css/utilities.css?v=2" />
-    <link rel="stylesheet" href="css/home.css?v=2" />
+    <link rel="stylesheet" href="css/home.css?v=3" />
     <script>
       (function () {
         try {
@@ -110,12 +110,12 @@
         <div class="navbar-side"></div>
         <div class="navbar">
           <div>
-            <button id="toggle-home-ui" class="nav-toggle-btn" type="button">
-              <span class="bracket">[</span>BG ONLY: OFF<span class="bracket">]</span>
+            <button id="toggle-bg-only" class="nav-toggle-btn" type="button">
+              <span class="bracket-grey">[</span>BG ONLY: OFF<span class="bracket-grey">]</span>
             </button>
           </div>
           <div>
-            <span class="font-controls"><span class="bracket">[</span>CREATED WITH:<a class="link-line turquoise" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish">ASCII playground</a><span class="bracket">]</span></span>
+            <span class="font-controls"><span class="bracket-grey">[</span>CREATED WITH:<a class="link-line turquoise" href="https://play.ertdfgcvb.xyz/#/src/contributed/slime_dish">ASCII playground</a><span class="bracket-grey">]</span></span>
           </div>
         </div>
         <div class="navbar-side"></div>
@@ -136,10 +136,10 @@
         if (slimeCanvas && !slimeCanvas.hidden) location.reload();
       });
 
-      const toggleBtn = document.getElementById("toggle-home-ui");
+      const toggleBtn = document.getElementById("toggle-bg-only");
       toggleBtn.addEventListener("click", () => {
-        const isHidden = document.body.classList.toggle("home-ui-hidden");
-        toggleBtn.innerHTML = `<span class="bracket">[</span>BG ONLY: ${isHidden ? "ON" : "OFF"}<span class="bracket">]</span>`;
+        const isHidden = document.body.classList.toggle("bg-only");
+        toggleBtn.innerHTML = `<span class="bracket-grey">[</span>BG ONLY: ${isHidden ? "ON" : "OFF"}<span class="bracket-grey">]</span>`;
       });
     </script>
   </body>

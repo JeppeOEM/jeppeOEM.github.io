@@ -26,12 +26,14 @@ body {
   font-size: 16px;
   background-color: black;
   scrollbar-color: var(--light-black) var(--dark-grey);
-  opacity: 0;
 }
 
-body.loaded {
-  opacity: 1;
-  transition: opacity 0.2s ease;
+/* page reveal: everything is hidden until the fonts are ready, except the
+   fixed nav bars (which must not fade). No opacity is forced back on: each
+   element returns to its own styles, so self-hidden elements (fade-in-box,
+   fade-in-fast, …) stay hidden until their own animations run. */
+body:not(.loaded) > :not(nav-bar):not(.home-bottom-nav-wrapper) {
+  opacity: 0;
 }
 
 a {

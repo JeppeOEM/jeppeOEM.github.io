@@ -9,12 +9,13 @@
   <link rel="stylesheet" href="css/font.css?v=2" />
   <link rel="stylesheet" href="css/root.css?v=2" />
   <link rel="stylesheet" href="css/base.css?v=2" />
-  <link rel="stylesheet" href="css/components.css?v=2" />
+  <link rel="stylesheet" href="css/components.css?v=4" />
   <link rel="stylesheet" href="css/utilities.css?v=2" />
-  <link rel="stylesheet" href="css/code.css?v=3" />
+  <link rel="stylesheet" href="css/code.css?v=11" />
   <link rel="modulepreload" href="./js/font.js" />
   <link rel="modulepreload" href="./js/loadPage.js" />
   <link rel="modulepreload" href="./js/code.js" />
+  <link rel="modulepreload" href="./js/HeadingFill.js" />
   <link rel="modulepreload" href="./js/P5Background.js" />
   <!-- p5.js for the background canvas (js/P5Background.js); vendored locally (js/vendor/p5.min.js,
        v1.11.3), no CDN, so the page has no network dependency for its background -->
@@ -78,7 +79,7 @@
           <a class="link-line" href="https://github.com">github.com profile</a>
         </p>
         <br>
-        <h3 class="h3"><span class="h3-bg-text primary"><span class="color-accent-primary">[ </span>AI/ML<span class="color-accent-primary"> ]</span></span></h3>
+        <h3 class="h3 h3-fill"><span class="h3-fill-side"></span><span class="color-accent-primary">[ </span>AI/ML<span class="color-accent-primary"> ]</span><span class="h3-fill-side"></span></h3>
         <br>
         <ul>
           <li>
@@ -95,7 +96,7 @@
         </ul>
 
         <br>
-        <h3 class="h3"><span class="h3-bg-text primary"><span class="color-accent-primary">[ </span>WEB DEVELOPMENT<span class="color-accent-primary"> ]</span></span></h3>
+        <h3 class="h3 h3-fill"><span class="h3-fill-side"></span><span class="color-accent-primary">[ </span>WEB DEVELOPMENT<span class="color-accent-primary"> ]</span><span class="h3-fill-side"></span></h3>
         <br>
         <ul>
           <li>
@@ -121,11 +122,13 @@
       <div class="navbar-side"></div>
       <div class="navbar">
         <div>
-          <span class="font-controls"><span class="bracket">[</span><label for="background-selector">BACKGROUND:</label><select id="background-selector"></select><span class="bracket">]</span></span>
-          <button id="background-regenerate" class="background-regenerate" type="button" hidden><span class="bracket">[</span>REGENERATE<span class="bracket">]</span></button>
+          <button id="toggle-bg-only" class="nav-toggle-btn" type="button">
+            <span class="bracket-grey">[</span>BG ONLY: OFF<span class="bracket-grey">]</span>
+          </button>
         </div>
         <div>
-          <span class="font-controls"><span class="bracket">[</span>DRAWN WITH:<a class="link-line turquoise" href="https://p5js.org/">p5.js</a><span class="bracket">]</span></span>
+          <span class="font-controls"><span class="bracket-grey">[</span><label for="background-selector">BACKGROUND:</label><select id="background-selector"></select><span class="bracket-grey">]</span></span>
+          <button id="background-regenerate" class="background-regenerate" type="button" hidden><span class="bracket-grey">[</span>REGENERATE<span class="bracket-grey">]</span></button>
         </div>
       </div>
       <div class="navbar-side"></div>

@@ -25,7 +25,7 @@ export function linksPage() {
     headerColors,
     headerFeederCols,
     stepMs: 30,
-    startDelay: 600,
+    startDelay: 1600,
   });
   dotBox.init();
   window.dotBox = dotBox;

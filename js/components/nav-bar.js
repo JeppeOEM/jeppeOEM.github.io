@@ -9,12 +9,12 @@ class NavBar extends HTMLElement {
         <div class="navbar-side"></div>
         <div class="navbar">
           <div>
-            <a href="/" class="nav__link"><span class="bracket">[</span>HOME<span class="bracket">]</span></a>
-            <a href="code.html" class="nav__link" data-link><span class="bracket">[</span>CODE<span class="bracket">]</span></a>
-            <a href="/links.html" class="nav__link" data-link><span class="bracket">[</span>LINKS<span class="bracket">]</span></a>
+            <a href="/" class="nav__link"><span class="bracket-grey">[</span>HOME<span class="bracket-grey">]</span></a>
+            <a href="code.html" class="nav__link" data-link><span class="bracket-grey">[</span>CODE<span class="bracket-grey">]</span></a>
+            <a href="/links.html" class="nav__link" data-link><span class="bracket-grey">[</span>LINKS<span class="bracket-grey">]</span></a>
           </div>
           <div>
-            <span class="font-controls"><span class="bracket">[</span><label for="font-selector">FONT:</label><select id="font-selector">
+            <span class="font-controls"><span class="bracket-grey">[</span><label for="font-selector">FONT:</label><select id="font-selector">
                 <option value="IBMVGA8">IBM VGA 8x16 ★</option>
                 <option value="IBMBIOS2Y">IBM BIOS-2y ★</option>
                 <optgroup label="AcPlus — VGA 8×16">
@@ -91,13 +91,22 @@ class NavBar extends HTMLElement {
                   <option value="Ac437_Verite_8x8-2y">Verite 2y</option>
                   <option value="Ac437_Wyse700a-2y">Wyse 700a 2y</option>
                   <option value="Ac437_Wyse700b-2y">Wyse 700b 2y</option>
-                </optgroup></select><span class="bracket">]</span></span>
+                </optgroup></select><span class="bracket-grey">]</span></span>
           </div>
         </div>
         <div class="navbar-side"></div>
       </nav>
     </div>
     `;
+
+        // highlight the link for the page we're on (strip index.html so
+        // "/" and "/index.html" count as the same page)
+        const withoutIndex = (p) => p.replace(/index\.html$/, "");
+        const here = withoutIndex(location.pathname);
+        this.querySelectorAll(".navbar a").forEach((a) => {
+            const url = withoutIndex(new URL(a.href, location.href).pathname);
+            if (url === here) a.setAttribute("aria-current", "page");
+        });
 
         const fontSelector = this.querySelector('#font-selector');
         fontSelector.value = getSavedFont();

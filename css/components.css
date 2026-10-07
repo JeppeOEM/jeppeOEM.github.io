@@ -50,61 +50,55 @@ nav a {
   color: var(--white);
 }
 
+/* FONT / BACKGROUND dropdowns in the nav bars */
+.font-controls select {
+  color: var(--dark-turquoise);
+}
+
+.font-controls label {
+  color: var(--white);
+}
+
 .nav a:hover {
   color: var(--turquoise);
+}
+
+.nav a:hover .bracket-grey {
+  color: var(--dark-turquoise);
+}
+
+/* the current page's link keeps its own green */
+.nav a[aria-current="page"] {
+  color: var(--light-green);
+}
+
+.nav a[aria-current="page"] .bracket-grey {
+  color: var(--dark-green);
 }
 
 .bracket {
   color: var(--yellow);
 }
 
-/* both bars fade in slowly once the page is revealed */
-.nav-wrapper,
-.home-bottom-nav-wrapper {
-  opacity: 0;
-}
-
-body.loaded .nav-wrapper,
-body.loaded .home-bottom-nav-wrapper {
-  opacity: 1;
-  transition: opacity 1.5s ease;
+.bracket-grey {
+  color: var(--grey);
 }
 
 /* ── section headings: "%%%%[ TITLE ]%%%%" ───────────────────────────── */
 
+/* The % on either side are text, filled in by js/HeadingFill.js to the width
+   of the box, so the heading reflows with it and animates like other text. */
 .h3 {
   color: var(--white);
 }
 
-.h3-bg-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: var(--grey);
-}
-
-.h3-bg-text::before,
-.h3-bg-text::after {
-  content: "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
+.h3-fill {
   white-space: nowrap;
+  overflow: hidden;
 }
 
-.h3-bg-text.primary {
-  background-color: var(--light-black);
-}
-
-.h3-bg-text.primary::before,
-.h3-bg-text.primary::after {
+.h3-fill-side {
   color: var(--light-black);
-}
-
-.h3-bg-text.secondary::before,
-.h3-bg-text.secondary::after {
-  color: var(--grey);
 }
 
 /* ── text colors ─────────────────────────────────────────────────────── */
@@ -188,4 +182,16 @@ body.loaded .home-bottom-nav-wrapper {
   right: 0;
   z-index: 0;
   background-color: var(--black);
+}
+
+/* bottom bar "BG ONLY" toggle (home and code pages) */
+.nav-toggle-btn {
+  all: unset;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.nav-toggle-btn:hover,
+.nav-toggle-btn:focus-visible {
+  color: var(--turquoise);
 }
