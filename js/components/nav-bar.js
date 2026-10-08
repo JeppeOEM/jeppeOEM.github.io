@@ -15,8 +15,8 @@ class NavBar extends HTMLElement {
           </div>
           <div>
             <span class="font-controls"><span class="bracket-grey">[</span><label for="font-selector">FONT:</label><select id="font-selector">
-                <option value="IBMVGA8">IBM VGA 8x16 ★</option>
-                <option value="IBMBIOS2Y">IBM BIOS-2y ★</option>
+                <option value="IBMVGA8">IBM VGA 8x16 ☺</option>
+                <option value="IBMBIOS2Y">IBM BIOS-2y ☺</option>
                 <optgroup label="AcPlus — VGA 8×16">
                   <option value="AcPlus_IBM_VGA_8x16">IBM VGA 8×16</option>
                   <option value="AcPlus_ToshibaSat_8x16">Toshiba Sat 8×16</option>

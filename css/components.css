@@ -52,7 +52,7 @@ nav a {
 
 /* FONT / BACKGROUND dropdowns in the nav bars */
 .font-controls select {
-  color: var(--dark-turquoise);
+  color: var(--turquoise);
 }
 
 .font-controls label {

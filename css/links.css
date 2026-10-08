@@ -12,7 +12,7 @@
 }
 
 .link-logo-color-2 {
-  color: var(--light-blue);
+  color: var(--dark-turquoise);
 }
 
 .link-logo-color-3,
@@ -80,7 +80,7 @@
 .dot-separation::before {
   content: "::::::::::::.:..  <@>   +         ";
   z-index: -1;
-  color: var(--light-blue);
+  color: var(--dark-turquoise);
 }
 
 .dot-separation::after {
@@ -100,43 +100,22 @@
   color: var(--orange);
 }
 
-/* description in brackets; js/linksPage.js wraps its text and adds an
+/* description; js/linksPage.js wraps its text and adds an
    ellipsis, then marks it .is-truncated when the text doesn't fit */
 .span-green {
   position: relative;
   display: inline-block;
-  /* right-aligned by space-between, so its width sets where the `[` lands:
+  /* right-aligned by space-between, so its width sets where the text starts:
      one cell after the `+` (never less than half the row on narrow boxes);
      it only shrinks when the name runs past that */
   flex: 0 1 max(50%, calc(100% - var(--desc-left)));
-  padding-left: 1ch;
-  padding-right: 2ch;
   overflow: hidden;
   white-space: nowrap;
-  color: var(--light-green);
-}
-
-.span-green::before,
-.span-green::after {
-  position: absolute;
-  top: 0;
-  color: var(--dark-green);
-}
-
-.span-green::before {
-  content: "[";
-  left: 0;
-}
-
-.span-green::after {
-  content: "]";
-  right: 0;
+  color: var(--white);
 }
 
 .dot-separation:hover .span-green,
-.dot-separation:hover .span-green-text,
-.dot-separation:hover .span-green::before,
-.dot-separation:hover .span-green::after {
+.dot-separation:hover .span-green-text {
   color: var(--turquoise);
 }
 
@@ -154,8 +133,8 @@
   display: inline;
   position: absolute;
   top: 0;
-  right: 1.4ch;
-  color: var(--dark-green);
+  right: 0;
+  color: var(--dark-grey);
   background: var(--blue);
 }
 
@@ -203,18 +182,12 @@
     display: none;
   }
 
-  /* the description takes the full width and wraps, brackets inline so
-     the `]` follows the last word */
+  /* the description takes the full width and wraps */
   .span-green {
     flex: none;
     width: 100%;
     padding: 0;
     white-space: normal;
-  }
-
-  .span-green::before,
-  .span-green::after {
-    position: static;
   }
 
   .span-green-text {
@@ -296,7 +269,7 @@
 .dot-box-outline .ansi-2 { color: var(--dark-green); }
 .dot-box-outline .ansi-3 { color: #aa5500; }
 .dot-box-outline .ansi-4 { color: var(--blue); }
-.dot-box-outline .ansi-5 { color: var(--purple); }
+.dot-box-outline .ansi-5 { color: var(--turquoise); }
 .dot-box-outline .ansi-6 { color: var(--dark-turquoise); }
 .dot-box-outline .ansi-7 { color: var(--dark-grey); }
 .dot-box-outline .ansi-8 { color: var(--light-black); }
